@@ -1,0 +1,26 @@
+Car Mechanic simulator 2015 Mod Manager
+
+A modding tool for editing and handling mods for Car Mechanic simulator 2015
+
+//-------------------
+
+Release notes
+
+0.9
+02/June/2016
+All elements of car data editing and handling have been refractored (backend and GUI)
+Engine data handling has been refractored (backend)
+Tire data editing added
+Map handling has been improved, more options added, editing of map info file added
+Initial check for config file added (prompts for non-standard install directory)
+Save game editor tab added (no options but a request for help in reverse engineering the save files)
+Placeholder image boxs added until images are ready for use.
+
+0.8.1
+Updates/Fixes
+Forgot to fill out the write to file functions
+Got the List and Data tabs to update each other on updates, improvements to car data file reading functions
+
+0.8
+Initial Release
+Backup functions, Editing Car list, Car data, Engine data, and copy over maps

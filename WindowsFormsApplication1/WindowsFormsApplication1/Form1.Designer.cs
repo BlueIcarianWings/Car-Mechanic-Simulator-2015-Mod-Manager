@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace CMS2015ModManager
 {
     partial class Form1
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,6 +82,10 @@
             this.CDLGloConAnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDLTitlelabel = new System.Windows.Forms.Label();
             this.CDInteriorpanel = new System.Windows.Forms.Panel();
+            this.CDIWheelScalenumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDIWheelScalelabel = new System.Windows.Forms.Label();
+            this.CDISeatHeightModnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDISeatHeightModlabel = new System.Windows.Forms.Label();
             this.CDIWheelRotZlabel = new System.Windows.Forms.Label();
             this.CDIWheelRotYlabel = new System.Windows.Forms.Label();
             this.CDIWheelRotXlabel = new System.Windows.Forms.Label();
@@ -251,6 +256,10 @@
             this.CDP6RotYnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDP6RotXnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDDriveShaftpanel = new System.Windows.Forms.Panel();
+            this.CDDPMnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDDPMlabel = new System.Windows.Forms.Label();
+            this.CDDSizenumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDDSizelabel = new System.Windows.Forms.Label();
             this.CDDLengthnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDDLengthlabel = new System.Windows.Forms.Label();
             this.CDDTypetextBox = new System.Windows.Forms.TextBox();
@@ -273,6 +282,9 @@
             this.CDDRotXnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDDriveShaftTitlelabel = new System.Windows.Forms.Label();
             this.CDWheelspanel = new System.Windows.Forms.Panel();
+            this.CDWTirecomboBox = new System.Windows.Forms.ComboBox();
+            this.CDWRimCaptextBox = new System.Windows.Forms.TextBox();
+            this.CDWRimCaplabel = new System.Windows.Forms.Label();
             this.CDWTireSizenumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDWTireSizelabel = new System.Windows.Forms.Label();
             this.CDWRimSizenumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -281,13 +293,15 @@
             this.CDWWheelWidthlabel = new System.Windows.Forms.Label();
             this.CDWRimtextBox = new System.Windows.Forms.TextBox();
             this.CDWRimlabel = new System.Windows.Forms.Label();
-            this.CDWTiretextBox = new System.Windows.Forms.TextBox();
             this.CDWTirelabel = new System.Windows.Forms.Label();
             this.CDWTitlelabel = new System.Windows.Forms.Label();
             this.CDEnginepanel = new System.Windows.Forms.Panel();
+            this.CDETypecomboBox = new System.Windows.Forms.ComboBox();
+            this.CDEEngineSwapOptionsbutton = new System.Windows.Forms.Button();
+            this.CDEPMnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDEPMlabel = new System.Windows.Forms.Label();
             this.CDESoundtextBox = new System.Windows.Forms.TextBox();
             this.CDESoundlabel = new System.Windows.Forms.Label();
-            this.CDETypetextBox = new System.Windows.Forms.TextBox();
             this.CDETypelabel = new System.Windows.Forms.Label();
             this.CDEScalenumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDEScalelabel = new System.Windows.Forms.Label();
@@ -307,6 +321,13 @@
             this.CDERotXnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDETitlelabel = new System.Windows.Forms.Label();
             this.CDSuspensionpanel = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CDSrearLeftSettextBox = new System.Windows.Forms.TextBox();
+            this.CDSrearLeftSetlabel = new System.Windows.Forms.Label();
+            this.CDSFrontLeftSettextBox = new System.Windows.Forms.TextBox();
+            this.CDSFrontLeftSetlabel = new System.Windows.Forms.Label();
+            this.CDSSidesFlipnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDSSidesFliplabel = new System.Windows.Forms.Label();
             this.CDSRearRightSettextBox = new System.Windows.Forms.TextBox();
             this.CDSRearRightSetlabel = new System.Windows.Forms.Label();
             this.CDSRearCenterSettextBox = new System.Windows.Forms.TextBox();
@@ -336,6 +357,14 @@
             this.CDNewbutton = new System.Windows.Forms.Button();
             this.CDResetbutton = new System.Windows.Forms.Button();
             this.CDOpanel = new System.Windows.Forms.Panel();
+            this.CDODoorAnglenumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDODoorAnglelabel = new System.Windows.Forms.Label();
+            this.CDOLifterArmsAnglenumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDOLifterArmsAnglelabel = new System.Windows.Forms.Label();
+            this.CDOSpeedoFactornumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDOSpeedoFactorlabel = new System.Windows.Forms.Label();
+            this.CDOPowernumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDSPowerlabel = new System.Windows.Forms.Label();
             this.CDOCXNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDOSpeedoAnglenumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDOSpeedoAnglelabel = new System.Windows.Forms.Label();
@@ -378,6 +407,8 @@
             this.AvailableCarsDataLabel = new System.Windows.Forms.Label();
             this.AvailableCarsDataComboBox = new System.Windows.Forms.ComboBox();
             this.EngineDataTabPage = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.EDTResetButton = new System.Windows.Forms.Button();
             this.EDTmaxRPMLabelNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.EDTmaxRPMLabel = new System.Windows.Forms.Label();
@@ -392,9 +423,49 @@
             this.EDTCommitButton = new System.Windows.Forms.Button();
             this.AvailableEnginesComboBox = new System.Windows.Forms.ComboBox();
             this.AvailableEnginesLabel = new System.Windows.Forms.Label();
+            this.TireDatatabPage = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.TDTResetbutton = new System.Windows.Forms.Button();
+            this.TDTPricenumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.TDTPricelabel = new System.Windows.Forms.Label();
+            this.TDTGripModnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.TDTGripModlabel = new System.Windows.Forms.Label();
+            this.TDTCommitbutton = new System.Windows.Forms.Button();
+            this.AvailableTirescomboBox = new System.Windows.Forms.ComboBox();
+            this.AvailableTireslabel = new System.Windows.Forms.Label();
             this.MapDataTabPage = new System.Windows.Forms.TabPage();
-            this.LoadModMapButton = new System.Windows.Forms.Button();
-            this.SetGameMapButton = new System.Windows.Forms.Button();
+            this.DeleteMapbutton = new System.Windows.Forms.Button();
+            this.MDTRefreshbutton = new System.Windows.Forms.Button();
+            this.MapDataMapDataFilelabel = new System.Windows.Forms.Label();
+            this.MDTMapDataFilepanel = new System.Windows.Forms.Panel();
+            this.MDTMDFOpenbutton = new System.Windows.Forms.Button();
+            this.MDTMDFResetbutton = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.MDTMDFSavebutton = new System.Windows.Forms.Button();
+            this.MDTMDFBundleFilebutton = new System.Windows.Forms.Button();
+            this.MDTMDFBundleFiletextBox = new System.Windows.Forms.TextBox();
+            this.MDTMDFBundleFilelabel = new System.Windows.Forms.Label();
+            this.MDTMDFTypetextBox = new System.Windows.Forms.TextBox();
+            this.MDTMDFTypelabel = new System.Windows.Forms.Label();
+            this.MDTMDFCreditstextBox = new System.Windows.Forms.TextBox();
+            this.MDTMDFCreditslabel = new System.Windows.Forms.Label();
+            this.MDTMDFNametextBox = new System.Windows.Forms.TextBox();
+            this.MDTMDFNamelabel = new System.Windows.Forms.Label();
+            this.MDTSelectedMappanel = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.MDTSelectedMaplistBox = new System.Windows.Forms.ListBox();
+            this.MDTSelectedMaplabel = new System.Windows.Forms.Label();
+            this.AvailableMapslistBox = new System.Windows.Forms.ListBox();
+            this.AvailableMapslabel = new System.Windows.Forms.Label();
+            this.MDTLoadModMapButton = new System.Windows.Forms.Button();
+            this.MDTSetGameMapButton = new System.Windows.Forms.Button();
+            this.SaveGameEditortabPage = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.CarsListTabPage.SuspendLayout();
@@ -408,6 +479,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.CDLGloConBnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDLGloConAnumericUpDown)).BeginInit();
             this.CDInteriorpanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CDIWheelScalenumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDISeatHeightModnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDIWheelRotZnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDIWheelRotYnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDIWheelRotXnumericUpDown)).BeginInit();
@@ -479,6 +552,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.CDP6RotYnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDP6RotXnumericUpDown)).BeginInit();
             this.CDDriveShaftpanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CDDPMnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDDSizenumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDDLengthnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDDScalenumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDDPosZnumericUpDown)).BeginInit();
@@ -492,6 +567,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CDWRimSizenumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDWWheelWidthnumericUpDown)).BeginInit();
             this.CDEnginepanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CDEPMnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDEScalenumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDEPosZnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDEPosYnumericUpDown)).BeginInit();
@@ -500,6 +576,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CDERotYnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDERotXnumericUpDown)).BeginInit();
             this.CDSuspensionpanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CDSSidesFlipnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDSScalenumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDSFrontSpringLengthnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDSRearTracknumericUpDown)).BeginInit();
@@ -508,6 +585,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.CDSWheelBasenumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDSFrontAxleStartnumericUpDown)).BeginInit();
             this.CDOpanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CDODoorAnglenumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDOLifterArmsAnglenumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDOSpeedoFactornumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDOPowernumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDOCXNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDOSpeedoAnglenumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDOLifterArmsRisenumericUpDown)).BeginInit();
@@ -523,12 +604,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.CDMRotXnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarDataThumbNailPictureBox)).BeginInit();
             this.EngineDataTabPage.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxRPMLabelNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTminRPMLabelNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxTorqueRPMNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxPowerRPMNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxPowerNumericUpDown)).BeginInit();
+            this.TireDatatabPage.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TDTPricenumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TDTGripModnumericUpDown)).BeginInit();
             this.MapDataTabPage.SuspendLayout();
+            this.MDTMapDataFilepanel.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.MDTSelectedMappanel.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.SaveGameEditortabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -539,7 +630,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(902, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1056, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -665,11 +756,13 @@
             this.tabControl1.Controls.Add(this.CarsListTabPage);
             this.tabControl1.Controls.Add(this.CarDataTabPage);
             this.tabControl1.Controls.Add(this.EngineDataTabPage);
+            this.tabControl1.Controls.Add(this.TireDatatabPage);
             this.tabControl1.Controls.Add(this.MapDataTabPage);
-            this.tabControl1.Location = new System.Drawing.Point(0, 27);
+            this.tabControl1.Controls.Add(this.SaveGameEditortabPage);
+            this.tabControl1.Location = new System.Drawing.Point(2, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(900, 694);
+            this.tabControl1.Size = new System.Drawing.Size(1050, 676);
             this.tabControl1.TabIndex = 1;
             // 
             // CarsListTabPage
@@ -690,14 +783,14 @@
             this.CarsListTabPage.Location = new System.Drawing.Point(4, 22);
             this.CarsListTabPage.Name = "CarsListTabPage";
             this.CarsListTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.CarsListTabPage.Size = new System.Drawing.Size(892, 668);
+            this.CarsListTabPage.Size = new System.Drawing.Size(1042, 650);
             this.CarsListTabPage.TabIndex = 3;
             this.CarsListTabPage.Text = "Cars List";
             this.CarsListTabPage.UseVisualStyleBackColor = true;
             // 
             // CarsListDeletebutton
             // 
-            this.CarsListDeletebutton.Location = new System.Drawing.Point(408, 277);
+            this.CarsListDeletebutton.Location = new System.Drawing.Point(484, 271);
             this.CarsListDeletebutton.Name = "CarsListDeletebutton";
             this.CarsListDeletebutton.Size = new System.Drawing.Size(75, 23);
             this.CarsListDeletebutton.TabIndex = 16;
@@ -707,7 +800,7 @@
             // 
             // CarListOverwritebutton
             // 
-            this.CarListOverwritebutton.Location = new System.Drawing.Point(408, 248);
+            this.CarListOverwritebutton.Location = new System.Drawing.Point(484, 242);
             this.CarListOverwritebutton.Name = "CarListOverwritebutton";
             this.CarListOverwritebutton.Size = new System.Drawing.Size(75, 23);
             this.CarListOverwritebutton.TabIndex = 15;
@@ -717,7 +810,7 @@
             // 
             // CarListCopybutton
             // 
-            this.CarListCopybutton.Location = new System.Drawing.Point(408, 219);
+            this.CarListCopybutton.Location = new System.Drawing.Point(484, 213);
             this.CarListCopybutton.Name = "CarListCopybutton";
             this.CarListCopybutton.Size = new System.Drawing.Size(75, 23);
             this.CarListCopybutton.TabIndex = 14;
@@ -727,7 +820,7 @@
             // 
             // CarsListImportbutton
             // 
-            this.CarsListImportbutton.Location = new System.Drawing.Point(408, 190);
+            this.CarsListImportbutton.Location = new System.Drawing.Point(484, 184);
             this.CarsListImportbutton.Name = "CarsListImportbutton";
             this.CarsListImportbutton.Size = new System.Drawing.Size(75, 23);
             this.CarsListImportbutton.TabIndex = 13;
@@ -737,7 +830,7 @@
             // 
             // CarsListReloadButton
             // 
-            this.CarsListReloadButton.Location = new System.Drawing.Point(408, 161);
+            this.CarsListReloadButton.Location = new System.Drawing.Point(484, 155);
             this.CarsListReloadButton.Name = "CarsListReloadButton";
             this.CarsListReloadButton.Size = new System.Drawing.Size(75, 23);
             this.CarsListReloadButton.TabIndex = 12;
@@ -747,7 +840,7 @@
             // 
             // CarsListRefreshButton
             // 
-            this.CarsListRefreshButton.Location = new System.Drawing.Point(408, 132);
+            this.CarsListRefreshButton.Location = new System.Drawing.Point(484, 126);
             this.CarsListRefreshButton.Name = "CarsListRefreshButton";
             this.CarsListRefreshButton.Size = new System.Drawing.Size(75, 23);
             this.CarsListRefreshButton.TabIndex = 11;
@@ -757,17 +850,17 @@
             // 
             // CarsListCommitButton
             // 
-            this.CarsListCommitButton.Location = new System.Drawing.Point(408, 103);
+            this.CarsListCommitButton.Location = new System.Drawing.Point(484, 97);
             this.CarsListCommitButton.Name = "CarsListCommitButton";
             this.CarsListCommitButton.Size = new System.Drawing.Size(75, 23);
             this.CarsListCommitButton.TabIndex = 10;
-            this.CarsListCommitButton.Text = "Commit";
+            this.CarsListCommitButton.Text = "Save List";
             this.CarsListCommitButton.UseVisualStyleBackColor = true;
             this.CarsListCommitButton.Click += new System.EventHandler(this.CarsListCommitButton_Click);
             // 
             // CarListAddButton
             // 
-            this.CarListAddButton.Location = new System.Drawing.Point(408, 74);
+            this.CarListAddButton.Location = new System.Drawing.Point(484, 68);
             this.CarListAddButton.Name = "CarListAddButton";
             this.CarListAddButton.Size = new System.Drawing.Size(75, 23);
             this.CarListAddButton.TabIndex = 8;
@@ -777,7 +870,7 @@
             // 
             // CarListRemoveButton
             // 
-            this.CarListRemoveButton.Location = new System.Drawing.Point(408, 45);
+            this.CarListRemoveButton.Location = new System.Drawing.Point(484, 39);
             this.CarListRemoveButton.Name = "CarListRemoveButton";
             this.CarListRemoveButton.Size = new System.Drawing.Size(75, 23);
             this.CarListRemoveButton.TabIndex = 7;
@@ -788,9 +881,9 @@
             // AvailableCarsListBox
             // 
             this.AvailableCarsListBox.FormattingEnabled = true;
-            this.AvailableCarsListBox.Location = new System.Drawing.Point(489, 23);
+            this.AvailableCarsListBox.Location = new System.Drawing.Point(567, 23);
             this.AvailableCarsListBox.Name = "AvailableCarsListBox";
-            this.AvailableCarsListBox.Size = new System.Drawing.Size(400, 628);
+            this.AvailableCarsListBox.Size = new System.Drawing.Size(470, 615);
             this.AvailableCarsListBox.TabIndex = 6;
             // 
             // CarsCurrentlyInListLabel
@@ -805,15 +898,15 @@
             // CarsCurrentlyListBox
             // 
             this.CarsCurrentlyListBox.FormattingEnabled = true;
-            this.CarsCurrentlyListBox.Location = new System.Drawing.Point(10, 23);
+            this.CarsCurrentlyListBox.Location = new System.Drawing.Point(8, 23);
             this.CarsCurrentlyListBox.Name = "CarsCurrentlyListBox";
-            this.CarsCurrentlyListBox.Size = new System.Drawing.Size(392, 628);
+            this.CarsCurrentlyListBox.Size = new System.Drawing.Size(470, 615);
             this.CarsCurrentlyListBox.TabIndex = 4;
             // 
             // AvailableCarsListLabel
             // 
             this.AvailableCarsListLabel.AutoSize = true;
-            this.AvailableCarsListLabel.Location = new System.Drawing.Point(486, 7);
+            this.AvailableCarsListLabel.Location = new System.Drawing.Point(645, 7);
             this.AvailableCarsListLabel.Name = "AvailableCarsListLabel";
             this.AvailableCarsListLabel.Size = new System.Drawing.Size(74, 13);
             this.AvailableCarsListLabel.TabIndex = 3;
@@ -841,7 +934,7 @@
             this.CarDataTabPage.Location = new System.Drawing.Point(4, 22);
             this.CarDataTabPage.Name = "CarDataTabPage";
             this.CarDataTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.CarDataTabPage.Size = new System.Drawing.Size(892, 668);
+            this.CarDataTabPage.Size = new System.Drawing.Size(1042, 650);
             this.CarDataTabPage.TabIndex = 0;
             this.CarDataTabPage.Text = "Car Data";
             this.CarDataTabPage.UseVisualStyleBackColor = true;
@@ -868,15 +961,15 @@
             this.CDLogicpanel.Controls.Add(this.CDLGloConBnumericUpDown);
             this.CDLogicpanel.Controls.Add(this.CDLGloConAnumericUpDown);
             this.CDLogicpanel.Controls.Add(this.CDLTitlelabel);
-            this.CDLogicpanel.Location = new System.Drawing.Point(227, 521);
+            this.CDLogicpanel.Location = new System.Drawing.Point(629, 536);
             this.CDLogicpanel.Name = "CDLogicpanel";
-            this.CDLogicpanel.Size = new System.Drawing.Size(259, 141);
+            this.CDLogicpanel.Size = new System.Drawing.Size(344, 108);
             this.CDLogicpanel.TabIndex = 36;
             // 
             // CDLBlockOBDcheckBox
             // 
             this.CDLBlockOBDcheckBox.AutoSize = true;
-            this.CDLBlockOBDcheckBox.Location = new System.Drawing.Point(137, 78);
+            this.CDLBlockOBDcheckBox.Location = new System.Drawing.Point(263, 78);
             this.CDLBlockOBDcheckBox.Name = "CDLBlockOBDcheckBox";
             this.CDLBlockOBDcheckBox.Size = new System.Drawing.Size(76, 17);
             this.CDLBlockOBDcheckBox.TabIndex = 42;
@@ -886,7 +979,7 @@
             // CDLUniqueModnumericUpDown
             // 
             this.CDLUniqueModnumericUpDown.DecimalPlaces = 2;
-            this.CDLUniqueModnumericUpDown.Location = new System.Drawing.Point(197, 40);
+            this.CDLUniqueModnumericUpDown.Location = new System.Drawing.Point(204, 77);
             this.CDLUniqueModnumericUpDown.Name = "CDLUniqueModnumericUpDown";
             this.CDLUniqueModnumericUpDown.Size = new System.Drawing.Size(52, 20);
             this.CDLUniqueModnumericUpDown.TabIndex = 34;
@@ -894,7 +987,7 @@
             // CDLPanConAlabel
             // 
             this.CDLPanConAlabel.AutoSize = true;
-            this.CDLPanConAlabel.Location = new System.Drawing.Point(4, 116);
+            this.CDLPanConAlabel.Location = new System.Drawing.Point(140, 42);
             this.CDLPanConAlabel.Name = "CDLPanConAlabel";
             this.CDLPanConAlabel.Size = new System.Drawing.Size(14, 13);
             this.CDLPanConAlabel.TabIndex = 40;
@@ -903,7 +996,7 @@
             // CDLUniqueModlabel
             // 
             this.CDLUniqueModlabel.AutoSize = true;
-            this.CDLUniqueModlabel.Location = new System.Drawing.Point(134, 42);
+            this.CDLUniqueModlabel.Location = new System.Drawing.Point(136, 79);
             this.CDLUniqueModlabel.Name = "CDLUniqueModlabel";
             this.CDLUniqueModlabel.Size = new System.Drawing.Size(62, 13);
             this.CDLUniqueModlabel.TabIndex = 33;
@@ -912,7 +1005,7 @@
             // CDLPanConBlabel
             // 
             this.CDLPanConBlabel.AutoSize = true;
-            this.CDLPanConBlabel.Location = new System.Drawing.Point(66, 116);
+            this.CDLPanConBlabel.Location = new System.Drawing.Point(202, 42);
             this.CDLPanConBlabel.Name = "CDLPanConBlabel";
             this.CDLPanConBlabel.Size = new System.Drawing.Size(14, 13);
             this.CDLPanConBlabel.TabIndex = 39;
@@ -921,7 +1014,7 @@
             // CDLPanConlabel
             // 
             this.CDLPanConlabel.AutoSize = true;
-            this.CDLPanConlabel.Location = new System.Drawing.Point(3, 100);
+            this.CDLPanConlabel.Location = new System.Drawing.Point(139, 26);
             this.CDLPanConlabel.Name = "CDLPanConlabel";
             this.CDLPanConlabel.Size = new System.Drawing.Size(88, 13);
             this.CDLPanConlabel.TabIndex = 38;
@@ -930,7 +1023,7 @@
             // CDLPanConBnumericUpDown
             // 
             this.CDLPanConBnumericUpDown.DecimalPlaces = 2;
-            this.CDLPanConBnumericUpDown.Location = new System.Drawing.Point(86, 114);
+            this.CDLPanConBnumericUpDown.Location = new System.Drawing.Point(222, 40);
             this.CDLPanConBnumericUpDown.Maximum = new decimal(new int[] {
             1,
             0,
@@ -943,7 +1036,7 @@
             // CDLPanConAnumericUpDown
             // 
             this.CDLPanConAnumericUpDown.DecimalPlaces = 2;
-            this.CDLPanConAnumericUpDown.Location = new System.Drawing.Point(20, 114);
+            this.CDLPanConAnumericUpDown.Location = new System.Drawing.Point(156, 40);
             this.CDLPanConAnumericUpDown.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1071,6 +1164,10 @@
             // CDInteriorpanel
             // 
             this.CDInteriorpanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.CDInteriorpanel.Controls.Add(this.CDIWheelScalenumericUpDown);
+            this.CDInteriorpanel.Controls.Add(this.CDIWheelScalelabel);
+            this.CDInteriorpanel.Controls.Add(this.CDISeatHeightModnumericUpDown);
+            this.CDInteriorpanel.Controls.Add(this.CDISeatHeightModlabel);
             this.CDInteriorpanel.Controls.Add(this.CDIWheelRotZlabel);
             this.CDInteriorpanel.Controls.Add(this.CDIWheelRotYlabel);
             this.CDInteriorpanel.Controls.Add(this.CDIWheelRotXlabel);
@@ -1106,15 +1203,49 @@
             this.CDInteriorpanel.Controls.Add(this.CDISLPosYnumericUpDown);
             this.CDInteriorpanel.Controls.Add(this.CDISLPosXnumericUpDown);
             this.CDInteriorpanel.Controls.Add(this.CDITitlelabel);
-            this.CDInteriorpanel.Location = new System.Drawing.Point(640, 240);
+            this.CDInteriorpanel.Location = new System.Drawing.Point(629, 162);
             this.CDInteriorpanel.Name = "CDInteriorpanel";
-            this.CDInteriorpanel.Size = new System.Drawing.Size(200, 315);
+            this.CDInteriorpanel.Size = new System.Drawing.Size(205, 368);
             this.CDInteriorpanel.TabIndex = 35;
+            // 
+            // CDIWheelScalenumericUpDown
+            // 
+            this.CDIWheelScalenumericUpDown.DecimalPlaces = 2;
+            this.CDIWheelScalenumericUpDown.Location = new System.Drawing.Point(70, 231);
+            this.CDIWheelScalenumericUpDown.Name = "CDIWheelScalenumericUpDown";
+            this.CDIWheelScalenumericUpDown.Size = new System.Drawing.Size(76, 20);
+            this.CDIWheelScalenumericUpDown.TabIndex = 71;
+            // 
+            // CDIWheelScalelabel
+            // 
+            this.CDIWheelScalelabel.AutoSize = true;
+            this.CDIWheelScalelabel.Location = new System.Drawing.Point(4, 233);
+            this.CDIWheelScalelabel.Name = "CDIWheelScalelabel";
+            this.CDIWheelScalelabel.Size = new System.Drawing.Size(65, 13);
+            this.CDIWheelScalelabel.TabIndex = 70;
+            this.CDIWheelScalelabel.Text = "WheelScale";
+            // 
+            // CDISeatHeightModnumericUpDown
+            // 
+            this.CDISeatHeightModnumericUpDown.DecimalPlaces = 2;
+            this.CDISeatHeightModnumericUpDown.Location = new System.Drawing.Point(92, 73);
+            this.CDISeatHeightModnumericUpDown.Name = "CDISeatHeightModnumericUpDown";
+            this.CDISeatHeightModnumericUpDown.Size = new System.Drawing.Size(55, 20);
+            this.CDISeatHeightModnumericUpDown.TabIndex = 69;
+            // 
+            // CDISeatHeightModlabel
+            // 
+            this.CDISeatHeightModlabel.AutoSize = true;
+            this.CDISeatHeightModlabel.Location = new System.Drawing.Point(5, 75);
+            this.CDISeatHeightModlabel.Name = "CDISeatHeightModlabel";
+            this.CDISeatHeightModlabel.Size = new System.Drawing.Size(81, 13);
+            this.CDISeatHeightModlabel.TabIndex = 68;
+            this.CDISeatHeightModlabel.Text = "SeatHeightMod";
             // 
             // CDIWheelRotZlabel
             // 
             this.CDIWheelRotZlabel.AutoSize = true;
-            this.CDIWheelRotZlabel.Location = new System.Drawing.Point(133, 271);
+            this.CDIWheelRotZlabel.Location = new System.Drawing.Point(134, 321);
             this.CDIWheelRotZlabel.Name = "CDIWheelRotZlabel";
             this.CDIWheelRotZlabel.Size = new System.Drawing.Size(14, 13);
             this.CDIWheelRotZlabel.TabIndex = 67;
@@ -1123,7 +1254,7 @@
             // CDIWheelRotYlabel
             // 
             this.CDIWheelRotYlabel.AutoSize = true;
-            this.CDIWheelRotYlabel.Location = new System.Drawing.Point(68, 271);
+            this.CDIWheelRotYlabel.Location = new System.Drawing.Point(69, 321);
             this.CDIWheelRotYlabel.Name = "CDIWheelRotYlabel";
             this.CDIWheelRotYlabel.Size = new System.Drawing.Size(14, 13);
             this.CDIWheelRotYlabel.TabIndex = 66;
@@ -1132,7 +1263,7 @@
             // CDIWheelRotXlabel
             // 
             this.CDIWheelRotXlabel.AutoSize = true;
-            this.CDIWheelRotXlabel.Location = new System.Drawing.Point(3, 271);
+            this.CDIWheelRotXlabel.Location = new System.Drawing.Point(4, 321);
             this.CDIWheelRotXlabel.Name = "CDIWheelRotXlabel";
             this.CDIWheelRotXlabel.Size = new System.Drawing.Size(14, 13);
             this.CDIWheelRotXlabel.TabIndex = 65;
@@ -1141,7 +1272,7 @@
             // CDIWheelRotlabel
             // 
             this.CDIWheelRotlabel.AutoSize = true;
-            this.CDIWheelRotlabel.Location = new System.Drawing.Point(3, 258);
+            this.CDIWheelRotlabel.Location = new System.Drawing.Point(4, 308);
             this.CDIWheelRotlabel.Name = "CDIWheelRotlabel";
             this.CDIWheelRotlabel.Size = new System.Drawing.Size(81, 13);
             this.CDIWheelRotlabel.TabIndex = 64;
@@ -1150,7 +1281,7 @@
             // CDIWheelRotZnumericUpDown
             // 
             this.CDIWheelRotZnumericUpDown.DecimalPlaces = 5;
-            this.CDIWheelRotZnumericUpDown.Location = new System.Drawing.Point(133, 287);
+            this.CDIWheelRotZnumericUpDown.Location = new System.Drawing.Point(134, 337);
             this.CDIWheelRotZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1168,7 +1299,7 @@
             // CDIWheelRotYnumericUpDown
             // 
             this.CDIWheelRotYnumericUpDown.DecimalPlaces = 5;
-            this.CDIWheelRotYnumericUpDown.Location = new System.Drawing.Point(68, 287);
+            this.CDIWheelRotYnumericUpDown.Location = new System.Drawing.Point(69, 337);
             this.CDIWheelRotYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1186,7 +1317,7 @@
             // CDIWheelRotXnumericUpDown
             // 
             this.CDIWheelRotXnumericUpDown.DecimalPlaces = 5;
-            this.CDIWheelRotXnumericUpDown.Location = new System.Drawing.Point(3, 287);
+            this.CDIWheelRotXnumericUpDown.Location = new System.Drawing.Point(4, 337);
             this.CDIWheelRotXnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1204,7 +1335,7 @@
             // CDIWheelPosZlabel
             // 
             this.CDIWheelPosZlabel.AutoSize = true;
-            this.CDIWheelPosZlabel.Location = new System.Drawing.Point(133, 219);
+            this.CDIWheelPosZlabel.Location = new System.Drawing.Point(134, 269);
             this.CDIWheelPosZlabel.Name = "CDIWheelPosZlabel";
             this.CDIWheelPosZlabel.Size = new System.Drawing.Size(14, 13);
             this.CDIWheelPosZlabel.TabIndex = 60;
@@ -1213,7 +1344,7 @@
             // CDIWheelPosYlabel
             // 
             this.CDIWheelPosYlabel.AutoSize = true;
-            this.CDIWheelPosYlabel.Location = new System.Drawing.Point(68, 219);
+            this.CDIWheelPosYlabel.Location = new System.Drawing.Point(69, 269);
             this.CDIWheelPosYlabel.Name = "CDIWheelPosYlabel";
             this.CDIWheelPosYlabel.Size = new System.Drawing.Size(14, 13);
             this.CDIWheelPosYlabel.TabIndex = 59;
@@ -1222,7 +1353,7 @@
             // CDIWheelPosXlabel
             // 
             this.CDIWheelPosXlabel.AutoSize = true;
-            this.CDIWheelPosXlabel.Location = new System.Drawing.Point(3, 219);
+            this.CDIWheelPosXlabel.Location = new System.Drawing.Point(4, 269);
             this.CDIWheelPosXlabel.Name = "CDIWheelPosXlabel";
             this.CDIWheelPosXlabel.Size = new System.Drawing.Size(14, 13);
             this.CDIWheelPosXlabel.TabIndex = 58;
@@ -1231,7 +1362,7 @@
             // CDIWheelPoslabel
             // 
             this.CDIWheelPoslabel.AutoSize = true;
-            this.CDIWheelPoslabel.Location = new System.Drawing.Point(3, 206);
+            this.CDIWheelPoslabel.Location = new System.Drawing.Point(4, 256);
             this.CDIWheelPoslabel.Name = "CDIWheelPoslabel";
             this.CDIWheelPoslabel.Size = new System.Drawing.Size(78, 13);
             this.CDIWheelPoslabel.TabIndex = 57;
@@ -1240,7 +1371,7 @@
             // CDIWheelPosZnumericUpDown
             // 
             this.CDIWheelPosZnumericUpDown.DecimalPlaces = 5;
-            this.CDIWheelPosZnumericUpDown.Location = new System.Drawing.Point(133, 235);
+            this.CDIWheelPosZnumericUpDown.Location = new System.Drawing.Point(134, 285);
             this.CDIWheelPosZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1258,7 +1389,7 @@
             // CDIWheelPosYnumericUpDown
             // 
             this.CDIWheelPosYnumericUpDown.DecimalPlaces = 5;
-            this.CDIWheelPosYnumericUpDown.Location = new System.Drawing.Point(68, 235);
+            this.CDIWheelPosYnumericUpDown.Location = new System.Drawing.Point(69, 285);
             this.CDIWheelPosYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1276,7 +1407,7 @@
             // CDIWheelPosXnumericUpDown
             // 
             this.CDIWheelPosXnumericUpDown.DecimalPlaces = 5;
-            this.CDIWheelPosXnumericUpDown.Location = new System.Drawing.Point(3, 235);
+            this.CDIWheelPosXnumericUpDown.Location = new System.Drawing.Point(4, 285);
             this.CDIWheelPosXnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1293,7 +1424,7 @@
             // 
             // CDIWheeltextBox
             // 
-            this.CDIWheeltextBox.Location = new System.Drawing.Point(68, 183);
+            this.CDIWheeltextBox.Location = new System.Drawing.Point(69, 205);
             this.CDIWheeltextBox.Name = "CDIWheeltextBox";
             this.CDIWheeltextBox.Size = new System.Drawing.Size(100, 20);
             this.CDIWheeltextBox.TabIndex = 53;
@@ -1301,7 +1432,7 @@
             // CDIWheellabel
             // 
             this.CDIWheellabel.AutoSize = true;
-            this.CDIWheellabel.Location = new System.Drawing.Point(2, 186);
+            this.CDIWheellabel.Location = new System.Drawing.Point(3, 208);
             this.CDIWheellabel.Name = "CDIWheellabel";
             this.CDIWheellabel.Size = new System.Drawing.Size(38, 13);
             this.CDIWheellabel.TabIndex = 52;
@@ -1309,7 +1440,7 @@
             // 
             // CDISeattextBox
             // 
-            this.CDISeattextBox.Location = new System.Drawing.Point(68, 157);
+            this.CDISeattextBox.Location = new System.Drawing.Point(71, 21);
             this.CDISeattextBox.Name = "CDISeattextBox";
             this.CDISeattextBox.Size = new System.Drawing.Size(100, 20);
             this.CDISeattextBox.TabIndex = 51;
@@ -1317,7 +1448,7 @@
             // CDISeatlabel
             // 
             this.CDISeatlabel.AutoSize = true;
-            this.CDISeatlabel.Location = new System.Drawing.Point(2, 160);
+            this.CDISeatlabel.Location = new System.Drawing.Point(5, 24);
             this.CDISeatlabel.Name = "CDISeatlabel";
             this.CDISeatlabel.Size = new System.Drawing.Size(29, 13);
             this.CDISeatlabel.TabIndex = 50;
@@ -1326,15 +1457,15 @@
             // CDISeatScalenumericUpDown
             // 
             this.CDISeatScalenumericUpDown.DecimalPlaces = 2;
-            this.CDISeatScalenumericUpDown.Location = new System.Drawing.Point(68, 131);
+            this.CDISeatScalenumericUpDown.Location = new System.Drawing.Point(71, 47);
             this.CDISeatScalenumericUpDown.Name = "CDISeatScalenumericUpDown";
-            this.CDISeatScalenumericUpDown.Size = new System.Drawing.Size(52, 20);
+            this.CDISeatScalenumericUpDown.Size = new System.Drawing.Size(76, 20);
             this.CDISeatScalenumericUpDown.TabIndex = 49;
             // 
             // CDISeatScalelabel
             // 
             this.CDISeatScalelabel.AutoSize = true;
-            this.CDISeatScalelabel.Location = new System.Drawing.Point(5, 133);
+            this.CDISeatScalelabel.Location = new System.Drawing.Point(5, 49);
             this.CDISeatScalelabel.Name = "CDISeatScalelabel";
             this.CDISeatScalelabel.Size = new System.Drawing.Size(56, 13);
             this.CDISeatScalelabel.TabIndex = 48;
@@ -1343,7 +1474,7 @@
             // CDISLRotZlabel
             // 
             this.CDISLRotZlabel.AutoSize = true;
-            this.CDISLRotZlabel.Location = new System.Drawing.Point(133, 89);
+            this.CDISLRotZlabel.Location = new System.Drawing.Point(135, 163);
             this.CDISLRotZlabel.Name = "CDISLRotZlabel";
             this.CDISLRotZlabel.Size = new System.Drawing.Size(14, 13);
             this.CDISLRotZlabel.TabIndex = 47;
@@ -1352,7 +1483,7 @@
             // CDISLRotYlabel
             // 
             this.CDISLRotYlabel.AutoSize = true;
-            this.CDISLRotYlabel.Location = new System.Drawing.Point(68, 89);
+            this.CDISLRotYlabel.Location = new System.Drawing.Point(70, 163);
             this.CDISLRotYlabel.Name = "CDISLRotYlabel";
             this.CDISLRotYlabel.Size = new System.Drawing.Size(14, 13);
             this.CDISLRotYlabel.TabIndex = 46;
@@ -1361,7 +1492,7 @@
             // CDISLRotXlabel
             // 
             this.CDISLRotXlabel.AutoSize = true;
-            this.CDISLRotXlabel.Location = new System.Drawing.Point(3, 89);
+            this.CDISLRotXlabel.Location = new System.Drawing.Point(5, 163);
             this.CDISLRotXlabel.Name = "CDISLRotXlabel";
             this.CDISLRotXlabel.Size = new System.Drawing.Size(14, 13);
             this.CDISLRotXlabel.TabIndex = 45;
@@ -1370,7 +1501,7 @@
             // CDISLRotlabel
             // 
             this.CDISLRotlabel.AutoSize = true;
-            this.CDISLRotlabel.Location = new System.Drawing.Point(3, 76);
+            this.CDISLRotlabel.Location = new System.Drawing.Point(5, 150);
             this.CDISLRotlabel.Name = "CDISLRotlabel";
             this.CDISLRotlabel.Size = new System.Drawing.Size(93, 13);
             this.CDISLRotlabel.TabIndex = 44;
@@ -1379,7 +1510,7 @@
             // CDISLRotZnumericUpDown
             // 
             this.CDISLRotZnumericUpDown.DecimalPlaces = 5;
-            this.CDISLRotZnumericUpDown.Location = new System.Drawing.Point(133, 105);
+            this.CDISLRotZnumericUpDown.Location = new System.Drawing.Point(135, 179);
             this.CDISLRotZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1397,7 +1528,7 @@
             // CDISLRotYnumericUpDown
             // 
             this.CDISLRotYnumericUpDown.DecimalPlaces = 5;
-            this.CDISLRotYnumericUpDown.Location = new System.Drawing.Point(68, 105);
+            this.CDISLRotYnumericUpDown.Location = new System.Drawing.Point(70, 179);
             this.CDISLRotYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1415,7 +1546,7 @@
             // CDISLRotXnumericUpDown
             // 
             this.CDISLRotXnumericUpDown.DecimalPlaces = 5;
-            this.CDISLRotXnumericUpDown.Location = new System.Drawing.Point(3, 105);
+            this.CDISLRotXnumericUpDown.Location = new System.Drawing.Point(5, 179);
             this.CDISLRotXnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1433,7 +1564,7 @@
             // CDISLPosZlabel
             // 
             this.CDISLPosZlabel.AutoSize = true;
-            this.CDISLPosZlabel.Location = new System.Drawing.Point(133, 37);
+            this.CDISLPosZlabel.Location = new System.Drawing.Point(135, 111);
             this.CDISLPosZlabel.Name = "CDISLPosZlabel";
             this.CDISLPosZlabel.Size = new System.Drawing.Size(14, 13);
             this.CDISLPosZlabel.TabIndex = 40;
@@ -1442,7 +1573,7 @@
             // CDISLPosYlabel
             // 
             this.CDISLPosYlabel.AutoSize = true;
-            this.CDISLPosYlabel.Location = new System.Drawing.Point(68, 37);
+            this.CDISLPosYlabel.Location = new System.Drawing.Point(70, 111);
             this.CDISLPosYlabel.Name = "CDISLPosYlabel";
             this.CDISLPosYlabel.Size = new System.Drawing.Size(14, 13);
             this.CDISLPosYlabel.TabIndex = 39;
@@ -1451,7 +1582,7 @@
             // CDISLPosXlabel
             // 
             this.CDISLPosXlabel.AutoSize = true;
-            this.CDISLPosXlabel.Location = new System.Drawing.Point(3, 37);
+            this.CDISLPosXlabel.Location = new System.Drawing.Point(5, 111);
             this.CDISLPosXlabel.Name = "CDISLPosXlabel";
             this.CDISLPosXlabel.Size = new System.Drawing.Size(14, 13);
             this.CDISLPosXlabel.TabIndex = 38;
@@ -1460,7 +1591,7 @@
             // CDISLPoslabel
             // 
             this.CDISLPoslabel.AutoSize = true;
-            this.CDISLPoslabel.Location = new System.Drawing.Point(3, 24);
+            this.CDISLPoslabel.Location = new System.Drawing.Point(5, 98);
             this.CDISLPoslabel.Name = "CDISLPoslabel";
             this.CDISLPoslabel.Size = new System.Drawing.Size(90, 13);
             this.CDISLPoslabel.TabIndex = 37;
@@ -1469,7 +1600,7 @@
             // CDISLPosZnumericUpDown
             // 
             this.CDISLPosZnumericUpDown.DecimalPlaces = 5;
-            this.CDISLPosZnumericUpDown.Location = new System.Drawing.Point(133, 53);
+            this.CDISLPosZnumericUpDown.Location = new System.Drawing.Point(135, 127);
             this.CDISLPosZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1487,7 +1618,7 @@
             // CDISLPosYnumericUpDown
             // 
             this.CDISLPosYnumericUpDown.DecimalPlaces = 5;
-            this.CDISLPosYnumericUpDown.Location = new System.Drawing.Point(68, 53);
+            this.CDISLPosYnumericUpDown.Location = new System.Drawing.Point(70, 127);
             this.CDISLPosYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1505,7 +1636,7 @@
             // CDISLPosXnumericUpDown
             // 
             this.CDISLPosXnumericUpDown.DecimalPlaces = 5;
-            this.CDISLPosXnumericUpDown.Location = new System.Drawing.Point(3, 53);
+            this.CDISLPosXnumericUpDown.Location = new System.Drawing.Point(5, 127);
             this.CDISLPosXnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1538,10 +1669,10 @@
             this.CDPartstabControl.Controls.Add(this.CDP4tabPage);
             this.CDPartstabControl.Controls.Add(this.CDP5tabPage);
             this.CDPartstabControl.Controls.Add(this.CDP6tabPage);
-            this.CDPartstabControl.Location = new System.Drawing.Point(640, 50);
+            this.CDPartstabControl.Location = new System.Drawing.Point(629, 50);
             this.CDPartstabControl.Name = "CDPartstabControl";
             this.CDPartstabControl.SelectedIndex = 0;
-            this.CDPartstabControl.Size = new System.Drawing.Size(246, 187);
+            this.CDPartstabControl.Size = new System.Drawing.Size(411, 110);
             this.CDPartstabControl.TabIndex = 34;
             // 
             // CDP0tabPage
@@ -1567,14 +1698,14 @@
             this.CDP0tabPage.Location = new System.Drawing.Point(4, 22);
             this.CDP0tabPage.Name = "CDP0tabPage";
             this.CDP0tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.CDP0tabPage.Size = new System.Drawing.Size(238, 161);
+            this.CDP0tabPage.Size = new System.Drawing.Size(403, 84);
             this.CDP0tabPage.TabIndex = 0;
             this.CDP0tabPage.Text = "Parts0";
             this.CDP0tabPage.UseVisualStyleBackColor = true;
             // 
             // CDP0NametextBox
             // 
-            this.CDP0NametextBox.Location = new System.Drawing.Point(72, 4);
+            this.CDP0NametextBox.Location = new System.Drawing.Point(68, 4);
             this.CDP0NametextBox.Name = "CDP0NametextBox";
             this.CDP0NametextBox.Size = new System.Drawing.Size(100, 20);
             this.CDP0NametextBox.TabIndex = 48;
@@ -1582,7 +1713,7 @@
             // CDP0Namelabel
             // 
             this.CDP0Namelabel.AutoSize = true;
-            this.CDP0Namelabel.Location = new System.Drawing.Point(6, 7);
+            this.CDP0Namelabel.Location = new System.Drawing.Point(3, 7);
             this.CDP0Namelabel.Name = "CDP0Namelabel";
             this.CDP0Namelabel.Size = new System.Drawing.Size(35, 13);
             this.CDP0Namelabel.TabIndex = 47;
@@ -1591,7 +1722,7 @@
             // CDP0ScalenumericUpDown
             // 
             this.CDP0ScalenumericUpDown.DecimalPlaces = 2;
-            this.CDP0ScalenumericUpDown.Location = new System.Drawing.Point(71, 133);
+            this.CDP0ScalenumericUpDown.Location = new System.Drawing.Point(266, 6);
             this.CDP0ScalenumericUpDown.Name = "CDP0ScalenumericUpDown";
             this.CDP0ScalenumericUpDown.Size = new System.Drawing.Size(59, 20);
             this.CDP0ScalenumericUpDown.TabIndex = 46;
@@ -1599,7 +1730,7 @@
             // CDP0Scalelabel
             // 
             this.CDP0Scalelabel.AutoSize = true;
-            this.CDP0Scalelabel.Location = new System.Drawing.Point(8, 135);
+            this.CDP0Scalelabel.Location = new System.Drawing.Point(203, 8);
             this.CDP0Scalelabel.Name = "CDP0Scalelabel";
             this.CDP0Scalelabel.Size = new System.Drawing.Size(34, 13);
             this.CDP0Scalelabel.TabIndex = 45;
@@ -1608,7 +1739,7 @@
             // CDP0PosZlabel
             // 
             this.CDP0PosZlabel.AutoSize = true;
-            this.CDP0PosZlabel.Location = new System.Drawing.Point(136, 91);
+            this.CDP0PosZlabel.Location = new System.Drawing.Point(333, 39);
             this.CDP0PosZlabel.Name = "CDP0PosZlabel";
             this.CDP0PosZlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP0PosZlabel.TabIndex = 44;
@@ -1617,7 +1748,7 @@
             // CDP0PosYlabel
             // 
             this.CDP0PosYlabel.AutoSize = true;
-            this.CDP0PosYlabel.Location = new System.Drawing.Point(71, 91);
+            this.CDP0PosYlabel.Location = new System.Drawing.Point(268, 39);
             this.CDP0PosYlabel.Name = "CDP0PosYlabel";
             this.CDP0PosYlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP0PosYlabel.TabIndex = 43;
@@ -1626,7 +1757,7 @@
             // CDP0PosXlabel
             // 
             this.CDP0PosXlabel.AutoSize = true;
-            this.CDP0PosXlabel.Location = new System.Drawing.Point(6, 91);
+            this.CDP0PosXlabel.Location = new System.Drawing.Point(203, 39);
             this.CDP0PosXlabel.Name = "CDP0PosXlabel";
             this.CDP0PosXlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP0PosXlabel.TabIndex = 42;
@@ -1635,7 +1766,7 @@
             // CDP0Poslabel
             // 
             this.CDP0Poslabel.AutoSize = true;
-            this.CDP0Poslabel.Location = new System.Drawing.Point(6, 78);
+            this.CDP0Poslabel.Location = new System.Drawing.Point(203, 26);
             this.CDP0Poslabel.Name = "CDP0Poslabel";
             this.CDP0Poslabel.Size = new System.Drawing.Size(44, 13);
             this.CDP0Poslabel.TabIndex = 41;
@@ -1644,7 +1775,7 @@
             // CDP0PosZnumericUpDown
             // 
             this.CDP0PosZnumericUpDown.DecimalPlaces = 5;
-            this.CDP0PosZnumericUpDown.Location = new System.Drawing.Point(136, 107);
+            this.CDP0PosZnumericUpDown.Location = new System.Drawing.Point(333, 55);
             this.CDP0PosZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1662,7 +1793,7 @@
             // CDP0PosYnumericUpDown
             // 
             this.CDP0PosYnumericUpDown.DecimalPlaces = 5;
-            this.CDP0PosYnumericUpDown.Location = new System.Drawing.Point(71, 107);
+            this.CDP0PosYnumericUpDown.Location = new System.Drawing.Point(268, 55);
             this.CDP0PosYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1680,7 +1811,7 @@
             // CDP0PosXnumericUpDown
             // 
             this.CDP0PosXnumericUpDown.DecimalPlaces = 5;
-            this.CDP0PosXnumericUpDown.Location = new System.Drawing.Point(6, 107);
+            this.CDP0PosXnumericUpDown.Location = new System.Drawing.Point(203, 55);
             this.CDP0PosXnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1698,7 +1829,7 @@
             // CDP0RotZlabel
             // 
             this.CDP0RotZlabel.AutoSize = true;
-            this.CDP0RotZlabel.Location = new System.Drawing.Point(136, 39);
+            this.CDP0RotZlabel.Location = new System.Drawing.Point(132, 39);
             this.CDP0RotZlabel.Name = "CDP0RotZlabel";
             this.CDP0RotZlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP0RotZlabel.TabIndex = 37;
@@ -1707,7 +1838,7 @@
             // CDP0RotYlabel
             // 
             this.CDP0RotYlabel.AutoSize = true;
-            this.CDP0RotYlabel.Location = new System.Drawing.Point(71, 39);
+            this.CDP0RotYlabel.Location = new System.Drawing.Point(67, 39);
             this.CDP0RotYlabel.Name = "CDP0RotYlabel";
             this.CDP0RotYlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP0RotYlabel.TabIndex = 36;
@@ -1716,7 +1847,7 @@
             // CDP0RotXlabel
             // 
             this.CDP0RotXlabel.AutoSize = true;
-            this.CDP0RotXlabel.Location = new System.Drawing.Point(6, 39);
+            this.CDP0RotXlabel.Location = new System.Drawing.Point(3, 39);
             this.CDP0RotXlabel.Name = "CDP0RotXlabel";
             this.CDP0RotXlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP0RotXlabel.TabIndex = 35;
@@ -1725,7 +1856,7 @@
             // CDP0Rotlabel
             // 
             this.CDP0Rotlabel.AutoSize = true;
-            this.CDP0Rotlabel.Location = new System.Drawing.Point(6, 26);
+            this.CDP0Rotlabel.Location = new System.Drawing.Point(3, 26);
             this.CDP0Rotlabel.Name = "CDP0Rotlabel";
             this.CDP0Rotlabel.Size = new System.Drawing.Size(47, 13);
             this.CDP0Rotlabel.TabIndex = 34;
@@ -1734,7 +1865,7 @@
             // CDP0RotZnumericUpDown
             // 
             this.CDP0RotZnumericUpDown.DecimalPlaces = 5;
-            this.CDP0RotZnumericUpDown.Location = new System.Drawing.Point(136, 55);
+            this.CDP0RotZnumericUpDown.Location = new System.Drawing.Point(132, 55);
             this.CDP0RotZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1752,7 +1883,7 @@
             // CDP0RotYnumericUpDown
             // 
             this.CDP0RotYnumericUpDown.DecimalPlaces = 5;
-            this.CDP0RotYnumericUpDown.Location = new System.Drawing.Point(71, 55);
+            this.CDP0RotYnumericUpDown.Location = new System.Drawing.Point(67, 55);
             this.CDP0RotYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1770,7 +1901,7 @@
             // CDP0RotXnumericUpDown
             // 
             this.CDP0RotXnumericUpDown.DecimalPlaces = 5;
-            this.CDP0RotXnumericUpDown.Location = new System.Drawing.Point(6, 55);
+            this.CDP0RotXnumericUpDown.Location = new System.Drawing.Point(3, 55);
             this.CDP0RotXnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1808,14 +1939,14 @@
             this.CDP1tabPage.Location = new System.Drawing.Point(4, 22);
             this.CDP1tabPage.Name = "CDP1tabPage";
             this.CDP1tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.CDP1tabPage.Size = new System.Drawing.Size(238, 161);
+            this.CDP1tabPage.Size = new System.Drawing.Size(403, 84);
             this.CDP1tabPage.TabIndex = 1;
             this.CDP1tabPage.Text = "Parts1";
             this.CDP1tabPage.UseVisualStyleBackColor = true;
             // 
             // CDP1NametextBox
             // 
-            this.CDP1NametextBox.Location = new System.Drawing.Point(72, 4);
+            this.CDP1NametextBox.Location = new System.Drawing.Point(68, 4);
             this.CDP1NametextBox.Name = "CDP1NametextBox";
             this.CDP1NametextBox.Size = new System.Drawing.Size(100, 20);
             this.CDP1NametextBox.TabIndex = 66;
@@ -1823,7 +1954,7 @@
             // CDP1Namelabel
             // 
             this.CDP1Namelabel.AutoSize = true;
-            this.CDP1Namelabel.Location = new System.Drawing.Point(6, 7);
+            this.CDP1Namelabel.Location = new System.Drawing.Point(3, 7);
             this.CDP1Namelabel.Name = "CDP1Namelabel";
             this.CDP1Namelabel.Size = new System.Drawing.Size(35, 13);
             this.CDP1Namelabel.TabIndex = 65;
@@ -1832,7 +1963,7 @@
             // CDP1ScalenumericUpDown
             // 
             this.CDP1ScalenumericUpDown.DecimalPlaces = 2;
-            this.CDP1ScalenumericUpDown.Location = new System.Drawing.Point(71, 133);
+            this.CDP1ScalenumericUpDown.Location = new System.Drawing.Point(266, 6);
             this.CDP1ScalenumericUpDown.Name = "CDP1ScalenumericUpDown";
             this.CDP1ScalenumericUpDown.Size = new System.Drawing.Size(59, 20);
             this.CDP1ScalenumericUpDown.TabIndex = 64;
@@ -1840,7 +1971,7 @@
             // CDP1Scalelabel
             // 
             this.CDP1Scalelabel.AutoSize = true;
-            this.CDP1Scalelabel.Location = new System.Drawing.Point(8, 135);
+            this.CDP1Scalelabel.Location = new System.Drawing.Point(203, 8);
             this.CDP1Scalelabel.Name = "CDP1Scalelabel";
             this.CDP1Scalelabel.Size = new System.Drawing.Size(34, 13);
             this.CDP1Scalelabel.TabIndex = 63;
@@ -1849,7 +1980,7 @@
             // CDP1PosZlabel
             // 
             this.CDP1PosZlabel.AutoSize = true;
-            this.CDP1PosZlabel.Location = new System.Drawing.Point(136, 91);
+            this.CDP1PosZlabel.Location = new System.Drawing.Point(333, 39);
             this.CDP1PosZlabel.Name = "CDP1PosZlabel";
             this.CDP1PosZlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP1PosZlabel.TabIndex = 62;
@@ -1858,7 +1989,7 @@
             // CDP1PosYlabel
             // 
             this.CDP1PosYlabel.AutoSize = true;
-            this.CDP1PosYlabel.Location = new System.Drawing.Point(71, 91);
+            this.CDP1PosYlabel.Location = new System.Drawing.Point(268, 39);
             this.CDP1PosYlabel.Name = "CDP1PosYlabel";
             this.CDP1PosYlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP1PosYlabel.TabIndex = 61;
@@ -1867,7 +1998,7 @@
             // CDP1PosXlabel
             // 
             this.CDP1PosXlabel.AutoSize = true;
-            this.CDP1PosXlabel.Location = new System.Drawing.Point(6, 91);
+            this.CDP1PosXlabel.Location = new System.Drawing.Point(203, 39);
             this.CDP1PosXlabel.Name = "CDP1PosXlabel";
             this.CDP1PosXlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP1PosXlabel.TabIndex = 60;
@@ -1876,7 +2007,7 @@
             // CDP1Poslabel
             // 
             this.CDP1Poslabel.AutoSize = true;
-            this.CDP1Poslabel.Location = new System.Drawing.Point(6, 78);
+            this.CDP1Poslabel.Location = new System.Drawing.Point(203, 26);
             this.CDP1Poslabel.Name = "CDP1Poslabel";
             this.CDP1Poslabel.Size = new System.Drawing.Size(44, 13);
             this.CDP1Poslabel.TabIndex = 59;
@@ -1885,7 +2016,7 @@
             // CDP1PosZnumericUpDown
             // 
             this.CDP1PosZnumericUpDown.DecimalPlaces = 5;
-            this.CDP1PosZnumericUpDown.Location = new System.Drawing.Point(136, 107);
+            this.CDP1PosZnumericUpDown.Location = new System.Drawing.Point(333, 55);
             this.CDP1PosZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1903,7 +2034,7 @@
             // CDP1PosYnumericUpDown
             // 
             this.CDP1PosYnumericUpDown.DecimalPlaces = 5;
-            this.CDP1PosYnumericUpDown.Location = new System.Drawing.Point(71, 107);
+            this.CDP1PosYnumericUpDown.Location = new System.Drawing.Point(268, 55);
             this.CDP1PosYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1921,7 +2052,7 @@
             // CDP1PosXnumericUpDown
             // 
             this.CDP1PosXnumericUpDown.DecimalPlaces = 5;
-            this.CDP1PosXnumericUpDown.Location = new System.Drawing.Point(6, 107);
+            this.CDP1PosXnumericUpDown.Location = new System.Drawing.Point(203, 55);
             this.CDP1PosXnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1939,7 +2070,7 @@
             // CDP1RotZlabel
             // 
             this.CDP1RotZlabel.AutoSize = true;
-            this.CDP1RotZlabel.Location = new System.Drawing.Point(136, 39);
+            this.CDP1RotZlabel.Location = new System.Drawing.Point(132, 39);
             this.CDP1RotZlabel.Name = "CDP1RotZlabel";
             this.CDP1RotZlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP1RotZlabel.TabIndex = 55;
@@ -1948,7 +2079,7 @@
             // CDP1RotYlabel
             // 
             this.CDP1RotYlabel.AutoSize = true;
-            this.CDP1RotYlabel.Location = new System.Drawing.Point(71, 39);
+            this.CDP1RotYlabel.Location = new System.Drawing.Point(67, 39);
             this.CDP1RotYlabel.Name = "CDP1RotYlabel";
             this.CDP1RotYlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP1RotYlabel.TabIndex = 54;
@@ -1957,7 +2088,7 @@
             // CDP1RotXlabel
             // 
             this.CDP1RotXlabel.AutoSize = true;
-            this.CDP1RotXlabel.Location = new System.Drawing.Point(6, 39);
+            this.CDP1RotXlabel.Location = new System.Drawing.Point(3, 39);
             this.CDP1RotXlabel.Name = "CDP1RotXlabel";
             this.CDP1RotXlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP1RotXlabel.TabIndex = 53;
@@ -1966,7 +2097,7 @@
             // CDP1Rotlabel
             // 
             this.CDP1Rotlabel.AutoSize = true;
-            this.CDP1Rotlabel.Location = new System.Drawing.Point(6, 26);
+            this.CDP1Rotlabel.Location = new System.Drawing.Point(3, 26);
             this.CDP1Rotlabel.Name = "CDP1Rotlabel";
             this.CDP1Rotlabel.Size = new System.Drawing.Size(47, 13);
             this.CDP1Rotlabel.TabIndex = 52;
@@ -1975,7 +2106,7 @@
             // CDP1RotZnumericUpDown
             // 
             this.CDP1RotZnumericUpDown.DecimalPlaces = 5;
-            this.CDP1RotZnumericUpDown.Location = new System.Drawing.Point(136, 55);
+            this.CDP1RotZnumericUpDown.Location = new System.Drawing.Point(132, 55);
             this.CDP1RotZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1993,7 +2124,7 @@
             // CDP1RotYnumericUpDown
             // 
             this.CDP1RotYnumericUpDown.DecimalPlaces = 5;
-            this.CDP1RotYnumericUpDown.Location = new System.Drawing.Point(71, 55);
+            this.CDP1RotYnumericUpDown.Location = new System.Drawing.Point(67, 55);
             this.CDP1RotYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2011,7 +2142,7 @@
             // CDP1RotXnumericUpDown
             // 
             this.CDP1RotXnumericUpDown.DecimalPlaces = 5;
-            this.CDP1RotXnumericUpDown.Location = new System.Drawing.Point(6, 55);
+            this.CDP1RotXnumericUpDown.Location = new System.Drawing.Point(3, 55);
             this.CDP1RotXnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2049,14 +2180,14 @@
             this.CDP2tabPage.Location = new System.Drawing.Point(4, 22);
             this.CDP2tabPage.Name = "CDP2tabPage";
             this.CDP2tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.CDP2tabPage.Size = new System.Drawing.Size(238, 161);
+            this.CDP2tabPage.Size = new System.Drawing.Size(403, 84);
             this.CDP2tabPage.TabIndex = 2;
             this.CDP2tabPage.Text = "Parts2";
             this.CDP2tabPage.UseVisualStyleBackColor = true;
             // 
             // CDP2NametextBox
             // 
-            this.CDP2NametextBox.Location = new System.Drawing.Point(72, 4);
+            this.CDP2NametextBox.Location = new System.Drawing.Point(68, 4);
             this.CDP2NametextBox.Name = "CDP2NametextBox";
             this.CDP2NametextBox.Size = new System.Drawing.Size(100, 20);
             this.CDP2NametextBox.TabIndex = 66;
@@ -2064,7 +2195,7 @@
             // CDP2Namelabel
             // 
             this.CDP2Namelabel.AutoSize = true;
-            this.CDP2Namelabel.Location = new System.Drawing.Point(6, 7);
+            this.CDP2Namelabel.Location = new System.Drawing.Point(3, 7);
             this.CDP2Namelabel.Name = "CDP2Namelabel";
             this.CDP2Namelabel.Size = new System.Drawing.Size(35, 13);
             this.CDP2Namelabel.TabIndex = 65;
@@ -2073,7 +2204,7 @@
             // CDP2ScalenumericUpDown
             // 
             this.CDP2ScalenumericUpDown.DecimalPlaces = 2;
-            this.CDP2ScalenumericUpDown.Location = new System.Drawing.Point(71, 133);
+            this.CDP2ScalenumericUpDown.Location = new System.Drawing.Point(266, 6);
             this.CDP2ScalenumericUpDown.Name = "CDP2ScalenumericUpDown";
             this.CDP2ScalenumericUpDown.Size = new System.Drawing.Size(59, 20);
             this.CDP2ScalenumericUpDown.TabIndex = 64;
@@ -2081,7 +2212,7 @@
             // CDP2Scalelabel
             // 
             this.CDP2Scalelabel.AutoSize = true;
-            this.CDP2Scalelabel.Location = new System.Drawing.Point(8, 135);
+            this.CDP2Scalelabel.Location = new System.Drawing.Point(203, 8);
             this.CDP2Scalelabel.Name = "CDP2Scalelabel";
             this.CDP2Scalelabel.Size = new System.Drawing.Size(34, 13);
             this.CDP2Scalelabel.TabIndex = 63;
@@ -2090,7 +2221,7 @@
             // CDP2PosZlabel
             // 
             this.CDP2PosZlabel.AutoSize = true;
-            this.CDP2PosZlabel.Location = new System.Drawing.Point(136, 91);
+            this.CDP2PosZlabel.Location = new System.Drawing.Point(333, 39);
             this.CDP2PosZlabel.Name = "CDP2PosZlabel";
             this.CDP2PosZlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP2PosZlabel.TabIndex = 62;
@@ -2099,7 +2230,7 @@
             // CDP2PosYlabel
             // 
             this.CDP2PosYlabel.AutoSize = true;
-            this.CDP2PosYlabel.Location = new System.Drawing.Point(71, 91);
+            this.CDP2PosYlabel.Location = new System.Drawing.Point(268, 39);
             this.CDP2PosYlabel.Name = "CDP2PosYlabel";
             this.CDP2PosYlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP2PosYlabel.TabIndex = 61;
@@ -2108,7 +2239,7 @@
             // CDP2PosXlabel
             // 
             this.CDP2PosXlabel.AutoSize = true;
-            this.CDP2PosXlabel.Location = new System.Drawing.Point(6, 91);
+            this.CDP2PosXlabel.Location = new System.Drawing.Point(203, 39);
             this.CDP2PosXlabel.Name = "CDP2PosXlabel";
             this.CDP2PosXlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP2PosXlabel.TabIndex = 60;
@@ -2117,7 +2248,7 @@
             // CDP2Poslabel
             // 
             this.CDP2Poslabel.AutoSize = true;
-            this.CDP2Poslabel.Location = new System.Drawing.Point(6, 78);
+            this.CDP2Poslabel.Location = new System.Drawing.Point(203, 26);
             this.CDP2Poslabel.Name = "CDP2Poslabel";
             this.CDP2Poslabel.Size = new System.Drawing.Size(44, 13);
             this.CDP2Poslabel.TabIndex = 59;
@@ -2126,7 +2257,7 @@
             // CDP2PosZnumericUpDown
             // 
             this.CDP2PosZnumericUpDown.DecimalPlaces = 5;
-            this.CDP2PosZnumericUpDown.Location = new System.Drawing.Point(136, 107);
+            this.CDP2PosZnumericUpDown.Location = new System.Drawing.Point(333, 55);
             this.CDP2PosZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2144,7 +2275,7 @@
             // CDP2PosYnumericUpDown
             // 
             this.CDP2PosYnumericUpDown.DecimalPlaces = 5;
-            this.CDP2PosYnumericUpDown.Location = new System.Drawing.Point(71, 107);
+            this.CDP2PosYnumericUpDown.Location = new System.Drawing.Point(268, 55);
             this.CDP2PosYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2162,7 +2293,7 @@
             // CDP2PosXnumericUpDown
             // 
             this.CDP2PosXnumericUpDown.DecimalPlaces = 5;
-            this.CDP2PosXnumericUpDown.Location = new System.Drawing.Point(6, 107);
+            this.CDP2PosXnumericUpDown.Location = new System.Drawing.Point(203, 55);
             this.CDP2PosXnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2180,7 +2311,7 @@
             // CDP2RotZlabel
             // 
             this.CDP2RotZlabel.AutoSize = true;
-            this.CDP2RotZlabel.Location = new System.Drawing.Point(136, 39);
+            this.CDP2RotZlabel.Location = new System.Drawing.Point(132, 39);
             this.CDP2RotZlabel.Name = "CDP2RotZlabel";
             this.CDP2RotZlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP2RotZlabel.TabIndex = 55;
@@ -2189,7 +2320,7 @@
             // CDP2RotYlabel
             // 
             this.CDP2RotYlabel.AutoSize = true;
-            this.CDP2RotYlabel.Location = new System.Drawing.Point(71, 39);
+            this.CDP2RotYlabel.Location = new System.Drawing.Point(67, 39);
             this.CDP2RotYlabel.Name = "CDP2RotYlabel";
             this.CDP2RotYlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP2RotYlabel.TabIndex = 54;
@@ -2198,7 +2329,7 @@
             // CDP2RotXlabel
             // 
             this.CDP2RotXlabel.AutoSize = true;
-            this.CDP2RotXlabel.Location = new System.Drawing.Point(6, 39);
+            this.CDP2RotXlabel.Location = new System.Drawing.Point(3, 39);
             this.CDP2RotXlabel.Name = "CDP2RotXlabel";
             this.CDP2RotXlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP2RotXlabel.TabIndex = 53;
@@ -2207,7 +2338,7 @@
             // CDP2Rotlabel
             // 
             this.CDP2Rotlabel.AutoSize = true;
-            this.CDP2Rotlabel.Location = new System.Drawing.Point(6, 26);
+            this.CDP2Rotlabel.Location = new System.Drawing.Point(3, 26);
             this.CDP2Rotlabel.Name = "CDP2Rotlabel";
             this.CDP2Rotlabel.Size = new System.Drawing.Size(47, 13);
             this.CDP2Rotlabel.TabIndex = 52;
@@ -2216,7 +2347,7 @@
             // CDP2RotZnumericUpDown
             // 
             this.CDP2RotZnumericUpDown.DecimalPlaces = 5;
-            this.CDP2RotZnumericUpDown.Location = new System.Drawing.Point(136, 55);
+            this.CDP2RotZnumericUpDown.Location = new System.Drawing.Point(132, 55);
             this.CDP2RotZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2234,7 +2365,7 @@
             // CDP2RotYnumericUpDown
             // 
             this.CDP2RotYnumericUpDown.DecimalPlaces = 5;
-            this.CDP2RotYnumericUpDown.Location = new System.Drawing.Point(71, 55);
+            this.CDP2RotYnumericUpDown.Location = new System.Drawing.Point(67, 55);
             this.CDP2RotYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2252,7 +2383,7 @@
             // CDP2RotXnumericUpDown
             // 
             this.CDP2RotXnumericUpDown.DecimalPlaces = 5;
-            this.CDP2RotXnumericUpDown.Location = new System.Drawing.Point(6, 55);
+            this.CDP2RotXnumericUpDown.Location = new System.Drawing.Point(3, 55);
             this.CDP2RotXnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2289,14 +2420,14 @@
             this.CDP3tabPage.Controls.Add(this.CDP3RotXnumericUpDown);
             this.CDP3tabPage.Location = new System.Drawing.Point(4, 22);
             this.CDP3tabPage.Name = "CDP3tabPage";
-            this.CDP3tabPage.Size = new System.Drawing.Size(238, 161);
+            this.CDP3tabPage.Size = new System.Drawing.Size(403, 84);
             this.CDP3tabPage.TabIndex = 7;
             this.CDP3tabPage.Text = "Parts3";
             this.CDP3tabPage.UseVisualStyleBackColor = true;
             // 
             // CDP3NametextBox
             // 
-            this.CDP3NametextBox.Location = new System.Drawing.Point(69, 4);
+            this.CDP3NametextBox.Location = new System.Drawing.Point(68, 4);
             this.CDP3NametextBox.Name = "CDP3NametextBox";
             this.CDP3NametextBox.Size = new System.Drawing.Size(100, 20);
             this.CDP3NametextBox.TabIndex = 66;
@@ -2313,15 +2444,15 @@
             // CDP3ScalenumericUpDown
             // 
             this.CDP3ScalenumericUpDown.DecimalPlaces = 2;
-            this.CDP3ScalenumericUpDown.Location = new System.Drawing.Point(68, 133);
+            this.CDP3ScalenumericUpDown.Location = new System.Drawing.Point(266, 6);
             this.CDP3ScalenumericUpDown.Name = "CDP3ScalenumericUpDown";
-            this.CDP3ScalenumericUpDown.Size = new System.Drawing.Size(52, 20);
+            this.CDP3ScalenumericUpDown.Size = new System.Drawing.Size(59, 20);
             this.CDP3ScalenumericUpDown.TabIndex = 64;
             // 
             // CDP3Scalelabel
             // 
             this.CDP3Scalelabel.AutoSize = true;
-            this.CDP3Scalelabel.Location = new System.Drawing.Point(5, 135);
+            this.CDP3Scalelabel.Location = new System.Drawing.Point(203, 8);
             this.CDP3Scalelabel.Name = "CDP3Scalelabel";
             this.CDP3Scalelabel.Size = new System.Drawing.Size(34, 13);
             this.CDP3Scalelabel.TabIndex = 63;
@@ -2330,7 +2461,7 @@
             // CDP3PosZlabel
             // 
             this.CDP3PosZlabel.AutoSize = true;
-            this.CDP3PosZlabel.Location = new System.Drawing.Point(133, 91);
+            this.CDP3PosZlabel.Location = new System.Drawing.Point(333, 39);
             this.CDP3PosZlabel.Name = "CDP3PosZlabel";
             this.CDP3PosZlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP3PosZlabel.TabIndex = 62;
@@ -2339,7 +2470,7 @@
             // CDP3PosYlabel
             // 
             this.CDP3PosYlabel.AutoSize = true;
-            this.CDP3PosYlabel.Location = new System.Drawing.Point(68, 91);
+            this.CDP3PosYlabel.Location = new System.Drawing.Point(268, 39);
             this.CDP3PosYlabel.Name = "CDP3PosYlabel";
             this.CDP3PosYlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP3PosYlabel.TabIndex = 61;
@@ -2348,7 +2479,7 @@
             // CDP3PosXlabel
             // 
             this.CDP3PosXlabel.AutoSize = true;
-            this.CDP3PosXlabel.Location = new System.Drawing.Point(3, 91);
+            this.CDP3PosXlabel.Location = new System.Drawing.Point(203, 39);
             this.CDP3PosXlabel.Name = "CDP3PosXlabel";
             this.CDP3PosXlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP3PosXlabel.TabIndex = 60;
@@ -2357,7 +2488,7 @@
             // CDP3Poslabel
             // 
             this.CDP3Poslabel.AutoSize = true;
-            this.CDP3Poslabel.Location = new System.Drawing.Point(3, 78);
+            this.CDP3Poslabel.Location = new System.Drawing.Point(203, 26);
             this.CDP3Poslabel.Name = "CDP3Poslabel";
             this.CDP3Poslabel.Size = new System.Drawing.Size(44, 13);
             this.CDP3Poslabel.TabIndex = 59;
@@ -2366,7 +2497,7 @@
             // CDP3PosZnumericUpDown
             // 
             this.CDP3PosZnumericUpDown.DecimalPlaces = 5;
-            this.CDP3PosZnumericUpDown.Location = new System.Drawing.Point(133, 107);
+            this.CDP3PosZnumericUpDown.Location = new System.Drawing.Point(333, 55);
             this.CDP3PosZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2384,7 +2515,7 @@
             // CDP3PosYnumericUpDown
             // 
             this.CDP3PosYnumericUpDown.DecimalPlaces = 5;
-            this.CDP3PosYnumericUpDown.Location = new System.Drawing.Point(68, 107);
+            this.CDP3PosYnumericUpDown.Location = new System.Drawing.Point(268, 55);
             this.CDP3PosYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2402,7 +2533,7 @@
             // CDP3PosXnumericUpDown
             // 
             this.CDP3PosXnumericUpDown.DecimalPlaces = 5;
-            this.CDP3PosXnumericUpDown.Location = new System.Drawing.Point(3, 107);
+            this.CDP3PosXnumericUpDown.Location = new System.Drawing.Point(203, 55);
             this.CDP3PosXnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2420,7 +2551,7 @@
             // CDP3RotZlabel
             // 
             this.CDP3RotZlabel.AutoSize = true;
-            this.CDP3RotZlabel.Location = new System.Drawing.Point(133, 39);
+            this.CDP3RotZlabel.Location = new System.Drawing.Point(132, 39);
             this.CDP3RotZlabel.Name = "CDP3RotZlabel";
             this.CDP3RotZlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP3RotZlabel.TabIndex = 55;
@@ -2429,7 +2560,7 @@
             // CDP3RotYlabel
             // 
             this.CDP3RotYlabel.AutoSize = true;
-            this.CDP3RotYlabel.Location = new System.Drawing.Point(68, 39);
+            this.CDP3RotYlabel.Location = new System.Drawing.Point(67, 39);
             this.CDP3RotYlabel.Name = "CDP3RotYlabel";
             this.CDP3RotYlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP3RotYlabel.TabIndex = 54;
@@ -2456,7 +2587,7 @@
             // CDP3RotZnumericUpDown
             // 
             this.CDP3RotZnumericUpDown.DecimalPlaces = 5;
-            this.CDP3RotZnumericUpDown.Location = new System.Drawing.Point(133, 55);
+            this.CDP3RotZnumericUpDown.Location = new System.Drawing.Point(132, 55);
             this.CDP3RotZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2474,7 +2605,7 @@
             // CDP3RotYnumericUpDown
             // 
             this.CDP3RotYnumericUpDown.DecimalPlaces = 5;
-            this.CDP3RotYnumericUpDown.Location = new System.Drawing.Point(68, 55);
+            this.CDP3RotYnumericUpDown.Location = new System.Drawing.Point(67, 55);
             this.CDP3RotYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2529,14 +2660,14 @@
             this.CDP4tabPage.Controls.Add(this.CDP4RotXnumericUpDown);
             this.CDP4tabPage.Location = new System.Drawing.Point(4, 22);
             this.CDP4tabPage.Name = "CDP4tabPage";
-            this.CDP4tabPage.Size = new System.Drawing.Size(238, 161);
+            this.CDP4tabPage.Size = new System.Drawing.Size(403, 84);
             this.CDP4tabPage.TabIndex = 4;
             this.CDP4tabPage.Text = "Parts4";
             this.CDP4tabPage.UseVisualStyleBackColor = true;
             // 
             // CDP4NametextBox
             // 
-            this.CDP4NametextBox.Location = new System.Drawing.Point(69, 4);
+            this.CDP4NametextBox.Location = new System.Drawing.Point(68, 4);
             this.CDP4NametextBox.Name = "CDP4NametextBox";
             this.CDP4NametextBox.Size = new System.Drawing.Size(100, 20);
             this.CDP4NametextBox.TabIndex = 66;
@@ -2553,15 +2684,15 @@
             // CDP4ScalenumericUpDown
             // 
             this.CDP4ScalenumericUpDown.DecimalPlaces = 2;
-            this.CDP4ScalenumericUpDown.Location = new System.Drawing.Point(68, 133);
+            this.CDP4ScalenumericUpDown.Location = new System.Drawing.Point(266, 6);
             this.CDP4ScalenumericUpDown.Name = "CDP4ScalenumericUpDown";
-            this.CDP4ScalenumericUpDown.Size = new System.Drawing.Size(52, 20);
+            this.CDP4ScalenumericUpDown.Size = new System.Drawing.Size(59, 20);
             this.CDP4ScalenumericUpDown.TabIndex = 64;
             // 
             // CDP4Scalelabel
             // 
             this.CDP4Scalelabel.AutoSize = true;
-            this.CDP4Scalelabel.Location = new System.Drawing.Point(5, 135);
+            this.CDP4Scalelabel.Location = new System.Drawing.Point(203, 8);
             this.CDP4Scalelabel.Name = "CDP4Scalelabel";
             this.CDP4Scalelabel.Size = new System.Drawing.Size(34, 13);
             this.CDP4Scalelabel.TabIndex = 63;
@@ -2570,7 +2701,7 @@
             // CDP4PosZlabel
             // 
             this.CDP4PosZlabel.AutoSize = true;
-            this.CDP4PosZlabel.Location = new System.Drawing.Point(133, 91);
+            this.CDP4PosZlabel.Location = new System.Drawing.Point(333, 39);
             this.CDP4PosZlabel.Name = "CDP4PosZlabel";
             this.CDP4PosZlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP4PosZlabel.TabIndex = 62;
@@ -2579,7 +2710,7 @@
             // CDP4PosYlabel
             // 
             this.CDP4PosYlabel.AutoSize = true;
-            this.CDP4PosYlabel.Location = new System.Drawing.Point(68, 91);
+            this.CDP4PosYlabel.Location = new System.Drawing.Point(268, 39);
             this.CDP4PosYlabel.Name = "CDP4PosYlabel";
             this.CDP4PosYlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP4PosYlabel.TabIndex = 61;
@@ -2588,7 +2719,7 @@
             // CDP4PosXlabel
             // 
             this.CDP4PosXlabel.AutoSize = true;
-            this.CDP4PosXlabel.Location = new System.Drawing.Point(3, 91);
+            this.CDP4PosXlabel.Location = new System.Drawing.Point(203, 39);
             this.CDP4PosXlabel.Name = "CDP4PosXlabel";
             this.CDP4PosXlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP4PosXlabel.TabIndex = 60;
@@ -2597,7 +2728,7 @@
             // CDP4Poslabel
             // 
             this.CDP4Poslabel.AutoSize = true;
-            this.CDP4Poslabel.Location = new System.Drawing.Point(3, 78);
+            this.CDP4Poslabel.Location = new System.Drawing.Point(203, 26);
             this.CDP4Poslabel.Name = "CDP4Poslabel";
             this.CDP4Poslabel.Size = new System.Drawing.Size(44, 13);
             this.CDP4Poslabel.TabIndex = 59;
@@ -2606,7 +2737,7 @@
             // CDP4PosZnumericUpDown
             // 
             this.CDP4PosZnumericUpDown.DecimalPlaces = 5;
-            this.CDP4PosZnumericUpDown.Location = new System.Drawing.Point(133, 107);
+            this.CDP4PosZnumericUpDown.Location = new System.Drawing.Point(333, 55);
             this.CDP4PosZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2624,7 +2755,7 @@
             // CDP4PosYnumericUpDown
             // 
             this.CDP4PosYnumericUpDown.DecimalPlaces = 5;
-            this.CDP4PosYnumericUpDown.Location = new System.Drawing.Point(68, 107);
+            this.CDP4PosYnumericUpDown.Location = new System.Drawing.Point(268, 55);
             this.CDP4PosYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2642,7 +2773,7 @@
             // CDP4PosXnumericUpDown
             // 
             this.CDP4PosXnumericUpDown.DecimalPlaces = 5;
-            this.CDP4PosXnumericUpDown.Location = new System.Drawing.Point(3, 107);
+            this.CDP4PosXnumericUpDown.Location = new System.Drawing.Point(203, 55);
             this.CDP4PosXnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2660,7 +2791,7 @@
             // CDP4RotZlabel
             // 
             this.CDP4RotZlabel.AutoSize = true;
-            this.CDP4RotZlabel.Location = new System.Drawing.Point(133, 39);
+            this.CDP4RotZlabel.Location = new System.Drawing.Point(132, 39);
             this.CDP4RotZlabel.Name = "CDP4RotZlabel";
             this.CDP4RotZlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP4RotZlabel.TabIndex = 55;
@@ -2669,7 +2800,7 @@
             // CDP4RotYlabel
             // 
             this.CDP4RotYlabel.AutoSize = true;
-            this.CDP4RotYlabel.Location = new System.Drawing.Point(68, 39);
+            this.CDP4RotYlabel.Location = new System.Drawing.Point(67, 39);
             this.CDP4RotYlabel.Name = "CDP4RotYlabel";
             this.CDP4RotYlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP4RotYlabel.TabIndex = 54;
@@ -2696,7 +2827,7 @@
             // CDP4RotZnumericUpDown
             // 
             this.CDP4RotZnumericUpDown.DecimalPlaces = 5;
-            this.CDP4RotZnumericUpDown.Location = new System.Drawing.Point(133, 55);
+            this.CDP4RotZnumericUpDown.Location = new System.Drawing.Point(132, 55);
             this.CDP4RotZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2714,7 +2845,7 @@
             // CDP4RotYnumericUpDown
             // 
             this.CDP4RotYnumericUpDown.DecimalPlaces = 5;
-            this.CDP4RotYnumericUpDown.Location = new System.Drawing.Point(68, 55);
+            this.CDP4RotYnumericUpDown.Location = new System.Drawing.Point(67, 55);
             this.CDP4RotYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2769,14 +2900,14 @@
             this.CDP5tabPage.Controls.Add(this.CDP5RotXnumericUpDown);
             this.CDP5tabPage.Location = new System.Drawing.Point(4, 22);
             this.CDP5tabPage.Name = "CDP5tabPage";
-            this.CDP5tabPage.Size = new System.Drawing.Size(238, 161);
+            this.CDP5tabPage.Size = new System.Drawing.Size(403, 84);
             this.CDP5tabPage.TabIndex = 5;
             this.CDP5tabPage.Text = "Parts5";
             this.CDP5tabPage.UseVisualStyleBackColor = true;
             // 
             // CDP5NametextBox
             // 
-            this.CDP5NametextBox.Location = new System.Drawing.Point(69, 4);
+            this.CDP5NametextBox.Location = new System.Drawing.Point(68, 4);
             this.CDP5NametextBox.Name = "CDP5NametextBox";
             this.CDP5NametextBox.Size = new System.Drawing.Size(100, 20);
             this.CDP5NametextBox.TabIndex = 84;
@@ -2793,15 +2924,15 @@
             // CDP5ScalenumericUpDown
             // 
             this.CDP5ScalenumericUpDown.DecimalPlaces = 2;
-            this.CDP5ScalenumericUpDown.Location = new System.Drawing.Point(68, 133);
+            this.CDP5ScalenumericUpDown.Location = new System.Drawing.Point(266, 6);
             this.CDP5ScalenumericUpDown.Name = "CDP5ScalenumericUpDown";
-            this.CDP5ScalenumericUpDown.Size = new System.Drawing.Size(52, 20);
+            this.CDP5ScalenumericUpDown.Size = new System.Drawing.Size(59, 20);
             this.CDP5ScalenumericUpDown.TabIndex = 82;
             // 
             // CDP5Scalelabel
             // 
             this.CDP5Scalelabel.AutoSize = true;
-            this.CDP5Scalelabel.Location = new System.Drawing.Point(5, 135);
+            this.CDP5Scalelabel.Location = new System.Drawing.Point(203, 8);
             this.CDP5Scalelabel.Name = "CDP5Scalelabel";
             this.CDP5Scalelabel.Size = new System.Drawing.Size(34, 13);
             this.CDP5Scalelabel.TabIndex = 81;
@@ -2810,7 +2941,7 @@
             // CDP5PosZlabel
             // 
             this.CDP5PosZlabel.AutoSize = true;
-            this.CDP5PosZlabel.Location = new System.Drawing.Point(133, 91);
+            this.CDP5PosZlabel.Location = new System.Drawing.Point(333, 39);
             this.CDP5PosZlabel.Name = "CDP5PosZlabel";
             this.CDP5PosZlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP5PosZlabel.TabIndex = 80;
@@ -2819,7 +2950,7 @@
             // CDP5PosYlabel
             // 
             this.CDP5PosYlabel.AutoSize = true;
-            this.CDP5PosYlabel.Location = new System.Drawing.Point(68, 91);
+            this.CDP5PosYlabel.Location = new System.Drawing.Point(268, 39);
             this.CDP5PosYlabel.Name = "CDP5PosYlabel";
             this.CDP5PosYlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP5PosYlabel.TabIndex = 79;
@@ -2828,7 +2959,7 @@
             // CDP5PosXlabel
             // 
             this.CDP5PosXlabel.AutoSize = true;
-            this.CDP5PosXlabel.Location = new System.Drawing.Point(3, 91);
+            this.CDP5PosXlabel.Location = new System.Drawing.Point(203, 39);
             this.CDP5PosXlabel.Name = "CDP5PosXlabel";
             this.CDP5PosXlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP5PosXlabel.TabIndex = 78;
@@ -2837,7 +2968,7 @@
             // CDP5Poslabel
             // 
             this.CDP5Poslabel.AutoSize = true;
-            this.CDP5Poslabel.Location = new System.Drawing.Point(3, 78);
+            this.CDP5Poslabel.Location = new System.Drawing.Point(203, 26);
             this.CDP5Poslabel.Name = "CDP5Poslabel";
             this.CDP5Poslabel.Size = new System.Drawing.Size(44, 13);
             this.CDP5Poslabel.TabIndex = 77;
@@ -2846,7 +2977,7 @@
             // CDP5PosZnumericUpDown
             // 
             this.CDP5PosZnumericUpDown.DecimalPlaces = 5;
-            this.CDP5PosZnumericUpDown.Location = new System.Drawing.Point(133, 107);
+            this.CDP5PosZnumericUpDown.Location = new System.Drawing.Point(333, 55);
             this.CDP5PosZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2864,7 +2995,7 @@
             // CDP5PosYnumericUpDown
             // 
             this.CDP5PosYnumericUpDown.DecimalPlaces = 5;
-            this.CDP5PosYnumericUpDown.Location = new System.Drawing.Point(68, 107);
+            this.CDP5PosYnumericUpDown.Location = new System.Drawing.Point(268, 55);
             this.CDP5PosYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2882,7 +3013,7 @@
             // CDP5PosXnumericUpDown
             // 
             this.CDP5PosXnumericUpDown.DecimalPlaces = 5;
-            this.CDP5PosXnumericUpDown.Location = new System.Drawing.Point(3, 107);
+            this.CDP5PosXnumericUpDown.Location = new System.Drawing.Point(203, 55);
             this.CDP5PosXnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2900,7 +3031,7 @@
             // CDP5RotZlabel
             // 
             this.CDP5RotZlabel.AutoSize = true;
-            this.CDP5RotZlabel.Location = new System.Drawing.Point(133, 39);
+            this.CDP5RotZlabel.Location = new System.Drawing.Point(132, 39);
             this.CDP5RotZlabel.Name = "CDP5RotZlabel";
             this.CDP5RotZlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP5RotZlabel.TabIndex = 73;
@@ -2909,7 +3040,7 @@
             // CDP5RotYlabel
             // 
             this.CDP5RotYlabel.AutoSize = true;
-            this.CDP5RotYlabel.Location = new System.Drawing.Point(68, 39);
+            this.CDP5RotYlabel.Location = new System.Drawing.Point(67, 39);
             this.CDP5RotYlabel.Name = "CDP5RotYlabel";
             this.CDP5RotYlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP5RotYlabel.TabIndex = 72;
@@ -2936,7 +3067,7 @@
             // CDP5RotZnumericUpDown
             // 
             this.CDP5RotZnumericUpDown.DecimalPlaces = 5;
-            this.CDP5RotZnumericUpDown.Location = new System.Drawing.Point(133, 55);
+            this.CDP5RotZnumericUpDown.Location = new System.Drawing.Point(132, 55);
             this.CDP5RotZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2954,7 +3085,7 @@
             // CDP5RotYnumericUpDown
             // 
             this.CDP5RotYnumericUpDown.DecimalPlaces = 5;
-            this.CDP5RotYnumericUpDown.Location = new System.Drawing.Point(68, 55);
+            this.CDP5RotYnumericUpDown.Location = new System.Drawing.Point(67, 55);
             this.CDP5RotYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -3009,14 +3140,14 @@
             this.CDP6tabPage.Controls.Add(this.CDP6RotXnumericUpDown);
             this.CDP6tabPage.Location = new System.Drawing.Point(4, 22);
             this.CDP6tabPage.Name = "CDP6tabPage";
-            this.CDP6tabPage.Size = new System.Drawing.Size(238, 161);
+            this.CDP6tabPage.Size = new System.Drawing.Size(403, 84);
             this.CDP6tabPage.TabIndex = 6;
             this.CDP6tabPage.Text = "Parts6";
             this.CDP6tabPage.UseVisualStyleBackColor = true;
             // 
             // CDP6NametextBox
             // 
-            this.CDP6NametextBox.Location = new System.Drawing.Point(69, 4);
+            this.CDP6NametextBox.Location = new System.Drawing.Point(68, 4);
             this.CDP6NametextBox.Name = "CDP6NametextBox";
             this.CDP6NametextBox.Size = new System.Drawing.Size(100, 20);
             this.CDP6NametextBox.TabIndex = 84;
@@ -3033,15 +3164,15 @@
             // CDP6ScalenumericUpDown
             // 
             this.CDP6ScalenumericUpDown.DecimalPlaces = 2;
-            this.CDP6ScalenumericUpDown.Location = new System.Drawing.Point(68, 133);
+            this.CDP6ScalenumericUpDown.Location = new System.Drawing.Point(266, 6);
             this.CDP6ScalenumericUpDown.Name = "CDP6ScalenumericUpDown";
-            this.CDP6ScalenumericUpDown.Size = new System.Drawing.Size(52, 20);
+            this.CDP6ScalenumericUpDown.Size = new System.Drawing.Size(59, 20);
             this.CDP6ScalenumericUpDown.TabIndex = 82;
             // 
             // CDP6Scalelabel
             // 
             this.CDP6Scalelabel.AutoSize = true;
-            this.CDP6Scalelabel.Location = new System.Drawing.Point(5, 135);
+            this.CDP6Scalelabel.Location = new System.Drawing.Point(203, 8);
             this.CDP6Scalelabel.Name = "CDP6Scalelabel";
             this.CDP6Scalelabel.Size = new System.Drawing.Size(34, 13);
             this.CDP6Scalelabel.TabIndex = 81;
@@ -3050,7 +3181,7 @@
             // CDP6PosZlabel
             // 
             this.CDP6PosZlabel.AutoSize = true;
-            this.CDP6PosZlabel.Location = new System.Drawing.Point(133, 91);
+            this.CDP6PosZlabel.Location = new System.Drawing.Point(333, 39);
             this.CDP6PosZlabel.Name = "CDP6PosZlabel";
             this.CDP6PosZlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP6PosZlabel.TabIndex = 80;
@@ -3059,7 +3190,7 @@
             // CDP6PosYlabel
             // 
             this.CDP6PosYlabel.AutoSize = true;
-            this.CDP6PosYlabel.Location = new System.Drawing.Point(68, 91);
+            this.CDP6PosYlabel.Location = new System.Drawing.Point(268, 39);
             this.CDP6PosYlabel.Name = "CDP6PosYlabel";
             this.CDP6PosYlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP6PosYlabel.TabIndex = 79;
@@ -3068,7 +3199,7 @@
             // CDP6PosXlabel
             // 
             this.CDP6PosXlabel.AutoSize = true;
-            this.CDP6PosXlabel.Location = new System.Drawing.Point(3, 91);
+            this.CDP6PosXlabel.Location = new System.Drawing.Point(203, 39);
             this.CDP6PosXlabel.Name = "CDP6PosXlabel";
             this.CDP6PosXlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP6PosXlabel.TabIndex = 78;
@@ -3077,7 +3208,7 @@
             // CDP6Poslabel
             // 
             this.CDP6Poslabel.AutoSize = true;
-            this.CDP6Poslabel.Location = new System.Drawing.Point(3, 78);
+            this.CDP6Poslabel.Location = new System.Drawing.Point(203, 26);
             this.CDP6Poslabel.Name = "CDP6Poslabel";
             this.CDP6Poslabel.Size = new System.Drawing.Size(44, 13);
             this.CDP6Poslabel.TabIndex = 77;
@@ -3086,7 +3217,7 @@
             // CDP6PosZnumericUpDown
             // 
             this.CDP6PosZnumericUpDown.DecimalPlaces = 5;
-            this.CDP6PosZnumericUpDown.Location = new System.Drawing.Point(133, 107);
+            this.CDP6PosZnumericUpDown.Location = new System.Drawing.Point(333, 55);
             this.CDP6PosZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -3104,7 +3235,7 @@
             // CDP6PosYnumericUpDown
             // 
             this.CDP6PosYnumericUpDown.DecimalPlaces = 5;
-            this.CDP6PosYnumericUpDown.Location = new System.Drawing.Point(68, 107);
+            this.CDP6PosYnumericUpDown.Location = new System.Drawing.Point(268, 55);
             this.CDP6PosYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -3122,7 +3253,7 @@
             // CDP6PosXnumericUpDown
             // 
             this.CDP6PosXnumericUpDown.DecimalPlaces = 5;
-            this.CDP6PosXnumericUpDown.Location = new System.Drawing.Point(3, 107);
+            this.CDP6PosXnumericUpDown.Location = new System.Drawing.Point(203, 55);
             this.CDP6PosXnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -3140,7 +3271,7 @@
             // CDP6RotZlabel
             // 
             this.CDP6RotZlabel.AutoSize = true;
-            this.CDP6RotZlabel.Location = new System.Drawing.Point(133, 39);
+            this.CDP6RotZlabel.Location = new System.Drawing.Point(132, 39);
             this.CDP6RotZlabel.Name = "CDP6RotZlabel";
             this.CDP6RotZlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP6RotZlabel.TabIndex = 73;
@@ -3149,7 +3280,7 @@
             // CDP6RotYlabel
             // 
             this.CDP6RotYlabel.AutoSize = true;
-            this.CDP6RotYlabel.Location = new System.Drawing.Point(68, 39);
+            this.CDP6RotYlabel.Location = new System.Drawing.Point(67, 39);
             this.CDP6RotYlabel.Name = "CDP6RotYlabel";
             this.CDP6RotYlabel.Size = new System.Drawing.Size(14, 13);
             this.CDP6RotYlabel.TabIndex = 72;
@@ -3176,7 +3307,7 @@
             // CDP6RotZnumericUpDown
             // 
             this.CDP6RotZnumericUpDown.DecimalPlaces = 5;
-            this.CDP6RotZnumericUpDown.Location = new System.Drawing.Point(133, 55);
+            this.CDP6RotZnumericUpDown.Location = new System.Drawing.Point(132, 55);
             this.CDP6RotZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -3194,7 +3325,7 @@
             // CDP6RotYnumericUpDown
             // 
             this.CDP6RotYnumericUpDown.DecimalPlaces = 5;
-            this.CDP6RotYnumericUpDown.Location = new System.Drawing.Point(68, 55);
+            this.CDP6RotYnumericUpDown.Location = new System.Drawing.Point(67, 55);
             this.CDP6RotYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -3230,6 +3361,10 @@
             // CDDriveShaftpanel
             // 
             this.CDDriveShaftpanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.CDDriveShaftpanel.Controls.Add(this.CDDPMnumericUpDown);
+            this.CDDriveShaftpanel.Controls.Add(this.CDDPMlabel);
+            this.CDDriveShaftpanel.Controls.Add(this.CDDSizenumericUpDown);
+            this.CDDriveShaftpanel.Controls.Add(this.CDDSizelabel);
             this.CDDriveShaftpanel.Controls.Add(this.CDDLengthnumericUpDown);
             this.CDDriveShaftpanel.Controls.Add(this.CDDLengthlabel);
             this.CDDriveShaftpanel.Controls.Add(this.CDDTypetextBox);
@@ -3251,23 +3386,57 @@
             this.CDDriveShaftpanel.Controls.Add(this.CDDRotYnumericUpDown);
             this.CDDriveShaftpanel.Controls.Add(this.CDDRotXnumericUpDown);
             this.CDDriveShaftpanel.Controls.Add(this.CDDriveShaftTitlelabel);
-            this.CDDriveShaftpanel.Location = new System.Drawing.Point(433, 267);
+            this.CDDriveShaftpanel.Location = new System.Drawing.Point(10, 444);
             this.CDDriveShaftpanel.Name = "CDDriveShaftpanel";
-            this.CDDriveShaftpanel.Size = new System.Drawing.Size(200, 211);
+            this.CDDriveShaftpanel.Size = new System.Drawing.Size(406, 161);
             this.CDDriveShaftpanel.TabIndex = 33;
+            // 
+            // CDDPMnumericUpDown
+            // 
+            this.CDDPMnumericUpDown.DecimalPlaces = 2;
+            this.CDDPMnumericUpDown.Location = new System.Drawing.Point(275, 130);
+            this.CDDPMnumericUpDown.Name = "CDDPMnumericUpDown";
+            this.CDDPMnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDDPMnumericUpDown.TabIndex = 36;
+            // 
+            // CDDPMlabel
+            // 
+            this.CDDPMlabel.AutoSize = true;
+            this.CDDPMlabel.Location = new System.Drawing.Point(212, 132);
+            this.CDDPMlabel.Name = "CDDPMlabel";
+            this.CDDPMlabel.Size = new System.Drawing.Size(23, 13);
+            this.CDDPMlabel.TabIndex = 35;
+            this.CDDPMlabel.Text = "PM";
+            // 
+            // CDDSizenumericUpDown
+            // 
+            this.CDDSizenumericUpDown.DecimalPlaces = 1;
+            this.CDDSizenumericUpDown.Location = new System.Drawing.Point(275, 104);
+            this.CDDSizenumericUpDown.Name = "CDDSizenumericUpDown";
+            this.CDDSizenumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDDSizenumericUpDown.TabIndex = 34;
+            // 
+            // CDDSizelabel
+            // 
+            this.CDDSizelabel.AutoSize = true;
+            this.CDDSizelabel.Location = new System.Drawing.Point(209, 107);
+            this.CDDSizelabel.Name = "CDDSizelabel";
+            this.CDDSizelabel.Size = new System.Drawing.Size(27, 13);
+            this.CDDSizelabel.TabIndex = 33;
+            this.CDDSizelabel.Text = "Size";
             // 
             // CDDLengthnumericUpDown
             // 
             this.CDDLengthnumericUpDown.DecimalPlaces = 3;
-            this.CDDLengthnumericUpDown.Location = new System.Drawing.Point(69, 183);
+            this.CDDLengthnumericUpDown.Location = new System.Drawing.Point(276, 78);
             this.CDDLengthnumericUpDown.Name = "CDDLengthnumericUpDown";
-            this.CDDLengthnumericUpDown.Size = new System.Drawing.Size(52, 20);
+            this.CDDLengthnumericUpDown.Size = new System.Drawing.Size(59, 20);
             this.CDDLengthnumericUpDown.TabIndex = 32;
             // 
             // CDDLengthlabel
             // 
             this.CDDLengthlabel.AutoSize = true;
-            this.CDDLengthlabel.Location = new System.Drawing.Point(3, 186);
+            this.CDDLengthlabel.Location = new System.Drawing.Point(210, 81);
             this.CDDLengthlabel.Name = "CDDLengthlabel";
             this.CDDLengthlabel.Size = new System.Drawing.Size(40, 13);
             this.CDDLengthlabel.TabIndex = 31;
@@ -3275,7 +3444,7 @@
             // 
             // CDDTypetextBox
             // 
-            this.CDDTypetextBox.Location = new System.Drawing.Point(69, 157);
+            this.CDDTypetextBox.Location = new System.Drawing.Point(276, 52);
             this.CDDTypetextBox.Name = "CDDTypetextBox";
             this.CDDTypetextBox.Size = new System.Drawing.Size(100, 20);
             this.CDDTypetextBox.TabIndex = 30;
@@ -3283,7 +3452,7 @@
             // CDDTypelabel
             // 
             this.CDDTypelabel.AutoSize = true;
-            this.CDDTypelabel.Location = new System.Drawing.Point(3, 160);
+            this.CDDTypelabel.Location = new System.Drawing.Point(210, 55);
             this.CDDTypelabel.Name = "CDDTypelabel";
             this.CDDTypelabel.Size = new System.Drawing.Size(31, 13);
             this.CDDTypelabel.TabIndex = 29;
@@ -3294,7 +3463,7 @@
             this.CDDScalenumericUpDown.DecimalPlaces = 2;
             this.CDDScalenumericUpDown.Location = new System.Drawing.Point(69, 131);
             this.CDDScalenumericUpDown.Name = "CDDScalenumericUpDown";
-            this.CDDScalenumericUpDown.Size = new System.Drawing.Size(52, 20);
+            this.CDDScalenumericUpDown.Size = new System.Drawing.Size(59, 20);
             this.CDDScalenumericUpDown.TabIndex = 28;
             // 
             // CDDScalelabel
@@ -3498,6 +3667,9 @@
             // CDWheelspanel
             // 
             this.CDWheelspanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.CDWheelspanel.Controls.Add(this.CDWTirecomboBox);
+            this.CDWheelspanel.Controls.Add(this.CDWRimCaptextBox);
+            this.CDWheelspanel.Controls.Add(this.CDWRimCaplabel);
             this.CDWheelspanel.Controls.Add(this.CDWTireSizenumericUpDown);
             this.CDWheelspanel.Controls.Add(this.CDWTireSizelabel);
             this.CDWheelspanel.Controls.Add(this.CDWRimSizenumericUpDown);
@@ -3506,13 +3678,36 @@
             this.CDWheelspanel.Controls.Add(this.CDWWheelWidthlabel);
             this.CDWheelspanel.Controls.Add(this.CDWRimtextBox);
             this.CDWheelspanel.Controls.Add(this.CDWRimlabel);
-            this.CDWheelspanel.Controls.Add(this.CDWTiretextBox);
             this.CDWheelspanel.Controls.Add(this.CDWTirelabel);
             this.CDWheelspanel.Controls.Add(this.CDWTitlelabel);
-            this.CDWheelspanel.Location = new System.Drawing.Point(227, 366);
+            this.CDWheelspanel.Location = new System.Drawing.Point(423, 469);
             this.CDWheelspanel.Name = "CDWheelspanel";
-            this.CDWheelspanel.Size = new System.Drawing.Size(200, 148);
+            this.CDWheelspanel.Size = new System.Drawing.Size(200, 175);
             this.CDWheelspanel.TabIndex = 12;
+            // 
+            // CDWTirecomboBox
+            // 
+            this.CDWTirecomboBox.FormattingEnabled = true;
+            this.CDWTirecomboBox.Location = new System.Drawing.Point(76, 43);
+            this.CDWTirecomboBox.Name = "CDWTirecomboBox";
+            this.CDWTirecomboBox.Size = new System.Drawing.Size(117, 21);
+            this.CDWTirecomboBox.TabIndex = 21;
+            // 
+            // CDWRimCaptextBox
+            // 
+            this.CDWRimCaptextBox.Location = new System.Drawing.Point(75, 146);
+            this.CDWRimCaptextBox.Name = "CDWRimCaptextBox";
+            this.CDWRimCaptextBox.Size = new System.Drawing.Size(118, 20);
+            this.CDWRimCaptextBox.TabIndex = 20;
+            // 
+            // CDWRimCaplabel
+            // 
+            this.CDWRimCaplabel.AutoSize = true;
+            this.CDWRimCaplabel.Location = new System.Drawing.Point(4, 149);
+            this.CDWRimCaplabel.Name = "CDWRimCaplabel";
+            this.CDWRimCaplabel.Size = new System.Drawing.Size(44, 13);
+            this.CDWRimCaplabel.TabIndex = 19;
+            this.CDWRimCaplabel.Text = "RimCap";
             // 
             // CDWTireSizenumericUpDown
             // 
@@ -3583,13 +3778,6 @@
             this.CDWRimlabel.TabIndex = 10;
             this.CDWRimlabel.Text = "Rim";
             // 
-            // CDWTiretextBox
-            // 
-            this.CDWTiretextBox.Location = new System.Drawing.Point(75, 43);
-            this.CDWTiretextBox.Name = "CDWTiretextBox";
-            this.CDWTiretextBox.Size = new System.Drawing.Size(118, 20);
-            this.CDWTiretextBox.TabIndex = 9;
-            // 
             // CDWTirelabel
             // 
             this.CDWTirelabel.AutoSize = true;
@@ -3611,9 +3799,12 @@
             // CDEnginepanel
             // 
             this.CDEnginepanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.CDEnginepanel.Controls.Add(this.CDETypecomboBox);
+            this.CDEnginepanel.Controls.Add(this.CDEEngineSwapOptionsbutton);
+            this.CDEnginepanel.Controls.Add(this.CDEPMnumericUpDown);
+            this.CDEnginepanel.Controls.Add(this.CDEPMlabel);
             this.CDEnginepanel.Controls.Add(this.CDESoundtextBox);
             this.CDEnginepanel.Controls.Add(this.CDESoundlabel);
-            this.CDEnginepanel.Controls.Add(this.CDETypetextBox);
             this.CDEnginepanel.Controls.Add(this.CDETypelabel);
             this.CDEnginepanel.Controls.Add(this.CDEScalenumericUpDown);
             this.CDEnginepanel.Controls.Add(this.CDEScalelabel);
@@ -3632,16 +3823,51 @@
             this.CDEnginepanel.Controls.Add(this.CDERotYnumericUpDown);
             this.CDEnginepanel.Controls.Add(this.CDERotXnumericUpDown);
             this.CDEnginepanel.Controls.Add(this.CDETitlelabel);
-            this.CDEnginepanel.Location = new System.Drawing.Point(433, 50);
+            this.CDEnginepanel.Location = new System.Drawing.Point(840, 162);
             this.CDEnginepanel.Name = "CDEnginepanel";
-            this.CDEnginepanel.Size = new System.Drawing.Size(200, 211);
+            this.CDEnginepanel.Size = new System.Drawing.Size(200, 266);
             this.CDEnginepanel.TabIndex = 11;
+            // 
+            // CDETypecomboBox
+            // 
+            this.CDETypecomboBox.FormattingEnabled = true;
+            this.CDETypecomboBox.Location = new System.Drawing.Point(69, 157);
+            this.CDETypecomboBox.Name = "CDETypecomboBox";
+            this.CDETypecomboBox.Size = new System.Drawing.Size(121, 21);
+            this.CDETypecomboBox.TabIndex = 36;
+            // 
+            // CDEEngineSwapOptionsbutton
+            // 
+            this.CDEEngineSwapOptionsbutton.Location = new System.Drawing.Point(4, 236);
+            this.CDEEngineSwapOptionsbutton.Name = "CDEEngineSwapOptionsbutton";
+            this.CDEEngineSwapOptionsbutton.Size = new System.Drawing.Size(127, 23);
+            this.CDEEngineSwapOptionsbutton.TabIndex = 35;
+            this.CDEEngineSwapOptionsbutton.Text = "Engine Swap Options";
+            this.CDEEngineSwapOptionsbutton.UseVisualStyleBackColor = true;
+            this.CDEEngineSwapOptionsbutton.Click += new System.EventHandler(this.CDEEngineSwapOptionsbutton_Click);
+            // 
+            // CDEPMnumericUpDown
+            // 
+            this.CDEPMnumericUpDown.DecimalPlaces = 2;
+            this.CDEPMnumericUpDown.Location = new System.Drawing.Point(70, 209);
+            this.CDEPMnumericUpDown.Name = "CDEPMnumericUpDown";
+            this.CDEPMnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDEPMnumericUpDown.TabIndex = 34;
+            // 
+            // CDEPMlabel
+            // 
+            this.CDEPMlabel.AutoSize = true;
+            this.CDEPMlabel.Location = new System.Drawing.Point(7, 211);
+            this.CDEPMlabel.Name = "CDEPMlabel";
+            this.CDEPMlabel.Size = new System.Drawing.Size(23, 13);
+            this.CDEPMlabel.TabIndex = 33;
+            this.CDEPMlabel.Text = "PM";
             // 
             // CDESoundtextBox
             // 
             this.CDESoundtextBox.Location = new System.Drawing.Point(69, 183);
             this.CDESoundtextBox.Name = "CDESoundtextBox";
-            this.CDESoundtextBox.Size = new System.Drawing.Size(100, 20);
+            this.CDESoundtextBox.Size = new System.Drawing.Size(124, 20);
             this.CDESoundtextBox.TabIndex = 32;
             // 
             // CDESoundlabel
@@ -3652,13 +3878,6 @@
             this.CDESoundlabel.Size = new System.Drawing.Size(38, 13);
             this.CDESoundlabel.TabIndex = 31;
             this.CDESoundlabel.Text = "Sound";
-            // 
-            // CDETypetextBox
-            // 
-            this.CDETypetextBox.Location = new System.Drawing.Point(69, 157);
-            this.CDETypetextBox.Name = "CDETypetextBox";
-            this.CDETypetextBox.Size = new System.Drawing.Size(100, 20);
-            this.CDETypetextBox.TabIndex = 30;
             // 
             // CDETypelabel
             // 
@@ -3674,7 +3893,7 @@
             this.CDEScalenumericUpDown.DecimalPlaces = 2;
             this.CDEScalenumericUpDown.Location = new System.Drawing.Point(69, 131);
             this.CDEScalenumericUpDown.Name = "CDEScalenumericUpDown";
-            this.CDEScalenumericUpDown.Size = new System.Drawing.Size(52, 20);
+            this.CDEScalenumericUpDown.Size = new System.Drawing.Size(59, 20);
             this.CDEScalenumericUpDown.TabIndex = 28;
             // 
             // CDEScalelabel
@@ -3878,6 +4097,13 @@
             // CDSuspensionpanel
             // 
             this.CDSuspensionpanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.CDSuspensionpanel.Controls.Add(this.comboBox1);
+            this.CDSuspensionpanel.Controls.Add(this.CDSrearLeftSettextBox);
+            this.CDSuspensionpanel.Controls.Add(this.CDSrearLeftSetlabel);
+            this.CDSuspensionpanel.Controls.Add(this.CDSFrontLeftSettextBox);
+            this.CDSuspensionpanel.Controls.Add(this.CDSFrontLeftSetlabel);
+            this.CDSuspensionpanel.Controls.Add(this.CDSSidesFlipnumericUpDown);
+            this.CDSuspensionpanel.Controls.Add(this.CDSSidesFliplabel);
             this.CDSuspensionpanel.Controls.Add(this.CDSRearRightSettextBox);
             this.CDSuspensionpanel.Controls.Add(this.CDSRearRightSetlabel);
             this.CDSuspensionpanel.Controls.Add(this.CDSRearCenterSettextBox);
@@ -3901,14 +4127,80 @@
             this.CDSuspensionpanel.Controls.Add(this.CDSFrontAxleStartnumericUpDown);
             this.CDSuspensionpanel.Controls.Add(this.CDSFrontAxleStartlabel);
             this.CDSuspensionpanel.Controls.Add(this.CDSTitlelabel);
-            this.CDSuspensionpanel.Location = new System.Drawing.Point(226, 50);
+            this.CDSuspensionpanel.Location = new System.Drawing.Point(216, 50);
             this.CDSuspensionpanel.Name = "CDSuspensionpanel";
-            this.CDSuspensionpanel.Size = new System.Drawing.Size(201, 310);
+            this.CDSuspensionpanel.Size = new System.Drawing.Size(200, 388);
             this.CDSuspensionpanel.TabIndex = 10;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(190, 321);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(154, 21);
+            this.comboBox1.TabIndex = 41;
+            // 
+            // CDSrearLeftSettextBox
+            // 
+            this.CDSrearLeftSettextBox.Location = new System.Drawing.Point(83, 359);
+            this.CDSrearLeftSettextBox.Name = "CDSrearLeftSettextBox";
+            this.CDSrearLeftSettextBox.Size = new System.Drawing.Size(111, 20);
+            this.CDSrearLeftSettextBox.TabIndex = 40;
+            // 
+            // CDSrearLeftSetlabel
+            // 
+            this.CDSrearLeftSetlabel.AutoSize = true;
+            this.CDSrearLeftSetlabel.Location = new System.Drawing.Point(4, 362);
+            this.CDSrearLeftSetlabel.Name = "CDSrearLeftSetlabel";
+            this.CDSrearLeftSetlabel.Size = new System.Drawing.Size(64, 13);
+            this.CDSrearLeftSetlabel.TabIndex = 39;
+            this.CDSrearLeftSetlabel.Text = "RearLeftSet";
+            // 
+            // CDSFrontLeftSettextBox
+            // 
+            this.CDSFrontLeftSettextBox.Location = new System.Drawing.Point(82, 281);
+            this.CDSFrontLeftSettextBox.Name = "CDSFrontLeftSettextBox";
+            this.CDSFrontLeftSettextBox.Size = new System.Drawing.Size(111, 20);
+            this.CDSFrontLeftSettextBox.TabIndex = 38;
+            // 
+            // CDSFrontLeftSetlabel
+            // 
+            this.CDSFrontLeftSetlabel.AutoSize = true;
+            this.CDSFrontLeftSetlabel.Location = new System.Drawing.Point(3, 284);
+            this.CDSFrontLeftSetlabel.Name = "CDSFrontLeftSetlabel";
+            this.CDSFrontLeftSetlabel.Size = new System.Drawing.Size(65, 13);
+            this.CDSFrontLeftSetlabel.TabIndex = 37;
+            this.CDSFrontLeftSetlabel.Text = "FrontLeftSet";
+            // 
+            // CDSSidesFlipnumericUpDown
+            // 
+            this.CDSSidesFlipnumericUpDown.Location = new System.Drawing.Point(83, 203);
+            this.CDSSidesFlipnumericUpDown.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.CDSSidesFlipnumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.CDSSidesFlipnumericUpDown.Name = "CDSSidesFlipnumericUpDown";
+            this.CDSSidesFlipnumericUpDown.Size = new System.Drawing.Size(87, 20);
+            this.CDSSidesFlipnumericUpDown.TabIndex = 36;
+            // 
+            // CDSSidesFliplabel
+            // 
+            this.CDSSidesFliplabel.AutoSize = true;
+            this.CDSSidesFliplabel.Location = new System.Drawing.Point(4, 205);
+            this.CDSSidesFliplabel.Name = "CDSSidesFliplabel";
+            this.CDSSidesFliplabel.Size = new System.Drawing.Size(49, 13);
+            this.CDSSidesFliplabel.TabIndex = 35;
+            this.CDSSidesFliplabel.Text = "SidesFlip";
             // 
             // CDSRearRightSettextBox
             // 
-            this.CDSRearRightSettextBox.Location = new System.Drawing.Point(83, 280);
+            this.CDSRearRightSettextBox.Location = new System.Drawing.Point(82, 333);
             this.CDSRearRightSettextBox.Name = "CDSRearRightSettextBox";
             this.CDSRearRightSettextBox.Size = new System.Drawing.Size(111, 20);
             this.CDSRearRightSettextBox.TabIndex = 22;
@@ -3916,7 +4208,7 @@
             // CDSRearRightSetlabel
             // 
             this.CDSRearRightSetlabel.AutoSize = true;
-            this.CDSRearRightSetlabel.Location = new System.Drawing.Point(4, 283);
+            this.CDSRearRightSetlabel.Location = new System.Drawing.Point(3, 336);
             this.CDSRearRightSetlabel.Name = "CDSRearRightSetlabel";
             this.CDSRearRightSetlabel.Size = new System.Drawing.Size(71, 13);
             this.CDSRearRightSetlabel.TabIndex = 21;
@@ -3924,7 +4216,7 @@
             // 
             // CDSRearCenterSettextBox
             // 
-            this.CDSRearCenterSettextBox.Location = new System.Drawing.Point(83, 254);
+            this.CDSRearCenterSettextBox.Location = new System.Drawing.Point(82, 307);
             this.CDSRearCenterSettextBox.Name = "CDSRearCenterSettextBox";
             this.CDSRearCenterSettextBox.Size = new System.Drawing.Size(111, 20);
             this.CDSRearCenterSettextBox.TabIndex = 20;
@@ -3932,7 +4224,7 @@
             // CDSRearCenterSetlabel
             // 
             this.CDSRearCenterSetlabel.AutoSize = true;
-            this.CDSRearCenterSetlabel.Location = new System.Drawing.Point(4, 257);
+            this.CDSRearCenterSetlabel.Location = new System.Drawing.Point(3, 310);
             this.CDSRearCenterSetlabel.Name = "CDSRearCenterSetlabel";
             this.CDSRearCenterSetlabel.Size = new System.Drawing.Size(77, 13);
             this.CDSRearCenterSetlabel.TabIndex = 19;
@@ -3940,7 +4232,7 @@
             // 
             // CDSFrontRightSettextBox
             // 
-            this.CDSFrontRightSettextBox.Location = new System.Drawing.Point(83, 228);
+            this.CDSFrontRightSettextBox.Location = new System.Drawing.Point(83, 255);
             this.CDSFrontRightSettextBox.Name = "CDSFrontRightSettextBox";
             this.CDSFrontRightSettextBox.Size = new System.Drawing.Size(111, 20);
             this.CDSFrontRightSettextBox.TabIndex = 18;
@@ -3948,7 +4240,7 @@
             // CDSFrontRightSetlabel
             // 
             this.CDSFrontRightSetlabel.AutoSize = true;
-            this.CDSFrontRightSetlabel.Location = new System.Drawing.Point(4, 231);
+            this.CDSFrontRightSetlabel.Location = new System.Drawing.Point(4, 258);
             this.CDSFrontRightSetlabel.Name = "CDSFrontRightSetlabel";
             this.CDSFrontRightSetlabel.Size = new System.Drawing.Size(72, 13);
             this.CDSFrontRightSetlabel.TabIndex = 17;
@@ -3956,7 +4248,7 @@
             // 
             // CDSFrontCenterSettextBox
             // 
-            this.CDSFrontCenterSettextBox.Location = new System.Drawing.Point(83, 202);
+            this.CDSFrontCenterSettextBox.Location = new System.Drawing.Point(83, 229);
             this.CDSFrontCenterSettextBox.Name = "CDSFrontCenterSettextBox";
             this.CDSFrontCenterSettextBox.Size = new System.Drawing.Size(111, 20);
             this.CDSFrontCenterSettextBox.TabIndex = 16;
@@ -3964,7 +4256,7 @@
             // CDSFrontCenterSetlabel
             // 
             this.CDSFrontCenterSetlabel.AutoSize = true;
-            this.CDSFrontCenterSetlabel.Location = new System.Drawing.Point(4, 205);
+            this.CDSFrontCenterSetlabel.Location = new System.Drawing.Point(4, 232);
             this.CDSFrontCenterSetlabel.Name = "CDSFrontCenterSetlabel";
             this.CDSFrontCenterSetlabel.Size = new System.Drawing.Size(78, 13);
             this.CDSFrontCenterSetlabel.TabIndex = 15;
@@ -3972,8 +4264,8 @@
             // 
             // CDSScalenumericUpDown
             // 
-            this.CDSScalenumericUpDown.DecimalPlaces = 2;
-            this.CDSScalenumericUpDown.Location = new System.Drawing.Point(83, 176);
+            this.CDSScalenumericUpDown.DecimalPlaces = 3;
+            this.CDSScalenumericUpDown.Location = new System.Drawing.Point(83, 99);
             this.CDSScalenumericUpDown.Name = "CDSScalenumericUpDown";
             this.CDSScalenumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDSScalenumericUpDown.TabIndex = 14;
@@ -3981,7 +4273,7 @@
             // CDSScalelabel
             // 
             this.CDSScalelabel.AutoSize = true;
-            this.CDSScalelabel.Location = new System.Drawing.Point(4, 178);
+            this.CDSScalelabel.Location = new System.Drawing.Point(4, 101);
             this.CDSScalelabel.Name = "CDSScalelabel";
             this.CDSScalelabel.Size = new System.Drawing.Size(34, 13);
             this.CDSScalelabel.TabIndex = 13;
@@ -3990,7 +4282,7 @@
             // CDSFrontSpringLengthnumericUpDown
             // 
             this.CDSFrontSpringLengthnumericUpDown.DecimalPlaces = 2;
-            this.CDSFrontSpringLengthnumericUpDown.Location = new System.Drawing.Point(97, 150);
+            this.CDSFrontSpringLengthnumericUpDown.Location = new System.Drawing.Point(97, 177);
             this.CDSFrontSpringLengthnumericUpDown.Minimum = new decimal(new int[] {
             100,
             0,
@@ -4003,7 +4295,7 @@
             // CDSFrontSpringLengthlabel
             // 
             this.CDSFrontSpringLengthlabel.AutoSize = true;
-            this.CDSFrontSpringLengthlabel.Location = new System.Drawing.Point(4, 152);
+            this.CDSFrontSpringLengthlabel.Location = new System.Drawing.Point(4, 179);
             this.CDSFrontSpringLengthlabel.Name = "CDSFrontSpringLengthlabel";
             this.CDSFrontSpringLengthlabel.Size = new System.Drawing.Size(94, 13);
             this.CDSFrontSpringLengthlabel.TabIndex = 11;
@@ -4012,7 +4304,7 @@
             // CDSRearTracknumericUpDown
             // 
             this.CDSRearTracknumericUpDown.DecimalPlaces = 2;
-            this.CDSRearTracknumericUpDown.Location = new System.Drawing.Point(83, 124);
+            this.CDSRearTracknumericUpDown.Location = new System.Drawing.Point(83, 73);
             this.CDSRearTracknumericUpDown.Name = "CDSRearTracknumericUpDown";
             this.CDSRearTracknumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDSRearTracknumericUpDown.TabIndex = 10;
@@ -4020,7 +4312,7 @@
             // CDSRearTracklabel
             // 
             this.CDSRearTracklabel.AutoSize = true;
-            this.CDSRearTracklabel.Location = new System.Drawing.Point(4, 126);
+            this.CDSRearTracklabel.Location = new System.Drawing.Point(4, 75);
             this.CDSRearTracklabel.Name = "CDSRearTracklabel";
             this.CDSRearTracklabel.Size = new System.Drawing.Size(58, 13);
             this.CDSRearTracklabel.TabIndex = 9;
@@ -4029,7 +4321,7 @@
             // CDSFrontTracknumericUpDown
             // 
             this.CDSFrontTracknumericUpDown.DecimalPlaces = 2;
-            this.CDSFrontTracknumericUpDown.Location = new System.Drawing.Point(83, 98);
+            this.CDSFrontTracknumericUpDown.Location = new System.Drawing.Point(83, 47);
             this.CDSFrontTracknumericUpDown.Name = "CDSFrontTracknumericUpDown";
             this.CDSFrontTracknumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDSFrontTracknumericUpDown.TabIndex = 8;
@@ -4037,7 +4329,7 @@
             // CDSFrontTracklabel
             // 
             this.CDSFrontTracklabel.AutoSize = true;
-            this.CDSFrontTracklabel.Location = new System.Drawing.Point(4, 100);
+            this.CDSFrontTracklabel.Location = new System.Drawing.Point(4, 49);
             this.CDSFrontTracklabel.Name = "CDSFrontTracklabel";
             this.CDSFrontTracklabel.Size = new System.Drawing.Size(59, 13);
             this.CDSFrontTracklabel.TabIndex = 7;
@@ -4046,7 +4338,7 @@
             // CDSHeightnumericUpDown
             // 
             this.CDSHeightnumericUpDown.DecimalPlaces = 2;
-            this.CDSHeightnumericUpDown.Location = new System.Drawing.Point(83, 72);
+            this.CDSHeightnumericUpDown.Location = new System.Drawing.Point(83, 125);
             this.CDSHeightnumericUpDown.Name = "CDSHeightnumericUpDown";
             this.CDSHeightnumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDSHeightnumericUpDown.TabIndex = 6;
@@ -4054,7 +4346,7 @@
             // CDSHeightlabel
             // 
             this.CDSHeightlabel.AutoSize = true;
-            this.CDSHeightlabel.Location = new System.Drawing.Point(4, 74);
+            this.CDSHeightlabel.Location = new System.Drawing.Point(4, 127);
             this.CDSHeightlabel.Name = "CDSHeightlabel";
             this.CDSHeightlabel.Size = new System.Drawing.Size(38, 13);
             this.CDSHeightlabel.TabIndex = 5;
@@ -4062,8 +4354,8 @@
             // 
             // CDSWheelBasenumericUpDown
             // 
-            this.CDSWheelBasenumericUpDown.DecimalPlaces = 2;
-            this.CDSWheelBasenumericUpDown.Location = new System.Drawing.Point(83, 46);
+            this.CDSWheelBasenumericUpDown.DecimalPlaces = 3;
+            this.CDSWheelBasenumericUpDown.Location = new System.Drawing.Point(83, 21);
             this.CDSWheelBasenumericUpDown.Name = "CDSWheelBasenumericUpDown";
             this.CDSWheelBasenumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDSWheelBasenumericUpDown.TabIndex = 4;
@@ -4071,7 +4363,7 @@
             // CDSWheelBaselabel
             // 
             this.CDSWheelBaselabel.AutoSize = true;
-            this.CDSWheelBaselabel.Location = new System.Drawing.Point(4, 48);
+            this.CDSWheelBaselabel.Location = new System.Drawing.Point(4, 23);
             this.CDSWheelBaselabel.Name = "CDSWheelBaselabel";
             this.CDSWheelBaselabel.Size = new System.Drawing.Size(62, 13);
             this.CDSWheelBaselabel.TabIndex = 3;
@@ -4080,7 +4372,7 @@
             // CDSFrontAxleStartnumericUpDown
             // 
             this.CDSFrontAxleStartnumericUpDown.DecimalPlaces = 2;
-            this.CDSFrontAxleStartnumericUpDown.Location = new System.Drawing.Point(83, 20);
+            this.CDSFrontAxleStartnumericUpDown.Location = new System.Drawing.Point(83, 151);
             this.CDSFrontAxleStartnumericUpDown.Name = "CDSFrontAxleStartnumericUpDown";
             this.CDSFrontAxleStartnumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDSFrontAxleStartnumericUpDown.TabIndex = 2;
@@ -4088,7 +4380,7 @@
             // CDSFrontAxleStartlabel
             // 
             this.CDSFrontAxleStartlabel.AutoSize = true;
-            this.CDSFrontAxleStartlabel.Location = new System.Drawing.Point(4, 22);
+            this.CDSFrontAxleStartlabel.Location = new System.Drawing.Point(4, 153);
             this.CDSFrontAxleStartlabel.Name = "CDSFrontAxleStartlabel";
             this.CDSFrontAxleStartlabel.Size = new System.Drawing.Size(73, 13);
             this.CDSFrontAxleStartlabel.TabIndex = 1;
@@ -4156,6 +4448,14 @@
             // CDOpanel
             // 
             this.CDOpanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.CDOpanel.Controls.Add(this.CDODoorAnglenumericUpDown);
+            this.CDOpanel.Controls.Add(this.CDODoorAnglelabel);
+            this.CDOpanel.Controls.Add(this.CDOLifterArmsAnglenumericUpDown);
+            this.CDOpanel.Controls.Add(this.CDOLifterArmsAnglelabel);
+            this.CDOpanel.Controls.Add(this.CDOSpeedoFactornumericUpDown);
+            this.CDOpanel.Controls.Add(this.CDOSpeedoFactorlabel);
+            this.CDOpanel.Controls.Add(this.CDOPowernumericUpDown);
+            this.CDOpanel.Controls.Add(this.CDSPowerlabel);
             this.CDOpanel.Controls.Add(this.CDOCXNumericUpDown);
             this.CDOpanel.Controls.Add(this.CDOSpeedoAnglenumericUpDown);
             this.CDOpanel.Controls.Add(this.CDOSpeedoAnglelabel);
@@ -4179,23 +4479,114 @@
             this.CDOpanel.Controls.Add(this.CDOEngineSoundtextBox);
             this.CDOpanel.Controls.Add(this.CDOEngineSoundlabel);
             this.CDOpanel.Controls.Add(this.CDOTitlelabel);
-            this.CDOpanel.Location = new System.Drawing.Point(10, 408);
+            this.CDOpanel.Location = new System.Drawing.Point(423, 50);
             this.CDOpanel.Name = "CDOpanel";
-            this.CDOpanel.Size = new System.Drawing.Size(210, 254);
+            this.CDOpanel.Size = new System.Drawing.Size(200, 413);
             this.CDOpanel.TabIndex = 4;
+            // 
+            // CDODoorAnglenumericUpDown
+            // 
+            this.CDODoorAnglenumericUpDown.Location = new System.Drawing.Point(89, 333);
+            this.CDODoorAnglenumericUpDown.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.CDODoorAnglenumericUpDown.Name = "CDODoorAnglenumericUpDown";
+            this.CDODoorAnglenumericUpDown.Size = new System.Drawing.Size(87, 20);
+            this.CDODoorAnglenumericUpDown.TabIndex = 33;
+            // 
+            // CDODoorAnglelabel
+            // 
+            this.CDODoorAnglelabel.AutoSize = true;
+            this.CDODoorAnglelabel.Location = new System.Drawing.Point(4, 335);
+            this.CDODoorAnglelabel.Name = "CDODoorAnglelabel";
+            this.CDODoorAnglelabel.Size = new System.Drawing.Size(57, 13);
+            this.CDODoorAnglelabel.TabIndex = 32;
+            this.CDODoorAnglelabel.Text = "DoorAngle";
+            // 
+            // CDOLifterArmsAnglenumericUpDown
+            // 
+            this.CDOLifterArmsAnglenumericUpDown.DecimalPlaces = 2;
+            this.CDOLifterArmsAnglenumericUpDown.Location = new System.Drawing.Point(89, 307);
+            this.CDOLifterArmsAnglenumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.CDOLifterArmsAnglenumericUpDown.Name = "CDOLifterArmsAnglenumericUpDown";
+            this.CDOLifterArmsAnglenumericUpDown.Size = new System.Drawing.Size(87, 20);
+            this.CDOLifterArmsAnglenumericUpDown.TabIndex = 31;
+            // 
+            // CDOLifterArmsAnglelabel
+            // 
+            this.CDOLifterArmsAnglelabel.AutoSize = true;
+            this.CDOLifterArmsAnglelabel.Location = new System.Drawing.Point(4, 309);
+            this.CDOLifterArmsAnglelabel.Name = "CDOLifterArmsAnglelabel";
+            this.CDOLifterArmsAnglelabel.Size = new System.Drawing.Size(80, 13);
+            this.CDOLifterArmsAnglelabel.TabIndex = 30;
+            this.CDOLifterArmsAnglelabel.Text = "LifterArmsAngle";
+            // 
+            // CDOSpeedoFactornumericUpDown
+            // 
+            this.CDOSpeedoFactornumericUpDown.DecimalPlaces = 2;
+            this.CDOSpeedoFactornumericUpDown.Location = new System.Drawing.Point(89, 203);
+            this.CDOSpeedoFactornumericUpDown.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.CDOSpeedoFactornumericUpDown.Minimum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            -2147483648});
+            this.CDOSpeedoFactornumericUpDown.Name = "CDOSpeedoFactornumericUpDown";
+            this.CDOSpeedoFactornumericUpDown.Size = new System.Drawing.Size(87, 20);
+            this.CDOSpeedoFactornumericUpDown.TabIndex = 29;
+            // 
+            // CDOSpeedoFactorlabel
+            // 
+            this.CDOSpeedoFactorlabel.AutoSize = true;
+            this.CDOSpeedoFactorlabel.Location = new System.Drawing.Point(3, 205);
+            this.CDOSpeedoFactorlabel.Name = "CDOSpeedoFactorlabel";
+            this.CDOSpeedoFactorlabel.Size = new System.Drawing.Size(74, 13);
+            this.CDOSpeedoFactorlabel.TabIndex = 28;
+            this.CDOSpeedoFactorlabel.Text = "SpeedoFactor";
+            // 
+            // CDOPowernumericUpDown
+            // 
+            this.CDOPowernumericUpDown.Location = new System.Drawing.Point(89, 125);
+            this.CDOPowernumericUpDown.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.CDOPowernumericUpDown.Name = "CDOPowernumericUpDown";
+            this.CDOPowernumericUpDown.Size = new System.Drawing.Size(87, 20);
+            this.CDOPowernumericUpDown.TabIndex = 25;
+            // 
+            // CDSPowerlabel
+            // 
+            this.CDSPowerlabel.AutoSize = true;
+            this.CDSPowerlabel.Location = new System.Drawing.Point(3, 127);
+            this.CDSPowerlabel.Name = "CDSPowerlabel";
+            this.CDSPowerlabel.Size = new System.Drawing.Size(37, 13);
+            this.CDSPowerlabel.TabIndex = 24;
+            this.CDSPowerlabel.Text = "Power";
             // 
             // CDOCXNumericUpDown
             // 
             this.CDOCXNumericUpDown.DecimalPlaces = 2;
-            this.CDOCXNumericUpDown.Location = new System.Drawing.Point(79, 226);
+            this.CDOCXNumericUpDown.Location = new System.Drawing.Point(89, 359);
             this.CDOCXNumericUpDown.Name = "CDOCXNumericUpDown";
-            this.CDOCXNumericUpDown.Size = new System.Drawing.Size(52, 20);
+            this.CDOCXNumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDOCXNumericUpDown.TabIndex = 23;
             // 
             // CDOSpeedoAnglenumericUpDown
             // 
             this.CDOSpeedoAnglenumericUpDown.DecimalPlaces = 2;
-            this.CDOSpeedoAnglenumericUpDown.Location = new System.Drawing.Point(79, 200);
+            this.CDOSpeedoAnglenumericUpDown.Location = new System.Drawing.Point(89, 229);
             this.CDOSpeedoAnglenumericUpDown.Maximum = new decimal(new int[] {
             180,
             0,
@@ -4207,13 +4598,13 @@
             0,
             -2147483648});
             this.CDOSpeedoAnglenumericUpDown.Name = "CDOSpeedoAnglenumericUpDown";
-            this.CDOSpeedoAnglenumericUpDown.Size = new System.Drawing.Size(52, 20);
+            this.CDOSpeedoAnglenumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDOSpeedoAnglenumericUpDown.TabIndex = 21;
             // 
             // CDOSpeedoAnglelabel
             // 
             this.CDOSpeedoAnglelabel.AutoSize = true;
-            this.CDOSpeedoAnglelabel.Location = new System.Drawing.Point(4, 202);
+            this.CDOSpeedoAnglelabel.Location = new System.Drawing.Point(4, 231);
             this.CDOSpeedoAnglelabel.Name = "CDOSpeedoAnglelabel";
             this.CDOSpeedoAnglelabel.Size = new System.Drawing.Size(71, 13);
             this.CDOSpeedoAnglelabel.TabIndex = 20;
@@ -4222,7 +4613,7 @@
             // CDOCXlabel
             // 
             this.CDOCXlabel.AutoSize = true;
-            this.CDOCXlabel.Location = new System.Drawing.Point(4, 228);
+            this.CDOCXlabel.Location = new System.Drawing.Point(4, 361);
             this.CDOCXlabel.Name = "CDOCXlabel";
             this.CDOCXlabel.Size = new System.Drawing.Size(21, 13);
             this.CDOCXlabel.TabIndex = 19;
@@ -4231,20 +4622,20 @@
             // CDOLifterArmsRisenumericUpDown
             // 
             this.CDOLifterArmsRisenumericUpDown.DecimalPlaces = 2;
-            this.CDOLifterArmsRisenumericUpDown.Location = new System.Drawing.Point(79, 174);
+            this.CDOLifterArmsRisenumericUpDown.Location = new System.Drawing.Point(89, 281);
             this.CDOLifterArmsRisenumericUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             -2147483648});
             this.CDOLifterArmsRisenumericUpDown.Name = "CDOLifterArmsRisenumericUpDown";
-            this.CDOLifterArmsRisenumericUpDown.Size = new System.Drawing.Size(52, 20);
+            this.CDOLifterArmsRisenumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDOLifterArmsRisenumericUpDown.TabIndex = 18;
             // 
             // CDOLifterArmsRiselabel
             // 
             this.CDOLifterArmsRiselabel.AutoSize = true;
-            this.CDOLifterArmsRiselabel.Location = new System.Drawing.Point(4, 176);
+            this.CDOLifterArmsRiselabel.Location = new System.Drawing.Point(4, 283);
             this.CDOLifterArmsRiselabel.Name = "CDOLifterArmsRiselabel";
             this.CDOLifterArmsRiselabel.Size = new System.Drawing.Size(74, 13);
             this.CDOLifterArmsRiselabel.TabIndex = 17;
@@ -4252,20 +4643,21 @@
             // 
             // CDORPMAnglenumericUpDown
             // 
-            this.CDORPMAnglenumericUpDown.Location = new System.Drawing.Point(162, 122);
+            this.CDORPMAnglenumericUpDown.DecimalPlaces = 2;
+            this.CDORPMAnglenumericUpDown.Location = new System.Drawing.Point(89, 177);
             this.CDORPMAnglenumericUpDown.Minimum = new decimal(new int[] {
             100,
             0,
             0,
             -2147483648});
             this.CDORPMAnglenumericUpDown.Name = "CDORPMAnglenumericUpDown";
-            this.CDORPMAnglenumericUpDown.Size = new System.Drawing.Size(41, 20);
+            this.CDORPMAnglenumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDORPMAnglenumericUpDown.TabIndex = 15;
             // 
             // CDORPMAnglelabel
             // 
             this.CDORPMAnglelabel.AutoSize = true;
-            this.CDORPMAnglelabel.Location = new System.Drawing.Point(105, 124);
+            this.CDORPMAnglelabel.Location = new System.Drawing.Point(4, 179);
             this.CDORPMAnglelabel.Name = "CDORPMAnglelabel";
             this.CDORPMAnglelabel.Size = new System.Drawing.Size(58, 13);
             this.CDORPMAnglelabel.TabIndex = 12;
@@ -4274,15 +4666,15 @@
             // CDORPMFactornumericUpDown
             // 
             this.CDORPMFactornumericUpDown.DecimalPlaces = 2;
-            this.CDORPMFactornumericUpDown.Location = new System.Drawing.Point(64, 122);
+            this.CDORPMFactornumericUpDown.Location = new System.Drawing.Point(89, 151);
             this.CDORPMFactornumericUpDown.Name = "CDORPMFactornumericUpDown";
-            this.CDORPMFactornumericUpDown.Size = new System.Drawing.Size(41, 20);
+            this.CDORPMFactornumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDORPMFactornumericUpDown.TabIndex = 14;
             // 
             // CDORPMFactorlabel
             // 
             this.CDORPMFactorlabel.AutoSize = true;
-            this.CDORPMFactorlabel.Location = new System.Drawing.Point(3, 124);
+            this.CDORPMFactorlabel.Location = new System.Drawing.Point(4, 153);
             this.CDORPMFactorlabel.Name = "CDORPMFactorlabel";
             this.CDORPMFactorlabel.Size = new System.Drawing.Size(61, 13);
             this.CDORPMFactorlabel.TabIndex = 13;
@@ -4291,15 +4683,15 @@
             // CDOSuspTRavelnumericUpDown
             // 
             this.CDOSuspTRavelnumericUpDown.DecimalPlaces = 2;
-            this.CDOSuspTRavelnumericUpDown.Location = new System.Drawing.Point(79, 148);
+            this.CDOSuspTRavelnumericUpDown.Location = new System.Drawing.Point(89, 255);
             this.CDOSuspTRavelnumericUpDown.Name = "CDOSuspTRavelnumericUpDown";
-            this.CDOSuspTRavelnumericUpDown.Size = new System.Drawing.Size(52, 20);
+            this.CDOSuspTRavelnumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDOSuspTRavelnumericUpDown.TabIndex = 11;
             // 
             // SuspTravellabel
             // 
             this.SuspTravellabel.AutoSize = true;
-            this.SuspTravellabel.Location = new System.Drawing.Point(3, 150);
+            this.SuspTravellabel.Location = new System.Drawing.Point(4, 257);
             this.SuspTravellabel.Name = "SuspTravellabel";
             this.SuspTravellabel.Size = new System.Drawing.Size(61, 13);
             this.SuspTravellabel.TabIndex = 8;
@@ -4307,20 +4699,20 @@
             // 
             // CDOWeightnumericUpDown
             // 
-            this.CDOWeightnumericUpDown.Location = new System.Drawing.Point(46, 98);
+            this.CDOWeightnumericUpDown.Location = new System.Drawing.Point(89, 385);
             this.CDOWeightnumericUpDown.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.CDOWeightnumericUpDown.Name = "CDOWeightnumericUpDown";
-            this.CDOWeightnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDOWeightnumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDOWeightnumericUpDown.TabIndex = 10;
             // 
             // CDOWeightlabel
             // 
             this.CDOWeightlabel.AutoSize = true;
-            this.CDOWeightlabel.Location = new System.Drawing.Point(3, 100);
+            this.CDOWeightlabel.Location = new System.Drawing.Point(4, 387);
             this.CDOWeightlabel.Name = "CDOWeightlabel";
             this.CDOWeightlabel.Size = new System.Drawing.Size(41, 13);
             this.CDOWeightlabel.TabIndex = 9;
@@ -4329,15 +4721,15 @@
             // CDOFinalDrivenumericUpDown
             // 
             this.CDOFinalDrivenumericUpDown.DecimalPlaces = 3;
-            this.CDOFinalDrivenumericUpDown.Location = new System.Drawing.Point(151, 73);
+            this.CDOFinalDrivenumericUpDown.Location = new System.Drawing.Point(89, 99);
             this.CDOFinalDrivenumericUpDown.Name = "CDOFinalDrivenumericUpDown";
-            this.CDOFinalDrivenumericUpDown.Size = new System.Drawing.Size(52, 20);
+            this.CDOFinalDrivenumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDOFinalDrivenumericUpDown.TabIndex = 7;
             // 
             // CDOFinalDriveRationlabel
             // 
             this.CDOFinalDriveRationlabel.AutoSize = true;
-            this.CDOFinalDriveRationlabel.Location = new System.Drawing.Point(76, 75);
+            this.CDOFinalDriveRationlabel.Location = new System.Drawing.Point(4, 101);
             this.CDOFinalDriveRationlabel.Name = "CDOFinalDriveRationlabel";
             this.CDOFinalDriveRationlabel.Size = new System.Drawing.Size(79, 13);
             this.CDOFinalDriveRationlabel.TabIndex = 5;
@@ -4345,9 +4737,9 @@
             // 
             // CDOGearsnumericUpDown
             // 
-            this.CDOGearsnumericUpDown.Location = new System.Drawing.Point(37, 73);
+            this.CDOGearsnumericUpDown.Location = new System.Drawing.Point(89, 73);
             this.CDOGearsnumericUpDown.Name = "CDOGearsnumericUpDown";
-            this.CDOGearsnumericUpDown.Size = new System.Drawing.Size(38, 20);
+            this.CDOGearsnumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDOGearsnumericUpDown.TabIndex = 6;
             // 
             // CDOGearslabel
@@ -4363,7 +4755,7 @@
             // 
             this.CDOTranstextBox.Location = new System.Drawing.Point(102, 47);
             this.CDOTranstextBox.Name = "CDOTranstextBox";
-            this.CDOTranstextBox.Size = new System.Drawing.Size(100, 20);
+            this.CDOTranstextBox.Size = new System.Drawing.Size(91, 20);
             this.CDOTranstextBox.TabIndex = 4;
             // 
             // CDOTranslabel
@@ -4379,7 +4771,7 @@
             // 
             this.CDOEngineSoundtextBox.Location = new System.Drawing.Point(75, 21);
             this.CDOEngineSoundtextBox.Name = "CDOEngineSoundtextBox";
-            this.CDOEngineSoundtextBox.Size = new System.Drawing.Size(127, 20);
+            this.CDOEngineSoundtextBox.Size = new System.Drawing.Size(118, 20);
             this.CDOEngineSoundtextBox.TabIndex = 2;
             // 
             // CDOEngineSoundlabel
@@ -4417,15 +4809,15 @@
             this.CDMainPanel.Controls.Add(this.CDMNameTextBox);
             this.CDMainPanel.Controls.Add(this.CDMNameLabel);
             this.CDMainPanel.Controls.Add(this.CDMTitleLabel);
-            this.CDMainPanel.Location = new System.Drawing.Point(10, 240);
+            this.CDMainPanel.Location = new System.Drawing.Point(10, 246);
             this.CDMainPanel.Name = "CDMainPanel";
-            this.CDMainPanel.Size = new System.Drawing.Size(210, 162);
+            this.CDMainPanel.Size = new System.Drawing.Size(200, 162);
             this.CDMainPanel.TabIndex = 3;
             // 
             // CDMRotZLabel
             // 
             this.CDMRotZLabel.AutoSize = true;
-            this.CDMRotZLabel.Location = new System.Drawing.Point(137, 118);
+            this.CDMRotZLabel.Location = new System.Drawing.Point(134, 118);
             this.CDMRotZLabel.Name = "CDMRotZLabel";
             this.CDMRotZLabel.Size = new System.Drawing.Size(14, 13);
             this.CDMRotZLabel.TabIndex = 12;
@@ -4434,7 +4826,7 @@
             // CDMRotYLabel
             // 
             this.CDMRotYLabel.AutoSize = true;
-            this.CDMRotYLabel.Location = new System.Drawing.Point(72, 118);
+            this.CDMRotYLabel.Location = new System.Drawing.Point(69, 118);
             this.CDMRotYLabel.Name = "CDMRotYLabel";
             this.CDMRotYLabel.Size = new System.Drawing.Size(14, 13);
             this.CDMRotYLabel.TabIndex = 11;
@@ -4461,7 +4853,7 @@
             // CDMRotZnumericUpDown
             // 
             this.CDMRotZnumericUpDown.DecimalPlaces = 5;
-            this.CDMRotZnumericUpDown.Location = new System.Drawing.Point(137, 134);
+            this.CDMRotZnumericUpDown.Location = new System.Drawing.Point(134, 134);
             this.CDMRotZnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -4479,7 +4871,7 @@
             // CDMRotYnumericUpDown
             // 
             this.CDMRotYnumericUpDown.DecimalPlaces = 5;
-            this.CDMRotYnumericUpDown.Location = new System.Drawing.Point(72, 134);
+            this.CDMRotYnumericUpDown.Location = new System.Drawing.Point(69, 134);
             this.CDMRotYnumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -4525,7 +4917,7 @@
             // 
             this.CDMRustMaskTextBox.Location = new System.Drawing.Point(68, 74);
             this.CDMRustMaskTextBox.Name = "CDMRustMaskTextBox";
-            this.CDMRustMaskTextBox.Size = new System.Drawing.Size(134, 20);
+            this.CDMRustMaskTextBox.Size = new System.Drawing.Size(125, 20);
             this.CDMRustMaskTextBox.TabIndex = 5;
             // 
             // CDMModelLabel
@@ -4539,16 +4931,16 @@
             // 
             // CDMModelTextBox
             // 
-            this.CDMModelTextBox.Location = new System.Drawing.Point(49, 48);
+            this.CDMModelTextBox.Location = new System.Drawing.Point(68, 48);
             this.CDMModelTextBox.Name = "CDMModelTextBox";
-            this.CDMModelTextBox.Size = new System.Drawing.Size(153, 20);
+            this.CDMModelTextBox.Size = new System.Drawing.Size(125, 20);
             this.CDMModelTextBox.TabIndex = 3;
             // 
             // CDMNameTextBox
             // 
-            this.CDMNameTextBox.Location = new System.Drawing.Point(49, 21);
+            this.CDMNameTextBox.Location = new System.Drawing.Point(68, 21);
             this.CDMNameTextBox.Name = "CDMNameTextBox";
-            this.CDMNameTextBox.Size = new System.Drawing.Size(154, 20);
+            this.CDMNameTextBox.Size = new System.Drawing.Size(125, 20);
             this.CDMNameTextBox.TabIndex = 2;
             // 
             // CDMNameLabel
@@ -4592,12 +4984,13 @@
             this.AvailableCarsDataComboBox.FormattingEnabled = true;
             this.AvailableCarsDataComboBox.Location = new System.Drawing.Point(10, 23);
             this.AvailableCarsDataComboBox.Name = "AvailableCarsDataComboBox";
-            this.AvailableCarsDataComboBox.Size = new System.Drawing.Size(210, 21);
+            this.AvailableCarsDataComboBox.Size = new System.Drawing.Size(211, 21);
             this.AvailableCarsDataComboBox.TabIndex = 0;
             this.AvailableCarsDataComboBox.SelectedIndexChanged += new System.EventHandler(this.AvailableCarsDataComboBox_SelectedIndexChanged);
             // 
             // EngineDataTabPage
             // 
+            this.EngineDataTabPage.Controls.Add(this.panel1);
             this.EngineDataTabPage.Controls.Add(this.EDTResetButton);
             this.EngineDataTabPage.Controls.Add(this.EDTmaxRPMLabelNumericUpDown);
             this.EngineDataTabPage.Controls.Add(this.EDTmaxRPMLabel);
@@ -4615,10 +5008,28 @@
             this.EngineDataTabPage.Location = new System.Drawing.Point(4, 22);
             this.EngineDataTabPage.Name = "EngineDataTabPage";
             this.EngineDataTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.EngineDataTabPage.Size = new System.Drawing.Size(892, 668);
+            this.EngineDataTabPage.Size = new System.Drawing.Size(1042, 650);
             this.EngineDataTabPage.TabIndex = 1;
             this.EngineDataTabPage.Text = "Engine Data";
             this.EngineDataTabPage.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Location = new System.Drawing.Point(180, 63);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 100);
+            this.panel1.TabIndex = 14;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(162, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "If I had a picture it would go here";
             // 
             // EDTResetButton
             // 
@@ -4763,43 +5174,445 @@
             this.AvailableEnginesLabel.TabIndex = 0;
             this.AvailableEnginesLabel.Text = "Available Engines";
             // 
+            // TireDatatabPage
+            // 
+            this.TireDatatabPage.Controls.Add(this.panel2);
+            this.TireDatatabPage.Controls.Add(this.TDTResetbutton);
+            this.TireDatatabPage.Controls.Add(this.TDTPricenumericUpDown);
+            this.TireDatatabPage.Controls.Add(this.TDTPricelabel);
+            this.TireDatatabPage.Controls.Add(this.TDTGripModnumericUpDown);
+            this.TireDatatabPage.Controls.Add(this.TDTGripModlabel);
+            this.TireDatatabPage.Controls.Add(this.TDTCommitbutton);
+            this.TireDatatabPage.Controls.Add(this.AvailableTirescomboBox);
+            this.TireDatatabPage.Controls.Add(this.AvailableTireslabel);
+            this.TireDatatabPage.Location = new System.Drawing.Point(4, 22);
+            this.TireDatatabPage.Name = "TireDatatabPage";
+            this.TireDatatabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.TireDatatabPage.Size = new System.Drawing.Size(1042, 650);
+            this.TireDatatabPage.TabIndex = 4;
+            this.TireDatatabPage.Text = "Tire Data";
+            this.TireDatatabPage.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Location = new System.Drawing.Point(180, 63);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 100);
+            this.panel2.TabIndex = 28;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(162, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "If I had a picture it would go here";
+            // 
+            // TDTResetbutton
+            // 
+            this.TDTResetbutton.Location = new System.Drawing.Point(13, 174);
+            this.TDTResetbutton.Name = "TDTResetbutton";
+            this.TDTResetbutton.Size = new System.Drawing.Size(75, 23);
+            this.TDTResetbutton.TabIndex = 27;
+            this.TDTResetbutton.Text = "Reset";
+            this.TDTResetbutton.UseVisualStyleBackColor = true;
+            this.TDTResetbutton.Click += new System.EventHandler(this.TDTResetbutton_Click);
+            // 
+            // TDTPricenumericUpDown
+            // 
+            this.TDTPricenumericUpDown.Location = new System.Drawing.Point(10, 118);
+            this.TDTPricenumericUpDown.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.TDTPricenumericUpDown.Name = "TDTPricenumericUpDown";
+            this.TDTPricenumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.TDTPricenumericUpDown.TabIndex = 20;
+            // 
+            // TDTPricelabel
+            // 
+            this.TDTPricelabel.AutoSize = true;
+            this.TDTPricelabel.Location = new System.Drawing.Point(10, 102);
+            this.TDTPricelabel.Name = "TDTPricelabel";
+            this.TDTPricelabel.Size = new System.Drawing.Size(31, 13);
+            this.TDTPricelabel.TabIndex = 19;
+            this.TDTPricelabel.Text = "Price";
+            // 
+            // TDTGripModnumericUpDown
+            // 
+            this.TDTGripModnumericUpDown.DecimalPlaces = 2;
+            this.TDTGripModnumericUpDown.Location = new System.Drawing.Point(10, 79);
+            this.TDTGripModnumericUpDown.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.TDTGripModnumericUpDown.Name = "TDTGripModnumericUpDown";
+            this.TDTGripModnumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.TDTGripModnumericUpDown.TabIndex = 18;
+            // 
+            // TDTGripModlabel
+            // 
+            this.TDTGripModlabel.AutoSize = true;
+            this.TDTGripModlabel.Location = new System.Drawing.Point(10, 63);
+            this.TDTGripModlabel.Name = "TDTGripModlabel";
+            this.TDTGripModlabel.Size = new System.Drawing.Size(50, 13);
+            this.TDTGripModlabel.TabIndex = 17;
+            this.TDTGripModlabel.Text = "Grip Mod";
+            // 
+            // TDTCommitbutton
+            // 
+            this.TDTCommitbutton.Location = new System.Drawing.Point(13, 144);
+            this.TDTCommitbutton.Name = "TDTCommitbutton";
+            this.TDTCommitbutton.Size = new System.Drawing.Size(75, 23);
+            this.TDTCommitbutton.TabIndex = 16;
+            this.TDTCommitbutton.Text = "Commit Changes";
+            this.TDTCommitbutton.UseVisualStyleBackColor = true;
+            this.TDTCommitbutton.Click += new System.EventHandler(this.TDTCommitbutton_Click);
+            // 
+            // AvailableTirescomboBox
+            // 
+            this.AvailableTirescomboBox.FormattingEnabled = true;
+            this.AvailableTirescomboBox.Location = new System.Drawing.Point(10, 23);
+            this.AvailableTirescomboBox.Name = "AvailableTirescomboBox";
+            this.AvailableTirescomboBox.Size = new System.Drawing.Size(160, 21);
+            this.AvailableTirescomboBox.TabIndex = 15;
+            this.AvailableTirescomboBox.SelectedIndexChanged += new System.EventHandler(this.AvailableTirescomboBox_SelectedIndexChanged);
+            // 
+            // AvailableTireslabel
+            // 
+            this.AvailableTireslabel.AutoSize = true;
+            this.AvailableTireslabel.Location = new System.Drawing.Point(7, 7);
+            this.AvailableTireslabel.Name = "AvailableTireslabel";
+            this.AvailableTireslabel.Size = new System.Drawing.Size(76, 13);
+            this.AvailableTireslabel.TabIndex = 14;
+            this.AvailableTireslabel.Text = "Available Tires";
+            // 
             // MapDataTabPage
             // 
-            this.MapDataTabPage.Controls.Add(this.LoadModMapButton);
-            this.MapDataTabPage.Controls.Add(this.SetGameMapButton);
+            this.MapDataTabPage.Controls.Add(this.DeleteMapbutton);
+            this.MapDataTabPage.Controls.Add(this.MDTRefreshbutton);
+            this.MapDataTabPage.Controls.Add(this.MDTMapDataFilepanel);
+            this.MapDataTabPage.Controls.Add(this.MDTSelectedMappanel);
+            this.MapDataTabPage.Controls.Add(this.AvailableMapslistBox);
+            this.MapDataTabPage.Controls.Add(this.AvailableMapslabel);
+            this.MapDataTabPage.Controls.Add(this.MDTLoadModMapButton);
+            this.MapDataTabPage.Controls.Add(this.MDTSetGameMapButton);
             this.MapDataTabPage.Location = new System.Drawing.Point(4, 22);
             this.MapDataTabPage.Name = "MapDataTabPage";
             this.MapDataTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.MapDataTabPage.Size = new System.Drawing.Size(892, 668);
+            this.MapDataTabPage.Size = new System.Drawing.Size(1042, 650);
             this.MapDataTabPage.TabIndex = 2;
             this.MapDataTabPage.Text = "Map Data";
             this.MapDataTabPage.UseVisualStyleBackColor = true;
             // 
-            // LoadModMapButton
+            // DeleteMapbutton
             // 
-            this.LoadModMapButton.Location = new System.Drawing.Point(163, 7);
-            this.LoadModMapButton.Name = "LoadModMapButton";
-            this.LoadModMapButton.Size = new System.Drawing.Size(100, 23);
-            this.LoadModMapButton.TabIndex = 1;
-            this.LoadModMapButton.Text = "Load A Mod Map";
-            this.LoadModMapButton.UseVisualStyleBackColor = true;
-            this.LoadModMapButton.Click += new System.EventHandler(this.LoadModMapButton_Click);
+            this.DeleteMapbutton.Location = new System.Drawing.Point(382, 53);
+            this.DeleteMapbutton.Name = "DeleteMapbutton";
+            this.DeleteMapbutton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteMapbutton.TabIndex = 7;
+            this.DeleteMapbutton.Text = "Delete Map";
+            this.DeleteMapbutton.UseVisualStyleBackColor = true;
+            this.DeleteMapbutton.Click += new System.EventHandler(this.DeleteMapbutton_Click);
             // 
-            // SetGameMapButton
+            // MDTRefreshbutton
             // 
-            this.SetGameMapButton.Location = new System.Drawing.Point(7, 7);
-            this.SetGameMapButton.Name = "SetGameMapButton";
-            this.SetGameMapButton.Size = new System.Drawing.Size(150, 23);
-            this.SetGameMapButton.TabIndex = 0;
-            this.SetGameMapButton.Text = "Set Games Maps Directory";
-            this.SetGameMapButton.UseVisualStyleBackColor = true;
-            this.SetGameMapButton.Click += new System.EventHandler(this.SetGameMapButton_Click);
+            this.MDTRefreshbutton.Location = new System.Drawing.Point(301, 53);
+            this.MDTRefreshbutton.Name = "MDTRefreshbutton";
+            this.MDTRefreshbutton.Size = new System.Drawing.Size(75, 23);
+            this.MDTRefreshbutton.TabIndex = 6;
+            this.MDTRefreshbutton.Text = "Refresh List";
+            this.MDTRefreshbutton.UseVisualStyleBackColor = true;
+            this.MDTRefreshbutton.Click += new System.EventHandler(this.MDTRefreshbutton_Click);
+            // 
+            // MapDataMapDataFilelabel
+            // 
+            this.MapDataMapDataFilelabel.AutoSize = true;
+            this.MapDataMapDataFilelabel.Location = new System.Drawing.Point(8, 8);
+            this.MapDataMapDataFilelabel.Name = "MapDataMapDataFilelabel";
+            this.MapDataMapDataFilelabel.Size = new System.Drawing.Size(132, 13);
+            this.MapDataMapDataFilelabel.TabIndex = 0;
+            this.MapDataMapDataFilelabel.Text = "Create New Map Data File";
+            // 
+            // MDTMapDataFilepanel
+            // 
+            this.MDTMapDataFilepanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFOpenbutton);
+            this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFResetbutton);
+            this.MDTMapDataFilepanel.Controls.Add(this.MapDataMapDataFilelabel);
+            this.MDTMapDataFilepanel.Controls.Add(this.panel4);
+            this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFSavebutton);
+            this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFBundleFilebutton);
+            this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFBundleFiletextBox);
+            this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFBundleFilelabel);
+            this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFTypetextBox);
+            this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFTypelabel);
+            this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFCreditstextBox);
+            this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFCreditslabel);
+            this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFNametextBox);
+            this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFNamelabel);
+            this.MDTMapDataFilepanel.Location = new System.Drawing.Point(562, 23);
+            this.MDTMapDataFilepanel.Name = "MDTMapDataFilepanel";
+            this.MDTMapDataFilepanel.Size = new System.Drawing.Size(200, 397);
+            this.MDTMapDataFilepanel.TabIndex = 5;
+            // 
+            // MDTMDFOpenbutton
+            // 
+            this.MDTMDFOpenbutton.Location = new System.Drawing.Point(11, 216);
+            this.MDTMDFOpenbutton.Name = "MDTMDFOpenbutton";
+            this.MDTMDFOpenbutton.Size = new System.Drawing.Size(75, 23);
+            this.MDTMDFOpenbutton.TabIndex = 31;
+            this.MDTMDFOpenbutton.Text = "Open";
+            this.MDTMDFOpenbutton.UseVisualStyleBackColor = true;
+            this.MDTMDFOpenbutton.Click += new System.EventHandler(this.MDTMDFOpenbutton_Click);
+            // 
+            // MDTMDFResetbutton
+            // 
+            this.MDTMDFResetbutton.Location = new System.Drawing.Point(111, 215);
+            this.MDTMDFResetbutton.Name = "MDTMDFResetbutton";
+            this.MDTMDFResetbutton.Size = new System.Drawing.Size(75, 23);
+            this.MDTMDFResetbutton.TabIndex = 30;
+            this.MDTMDFResetbutton.Text = "Reset";
+            this.MDTMDFResetbutton.UseVisualStyleBackColor = true;
+            this.MDTMDFResetbutton.Click += new System.EventHandler(this.MDTMDFResetbutton_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel4.Controls.Add(this.label11);
+            this.panel4.Location = new System.Drawing.Point(11, 287);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(174, 100);
+            this.panel4.TabIndex = 29;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(7, 7);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(162, 13);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "If I had a picture it would go here";
+            // 
+            // MDTMDFSavebutton
+            // 
+            this.MDTMDFSavebutton.Location = new System.Drawing.Point(11, 245);
+            this.MDTMDFSavebutton.Name = "MDTMDFSavebutton";
+            this.MDTMDFSavebutton.Size = new System.Drawing.Size(75, 23);
+            this.MDTMDFSavebutton.TabIndex = 9;
+            this.MDTMDFSavebutton.Text = "Save";
+            this.MDTMDFSavebutton.UseVisualStyleBackColor = true;
+            this.MDTMDFSavebutton.Click += new System.EventHandler(this.MDTMDFSavebutton_Click);
+            // 
+            // MDTMDFBundleFilebutton
+            // 
+            this.MDTMDFBundleFilebutton.Location = new System.Drawing.Point(11, 187);
+            this.MDTMDFBundleFilebutton.Name = "MDTMDFBundleFilebutton";
+            this.MDTMDFBundleFilebutton.Size = new System.Drawing.Size(175, 23);
+            this.MDTMDFBundleFilebutton.TabIndex = 8;
+            this.MDTMDFBundleFilebutton.Text = "Select Bundle File";
+            this.MDTMDFBundleFilebutton.UseVisualStyleBackColor = true;
+            this.MDTMDFBundleFilebutton.Click += new System.EventHandler(this.MDTMDFBundleFilebutton_Click);
+            // 
+            // MDTMDFBundleFiletextBox
+            // 
+            this.MDTMDFBundleFiletextBox.Location = new System.Drawing.Point(11, 161);
+            this.MDTMDFBundleFiletextBox.Name = "MDTMDFBundleFiletextBox";
+            this.MDTMDFBundleFiletextBox.Size = new System.Drawing.Size(175, 20);
+            this.MDTMDFBundleFiletextBox.TabIndex = 7;
+            this.MDTMDFBundleFiletextBox.Text = "track.bundle";
+            // 
+            // MDTMDFBundleFilelabel
+            // 
+            this.MDTMDFBundleFilelabel.AutoSize = true;
+            this.MDTMDFBundleFilelabel.Location = new System.Drawing.Point(8, 145);
+            this.MDTMDFBundleFilelabel.Name = "MDTMDFBundleFilelabel";
+            this.MDTMDFBundleFilelabel.Size = new System.Drawing.Size(59, 13);
+            this.MDTMDFBundleFilelabel.TabIndex = 6;
+            this.MDTMDFBundleFilelabel.Text = "Bundle File";
+            // 
+            // MDTMDFTypetextBox
+            // 
+            this.MDTMDFTypetextBox.Location = new System.Drawing.Point(11, 122);
+            this.MDTMDFTypetextBox.Name = "MDTMDFTypetextBox";
+            this.MDTMDFTypetextBox.Size = new System.Drawing.Size(175, 20);
+            this.MDTMDFTypetextBox.TabIndex = 5;
+            this.MDTMDFTypetextBox.Text = "mapModel";
+            // 
+            // MDTMDFTypelabel
+            // 
+            this.MDTMDFTypelabel.AutoSize = true;
+            this.MDTMDFTypelabel.Location = new System.Drawing.Point(8, 106);
+            this.MDTMDFTypelabel.Name = "MDTMDFTypelabel";
+            this.MDTMDFTypelabel.Size = new System.Drawing.Size(31, 13);
+            this.MDTMDFTypelabel.TabIndex = 4;
+            this.MDTMDFTypelabel.Text = "Type";
+            // 
+            // MDTMDFCreditstextBox
+            // 
+            this.MDTMDFCreditstextBox.Location = new System.Drawing.Point(11, 83);
+            this.MDTMDFCreditstextBox.Name = "MDTMDFCreditstextBox";
+            this.MDTMDFCreditstextBox.Size = new System.Drawing.Size(175, 20);
+            this.MDTMDFCreditstextBox.TabIndex = 3;
+            // 
+            // MDTMDFCreditslabel
+            // 
+            this.MDTMDFCreditslabel.AutoSize = true;
+            this.MDTMDFCreditslabel.Location = new System.Drawing.Point(8, 67);
+            this.MDTMDFCreditslabel.Name = "MDTMDFCreditslabel";
+            this.MDTMDFCreditslabel.Size = new System.Drawing.Size(39, 13);
+            this.MDTMDFCreditslabel.TabIndex = 2;
+            this.MDTMDFCreditslabel.Text = "Credits";
+            // 
+            // MDTMDFNametextBox
+            // 
+            this.MDTMDFNametextBox.Location = new System.Drawing.Point(11, 44);
+            this.MDTMDFNametextBox.Name = "MDTMDFNametextBox";
+            this.MDTMDFNametextBox.Size = new System.Drawing.Size(175, 20);
+            this.MDTMDFNametextBox.TabIndex = 1;
+            // 
+            // MDTMDFNamelabel
+            // 
+            this.MDTMDFNamelabel.AutoSize = true;
+            this.MDTMDFNamelabel.Location = new System.Drawing.Point(8, 28);
+            this.MDTMDFNamelabel.Name = "MDTMDFNamelabel";
+            this.MDTMDFNamelabel.Size = new System.Drawing.Size(35, 13);
+            this.MDTMDFNamelabel.TabIndex = 0;
+            this.MDTMDFNamelabel.Text = "Name";
+            // 
+            // MDTSelectedMappanel
+            // 
+            this.MDTSelectedMappanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.MDTSelectedMappanel.Controls.Add(this.panel3);
+            this.MDTSelectedMappanel.Controls.Add(this.MDTSelectedMaplistBox);
+            this.MDTSelectedMappanel.Controls.Add(this.MDTSelectedMaplabel);
+            this.MDTSelectedMappanel.Location = new System.Drawing.Point(301, 82);
+            this.MDTSelectedMappanel.Name = "MDTSelectedMappanel";
+            this.MDTSelectedMappanel.Size = new System.Drawing.Size(255, 338);
+            this.MDTSelectedMappanel.TabIndex = 4;
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Location = new System.Drawing.Point(10, 228);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(229, 100);
+            this.panel3.TabIndex = 29;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(10, 56);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(108, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "not been done either.";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 39);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(194, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "The image preview within the game has";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 7);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(162, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "If I had a picture it would go here";
+            // 
+            // MDTSelectedMaplistBox
+            // 
+            this.MDTSelectedMaplistBox.FormattingEnabled = true;
+            this.MDTSelectedMaplistBox.Location = new System.Drawing.Point(10, 24);
+            this.MDTSelectedMaplistBox.Name = "MDTSelectedMaplistBox";
+            this.MDTSelectedMaplistBox.Size = new System.Drawing.Size(229, 199);
+            this.MDTSelectedMaplistBox.TabIndex = 1;
+            // 
+            // MDTSelectedMaplabel
+            // 
+            this.MDTSelectedMaplabel.AutoSize = true;
+            this.MDTSelectedMaplabel.Location = new System.Drawing.Point(7, 7);
+            this.MDTSelectedMaplabel.Name = "MDTSelectedMaplabel";
+            this.MDTSelectedMaplabel.Size = new System.Drawing.Size(73, 13);
+            this.MDTSelectedMaplabel.TabIndex = 0;
+            this.MDTSelectedMaplabel.Text = "Selected Map";
+            // 
+            // AvailableMapslistBox
+            // 
+            this.AvailableMapslistBox.FormattingEnabled = true;
+            this.AvailableMapslistBox.Location = new System.Drawing.Point(8, 23);
+            this.AvailableMapslistBox.Name = "AvailableMapslistBox";
+            this.AvailableMapslistBox.Size = new System.Drawing.Size(285, 394);
+            this.AvailableMapslistBox.TabIndex = 3;
+            this.AvailableMapslistBox.SelectedIndexChanged += new System.EventHandler(this.AvailableMapslistBox_SelectedIndexChanged);
+            // 
+            // AvailableMapslabel
+            // 
+            this.AvailableMapslabel.AutoSize = true;
+            this.AvailableMapslabel.Location = new System.Drawing.Point(7, 7);
+            this.AvailableMapslabel.Name = "AvailableMapslabel";
+            this.AvailableMapslabel.Size = new System.Drawing.Size(79, 13);
+            this.AvailableMapslabel.TabIndex = 2;
+            this.AvailableMapslabel.Text = "Available Maps";
+            // 
+            // MDTLoadModMapButton
+            // 
+            this.MDTLoadModMapButton.Location = new System.Drawing.Point(455, 23);
+            this.MDTLoadModMapButton.Name = "MDTLoadModMapButton";
+            this.MDTLoadModMapButton.Size = new System.Drawing.Size(100, 23);
+            this.MDTLoadModMapButton.TabIndex = 1;
+            this.MDTLoadModMapButton.Text = "Load A Mod Map";
+            this.MDTLoadModMapButton.UseVisualStyleBackColor = true;
+            this.MDTLoadModMapButton.Click += new System.EventHandler(this.LoadModMapButton_Click);
+            // 
+            // MDTSetGameMapButton
+            // 
+            this.MDTSetGameMapButton.Location = new System.Drawing.Point(299, 23);
+            this.MDTSetGameMapButton.Name = "MDTSetGameMapButton";
+            this.MDTSetGameMapButton.Size = new System.Drawing.Size(150, 23);
+            this.MDTSetGameMapButton.TabIndex = 0;
+            this.MDTSetGameMapButton.Text = "Set Games Maps Directory";
+            this.MDTSetGameMapButton.UseVisualStyleBackColor = true;
+            this.MDTSetGameMapButton.Click += new System.EventHandler(this.SetGameMapButton_Click);
+            // 
+            // SaveGameEditortabPage
+            // 
+            this.SaveGameEditortabPage.Controls.Add(this.textBox1);
+            this.SaveGameEditortabPage.Location = new System.Drawing.Point(4, 22);
+            this.SaveGameEditortabPage.Name = "SaveGameEditortabPage";
+            this.SaveGameEditortabPage.Size = new System.Drawing.Size(1042, 650);
+            this.SaveGameEditortabPage.TabIndex = 5;
+            this.SaveGameEditortabPage.Text = "Save Game Editor";
+            this.SaveGameEditortabPage.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(7, 7);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(490, 159);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 720);
+            this.ClientSize = new System.Drawing.Size(1056, 707);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -4824,6 +5637,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.CDLGloConAnumericUpDown)).EndInit();
             this.CDInteriorpanel.ResumeLayout(false);
             this.CDInteriorpanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CDIWheelScalenumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDISeatHeightModnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDIWheelRotZnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDIWheelRotYnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDIWheelRotXnumericUpDown)).EndInit();
@@ -4903,6 +5718,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.CDP6RotXnumericUpDown)).EndInit();
             this.CDDriveShaftpanel.ResumeLayout(false);
             this.CDDriveShaftpanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CDDPMnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDDSizenumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDDLengthnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDDScalenumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDDPosZnumericUpDown)).EndInit();
@@ -4918,6 +5735,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CDWWheelWidthnumericUpDown)).EndInit();
             this.CDEnginepanel.ResumeLayout(false);
             this.CDEnginepanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CDEPMnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDEScalenumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDEPosZnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDEPosYnumericUpDown)).EndInit();
@@ -4927,6 +5745,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CDERotXnumericUpDown)).EndInit();
             this.CDSuspensionpanel.ResumeLayout(false);
             this.CDSuspensionpanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CDSSidesFlipnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDSScalenumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDSFrontSpringLengthnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDSRearTracknumericUpDown)).EndInit();
@@ -4936,6 +5755,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.CDSFrontAxleStartnumericUpDown)).EndInit();
             this.CDOpanel.ResumeLayout(false);
             this.CDOpanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CDODoorAnglenumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDOLifterArmsAnglenumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDOSpeedoFactornumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDOPowernumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDOCXNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDOSpeedoAnglenumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDOLifterArmsRisenumericUpDown)).EndInit();
@@ -4953,12 +5776,31 @@
             ((System.ComponentModel.ISupportInitialize)(this.CarDataThumbNailPictureBox)).EndInit();
             this.EngineDataTabPage.ResumeLayout(false);
             this.EngineDataTabPage.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxRPMLabelNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTminRPMLabelNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxTorqueRPMNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxPowerRPMNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxPowerNumericUpDown)).EndInit();
+            this.TireDatatabPage.ResumeLayout(false);
+            this.TireDatatabPage.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TDTPricenumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TDTGripModnumericUpDown)).EndInit();
             this.MapDataTabPage.ResumeLayout(false);
+            this.MapDataTabPage.PerformLayout();
+            this.MDTMapDataFilepanel.ResumeLayout(false);
+            this.MDTMapDataFilepanel.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.MDTSelectedMappanel.ResumeLayout(false);
+            this.MDTSelectedMappanel.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.SaveGameEditortabPage.ResumeLayout(false);
+            this.SaveGameEditortabPage.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4989,8 +5831,8 @@
         private System.Windows.Forms.Label AvailableCarsDataLabel;
         private System.Windows.Forms.ComboBox AvailableCarsDataComboBox;
         private System.Windows.Forms.TabPage MapDataTabPage;
-        private System.Windows.Forms.Button SetGameMapButton;
-        private System.Windows.Forms.Button LoadModMapButton;
+        private System.Windows.Forms.Button MDTSetGameMapButton;
+        private System.Windows.Forms.Button MDTLoadModMapButton;
         private System.Windows.Forms.NumericUpDown EDTmaxPowerNumericUpDown;
         private System.Windows.Forms.Label EDTmaxPowerLabel;
         private System.Windows.Forms.Button EDTCommitButton;
@@ -5103,7 +5945,6 @@
         private System.Windows.Forms.Label CDEScalelabel;
         private System.Windows.Forms.TextBox CDESoundtextBox;
         private System.Windows.Forms.Label CDESoundlabel;
-        private System.Windows.Forms.TextBox CDETypetextBox;
         private System.Windows.Forms.Label CDETypelabel;
         private System.Windows.Forms.Panel CDWheelspanel;
         private System.Windows.Forms.Panel CDDriveShaftpanel;
@@ -5133,7 +5974,6 @@
         private System.Windows.Forms.Label CDWWheelWidthlabel;
         private System.Windows.Forms.TextBox CDWRimtextBox;
         private System.Windows.Forms.Label CDWRimlabel;
-        private System.Windows.Forms.TextBox CDWTiretextBox;
         private System.Windows.Forms.Label CDWTirelabel;
         private System.Windows.Forms.NumericUpDown CDWTireSizenumericUpDown;
         private System.Windows.Forms.Label CDWTireSizelabel;
@@ -5333,6 +6173,78 @@
         private System.Windows.Forms.NumericUpDown CDP6RotZnumericUpDown;
         private System.Windows.Forms.NumericUpDown CDP6RotYnumericUpDown;
         private System.Windows.Forms.NumericUpDown CDP6RotXnumericUpDown;
+        private System.Windows.Forms.NumericUpDown CDDSizenumericUpDown;
+        private System.Windows.Forms.Label CDDSizelabel;
+        private System.Windows.Forms.NumericUpDown CDSSidesFlipnumericUpDown;
+        private System.Windows.Forms.Label CDSSidesFliplabel;
+        private System.Windows.Forms.TextBox CDSFrontLeftSettextBox;
+        private System.Windows.Forms.Label CDSFrontLeftSetlabel;
+        private System.Windows.Forms.TextBox CDSrearLeftSettextBox;
+        private System.Windows.Forms.Label CDSrearLeftSetlabel;
+        private System.Windows.Forms.NumericUpDown CDOPowernumericUpDown;
+        private System.Windows.Forms.Label CDSPowerlabel;
+        private System.Windows.Forms.NumericUpDown CDOSpeedoFactornumericUpDown;
+        private System.Windows.Forms.Label CDOSpeedoFactorlabel;
+        private System.Windows.Forms.NumericUpDown CDOLifterArmsAnglenumericUpDown;
+        private System.Windows.Forms.Label CDOLifterArmsAnglelabel;
+        private System.Windows.Forms.NumericUpDown CDODoorAnglenumericUpDown;
+        private System.Windows.Forms.Label CDODoorAnglelabel;
+        private System.Windows.Forms.TextBox CDWRimCaptextBox;
+        private System.Windows.Forms.Label CDWRimCaplabel;
+        private System.Windows.Forms.NumericUpDown CDISeatHeightModnumericUpDown;
+        private System.Windows.Forms.Label CDISeatHeightModlabel;
+        private System.Windows.Forms.NumericUpDown CDIWheelScalenumericUpDown;
+        private System.Windows.Forms.Label CDIWheelScalelabel;
+        private System.Windows.Forms.NumericUpDown CDEPMnumericUpDown;
+        private System.Windows.Forms.Label CDEPMlabel;
+        private System.Windows.Forms.Button CDEEngineSwapOptionsbutton;
+        private System.Windows.Forms.NumericUpDown CDDPMnumericUpDown;
+        private System.Windows.Forms.Label CDDPMlabel;
+        private System.Windows.Forms.TabPage TireDatatabPage;
+        private System.Windows.Forms.Button TDTResetbutton;
+        private System.Windows.Forms.NumericUpDown TDTPricenumericUpDown;
+        private System.Windows.Forms.Label TDTPricelabel;
+        private System.Windows.Forms.NumericUpDown TDTGripModnumericUpDown;
+        private System.Windows.Forms.Label TDTGripModlabel;
+        private System.Windows.Forms.Button TDTCommitbutton;
+        private System.Windows.Forms.ComboBox AvailableTirescomboBox;
+        private System.Windows.Forms.Label AvailableTireslabel;
+        private System.Windows.Forms.Label AvailableMapslabel;
+        private System.Windows.Forms.ListBox AvailableMapslistBox;
+        private System.Windows.Forms.Panel MDTSelectedMappanel;
+        private System.Windows.Forms.Label MDTSelectedMaplabel;
+        private System.Windows.Forms.ListBox MDTSelectedMaplistBox;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel MDTMapDataFilepanel;
+        private System.Windows.Forms.Label MapDataMapDataFilelabel;
+        private System.Windows.Forms.Label MDTMDFNamelabel;
+        private System.Windows.Forms.TextBox MDTMDFNametextBox;
+        private System.Windows.Forms.TextBox MDTMDFBundleFiletextBox;
+        private System.Windows.Forms.Label MDTMDFBundleFilelabel;
+        private System.Windows.Forms.TextBox MDTMDFTypetextBox;
+        private System.Windows.Forms.Label MDTMDFTypelabel;
+        private System.Windows.Forms.TextBox MDTMDFCreditstextBox;
+        private System.Windows.Forms.Label MDTMDFCreditslabel;
+        private System.Windows.Forms.Button MDTMDFBundleFilebutton;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button MDTMDFSavebutton;
+        private System.Windows.Forms.Button MDTMDFResetbutton;
+        private System.Windows.Forms.Button MDTMDFOpenbutton;
+        private System.Windows.Forms.TabPage SaveGameEditortabPage;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox CDETypecomboBox;
+        private System.Windows.Forms.Button MDTRefreshbutton;
+        private System.Windows.Forms.Button DeleteMapbutton;
+        private System.Windows.Forms.ComboBox CDWTirecomboBox;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
