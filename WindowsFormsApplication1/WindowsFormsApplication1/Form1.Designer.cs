@@ -255,6 +255,63 @@
             this.CDP6RotZnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDP6RotYnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDP6RotXnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP7tabPage = new System.Windows.Forms.TabPage();
+            this.CDP7NametextBox = new System.Windows.Forms.TextBox();
+            this.CDP7Namelabel = new System.Windows.Forms.Label();
+            this.CDP7ScalenumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP7Scalelabel = new System.Windows.Forms.Label();
+            this.CDP7PosZlabel = new System.Windows.Forms.Label();
+            this.CDP7PosYlabel = new System.Windows.Forms.Label();
+            this.CDP7PosXlabel = new System.Windows.Forms.Label();
+            this.CDP7Poslabel = new System.Windows.Forms.Label();
+            this.CDP7PosZnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP7PosYnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP7PosXnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP7RotZlabel = new System.Windows.Forms.Label();
+            this.CDP7RotYlabel = new System.Windows.Forms.Label();
+            this.CDP7RotXlabel = new System.Windows.Forms.Label();
+            this.CDP7Rotlabel = new System.Windows.Forms.Label();
+            this.CDP7RotZnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP7RotYnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP7RotXnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP8tabPage = new System.Windows.Forms.TabPage();
+            this.CDP8NametextBox = new System.Windows.Forms.TextBox();
+            this.CDP8Namelabel = new System.Windows.Forms.Label();
+            this.CDP8ScalenumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP8Scalelabel = new System.Windows.Forms.Label();
+            this.CDP8PosZlabel = new System.Windows.Forms.Label();
+            this.CDP8PosYlabel = new System.Windows.Forms.Label();
+            this.CDP8PosXlabel = new System.Windows.Forms.Label();
+            this.CDP8Poslabel = new System.Windows.Forms.Label();
+            this.CDP8PosZnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP8PosYnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP8PosXnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP8RotZlabel = new System.Windows.Forms.Label();
+            this.CDP8RotYlabel = new System.Windows.Forms.Label();
+            this.CDP8RotXlabel = new System.Windows.Forms.Label();
+            this.CDP8Rotlabel = new System.Windows.Forms.Label();
+            this.CDP8RotZnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP8RotYnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP8RotXnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP9tabPage = new System.Windows.Forms.TabPage();
+            this.CDP9NametextBox = new System.Windows.Forms.TextBox();
+            this.CDP9Namelabel = new System.Windows.Forms.Label();
+            this.CDP9ScalenumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP9Scalelabel = new System.Windows.Forms.Label();
+            this.CDP9PosZlabel = new System.Windows.Forms.Label();
+            this.CDP9PosYlabel = new System.Windows.Forms.Label();
+            this.CDP9PosXlabel = new System.Windows.Forms.Label();
+            this.CDP9Poslabel = new System.Windows.Forms.Label();
+            this.CDP9PosZnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP9PosYnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP9PosXnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP9RotZlabel = new System.Windows.Forms.Label();
+            this.CDP9RotYlabel = new System.Windows.Forms.Label();
+            this.CDP9RotXlabel = new System.Windows.Forms.Label();
+            this.CDP9Rotlabel = new System.Windows.Forms.Label();
+            this.CDP9RotZnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP9RotYnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDP9RotXnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDDriveShaftpanel = new System.Windows.Forms.Panel();
             this.CDDPMnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDDPMlabel = new System.Windows.Forms.Label();
@@ -469,6 +526,8 @@
             this.SaveGameEditortabPage = new System.Windows.Forms.TabPage();
             this.SaveGameEditorTabtabControl = new System.Windows.Forms.TabControl();
             this.SGETGlobaltabPage = new System.Windows.Forms.TabPage();
+            this.SGETGProfilecomboBox = new System.Windows.Forms.ComboBox();
+            this.SGETGProfilelabel = new System.Windows.Forms.Label();
             this.SGETGMoneynumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.SGETGMoneylabel = new System.Windows.Forms.Label();
             this.SGETGXPnumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -498,8 +557,6 @@
             this.SGETGLoadbutton = new System.Windows.Forms.Button();
             this.SGETHelpWantedtabPage = new System.Windows.Forms.TabPage();
             this.SGETHelpWantedtextBox = new System.Windows.Forms.TextBox();
-            this.SGETGProfilelabel = new System.Windows.Forms.Label();
-            this.SGETGProfilecomboBox = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.CarsListTabPage.SuspendLayout();
@@ -585,6 +642,30 @@
             ((System.ComponentModel.ISupportInitialize)(this.CDP6RotZnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDP6RotYnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDP6RotXnumericUpDown)).BeginInit();
+            this.CDP7tabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP7ScalenumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP7PosZnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP7PosYnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP7PosXnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP7RotZnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP7RotYnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP7RotXnumericUpDown)).BeginInit();
+            this.CDP8tabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP8ScalenumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP8PosZnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP8PosYnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP8PosXnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP8RotZnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP8RotYnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP8RotXnumericUpDown)).BeginInit();
+            this.CDP9tabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP9ScalenumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP9PosZnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP9PosYnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP9PosXnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP9RotZnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP9RotYnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP9RotXnumericUpDown)).BeginInit();
             this.CDDriveShaftpanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CDDPMnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDDSizenumericUpDown)).BeginInit();
@@ -1718,6 +1799,9 @@
             this.CDPartstabControl.Controls.Add(this.CDP4tabPage);
             this.CDPartstabControl.Controls.Add(this.CDP5tabPage);
             this.CDPartstabControl.Controls.Add(this.CDP6tabPage);
+            this.CDPartstabControl.Controls.Add(this.CDP7tabPage);
+            this.CDPartstabControl.Controls.Add(this.CDP8tabPage);
+            this.CDPartstabControl.Controls.Add(this.CDP9tabPage);
             this.CDPartstabControl.Location = new System.Drawing.Point(629, 50);
             this.CDPartstabControl.Name = "CDPartstabControl";
             this.CDPartstabControl.SelectedIndex = 0;
@@ -3407,6 +3491,726 @@
             this.CDP6RotXnumericUpDown.Size = new System.Drawing.Size(59, 20);
             this.CDP6RotXnumericUpDown.TabIndex = 67;
             // 
+            // CDP7tabPage
+            // 
+            this.CDP7tabPage.Controls.Add(this.CDP7NametextBox);
+            this.CDP7tabPage.Controls.Add(this.CDP7Namelabel);
+            this.CDP7tabPage.Controls.Add(this.CDP7ScalenumericUpDown);
+            this.CDP7tabPage.Controls.Add(this.CDP7Scalelabel);
+            this.CDP7tabPage.Controls.Add(this.CDP7PosZlabel);
+            this.CDP7tabPage.Controls.Add(this.CDP7PosYlabel);
+            this.CDP7tabPage.Controls.Add(this.CDP7PosXlabel);
+            this.CDP7tabPage.Controls.Add(this.CDP7Poslabel);
+            this.CDP7tabPage.Controls.Add(this.CDP7PosZnumericUpDown);
+            this.CDP7tabPage.Controls.Add(this.CDP7PosYnumericUpDown);
+            this.CDP7tabPage.Controls.Add(this.CDP7PosXnumericUpDown);
+            this.CDP7tabPage.Controls.Add(this.CDP7RotZlabel);
+            this.CDP7tabPage.Controls.Add(this.CDP7RotYlabel);
+            this.CDP7tabPage.Controls.Add(this.CDP7RotXlabel);
+            this.CDP7tabPage.Controls.Add(this.CDP7Rotlabel);
+            this.CDP7tabPage.Controls.Add(this.CDP7RotZnumericUpDown);
+            this.CDP7tabPage.Controls.Add(this.CDP7RotYnumericUpDown);
+            this.CDP7tabPage.Controls.Add(this.CDP7RotXnumericUpDown);
+            this.CDP7tabPage.Location = new System.Drawing.Point(4, 22);
+            this.CDP7tabPage.Name = "CDP7tabPage";
+            this.CDP7tabPage.Size = new System.Drawing.Size(403, 84);
+            this.CDP7tabPage.TabIndex = 6;
+            this.CDP7tabPage.Text = "Parts7";
+            this.CDP7tabPage.UseVisualStyleBackColor = true;
+            // 
+            // CDP7NametextBox
+            // 
+            this.CDP7NametextBox.Location = new System.Drawing.Point(68, 4);
+            this.CDP7NametextBox.Name = "CDP7NametextBox";
+            this.CDP7NametextBox.Size = new System.Drawing.Size(100, 20);
+            this.CDP7NametextBox.TabIndex = 84;
+            // 
+            // CDP7Namelabel
+            // 
+            this.CDP7Namelabel.AutoSize = true;
+            this.CDP7Namelabel.Location = new System.Drawing.Point(3, 7);
+            this.CDP7Namelabel.Name = "CDP7Namelabel";
+            this.CDP7Namelabel.Size = new System.Drawing.Size(35, 13);
+            this.CDP7Namelabel.TabIndex = 83;
+            this.CDP7Namelabel.Text = "Name";
+            // 
+            // CDP7ScalenumericUpDown
+            // 
+            this.CDP7ScalenumericUpDown.DecimalPlaces = 2;
+            this.CDP7ScalenumericUpDown.Location = new System.Drawing.Point(266, 6);
+            this.CDP7ScalenumericUpDown.Name = "CDP7ScalenumericUpDown";
+            this.CDP7ScalenumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP7ScalenumericUpDown.TabIndex = 82;
+            // 
+            // CDP7Scalelabel
+            // 
+            this.CDP7Scalelabel.AutoSize = true;
+            this.CDP7Scalelabel.Location = new System.Drawing.Point(203, 8);
+            this.CDP7Scalelabel.Name = "CDP7Scalelabel";
+            this.CDP7Scalelabel.Size = new System.Drawing.Size(34, 13);
+            this.CDP7Scalelabel.TabIndex = 81;
+            this.CDP7Scalelabel.Text = "Scale";
+            // 
+            // CDP7PosZlabel
+            // 
+            this.CDP7PosZlabel.AutoSize = true;
+            this.CDP7PosZlabel.Location = new System.Drawing.Point(333, 39);
+            this.CDP7PosZlabel.Name = "CDP7PosZlabel";
+            this.CDP7PosZlabel.Size = new System.Drawing.Size(14, 13);
+            this.CDP7PosZlabel.TabIndex = 80;
+            this.CDP7PosZlabel.Text = "Z";
+            // 
+            // CDP7PosYlabel
+            // 
+            this.CDP7PosYlabel.AutoSize = true;
+            this.CDP7PosYlabel.Location = new System.Drawing.Point(268, 39);
+            this.CDP7PosYlabel.Name = "CDP7PosYlabel";
+            this.CDP7PosYlabel.Size = new System.Drawing.Size(14, 13);
+            this.CDP7PosYlabel.TabIndex = 79;
+            this.CDP7PosYlabel.Text = "Y";
+            // 
+            // CDP7PosXlabel
+            // 
+            this.CDP7PosXlabel.AutoSize = true;
+            this.CDP7PosXlabel.Location = new System.Drawing.Point(203, 39);
+            this.CDP7PosXlabel.Name = "CDP7PosXlabel";
+            this.CDP7PosXlabel.Size = new System.Drawing.Size(14, 13);
+            this.CDP7PosXlabel.TabIndex = 78;
+            this.CDP7PosXlabel.Text = "X";
+            // 
+            // CDP7Poslabel
+            // 
+            this.CDP7Poslabel.AutoSize = true;
+            this.CDP7Poslabel.Location = new System.Drawing.Point(203, 26);
+            this.CDP7Poslabel.Name = "CDP7Poslabel";
+            this.CDP7Poslabel.Size = new System.Drawing.Size(44, 13);
+            this.CDP7Poslabel.TabIndex = 77;
+            this.CDP7Poslabel.Text = "Position";
+            // 
+            // CDP7PosZnumericUpDown
+            // 
+            this.CDP7PosZnumericUpDown.DecimalPlaces = 5;
+            this.CDP7PosZnumericUpDown.Location = new System.Drawing.Point(333, 55);
+            this.CDP7PosZnumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.CDP7PosZnumericUpDown.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.CDP7PosZnumericUpDown.Name = "CDP7PosZnumericUpDown";
+            this.CDP7PosZnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP7PosZnumericUpDown.TabIndex = 76;
+            // 
+            // CDP7PosYnumericUpDown
+            // 
+            this.CDP7PosYnumericUpDown.DecimalPlaces = 5;
+            this.CDP7PosYnumericUpDown.Location = new System.Drawing.Point(268, 55);
+            this.CDP7PosYnumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.CDP7PosYnumericUpDown.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.CDP7PosYnumericUpDown.Name = "CDP7PosYnumericUpDown";
+            this.CDP7PosYnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP7PosYnumericUpDown.TabIndex = 75;
+            // 
+            // CDP7PosXnumericUpDown
+            // 
+            this.CDP7PosXnumericUpDown.DecimalPlaces = 5;
+            this.CDP7PosXnumericUpDown.Location = new System.Drawing.Point(203, 55);
+            this.CDP7PosXnumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.CDP7PosXnumericUpDown.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.CDP7PosXnumericUpDown.Name = "CDP7PosXnumericUpDown";
+            this.CDP7PosXnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP7PosXnumericUpDown.TabIndex = 74;
+            // 
+            // CDP7RotZlabel
+            // 
+            this.CDP7RotZlabel.AutoSize = true;
+            this.CDP7RotZlabel.Location = new System.Drawing.Point(132, 39);
+            this.CDP7RotZlabel.Name = "CDP7RotZlabel";
+            this.CDP7RotZlabel.Size = new System.Drawing.Size(14, 13);
+            this.CDP7RotZlabel.TabIndex = 73;
+            this.CDP7RotZlabel.Text = "Z";
+            // 
+            // CDP7RotYlabel
+            // 
+            this.CDP7RotYlabel.AutoSize = true;
+            this.CDP7RotYlabel.Location = new System.Drawing.Point(67, 39);
+            this.CDP7RotYlabel.Name = "CDP7RotYlabel";
+            this.CDP7RotYlabel.Size = new System.Drawing.Size(14, 13);
+            this.CDP7RotYlabel.TabIndex = 72;
+            this.CDP7RotYlabel.Text = "Y";
+            // 
+            // CDP7RotXlabel
+            // 
+            this.CDP7RotXlabel.AutoSize = true;
+            this.CDP7RotXlabel.Location = new System.Drawing.Point(3, 39);
+            this.CDP7RotXlabel.Name = "CDP7RotXlabel";
+            this.CDP7RotXlabel.Size = new System.Drawing.Size(14, 13);
+            this.CDP7RotXlabel.TabIndex = 71;
+            this.CDP7RotXlabel.Text = "X";
+            // 
+            // CDP7Rotlabel
+            // 
+            this.CDP7Rotlabel.AutoSize = true;
+            this.CDP7Rotlabel.Location = new System.Drawing.Point(3, 26);
+            this.CDP7Rotlabel.Name = "CDP7Rotlabel";
+            this.CDP7Rotlabel.Size = new System.Drawing.Size(47, 13);
+            this.CDP7Rotlabel.TabIndex = 70;
+            this.CDP7Rotlabel.Text = "Rotation";
+            // 
+            // CDP7RotZnumericUpDown
+            // 
+            this.CDP7RotZnumericUpDown.DecimalPlaces = 5;
+            this.CDP7RotZnumericUpDown.Location = new System.Drawing.Point(132, 55);
+            this.CDP7RotZnumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.CDP7RotZnumericUpDown.Minimum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            -2147483648});
+            this.CDP7RotZnumericUpDown.Name = "CDP7RotZnumericUpDown";
+            this.CDP7RotZnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP7RotZnumericUpDown.TabIndex = 69;
+            // 
+            // CDP7RotYnumericUpDown
+            // 
+            this.CDP7RotYnumericUpDown.DecimalPlaces = 5;
+            this.CDP7RotYnumericUpDown.Location = new System.Drawing.Point(67, 55);
+            this.CDP7RotYnumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.CDP7RotYnumericUpDown.Minimum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            -2147483648});
+            this.CDP7RotYnumericUpDown.Name = "CDP7RotYnumericUpDown";
+            this.CDP7RotYnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP7RotYnumericUpDown.TabIndex = 68;
+            // 
+            // CDP7RotXnumericUpDown
+            // 
+            this.CDP7RotXnumericUpDown.DecimalPlaces = 5;
+            this.CDP7RotXnumericUpDown.Location = new System.Drawing.Point(3, 55);
+            this.CDP7RotXnumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.CDP7RotXnumericUpDown.Minimum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            -2147483648});
+            this.CDP7RotXnumericUpDown.Name = "CDP7RotXnumericUpDown";
+            this.CDP7RotXnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP7RotXnumericUpDown.TabIndex = 67;
+            // 
+            // CDP8tabPage
+            // 
+            this.CDP8tabPage.Controls.Add(this.CDP8NametextBox);
+            this.CDP8tabPage.Controls.Add(this.CDP8Namelabel);
+            this.CDP8tabPage.Controls.Add(this.CDP8ScalenumericUpDown);
+            this.CDP8tabPage.Controls.Add(this.CDP8Scalelabel);
+            this.CDP8tabPage.Controls.Add(this.CDP8PosZlabel);
+            this.CDP8tabPage.Controls.Add(this.CDP8PosYlabel);
+            this.CDP8tabPage.Controls.Add(this.CDP8PosXlabel);
+            this.CDP8tabPage.Controls.Add(this.CDP8Poslabel);
+            this.CDP8tabPage.Controls.Add(this.CDP8PosZnumericUpDown);
+            this.CDP8tabPage.Controls.Add(this.CDP8PosYnumericUpDown);
+            this.CDP8tabPage.Controls.Add(this.CDP8PosXnumericUpDown);
+            this.CDP8tabPage.Controls.Add(this.CDP8RotZlabel);
+            this.CDP8tabPage.Controls.Add(this.CDP8RotYlabel);
+            this.CDP8tabPage.Controls.Add(this.CDP8RotXlabel);
+            this.CDP8tabPage.Controls.Add(this.CDP8Rotlabel);
+            this.CDP8tabPage.Controls.Add(this.CDP8RotZnumericUpDown);
+            this.CDP8tabPage.Controls.Add(this.CDP8RotYnumericUpDown);
+            this.CDP8tabPage.Controls.Add(this.CDP8RotXnumericUpDown);
+            this.CDP8tabPage.Location = new System.Drawing.Point(4, 22);
+            this.CDP8tabPage.Name = "CDP8tabPage";
+            this.CDP8tabPage.Size = new System.Drawing.Size(403, 84);
+            this.CDP8tabPage.TabIndex = 6;
+            this.CDP8tabPage.Text = "Parts8";
+            this.CDP8tabPage.UseVisualStyleBackColor = true;
+            // 
+            // CDP8NametextBox
+            // 
+            this.CDP8NametextBox.Location = new System.Drawing.Point(68, 4);
+            this.CDP8NametextBox.Name = "CDP8NametextBox";
+            this.CDP8NametextBox.Size = new System.Drawing.Size(100, 20);
+            this.CDP8NametextBox.TabIndex = 84;
+            // 
+            // CDP8Namelabel
+            // 
+            this.CDP8Namelabel.AutoSize = true;
+            this.CDP8Namelabel.Location = new System.Drawing.Point(3, 7);
+            this.CDP8Namelabel.Name = "CDP8Namelabel";
+            this.CDP8Namelabel.Size = new System.Drawing.Size(35, 13);
+            this.CDP8Namelabel.TabIndex = 83;
+            this.CDP8Namelabel.Text = "Name";
+            // 
+            // CDP8ScalenumericUpDown
+            // 
+            this.CDP8ScalenumericUpDown.DecimalPlaces = 2;
+            this.CDP8ScalenumericUpDown.Location = new System.Drawing.Point(266, 6);
+            this.CDP8ScalenumericUpDown.Name = "CDP8ScalenumericUpDown";
+            this.CDP8ScalenumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP8ScalenumericUpDown.TabIndex = 82;
+            // 
+            // CDP8Scalelabel
+            // 
+            this.CDP8Scalelabel.AutoSize = true;
+            this.CDP8Scalelabel.Location = new System.Drawing.Point(203, 8);
+            this.CDP8Scalelabel.Name = "CDP8Scalelabel";
+            this.CDP8Scalelabel.Size = new System.Drawing.Size(34, 13);
+            this.CDP8Scalelabel.TabIndex = 81;
+            this.CDP8Scalelabel.Text = "Scale";
+            // 
+            // CDP8PosZlabel
+            // 
+            this.CDP8PosZlabel.AutoSize = true;
+            this.CDP8PosZlabel.Location = new System.Drawing.Point(333, 39);
+            this.CDP8PosZlabel.Name = "CDP8PosZlabel";
+            this.CDP8PosZlabel.Size = new System.Drawing.Size(14, 13);
+            this.CDP8PosZlabel.TabIndex = 80;
+            this.CDP8PosZlabel.Text = "Z";
+            // 
+            // CDP8PosYlabel
+            // 
+            this.CDP8PosYlabel.AutoSize = true;
+            this.CDP8PosYlabel.Location = new System.Drawing.Point(268, 39);
+            this.CDP8PosYlabel.Name = "CDP8PosYlabel";
+            this.CDP8PosYlabel.Size = new System.Drawing.Size(14, 13);
+            this.CDP8PosYlabel.TabIndex = 79;
+            this.CDP8PosYlabel.Text = "Y";
+            // 
+            // CDP8PosXlabel
+            // 
+            this.CDP8PosXlabel.AutoSize = true;
+            this.CDP8PosXlabel.Location = new System.Drawing.Point(203, 39);
+            this.CDP8PosXlabel.Name = "CDP8PosXlabel";
+            this.CDP8PosXlabel.Size = new System.Drawing.Size(14, 13);
+            this.CDP8PosXlabel.TabIndex = 78;
+            this.CDP8PosXlabel.Text = "X";
+            // 
+            // CDP8Poslabel
+            // 
+            this.CDP8Poslabel.AutoSize = true;
+            this.CDP8Poslabel.Location = new System.Drawing.Point(203, 26);
+            this.CDP8Poslabel.Name = "CDP8Poslabel";
+            this.CDP8Poslabel.Size = new System.Drawing.Size(44, 13);
+            this.CDP8Poslabel.TabIndex = 77;
+            this.CDP8Poslabel.Text = "Position";
+            // 
+            // CDP8PosZnumericUpDown
+            // 
+            this.CDP8PosZnumericUpDown.DecimalPlaces = 5;
+            this.CDP8PosZnumericUpDown.Location = new System.Drawing.Point(333, 55);
+            this.CDP8PosZnumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.CDP8PosZnumericUpDown.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.CDP8PosZnumericUpDown.Name = "CDP8PosZnumericUpDown";
+            this.CDP8PosZnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP8PosZnumericUpDown.TabIndex = 76;
+            // 
+            // CDP8PosYnumericUpDown
+            // 
+            this.CDP8PosYnumericUpDown.DecimalPlaces = 5;
+            this.CDP8PosYnumericUpDown.Location = new System.Drawing.Point(268, 55);
+            this.CDP8PosYnumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.CDP8PosYnumericUpDown.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.CDP8PosYnumericUpDown.Name = "CDP8PosYnumericUpDown";
+            this.CDP8PosYnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP8PosYnumericUpDown.TabIndex = 75;
+            // 
+            // CDP8PosXnumericUpDown
+            // 
+            this.CDP8PosXnumericUpDown.DecimalPlaces = 5;
+            this.CDP8PosXnumericUpDown.Location = new System.Drawing.Point(203, 55);
+            this.CDP8PosXnumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.CDP8PosXnumericUpDown.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.CDP8PosXnumericUpDown.Name = "CDP8PosXnumericUpDown";
+            this.CDP8PosXnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP8PosXnumericUpDown.TabIndex = 74;
+            // 
+            // CDP8RotZlabel
+            // 
+            this.CDP8RotZlabel.AutoSize = true;
+            this.CDP8RotZlabel.Location = new System.Drawing.Point(132, 39);
+            this.CDP8RotZlabel.Name = "CDP8RotZlabel";
+            this.CDP8RotZlabel.Size = new System.Drawing.Size(14, 13);
+            this.CDP8RotZlabel.TabIndex = 73;
+            this.CDP8RotZlabel.Text = "Z";
+            // 
+            // CDP8RotYlabel
+            // 
+            this.CDP8RotYlabel.AutoSize = true;
+            this.CDP8RotYlabel.Location = new System.Drawing.Point(67, 39);
+            this.CDP8RotYlabel.Name = "CDP8RotYlabel";
+            this.CDP8RotYlabel.Size = new System.Drawing.Size(14, 13);
+            this.CDP8RotYlabel.TabIndex = 72;
+            this.CDP8RotYlabel.Text = "Y";
+            // 
+            // CDP8RotXlabel
+            // 
+            this.CDP8RotXlabel.AutoSize = true;
+            this.CDP8RotXlabel.Location = new System.Drawing.Point(3, 39);
+            this.CDP8RotXlabel.Name = "CDP8RotXlabel";
+            this.CDP8RotXlabel.Size = new System.Drawing.Size(14, 13);
+            this.CDP8RotXlabel.TabIndex = 71;
+            this.CDP8RotXlabel.Text = "X";
+            // 
+            // CDP8Rotlabel
+            // 
+            this.CDP8Rotlabel.AutoSize = true;
+            this.CDP8Rotlabel.Location = new System.Drawing.Point(3, 26);
+            this.CDP8Rotlabel.Name = "CDP8Rotlabel";
+            this.CDP8Rotlabel.Size = new System.Drawing.Size(47, 13);
+            this.CDP8Rotlabel.TabIndex = 70;
+            this.CDP8Rotlabel.Text = "Rotation";
+            // 
+            // CDP8RotZnumericUpDown
+            // 
+            this.CDP8RotZnumericUpDown.DecimalPlaces = 5;
+            this.CDP8RotZnumericUpDown.Location = new System.Drawing.Point(132, 55);
+            this.CDP8RotZnumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.CDP8RotZnumericUpDown.Minimum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            -2147483648});
+            this.CDP8RotZnumericUpDown.Name = "CDP8RotZnumericUpDown";
+            this.CDP8RotZnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP8RotZnumericUpDown.TabIndex = 69;
+            // 
+            // CDP8RotYnumericUpDown
+            // 
+            this.CDP8RotYnumericUpDown.DecimalPlaces = 5;
+            this.CDP8RotYnumericUpDown.Location = new System.Drawing.Point(67, 55);
+            this.CDP8RotYnumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.CDP8RotYnumericUpDown.Minimum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            -2147483648});
+            this.CDP8RotYnumericUpDown.Name = "CDP8RotYnumericUpDown";
+            this.CDP8RotYnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP8RotYnumericUpDown.TabIndex = 68;
+            // 
+            // CDP8RotXnumericUpDown
+            // 
+            this.CDP8RotXnumericUpDown.DecimalPlaces = 5;
+            this.CDP8RotXnumericUpDown.Location = new System.Drawing.Point(3, 55);
+            this.CDP8RotXnumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.CDP8RotXnumericUpDown.Minimum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            -2147483648});
+            this.CDP8RotXnumericUpDown.Name = "CDP8RotXnumericUpDown";
+            this.CDP8RotXnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP8RotXnumericUpDown.TabIndex = 67;
+            // 
+            // CDP9tabPage
+            // 
+            this.CDP9tabPage.Controls.Add(this.CDP9NametextBox);
+            this.CDP9tabPage.Controls.Add(this.CDP9Namelabel);
+            this.CDP9tabPage.Controls.Add(this.CDP9ScalenumericUpDown);
+            this.CDP9tabPage.Controls.Add(this.CDP9Scalelabel);
+            this.CDP9tabPage.Controls.Add(this.CDP9PosZlabel);
+            this.CDP9tabPage.Controls.Add(this.CDP9PosYlabel);
+            this.CDP9tabPage.Controls.Add(this.CDP9PosXlabel);
+            this.CDP9tabPage.Controls.Add(this.CDP9Poslabel);
+            this.CDP9tabPage.Controls.Add(this.CDP9PosZnumericUpDown);
+            this.CDP9tabPage.Controls.Add(this.CDP9PosYnumericUpDown);
+            this.CDP9tabPage.Controls.Add(this.CDP9PosXnumericUpDown);
+            this.CDP9tabPage.Controls.Add(this.CDP9RotZlabel);
+            this.CDP9tabPage.Controls.Add(this.CDP9RotYlabel);
+            this.CDP9tabPage.Controls.Add(this.CDP9RotXlabel);
+            this.CDP9tabPage.Controls.Add(this.CDP9Rotlabel);
+            this.CDP9tabPage.Controls.Add(this.CDP9RotZnumericUpDown);
+            this.CDP9tabPage.Controls.Add(this.CDP9RotYnumericUpDown);
+            this.CDP9tabPage.Controls.Add(this.CDP9RotXnumericUpDown);
+            this.CDP9tabPage.Location = new System.Drawing.Point(4, 22);
+            this.CDP9tabPage.Name = "CDP9tabPage";
+            this.CDP9tabPage.Size = new System.Drawing.Size(403, 84);
+            this.CDP9tabPage.TabIndex = 6;
+            this.CDP9tabPage.Text = "Parts9";
+            this.CDP9tabPage.UseVisualStyleBackColor = true;
+            // 
+            // CDP9NametextBox
+            // 
+            this.CDP9NametextBox.Location = new System.Drawing.Point(68, 4);
+            this.CDP9NametextBox.Name = "CDP9NametextBox";
+            this.CDP9NametextBox.Size = new System.Drawing.Size(100, 20);
+            this.CDP9NametextBox.TabIndex = 84;
+            // 
+            // CDP9Namelabel
+            // 
+            this.CDP9Namelabel.AutoSize = true;
+            this.CDP9Namelabel.Location = new System.Drawing.Point(3, 7);
+            this.CDP9Namelabel.Name = "CDP9Namelabel";
+            this.CDP9Namelabel.Size = new System.Drawing.Size(35, 13);
+            this.CDP9Namelabel.TabIndex = 83;
+            this.CDP9Namelabel.Text = "Name";
+            // 
+            // CDP9ScalenumericUpDown
+            // 
+            this.CDP9ScalenumericUpDown.DecimalPlaces = 2;
+            this.CDP9ScalenumericUpDown.Location = new System.Drawing.Point(266, 6);
+            this.CDP9ScalenumericUpDown.Name = "CDP9ScalenumericUpDown";
+            this.CDP9ScalenumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP9ScalenumericUpDown.TabIndex = 82;
+            // 
+            // CDP9Scalelabel
+            // 
+            this.CDP9Scalelabel.AutoSize = true;
+            this.CDP9Scalelabel.Location = new System.Drawing.Point(203, 8);
+            this.CDP9Scalelabel.Name = "CDP9Scalelabel";
+            this.CDP9Scalelabel.Size = new System.Drawing.Size(34, 13);
+            this.CDP9Scalelabel.TabIndex = 81;
+            this.CDP9Scalelabel.Text = "Scale";
+            // 
+            // CDP9PosZlabel
+            // 
+            this.CDP9PosZlabel.AutoSize = true;
+            this.CDP9PosZlabel.Location = new System.Drawing.Point(333, 39);
+            this.CDP9PosZlabel.Name = "CDP9PosZlabel";
+            this.CDP9PosZlabel.Size = new System.Drawing.Size(14, 13);
+            this.CDP9PosZlabel.TabIndex = 80;
+            this.CDP9PosZlabel.Text = "Z";
+            // 
+            // CDP9PosYlabel
+            // 
+            this.CDP9PosYlabel.AutoSize = true;
+            this.CDP9PosYlabel.Location = new System.Drawing.Point(268, 39);
+            this.CDP9PosYlabel.Name = "CDP9PosYlabel";
+            this.CDP9PosYlabel.Size = new System.Drawing.Size(14, 13);
+            this.CDP9PosYlabel.TabIndex = 79;
+            this.CDP9PosYlabel.Text = "Y";
+            // 
+            // CDP9PosXlabel
+            // 
+            this.CDP9PosXlabel.AutoSize = true;
+            this.CDP9PosXlabel.Location = new System.Drawing.Point(203, 39);
+            this.CDP9PosXlabel.Name = "CDP9PosXlabel";
+            this.CDP9PosXlabel.Size = new System.Drawing.Size(14, 13);
+            this.CDP9PosXlabel.TabIndex = 78;
+            this.CDP9PosXlabel.Text = "X";
+            // 
+            // CDP9Poslabel
+            // 
+            this.CDP9Poslabel.AutoSize = true;
+            this.CDP9Poslabel.Location = new System.Drawing.Point(203, 26);
+            this.CDP9Poslabel.Name = "CDP9Poslabel";
+            this.CDP9Poslabel.Size = new System.Drawing.Size(44, 13);
+            this.CDP9Poslabel.TabIndex = 77;
+            this.CDP9Poslabel.Text = "Position";
+            // 
+            // CDP9PosZnumericUpDown
+            // 
+            this.CDP9PosZnumericUpDown.DecimalPlaces = 5;
+            this.CDP9PosZnumericUpDown.Location = new System.Drawing.Point(333, 55);
+            this.CDP9PosZnumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.CDP9PosZnumericUpDown.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.CDP9PosZnumericUpDown.Name = "CDP9PosZnumericUpDown";
+            this.CDP9PosZnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP9PosZnumericUpDown.TabIndex = 76;
+            // 
+            // CDP9PosYnumericUpDown
+            // 
+            this.CDP9PosYnumericUpDown.DecimalPlaces = 5;
+            this.CDP9PosYnumericUpDown.Location = new System.Drawing.Point(268, 55);
+            this.CDP9PosYnumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.CDP9PosYnumericUpDown.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.CDP9PosYnumericUpDown.Name = "CDP9PosYnumericUpDown";
+            this.CDP9PosYnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP9PosYnumericUpDown.TabIndex = 75;
+            // 
+            // CDP9PosXnumericUpDown
+            // 
+            this.CDP9PosXnumericUpDown.DecimalPlaces = 5;
+            this.CDP9PosXnumericUpDown.Location = new System.Drawing.Point(203, 55);
+            this.CDP9PosXnumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.CDP9PosXnumericUpDown.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.CDP9PosXnumericUpDown.Name = "CDP9PosXnumericUpDown";
+            this.CDP9PosXnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP9PosXnumericUpDown.TabIndex = 74;
+            // 
+            // CDP9RotZlabel
+            // 
+            this.CDP9RotZlabel.AutoSize = true;
+            this.CDP9RotZlabel.Location = new System.Drawing.Point(132, 39);
+            this.CDP9RotZlabel.Name = "CDP9RotZlabel";
+            this.CDP9RotZlabel.Size = new System.Drawing.Size(14, 13);
+            this.CDP9RotZlabel.TabIndex = 73;
+            this.CDP9RotZlabel.Text = "Z";
+            // 
+            // CDP9RotYlabel
+            // 
+            this.CDP9RotYlabel.AutoSize = true;
+            this.CDP9RotYlabel.Location = new System.Drawing.Point(67, 39);
+            this.CDP9RotYlabel.Name = "CDP9RotYlabel";
+            this.CDP9RotYlabel.Size = new System.Drawing.Size(14, 13);
+            this.CDP9RotYlabel.TabIndex = 72;
+            this.CDP9RotYlabel.Text = "Y";
+            // 
+            // CDP9RotXlabel
+            // 
+            this.CDP9RotXlabel.AutoSize = true;
+            this.CDP9RotXlabel.Location = new System.Drawing.Point(3, 39);
+            this.CDP9RotXlabel.Name = "CDP9RotXlabel";
+            this.CDP9RotXlabel.Size = new System.Drawing.Size(14, 13);
+            this.CDP9RotXlabel.TabIndex = 71;
+            this.CDP9RotXlabel.Text = "X";
+            // 
+            // CDP9Rotlabel
+            // 
+            this.CDP9Rotlabel.AutoSize = true;
+            this.CDP9Rotlabel.Location = new System.Drawing.Point(3, 26);
+            this.CDP9Rotlabel.Name = "CDP9Rotlabel";
+            this.CDP9Rotlabel.Size = new System.Drawing.Size(47, 13);
+            this.CDP9Rotlabel.TabIndex = 70;
+            this.CDP9Rotlabel.Text = "Rotation";
+            // 
+            // CDP9RotZnumericUpDown
+            // 
+            this.CDP9RotZnumericUpDown.DecimalPlaces = 5;
+            this.CDP9RotZnumericUpDown.Location = new System.Drawing.Point(132, 55);
+            this.CDP9RotZnumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.CDP9RotZnumericUpDown.Minimum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            -2147483648});
+            this.CDP9RotZnumericUpDown.Name = "CDP9RotZnumericUpDown";
+            this.CDP9RotZnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP9RotZnumericUpDown.TabIndex = 69;
+            // 
+            // CDP9RotYnumericUpDown
+            // 
+            this.CDP9RotYnumericUpDown.DecimalPlaces = 5;
+            this.CDP9RotYnumericUpDown.Location = new System.Drawing.Point(67, 55);
+            this.CDP9RotYnumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.CDP9RotYnumericUpDown.Minimum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            -2147483648});
+            this.CDP9RotYnumericUpDown.Name = "CDP9RotYnumericUpDown";
+            this.CDP9RotYnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP9RotYnumericUpDown.TabIndex = 68;
+            // 
+            // CDP9RotXnumericUpDown
+            // 
+            this.CDP9RotXnumericUpDown.DecimalPlaces = 5;
+            this.CDP9RotXnumericUpDown.Location = new System.Drawing.Point(3, 55);
+            this.CDP9RotXnumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.CDP9RotXnumericUpDown.Minimum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            -2147483648});
+            this.CDP9RotXnumericUpDown.Name = "CDP9RotXnumericUpDown";
+            this.CDP9RotXnumericUpDown.Size = new System.Drawing.Size(59, 20);
+            this.CDP9RotXnumericUpDown.TabIndex = 67;
+            // 
             // CDDriveShaftpanel
             // 
             this.CDDriveShaftpanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -4314,6 +5118,11 @@
             // CDSScalenumericUpDown
             // 
             this.CDSScalenumericUpDown.DecimalPlaces = 3;
+            this.CDSScalenumericUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.CDSScalenumericUpDown.Location = new System.Drawing.Point(83, 99);
             this.CDSScalenumericUpDown.Name = "CDSScalenumericUpDown";
             this.CDSScalenumericUpDown.Size = new System.Drawing.Size(87, 20);
@@ -4331,6 +5140,11 @@
             // CDSFrontSpringLengthnumericUpDown
             // 
             this.CDSFrontSpringLengthnumericUpDown.DecimalPlaces = 2;
+            this.CDSFrontSpringLengthnumericUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.CDSFrontSpringLengthnumericUpDown.Location = new System.Drawing.Point(97, 177);
             this.CDSFrontSpringLengthnumericUpDown.Minimum = new decimal(new int[] {
             100,
@@ -4353,6 +5167,11 @@
             // CDSRearTracknumericUpDown
             // 
             this.CDSRearTracknumericUpDown.DecimalPlaces = 2;
+            this.CDSRearTracknumericUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.CDSRearTracknumericUpDown.Location = new System.Drawing.Point(83, 73);
             this.CDSRearTracknumericUpDown.Name = "CDSRearTracknumericUpDown";
             this.CDSRearTracknumericUpDown.Size = new System.Drawing.Size(87, 20);
@@ -4370,6 +5189,11 @@
             // CDSFrontTracknumericUpDown
             // 
             this.CDSFrontTracknumericUpDown.DecimalPlaces = 2;
+            this.CDSFrontTracknumericUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.CDSFrontTracknumericUpDown.Location = new System.Drawing.Point(83, 47);
             this.CDSFrontTracknumericUpDown.Name = "CDSFrontTracknumericUpDown";
             this.CDSFrontTracknumericUpDown.Size = new System.Drawing.Size(87, 20);
@@ -4387,6 +5211,11 @@
             // CDSHeightnumericUpDown
             // 
             this.CDSHeightnumericUpDown.DecimalPlaces = 2;
+            this.CDSHeightnumericUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.CDSHeightnumericUpDown.Location = new System.Drawing.Point(83, 125);
             this.CDSHeightnumericUpDown.Name = "CDSHeightnumericUpDown";
             this.CDSHeightnumericUpDown.Size = new System.Drawing.Size(87, 20);
@@ -4404,6 +5233,11 @@
             // CDSWheelBasenumericUpDown
             // 
             this.CDSWheelBasenumericUpDown.DecimalPlaces = 3;
+            this.CDSWheelBasenumericUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.CDSWheelBasenumericUpDown.Location = new System.Drawing.Point(83, 21);
             this.CDSWheelBasenumericUpDown.Name = "CDSWheelBasenumericUpDown";
             this.CDSWheelBasenumericUpDown.Size = new System.Drawing.Size(87, 20);
@@ -4421,6 +5255,11 @@
             // CDSFrontAxleStartnumericUpDown
             // 
             this.CDSFrontAxleStartnumericUpDown.DecimalPlaces = 2;
+            this.CDSFrontAxleStartnumericUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.CDSFrontAxleStartnumericUpDown.Location = new System.Drawing.Point(83, 151);
             this.CDSFrontAxleStartnumericUpDown.Name = "CDSFrontAxleStartnumericUpDown";
             this.CDSFrontAxleStartnumericUpDown.Size = new System.Drawing.Size(87, 20);
@@ -5718,6 +6557,23 @@
             this.SGETGlobaltabPage.Text = "Global";
             this.SGETGlobaltabPage.UseVisualStyleBackColor = true;
             // 
+            // SGETGProfilecomboBox
+            // 
+            this.SGETGProfilecomboBox.FormattingEnabled = true;
+            this.SGETGProfilecomboBox.Location = new System.Drawing.Point(263, 44);
+            this.SGETGProfilecomboBox.Name = "SGETGProfilecomboBox";
+            this.SGETGProfilecomboBox.Size = new System.Drawing.Size(121, 21);
+            this.SGETGProfilecomboBox.TabIndex = 29;
+            // 
+            // SGETGProfilelabel
+            // 
+            this.SGETGProfilelabel.AutoSize = true;
+            this.SGETGProfilelabel.Location = new System.Drawing.Point(260, 27);
+            this.SGETGProfilelabel.Name = "SGETGProfilelabel";
+            this.SGETGProfilelabel.Size = new System.Drawing.Size(125, 13);
+            this.SGETGProfilelabel.TabIndex = 28;
+            this.SGETGProfilelabel.Text = "Currently Selected Profile";
+            // 
             // SGETGMoneynumericUpDown
             // 
             this.SGETGMoneynumericUpDown.Location = new System.Drawing.Point(117, 312);
@@ -6019,23 +6875,6 @@
             this.SGETHelpWantedtextBox.TabIndex = 0;
             this.SGETHelpWantedtextBox.Text = resources.GetString("SGETHelpWantedtextBox.Text");
             // 
-            // SGETGProfilelabel
-            // 
-            this.SGETGProfilelabel.AutoSize = true;
-            this.SGETGProfilelabel.Location = new System.Drawing.Point(260, 27);
-            this.SGETGProfilelabel.Name = "SGETGProfilelabel";
-            this.SGETGProfilelabel.Size = new System.Drawing.Size(125, 13);
-            this.SGETGProfilelabel.TabIndex = 28;
-            this.SGETGProfilelabel.Text = "Currently Selected Profile";
-            // 
-            // SGETGProfilecomboBox
-            // 
-            this.SGETGProfilecomboBox.FormattingEnabled = true;
-            this.SGETGProfilecomboBox.Location = new System.Drawing.Point(263, 44);
-            this.SGETGProfilecomboBox.Name = "SGETGProfilecomboBox";
-            this.SGETGProfilecomboBox.Size = new System.Drawing.Size(121, 21);
-            this.SGETGProfilecomboBox.TabIndex = 29;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6144,6 +6983,33 @@
             ((System.ComponentModel.ISupportInitialize)(this.CDP6RotZnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDP6RotYnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDP6RotXnumericUpDown)).EndInit();
+            this.CDP7tabPage.ResumeLayout(false);
+            this.CDP7tabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP7ScalenumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP7PosZnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP7PosYnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP7PosXnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP7RotZnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP7RotYnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP7RotXnumericUpDown)).EndInit();
+            this.CDP8tabPage.ResumeLayout(false);
+            this.CDP8tabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP8ScalenumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP8PosZnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP8PosYnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP8PosXnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP8RotZnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP8RotYnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP8RotXnumericUpDown)).EndInit();
+            this.CDP9tabPage.ResumeLayout(false);
+            this.CDP9tabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP9ScalenumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP9PosZnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP9PosYnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP9PosXnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP9RotZnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP9RotYnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDP9RotXnumericUpDown)).EndInit();
             this.CDDriveShaftpanel.ResumeLayout(false);
             this.CDDriveShaftpanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CDDPMnumericUpDown)).EndInit();
@@ -6614,6 +7480,63 @@
         private System.Windows.Forms.NumericUpDown CDP6RotZnumericUpDown;
         private System.Windows.Forms.NumericUpDown CDP6RotYnumericUpDown;
         private System.Windows.Forms.NumericUpDown CDP6RotXnumericUpDown;
+        private System.Windows.Forms.TabPage CDP7tabPage;
+        private System.Windows.Forms.TextBox CDP7NametextBox;
+        private System.Windows.Forms.Label CDP7Namelabel;
+        private System.Windows.Forms.NumericUpDown CDP7ScalenumericUpDown;
+        private System.Windows.Forms.Label CDP7Scalelabel;
+        private System.Windows.Forms.Label CDP7PosZlabel;
+        private System.Windows.Forms.Label CDP7PosYlabel;
+        private System.Windows.Forms.Label CDP7PosXlabel;
+        private System.Windows.Forms.Label CDP7Poslabel;
+        private System.Windows.Forms.NumericUpDown CDP7PosZnumericUpDown;
+        private System.Windows.Forms.NumericUpDown CDP7PosYnumericUpDown;
+        private System.Windows.Forms.NumericUpDown CDP7PosXnumericUpDown;
+        private System.Windows.Forms.Label CDP7RotZlabel;
+        private System.Windows.Forms.Label CDP7RotYlabel;
+        private System.Windows.Forms.Label CDP7RotXlabel;
+        private System.Windows.Forms.Label CDP7Rotlabel;
+        private System.Windows.Forms.NumericUpDown CDP7RotZnumericUpDown;
+        private System.Windows.Forms.NumericUpDown CDP7RotYnumericUpDown;
+        private System.Windows.Forms.NumericUpDown CDP7RotXnumericUpDown;
+        private System.Windows.Forms.TabPage CDP8tabPage;
+        private System.Windows.Forms.TextBox CDP8NametextBox;
+        private System.Windows.Forms.Label CDP8Namelabel;
+        private System.Windows.Forms.NumericUpDown CDP8ScalenumericUpDown;
+        private System.Windows.Forms.Label CDP8Scalelabel;
+        private System.Windows.Forms.Label CDP8PosZlabel;
+        private System.Windows.Forms.Label CDP8PosYlabel;
+        private System.Windows.Forms.Label CDP8PosXlabel;
+        private System.Windows.Forms.Label CDP8Poslabel;
+        private System.Windows.Forms.NumericUpDown CDP8PosZnumericUpDown;
+        private System.Windows.Forms.NumericUpDown CDP8PosYnumericUpDown;
+        private System.Windows.Forms.NumericUpDown CDP8PosXnumericUpDown;
+        private System.Windows.Forms.Label CDP8RotZlabel;
+        private System.Windows.Forms.Label CDP8RotYlabel;
+        private System.Windows.Forms.Label CDP8RotXlabel;
+        private System.Windows.Forms.Label CDP8Rotlabel;
+        private System.Windows.Forms.NumericUpDown CDP8RotZnumericUpDown;
+        private System.Windows.Forms.NumericUpDown CDP8RotYnumericUpDown;
+        private System.Windows.Forms.NumericUpDown CDP8RotXnumericUpDown;
+        private System.Windows.Forms.TabPage CDP9tabPage;
+        private System.Windows.Forms.TextBox CDP9NametextBox;
+        private System.Windows.Forms.Label CDP9Namelabel;
+        private System.Windows.Forms.NumericUpDown CDP9ScalenumericUpDown;
+        private System.Windows.Forms.Label CDP9Scalelabel;
+        private System.Windows.Forms.Label CDP9PosZlabel;
+        private System.Windows.Forms.Label CDP9PosYlabel;
+        private System.Windows.Forms.Label CDP9PosXlabel;
+        private System.Windows.Forms.Label CDP9Poslabel;
+        private System.Windows.Forms.NumericUpDown CDP9PosZnumericUpDown;
+        private System.Windows.Forms.NumericUpDown CDP9PosYnumericUpDown;
+        private System.Windows.Forms.NumericUpDown CDP9PosXnumericUpDown;
+        private System.Windows.Forms.Label CDP9RotZlabel;
+        private System.Windows.Forms.Label CDP9RotYlabel;
+        private System.Windows.Forms.Label CDP9RotXlabel;
+        private System.Windows.Forms.Label CDP9Rotlabel;
+        private System.Windows.Forms.NumericUpDown CDP9RotZnumericUpDown;
+        private System.Windows.Forms.NumericUpDown CDP9RotYnumericUpDown;
+        private System.Windows.Forms.NumericUpDown CDP9RotXnumericUpDown;
         private System.Windows.Forms.NumericUpDown CDDSizenumericUpDown;
         private System.Windows.Forms.Label CDDSizelabel;
         private System.Windows.Forms.NumericUpDown CDSSidesFlipnumericUpDown;

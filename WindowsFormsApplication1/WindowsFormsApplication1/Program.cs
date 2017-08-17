@@ -258,14 +258,23 @@ namespace CMS2015ModManager
             //Save the config file data, called whenever a change has been made via the menus
             //the menus will set the strings and this will write both
 
-            using (StreamWriter writer = new StreamWriter(ConfigFN))
+            try         //I think some people have problems with permissions, this will help 'skip-over' the config file creation step
             {
-                writer.WriteLine(SavedGamesDir);
-                writer.WriteLine(SavedGamesDirBkUp);
-                writer.WriteLine(CarsDataDir);
-                writer.WriteLine(CarsDataDirBkUp);
-                writer.WriteLine(ModMapDir);
+                using (StreamWriter writer = new StreamWriter(ConfigFN))
+                {
+                    writer.WriteLine(SavedGamesDir);
+                    writer.WriteLine(SavedGamesDirBkUp);
+                    writer.WriteLine(CarsDataDir);
+                    writer.WriteLine(CarsDataDirBkUp);
+                    writer.WriteLine(ModMapDir);
+                }
             }
+            catch (Exception)
+            {
+                //Explain to the user
+                MessageBox.Show("There was a problem writing the config file.\nThis is probably accses permissons related?\nThis may affect other file writes.\n\nChanged config paths will be used for not but will not remain when this application exits", "Config file creation problem");
+            }
+            
         }
 
         #region Getters and Setters

@@ -6,6 +6,12 @@ A modding tool for editing and handling mods for Car Mechanic simulator 2015
 
 Release notes
 
+0.9.1.1
+Expanded the [parts<number>] to 9 for a total of 10 possible extra parts
+Added an error-catcher to allow use of the application if the config file fails to write
+Fixed an error with the engines combobox in the dar data tab
+Fixed an error with the tires combobox in the dar data tab
+
 0.9.1
 Fixed an error with the path to the saves directory
 Added the a saved games editor for the global file

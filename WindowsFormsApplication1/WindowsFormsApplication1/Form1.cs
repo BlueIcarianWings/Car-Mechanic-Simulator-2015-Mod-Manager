@@ -13,7 +13,7 @@ namespace CMS2015ModManager
 {
     public partial class Form1 : Form
     {
-        private string ModManVersion = "0.9.1";     //Version constant
+        private string ModManVersion = "0.9.1.1";     //Version constant
 
         //Class object for class that does the acutal mod managing stuff    //here so it's scope is within the form object  //should move the config stuff out at somepoint
         CMS2015MM ModMan;
@@ -1176,14 +1176,14 @@ namespace CMS2015ModManager
             foreach (EngineData type in EngineDataList)
             {
                 string temp = type._Name.Substring(1, type._Name.Length - 2).Trim();  //Remove the leading on trailing spaces
-                CDETypecomboBox.Items.Add(type._Name);
+                CDETypecomboBox.Items.Add(temp);
             }
 
             //Populate tire options
             foreach (TireData type in TireDataList)
             {
                 string temp = type._Name.Substring(1, type._Name.Length - 2).Trim();  //Remove the leading on trailing spaces
-                CDWTirecomboBox.Items.Add(type._Name);
+                CDWTirecomboBox.Items.Add(temp);
             }
         }
 
@@ -1330,15 +1330,45 @@ namespace CMS2015ModManager
             int CDPListSize;
             CDPListSize = CarDataObject.ReturnPartsSize();
 
-            //Currently we can only handle 6 entries, so trim to that if it's greater
-            if(CDPListSize>7)
+            //Currently we can only handle 10 entries, so trim to that if it's greater
+            if(CDPListSize>10)
             {
-                CDPListSize = 7;
+                CDPListSize = 10;
             }
 
             //Fill out the parts
             switch (CDPListSize)    //This setup will grab the highest numbered one, then flow down
             {
+                case 10:
+                    CDP9NametextBox.Text = CarDataObject.GetPartsName(9);
+                    CDP9PosXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosX(9);
+                    CDP9PosYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosY(9);
+                    CDP9PosZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosZ(9);
+                    CDP9RotXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotX(9);
+                    CDP9RotYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotY(9);
+                    CDP9RotZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotZ(9);
+                    CDP9ScalenumericUpDown.Value = (Decimal)CarDataObject.GetPartScale(9);
+                    goto case 9;    //Switch statment fall through is not a thing in C#, so we have to use a 'goto' to force it
+                case 9:
+                    CDP8NametextBox.Text = CarDataObject.GetPartsName(8);
+                    CDP8PosXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosX(8);
+                    CDP8PosYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosY(8);
+                    CDP8PosZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosZ(8);
+                    CDP8RotXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotX(8);
+                    CDP8RotYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotY(8);
+                    CDP8RotZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotZ(8);
+                    CDP8ScalenumericUpDown.Value = (Decimal)CarDataObject.GetPartScale(8);
+                    goto case 8;    //Switch statment fall through is not a thing in C#, so we have to use a 'goto' to force it
+                case 8:
+                    CDP7NametextBox.Text = CarDataObject.GetPartsName(7);
+                    CDP7PosXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosX(7);
+                    CDP7PosYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosY(7);
+                    CDP7PosZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosZ(7);
+                    CDP7RotXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotX(7);
+                    CDP7RotYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotY(7);
+                    CDP7RotZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotZ(7);
+                    CDP7ScalenumericUpDown.Value = (Decimal)CarDataObject.GetPartScale(7);
+                    goto case 7;    //Switch statment fall through is not a thing in C#, so we have to use a 'goto' to force it
                 case 7:
                     CDP6NametextBox.Text = CarDataObject.GetPartsName(6);
                     CDP6PosXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosX(6);
@@ -1585,6 +1615,33 @@ namespace CMS2015ModManager
             CDP6RotYnumericUpDown.Value = 0;
             CDP6RotZnumericUpDown.Value = 0;
             CDP6ScalenumericUpDown.Value = 0;
+            //Parts7
+            CDP7NametextBox.Text = "";
+            CDP7PosXnumericUpDown.Value = 0;
+            CDP7PosYnumericUpDown.Value = 0;
+            CDP7PosZnumericUpDown.Value = 0;
+            CDP7RotXnumericUpDown.Value = 0;
+            CDP7RotYnumericUpDown.Value = 0;
+            CDP7RotZnumericUpDown.Value = 0;
+            CDP7ScalenumericUpDown.Value = 0;
+            //Parts8
+            CDP8NametextBox.Text = "";
+            CDP8PosXnumericUpDown.Value = 0;
+            CDP8PosYnumericUpDown.Value = 0;
+            CDP8PosZnumericUpDown.Value = 0;
+            CDP8RotXnumericUpDown.Value = 0;
+            CDP8RotYnumericUpDown.Value = 0;
+            CDP8RotZnumericUpDown.Value = 0;
+            CDP8ScalenumericUpDown.Value = 0;
+            //Parts9
+            CDP9NametextBox.Text = "";
+            CDP9PosXnumericUpDown.Value = 0;
+            CDP9PosYnumericUpDown.Value = 0;
+            CDP9PosZnumericUpDown.Value = 0;
+            CDP9RotXnumericUpDown.Value = 0;
+            CDP9RotYnumericUpDown.Value = 0;
+            CDP9RotZnumericUpDown.Value = 0;
+            CDP9ScalenumericUpDown.Value = 0;
         }
 
         //Dialog box with a text input field
@@ -1849,6 +1906,18 @@ namespace CMS2015ModManager
                 {
                     CarDataObject.PartsSetter(CDP6NametextBox.Text, (float)CDP6PosXnumericUpDown.Value, (float)CDP6PosYnumericUpDown.Value, (float)CDP6PosZnumericUpDown.Value, (float)CDP6RotXnumericUpDown.Value, (float)CDP6RotYnumericUpDown.Value, (float)CDP6RotZnumericUpDown.Value, (float)CDP6ScalenumericUpDown.Value);
                 }
+                if (CDP7NametextBox.Text != "")
+                {
+                    CarDataObject.PartsSetter(CDP7NametextBox.Text, (float)CDP7PosXnumericUpDown.Value, (float)CDP7PosYnumericUpDown.Value, (float)CDP7PosZnumericUpDown.Value, (float)CDP7RotXnumericUpDown.Value, (float)CDP7RotYnumericUpDown.Value, (float)CDP7RotZnumericUpDown.Value, (float)CDP7ScalenumericUpDown.Value);
+                }
+                if (CDP8NametextBox.Text != "")
+                {
+                    CarDataObject.PartsSetter(CDP8NametextBox.Text, (float)CDP8PosXnumericUpDown.Value, (float)CDP8PosYnumericUpDown.Value, (float)CDP8PosZnumericUpDown.Value, (float)CDP8RotXnumericUpDown.Value, (float)CDP8RotYnumericUpDown.Value, (float)CDP8RotZnumericUpDown.Value, (float)CDP8ScalenumericUpDown.Value);
+                }
+                if (CDP9NametextBox.Text != "")
+                {
+                    CarDataObject.PartsSetter(CDP9NametextBox.Text, (float)CDP9PosXnumericUpDown.Value, (float)CDP9PosYnumericUpDown.Value, (float)CDP9PosZnumericUpDown.Value, (float)CDP9RotXnumericUpDown.Value, (float)CDP9RotYnumericUpDown.Value, (float)CDP9RotZnumericUpDown.Value, (float)CDP9ScalenumericUpDown.Value);
+                }
 
                 //Finally commit to file, using the name from the combo box
                 CarDataObject.WriteCarDataToFile(ModMan.GetCarsDataDir() + "\\" + AvailableCarsDataComboBox.Text);
@@ -1989,5 +2058,6 @@ namespace CMS2015ModManager
         }
 
         #endregion
+
     }
 }
