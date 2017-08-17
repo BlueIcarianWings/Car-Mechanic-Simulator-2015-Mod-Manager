@@ -437,12 +437,16 @@
             this.MapDataTabPage = new System.Windows.Forms.TabPage();
             this.DeleteMapbutton = new System.Windows.Forms.Button();
             this.MDTRefreshbutton = new System.Windows.Forms.Button();
-            this.MapDataMapDataFilelabel = new System.Windows.Forms.Label();
             this.MDTMapDataFilepanel = new System.Windows.Forms.Panel();
+            this.MDTMDFPreviewpictureBox = new System.Windows.Forms.PictureBox();
+            this.MDTMDFDescriptiontextBox = new System.Windows.Forms.TextBox();
+            this.MDTMDFDescriptionlabel = new System.Windows.Forms.Label();
+            this.MDTMDFPicturetextBox = new System.Windows.Forms.TextBox();
+            this.MDTMDFPicturelabel = new System.Windows.Forms.Label();
+            this.MDTMDFPicturebutton = new System.Windows.Forms.Button();
             this.MDTMDFOpenbutton = new System.Windows.Forms.Button();
             this.MDTMDFResetbutton = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
+            this.MapDataMapDataFilelabel = new System.Windows.Forms.Label();
             this.MDTMDFSavebutton = new System.Windows.Forms.Button();
             this.MDTMDFBundleFilebutton = new System.Windows.Forms.Button();
             this.MDTMDFBundleFiletextBox = new System.Windows.Forms.TextBox();
@@ -616,7 +620,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TDTGripModnumericUpDown)).BeginInit();
             this.MapDataTabPage.SuspendLayout();
             this.MDTMapDataFilepanel.SuspendLayout();
-            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MDTMDFPreviewpictureBox)).BeginInit();
             this.MDTSelectedMappanel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SaveGameEditortabPage.SuspendLayout();
@@ -5312,7 +5316,7 @@
             // 
             // DeleteMapbutton
             // 
-            this.DeleteMapbutton.Location = new System.Drawing.Point(382, 53);
+            this.DeleteMapbutton.Location = new System.Drawing.Point(382, 52);
             this.DeleteMapbutton.Name = "DeleteMapbutton";
             this.DeleteMapbutton.Size = new System.Drawing.Size(75, 23);
             this.DeleteMapbutton.TabIndex = 7;
@@ -5322,7 +5326,7 @@
             // 
             // MDTRefreshbutton
             // 
-            this.MDTRefreshbutton.Location = new System.Drawing.Point(301, 53);
+            this.MDTRefreshbutton.Location = new System.Drawing.Point(301, 52);
             this.MDTRefreshbutton.Name = "MDTRefreshbutton";
             this.MDTRefreshbutton.Size = new System.Drawing.Size(75, 23);
             this.MDTRefreshbutton.TabIndex = 6;
@@ -5330,22 +5334,18 @@
             this.MDTRefreshbutton.UseVisualStyleBackColor = true;
             this.MDTRefreshbutton.Click += new System.EventHandler(this.MDTRefreshbutton_Click);
             // 
-            // MapDataMapDataFilelabel
-            // 
-            this.MapDataMapDataFilelabel.AutoSize = true;
-            this.MapDataMapDataFilelabel.Location = new System.Drawing.Point(8, 8);
-            this.MapDataMapDataFilelabel.Name = "MapDataMapDataFilelabel";
-            this.MapDataMapDataFilelabel.Size = new System.Drawing.Size(132, 13);
-            this.MapDataMapDataFilelabel.TabIndex = 0;
-            this.MapDataMapDataFilelabel.Text = "Create New Map Data File";
-            // 
             // MDTMapDataFilepanel
             // 
             this.MDTMapDataFilepanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFPreviewpictureBox);
+            this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFDescriptiontextBox);
+            this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFDescriptionlabel);
+            this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFPicturetextBox);
+            this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFPicturelabel);
+            this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFPicturebutton);
             this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFOpenbutton);
             this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFResetbutton);
             this.MDTMapDataFilepanel.Controls.Add(this.MapDataMapDataFilelabel);
-            this.MDTMapDataFilepanel.Controls.Add(this.panel4);
             this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFSavebutton);
             this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFBundleFilebutton);
             this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFBundleFiletextBox);
@@ -5356,14 +5356,66 @@
             this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFCreditslabel);
             this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFNametextBox);
             this.MDTMapDataFilepanel.Controls.Add(this.MDTMDFNamelabel);
-            this.MDTMapDataFilepanel.Location = new System.Drawing.Point(562, 23);
+            this.MDTMapDataFilepanel.Location = new System.Drawing.Point(569, 23);
             this.MDTMapDataFilepanel.Name = "MDTMapDataFilepanel";
-            this.MDTMapDataFilepanel.Size = new System.Drawing.Size(200, 397);
+            this.MDTMapDataFilepanel.Size = new System.Drawing.Size(378, 615);
             this.MDTMapDataFilepanel.TabIndex = 5;
+            // 
+            // MDTMDFPreviewpictureBox
+            // 
+            this.MDTMDFPreviewpictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.MDTMDFPreviewpictureBox.Location = new System.Drawing.Point(192, 102);
+            this.MDTMDFPreviewpictureBox.Name = "MDTMDFPreviewpictureBox";
+            this.MDTMDFPreviewpictureBox.Size = new System.Drawing.Size(177, 100);
+            this.MDTMDFPreviewpictureBox.TabIndex = 37;
+            this.MDTMDFPreviewpictureBox.TabStop = false;
+            // 
+            // MDTMDFDescriptiontextBox
+            // 
+            this.MDTMDFDescriptiontextBox.Location = new System.Drawing.Point(11, 247);
+            this.MDTMDFDescriptiontextBox.Multiline = true;
+            this.MDTMDFDescriptiontextBox.Name = "MDTMDFDescriptiontextBox";
+            this.MDTMDFDescriptiontextBox.Size = new System.Drawing.Size(358, 349);
+            this.MDTMDFDescriptiontextBox.TabIndex = 36;
+            // 
+            // MDTMDFDescriptionlabel
+            // 
+            this.MDTMDFDescriptionlabel.AutoSize = true;
+            this.MDTMDFDescriptionlabel.Location = new System.Drawing.Point(8, 231);
+            this.MDTMDFDescriptionlabel.Name = "MDTMDFDescriptionlabel";
+            this.MDTMDFDescriptionlabel.Size = new System.Drawing.Size(84, 13);
+            this.MDTMDFDescriptionlabel.TabIndex = 35;
+            this.MDTMDFDescriptionlabel.Text = "Map Description";
+            // 
+            // MDTMDFPicturetextBox
+            // 
+            this.MDTMDFPicturetextBox.Location = new System.Drawing.Point(11, 208);
+            this.MDTMDFPicturetextBox.Name = "MDTMDFPicturetextBox";
+            this.MDTMDFPicturetextBox.Size = new System.Drawing.Size(358, 20);
+            this.MDTMDFPicturetextBox.TabIndex = 34;
+            // 
+            // MDTMDFPicturelabel
+            // 
+            this.MDTMDFPicturelabel.AutoSize = true;
+            this.MDTMDFPicturelabel.Location = new System.Drawing.Point(8, 189);
+            this.MDTMDFPicturelabel.Name = "MDTMDFPicturelabel";
+            this.MDTMDFPicturelabel.Size = new System.Drawing.Size(81, 13);
+            this.MDTMDFPicturelabel.TabIndex = 33;
+            this.MDTMDFPicturelabel.Text = "Preview Picture";
+            // 
+            // MDTMDFPicturebutton
+            // 
+            this.MDTMDFPicturebutton.Location = new System.Drawing.Point(285, 47);
+            this.MDTMDFPicturebutton.Name = "MDTMDFPicturebutton";
+            this.MDTMDFPicturebutton.Size = new System.Drawing.Size(75, 23);
+            this.MDTMDFPicturebutton.TabIndex = 32;
+            this.MDTMDFPicturebutton.Text = "Picture";
+            this.MDTMDFPicturebutton.UseVisualStyleBackColor = true;
+            this.MDTMDFPicturebutton.Click += new System.EventHandler(this.MDTMDFPicturebutton_Click);
             // 
             // MDTMDFOpenbutton
             // 
-            this.MDTMDFOpenbutton.Location = new System.Drawing.Point(11, 216);
+            this.MDTMDFOpenbutton.Location = new System.Drawing.Point(204, 18);
             this.MDTMDFOpenbutton.Name = "MDTMDFOpenbutton";
             this.MDTMDFOpenbutton.Size = new System.Drawing.Size(75, 23);
             this.MDTMDFOpenbutton.TabIndex = 31;
@@ -5373,7 +5425,7 @@
             // 
             // MDTMDFResetbutton
             // 
-            this.MDTMDFResetbutton.Location = new System.Drawing.Point(111, 215);
+            this.MDTMDFResetbutton.Location = new System.Drawing.Point(285, 18);
             this.MDTMDFResetbutton.Name = "MDTMDFResetbutton";
             this.MDTMDFResetbutton.Size = new System.Drawing.Size(75, 23);
             this.MDTMDFResetbutton.TabIndex = 30;
@@ -5381,27 +5433,18 @@
             this.MDTMDFResetbutton.UseVisualStyleBackColor = true;
             this.MDTMDFResetbutton.Click += new System.EventHandler(this.MDTMDFResetbutton_Click);
             // 
-            // panel4
+            // MapDataMapDataFilelabel
             // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel4.Controls.Add(this.label11);
-            this.panel4.Location = new System.Drawing.Point(11, 287);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(174, 100);
-            this.panel4.TabIndex = 29;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(7, 7);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(162, 13);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "If I had a picture it would go here";
+            this.MapDataMapDataFilelabel.AutoSize = true;
+            this.MapDataMapDataFilelabel.Location = new System.Drawing.Point(8, 8);
+            this.MapDataMapDataFilelabel.Name = "MapDataMapDataFilelabel";
+            this.MapDataMapDataFilelabel.Size = new System.Drawing.Size(132, 13);
+            this.MapDataMapDataFilelabel.TabIndex = 0;
+            this.MapDataMapDataFilelabel.Text = "Create New Map Data File";
             // 
             // MDTMDFSavebutton
             // 
-            this.MDTMDFSavebutton.Location = new System.Drawing.Point(11, 245);
+            this.MDTMDFSavebutton.Location = new System.Drawing.Point(204, 47);
             this.MDTMDFSavebutton.Name = "MDTMDFSavebutton";
             this.MDTMDFSavebutton.Size = new System.Drawing.Size(75, 23);
             this.MDTMDFSavebutton.TabIndex = 9;
@@ -5411,9 +5454,9 @@
             // 
             // MDTMDFBundleFilebutton
             // 
-            this.MDTMDFBundleFilebutton.Location = new System.Drawing.Point(11, 187);
+            this.MDTMDFBundleFilebutton.Location = new System.Drawing.Point(204, 76);
             this.MDTMDFBundleFilebutton.Name = "MDTMDFBundleFilebutton";
-            this.MDTMDFBundleFilebutton.Size = new System.Drawing.Size(175, 23);
+            this.MDTMDFBundleFilebutton.Size = new System.Drawing.Size(156, 23);
             this.MDTMDFBundleFilebutton.TabIndex = 8;
             this.MDTMDFBundleFilebutton.Text = "Select Bundle File";
             this.MDTMDFBundleFilebutton.UseVisualStyleBackColor = true;
@@ -5493,7 +5536,7 @@
             this.MDTSelectedMappanel.Controls.Add(this.MDTSelectedMaplabel);
             this.MDTSelectedMappanel.Location = new System.Drawing.Point(301, 82);
             this.MDTSelectedMappanel.Name = "MDTSelectedMappanel";
-            this.MDTSelectedMappanel.Size = new System.Drawing.Size(255, 338);
+            this.MDTSelectedMappanel.Size = new System.Drawing.Size(262, 556);
             this.MDTSelectedMappanel.TabIndex = 4;
             // 
             // panel3
@@ -5502,9 +5545,9 @@
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(10, 228);
+            this.panel3.Location = new System.Drawing.Point(10, 24);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(229, 100);
+            this.panel3.Size = new System.Drawing.Size(177, 100);
             this.panel3.TabIndex = 29;
             // 
             // label6
@@ -5537,9 +5580,9 @@
             // MDTSelectedMaplistBox
             // 
             this.MDTSelectedMaplistBox.FormattingEnabled = true;
-            this.MDTSelectedMaplistBox.Location = new System.Drawing.Point(10, 24);
+            this.MDTSelectedMaplistBox.Location = new System.Drawing.Point(10, 130);
             this.MDTSelectedMaplistBox.Name = "MDTSelectedMaplistBox";
-            this.MDTSelectedMaplistBox.Size = new System.Drawing.Size(229, 199);
+            this.MDTSelectedMaplistBox.Size = new System.Drawing.Size(240, 407);
             this.MDTSelectedMaplistBox.TabIndex = 1;
             // 
             // MDTSelectedMaplabel
@@ -5556,7 +5599,7 @@
             this.AvailableMapslistBox.FormattingEnabled = true;
             this.AvailableMapslistBox.Location = new System.Drawing.Point(8, 23);
             this.AvailableMapslistBox.Name = "AvailableMapslistBox";
-            this.AvailableMapslistBox.Size = new System.Drawing.Size(285, 394);
+            this.AvailableMapslistBox.Size = new System.Drawing.Size(285, 615);
             this.AvailableMapslistBox.TabIndex = 3;
             this.AvailableMapslistBox.SelectedIndexChanged += new System.EventHandler(this.AvailableMapslistBox_SelectedIndexChanged);
             // 
@@ -5571,7 +5614,7 @@
             // 
             // MDTLoadModMapButton
             // 
-            this.MDTLoadModMapButton.Location = new System.Drawing.Point(455, 23);
+            this.MDTLoadModMapButton.Location = new System.Drawing.Point(463, 23);
             this.MDTLoadModMapButton.Name = "MDTLoadModMapButton";
             this.MDTLoadModMapButton.Size = new System.Drawing.Size(100, 23);
             this.MDTLoadModMapButton.TabIndex = 1;
@@ -5581,9 +5624,9 @@
             // 
             // MDTSetGameMapButton
             // 
-            this.MDTSetGameMapButton.Location = new System.Drawing.Point(299, 23);
+            this.MDTSetGameMapButton.Location = new System.Drawing.Point(301, 23);
             this.MDTSetGameMapButton.Name = "MDTSetGameMapButton";
-            this.MDTSetGameMapButton.Size = new System.Drawing.Size(150, 23);
+            this.MDTSetGameMapButton.Size = new System.Drawing.Size(156, 23);
             this.MDTSetGameMapButton.TabIndex = 0;
             this.MDTSetGameMapButton.Text = "Set Games Maps Directory";
             this.MDTSetGameMapButton.UseVisualStyleBackColor = true;
@@ -5604,7 +5647,7 @@
             this.textBox1.Location = new System.Drawing.Point(7, 7);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(490, 159);
+            this.textBox1.Size = new System.Drawing.Size(527, 159);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
@@ -5793,8 +5836,7 @@
             this.MapDataTabPage.PerformLayout();
             this.MDTMapDataFilepanel.ResumeLayout(false);
             this.MDTMapDataFilepanel.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MDTMDFPreviewpictureBox)).EndInit();
             this.MDTSelectedMappanel.ResumeLayout(false);
             this.MDTSelectedMappanel.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -6233,8 +6275,6 @@
         private System.Windows.Forms.TextBox MDTMDFCreditstextBox;
         private System.Windows.Forms.Label MDTMDFCreditslabel;
         private System.Windows.Forms.Button MDTMDFBundleFilebutton;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button MDTMDFSavebutton;
         private System.Windows.Forms.Button MDTMDFResetbutton;
         private System.Windows.Forms.Button MDTMDFOpenbutton;
@@ -6245,6 +6285,12 @@
         private System.Windows.Forms.Button DeleteMapbutton;
         private System.Windows.Forms.ComboBox CDWTirecomboBox;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button MDTMDFPicturebutton;
+        private System.Windows.Forms.Label MDTMDFPicturelabel;
+        private System.Windows.Forms.TextBox MDTMDFPicturetextBox;
+        private System.Windows.Forms.Label MDTMDFDescriptionlabel;
+        private System.Windows.Forms.TextBox MDTMDFDescriptiontextBox;
+        private System.Windows.Forms.PictureBox MDTMDFPreviewpictureBox;
     }
 }
 

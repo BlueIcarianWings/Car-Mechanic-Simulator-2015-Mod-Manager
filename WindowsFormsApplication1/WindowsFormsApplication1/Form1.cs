@@ -13,6 +13,8 @@ namespace CMS2015ModManager
 {
     public partial class Form1 : Form
     {
+        private string ModManVersion = "0.9.0.1";     //Version constant
+
         //Class object for class that does the acutal mod managing stuff    //here so it's scope is within the form object  //should move the config stuff out at somepoint
         CMS2015MM ModMan;
 
@@ -160,7 +162,7 @@ namespace CMS2015ModManager
         //Handle a click on the about menu item
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Car Mechanic Simulator 2015 Mod Manager Version 0.9\nVery much a work in progress\nDesigned for V1.0.7.3\nBy Blue Icarian Wings");
+            MessageBox.Show("Car Mechanic Simulator 2015 Mod Manager Version {0}\nVery much a work in progress\nDesigned for V1.0.7.3\nBy Blue Icarian Wings", ModManVersion);
         }
 
         //Handle the menu request to backup the save dir
@@ -224,6 +226,14 @@ namespace CMS2015ModManager
                 //Retrieve and set the selected dir
                 string folder = "\\";
                 folder += Path.GetFileName(fbd.SelectedPath);
+
+                //If the directory exists get rid of it
+                if (Directory.Exists(ModMan.GetModMapDir() + folder))
+                {
+                    //Delete directory with the map in
+                    Directory.Delete(ModMan.GetModMapDir() + folder, true);
+                }
+
                 //Copy over the directory
                 ModMan.DirectoryCopy(fbd.SelectedPath, ModMan.GetModMapDir() + folder, true);
                 //Empty out and rebuild the map list
@@ -426,6 +436,8 @@ namespace CMS2015ModManager
             MDTMDFCreditstextBox.Text = "";
             MDTMDFTypetextBox.Text = "";
             MDTMDFBundleFiletextBox.Text = "";
+            MDTMDFPicturetextBox.Text = "";
+            MDTMDFDescriptiontextBox.Text = "";
         }
 
         //Handle a call to save the map info file
@@ -449,6 +461,9 @@ namespace CMS2015ModManager
                 writer.WriteLine("credits=" + MDTMDFCreditstextBox.Text);
                 writer.WriteLine("type=" + MDTMDFTypetextBox.Text);
                 writer.WriteLine("file=" + MDTMDFBundleFiletextBox.Text);
+                writer.WriteLine("image=" + MDTMDFPicturetextBox.Text);
+                writer.WriteLine("description=" + MDTMDFDescriptiontextBox.Text);
+                writer.WriteLine("\nMade with= CMS15ModManager {0]", ModManVersion);
 
                 //we are finished with the writer so close and bin it
                 writer.Close();
@@ -485,6 +500,35 @@ namespace CMS2015ModManager
                 PopulateAvailableMapslistBox();
                 //Clear out the Selected Map box
                 MDTSelectedMaplistBox.Items.Clear();
+            }
+        }
+
+        //Handle a call to select a map preview picture
+        private void MDTMDFPicturebutton_Click(object sender, EventArgs e)
+        {
+            //Assume the image is named correctly
+
+            //Open up a file browser
+            OpenFileDialog ofd = new OpenFileDialog();
+            // Show the dialog and get result.
+            DialogResult result = ofd.ShowDialog();
+            if (result == DialogResult.OK) // Test result.
+            {
+                string PicturePath = ofd.FileName;      //Local to hold path/filename
+                //Check if there is a thumbnail picture present to use
+                if (File.Exists(PicturePath))
+                {
+                    Image image = Image.FromFile(PicturePath);  //Use the picture if it exists
+                    MDTMDFPreviewpictureBox.Image = image;
+                }
+                else
+                {
+                    PicturePath = ModMan.GetCarsDataDir() + "\\car_placeholder.jpg";
+                    Image image = Image.FromFile(PicturePath);  //Use the place holder image
+                    MDTMDFPreviewpictureBox.Image = image;
+                }
+                //Save the path/filename
+                MDTMDFPicturetextBox.Text = Path.GetFileName(PicturePath);
             }
         }
 
@@ -620,7 +664,7 @@ namespace CMS2015ModManager
                 //Write out each engine in turn
                 while (Index < EngineDataList.Count)
                 {
-                    writer.WriteLine("[" + EngineDataList[Index]._Name + "]");
+                    writer.WriteLine(EngineDataList[Index]._Name);
                     writer.WriteLine("maxPower=" + EngineDataList[Index]._maxPower);
                     writer.WriteLine("maxPowerRPM=" + EngineDataList[Index]._maxPowerRPM);
                     writer.WriteLine("maxTorqueRPM=" + EngineDataList[Index]._maxTorqueRPM);
@@ -631,6 +675,8 @@ namespace CMS2015ModManager
                     Index++;    //Increment counter
                 }
 
+                writer.WriteLine();     //Blank line seperator
+                writer.WriteLine("\nMade with= CMS15ModManager {0}", ModManVersion);
                 //we are finished with the writer so close and bin it
                 writer.Close();
                 writer.Dispose();
@@ -757,6 +803,8 @@ namespace CMS2015ModManager
                     Index++;    //Increment counter
                 }
 
+                //writer.WriteLine();     //Blank line seperator
+                //writer.WriteLine("\nMade with= CMS15ModManager {0}", ModManVersion);
                 //we are finished with the writer so close and bin it
                 writer.Close();
                 writer.Dispose();

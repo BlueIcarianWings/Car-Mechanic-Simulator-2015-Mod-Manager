@@ -15,6 +15,8 @@ namespace CMS2015ModManager
         private string type;
         private string file;
         private string folder;
+        private string preview;
+        private string description;
 
         //--------------------
         //Class methods
@@ -23,11 +25,7 @@ namespace CMS2015ModManager
         public MapData()
         {
             //Need to init the data
-            name = "";
-            credits = "";
-            type = "";
-            file = "";
-            folder = "";
+            Reset();
         }
 
         //Reset the contents
@@ -39,6 +37,8 @@ namespace CMS2015ModManager
             type = "";
             file = "";
             folder = "";
+            preview = "";
+            description = "";
         }
 
         #region Getters and Setters
@@ -73,6 +73,17 @@ namespace CMS2015ModManager
             set { folder = value; }
         }
 
+        public string _Preview
+        {
+            get { return preview; }
+            set { preview = value; }
+        }
+
+        public string _Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
         #endregion
     }
 }

@@ -6,6 +6,11 @@ A modding tool for editing and handling mods for Car Mechanic simulator 2015
 
 Release notes
 
+0.9.0.1
+Fixed an error in the engine data output
+Fixed an overwrite error in loading a map
+Added a few custom fields to the map data file creator (game doesn't support these yet)
+
 0.9
 02/June/2016
 All elements of car data editing and handling have been refractored (backend and GUI)
