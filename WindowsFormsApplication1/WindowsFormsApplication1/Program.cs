@@ -489,6 +489,7 @@ namespace WindowsFormsApplication1
             writer.Close();
             writer.Dispose();
         }
+
         #region Getters and Setters
 
         public int GetEngineDataArraySize()
@@ -630,6 +631,8 @@ namespace WindowsFormsApplication1
 
             //Create local single instance of type
             CarListType CLTtemp;
+            //Empty out old data
+            CarsCurrentList.Clear();
 
             //Check if the config file exists
             if (File.Exists(CarsDataDir + "//cars.txt"))
@@ -695,6 +698,8 @@ namespace WindowsFormsApplication1
         {
             //Get a list of all the txt files
             string[] temp = Directory.GetFiles(CarsDataDir, "*.txt");
+            //Empty out old data
+            CarsAvailableFilesList.Clear();
 
             //We have the full path, so trim down to just the filenames
             for (int index = 0; index < temp.Length; index++)
@@ -884,6 +889,7 @@ namespace WindowsFormsApplication1
                         {
                             //We have a line with new section, so ID the section
                             line = line.Substring(1, line.Length - 2);
+                            line = line.Trim(' ');                          //Remove the leading on trailing spaces
 
                             switch (line)
                             {
@@ -940,6 +946,113 @@ namespace WindowsFormsApplication1
             }
         }
 
+        //Write the car data to file
+        public void WriteCarDataToFile(string filename)
+        {
+            //local to index through engine data array
+            int Index = 0;
+
+            //Create a local file writer
+            StreamWriter writer = new StreamWriter(CarsDataDir + "\\" + filename);
+
+                writer.WriteLine("[main]");
+                writer.WriteLine(";name= " + LoadedCarData.Main.name);
+                writer.WriteLine("model= " + LoadedCarData.Main.model);
+                writer.WriteLine("rustMask= " + LoadedCarData.Main.rustMask);
+                writer.WriteLine("rotation= " + LoadedCarData.Main.rotation.x + "," + LoadedCarData.Main.rotation.y + "," + LoadedCarData.Main.rotation.z);
+                writer.WriteLine();     //Blank line seperator
+
+                writer.WriteLine("[other]");
+                writer.WriteLine("engineSound= " + LoadedCarData.Other.engineSound);
+                writer.WriteLine("transmissionType= " + LoadedCarData.Other.transmissionType);
+                writer.WriteLine("gears= " + LoadedCarData.Other.gears);
+                writer.WriteLine("finalDriveRatio= " + LoadedCarData.Other.finalDriveRatio);
+                writer.WriteLine("weight= " + LoadedCarData.Other.weight);
+                writer.WriteLine("rpmFactor= " + LoadedCarData.Other.rpmFactor);
+                writer.WriteLine("rpmAngle= " + LoadedCarData.Other.rpmAngle);
+                writer.WriteLine("speedoAngle= " + LoadedCarData.Other.speedoAngle);
+                writer.WriteLine("suspTravel= " + LoadedCarData.Other.suspTravel);
+                writer.WriteLine("lifterArmsRise= " + LoadedCarData.Other.lifterArmsRise);
+                writer.WriteLine("cx= " + LoadedCarData.Other.cx);
+                writer.WriteLine();     //Blank line seperator
+
+                writer.WriteLine("[suspension]");
+                writer.WriteLine("frontAxleStart= " + LoadedCarData.Suspension.frontAxleStart);
+                writer.WriteLine("wheelBase= " + LoadedCarData.Suspension.wheelBase);
+                writer.WriteLine("height= " + LoadedCarData.Suspension.height);
+                writer.WriteLine("frontTrack= " + LoadedCarData.Suspension.frontTrack);
+                writer.WriteLine("rearTrack= " + LoadedCarData.Suspension.rearTrack);
+                writer.WriteLine("frontSpringLength= " + LoadedCarData.Suspension.frontSpringLength);
+                writer.WriteLine("scale= " + LoadedCarData.Suspension.scale);
+                writer.WriteLine();     //Blank line seperator
+                writer.WriteLine("frontCenterSet= " + LoadedCarData.Suspension.frontCenterSet);
+                writer.WriteLine("frontRightSet= " + LoadedCarData.Suspension.frontRightSet);
+                writer.WriteLine("rearCenterSet= " + LoadedCarData.Suspension.rearCenterSet);
+                writer.WriteLine("rearRightSet= " + LoadedCarData.Suspension.rearRightSet);
+                writer.WriteLine();     //Blank line seperator
+
+                writer.WriteLine("[engine]");
+                writer.WriteLine("position= " + LoadedCarData.Engine.position.x + "," + LoadedCarData.Engine.position.y + "," + LoadedCarData.Engine.position.z);
+                writer.WriteLine("rotation= " + LoadedCarData.Engine.rotation.x + "," + LoadedCarData.Engine.rotation.y + "," + LoadedCarData.Engine.rotation.z);
+                writer.WriteLine("scale= " + LoadedCarData.Engine.scale);
+                writer.WriteLine("type= " + LoadedCarData.Engine.type);
+                writer.WriteLine("sound= " + LoadedCarData.Engine.sound);
+                writer.WriteLine();     //Blank line seperator
+
+                writer.WriteLine("[driveshaft]");
+                writer.WriteLine("position= " + LoadedCarData.Driveshaft.position.x + "," + LoadedCarData.Driveshaft.position.y + "," + LoadedCarData.Driveshaft.position.z);
+                writer.WriteLine("rotation= " + LoadedCarData.Driveshaft.rotation.x + "," + LoadedCarData.Driveshaft.rotation.y + "," + LoadedCarData.Driveshaft.rotation.z);
+                writer.WriteLine("scale= " + LoadedCarData.Driveshaft.scale);
+                writer.WriteLine("type= " + LoadedCarData.Driveshaft.type);
+                writer.WriteLine("length= " + LoadedCarData.Driveshaft.length);
+                writer.WriteLine();     //Blank line seperator
+
+                writer.WriteLine("[wheels]");
+                writer.WriteLine("wheelWidth= " + LoadedCarData.Wheels.wheelWidth);
+                writer.WriteLine("tire= " + LoadedCarData.Wheels.tire);
+                writer.WriteLine("rim= " + LoadedCarData.Wheels.rim);
+                writer.WriteLine("rimSize= " + LoadedCarData.Wheels.rimSize);
+                writer.WriteLine("tireSize= " + LoadedCarData.Wheels.tireSize);
+                writer.WriteLine();     //Blank line seperator
+
+                //
+                //PARTS HERE
+                int LocalCounter = 0;
+                while (LocalCounter < PartsCounter)
+                {
+                    writer.WriteLine("[parts" + LocalCounter + "]");
+                    writer.WriteLine("name= " + LoadedCarData.Parts[LocalCounter].name);
+                    writer.WriteLine("position= " + LoadedCarData.Parts[LocalCounter].position.x + "," + LoadedCarData.Parts[LocalCounter].position.y + "," + LoadedCarData.Parts[LocalCounter].position.z);
+                    writer.WriteLine("rotation= " + LoadedCarData.Parts[LocalCounter].rotation.x + "," + LoadedCarData.Parts[LocalCounter].rotation.y + "," + LoadedCarData.Parts[LocalCounter].rotation.z);
+                    writer.WriteLine("scale= " + LoadedCarData.Parts[LocalCounter].scale);
+                    writer.WriteLine();     //Blank line seperator
+                    LocalCounter ++;
+                }
+
+                writer.WriteLine("[interior]");
+                writer.WriteLine("seatLeftPos= " + LoadedCarData.Interior.seatLeftPos.x + "," + LoadedCarData.Interior.seatLeftPos.y + "," + LoadedCarData.Interior.seatLeftPos.z);
+                writer.WriteLine("seatLeftRot= " + LoadedCarData.Interior.seatLeftRot.x + "," + LoadedCarData.Interior.seatLeftRot.y + "," + LoadedCarData.Interior.seatLeftRot.z);
+                writer.WriteLine("seatScale= " + LoadedCarData.Interior.seatScale);
+                writer.WriteLine("seat= " + LoadedCarData.Interior.seat);
+                writer.WriteLine("wheel= " + LoadedCarData.Interior.wheel);
+                writer.WriteLine("wheelPos= " + LoadedCarData.Interior.wheelPos.x + "," + LoadedCarData.Interior.wheelPos.y + "," + LoadedCarData.Interior.wheelPos.z);
+                writer.WriteLine("wheelRot= " + LoadedCarData.Interior.wheelRot.x + "," + LoadedCarData.Interior.wheelRot.y + "," + LoadedCarData.Interior.wheelRot.z);
+                writer.WriteLine();     //Blank line seperator
+
+                writer.WriteLine("[logic]");
+                writer.WriteLine("globalCondition= " + LoadedCarData.Logic.globalCondition.a + "," + LoadedCarData.Logic.globalCondition.b);
+                writer.WriteLine("partsConditions= " + LoadedCarData.Logic.partsConditions.a + "," + LoadedCarData.Logic.partsConditions.b);
+                writer.WriteLine("panelsConditions= " + LoadedCarData.Logic.panelsConditions.a + "," + LoadedCarData.Logic.panelsConditions.b);
+                writer.WriteLine("uniqueMod= " + LoadedCarData.Logic.uniqueMod);
+                writer.WriteLine("blockOBD= " + LoadedCarData.Logic.blockOBD);
+
+                Index++;    //Increment counter
+
+            //we are finished with the writer so close and bin it
+            writer.Close();
+            writer.Dispose();
+        }
+
         //Parse the  [main] part of the car data file
         public void CarDataMainSectionProc(StreamReader reader)
         {
@@ -956,7 +1069,7 @@ namespace WindowsFormsApplication1
                         int i = line.IndexOf('=');              //Find the end of label string
                         string label = line.Substring(0, i);    //Grabs the bit upto the '='
                         line = line.Substring(i + 1, line.Length - (i + 1));    //Grab the bit after the '='
-                        line.Trim(' ');                                         //Remove the leading on trailing spaces
+                        line = line.Trim(' ');                                         //Remove the leading on trailing spaces
 
                         switch (label)  //Fill out the Main data
                         {
@@ -993,7 +1106,7 @@ namespace WindowsFormsApplication1
                     {
                         int i = line.IndexOf('=');                      //Find the end of label
                         line = line.Substring(i + 1, line.Length - (i + 1));   //Grab the bit after the '='
-                        line.Trim(' ');                                 //Remove the leading on trailing spaces
+                        line = line.Trim(' ');                                 //Remove the leading on trailing spaces
                         LoadedCarData.Main.name = line;
                     }
                 }
@@ -1027,7 +1140,7 @@ namespace WindowsFormsApplication1
                         int i = line.IndexOf('=');              //Find the end of label string
                         string label = line.Substring(0, i);    //Grabs the bit upto the '='
                         line = line.Substring(i + 1, line.Length - (i + 1));    //Grab the bit after the '='
-                        line.Trim(' ');                                         //Remove the leading on trailing spaces'='
+                        line = line.Trim(' ');                                  //Remove the leading on trailing spaces'='
 
                         switch (label)  //Fill out the Main data
                         {
@@ -1125,7 +1238,7 @@ namespace WindowsFormsApplication1
                         int i = line.IndexOf('=');              //Find the end of label string
                         string label = line.Substring(0, i);    //Grabs the bit upto the '='
                         line = line.Substring(i + 1, line.Length - (i + 1));    //Grab the bit after the '='
-                        line.Trim(' ');                                         //Remove the leading on trailing spaces'='
+                        line = line.Trim(' ');                                  //Remove the leading on trailing spaces'='
 
                         switch (label)  //Fill out the Main data
                         {
@@ -1236,7 +1349,7 @@ namespace WindowsFormsApplication1
                         int i = line.IndexOf('=');              //Find the end of label string
                         string label = line.Substring(0, i);    //Grabs the bit upto the '='
                         line = line.Substring(i + 1, line.Length - (i + 1));    //Grab the bit after the '='
-                        line.Trim(' ');                                         //Remove the leading on trailing spaces
+                        line = line.Trim(' ');                                  //Remove the leading on trailing spaces
 
                         switch (label)  //Fill out the Main data
                         {
@@ -1282,7 +1395,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        //Parse the  [engine] part of the car data file
+        //Empty the  [engine] part of the car data file
         public void CarDataEngineSectionProcClear()
         {
             LoadedCarData.Engine.position.x = 0;
@@ -1313,7 +1426,7 @@ namespace WindowsFormsApplication1
                         int i = line.IndexOf('=');              //Find the end of label string
                         string label = line.Substring(0, i);    //Grabs the bit upto the '='
                         line = line.Substring(i + 1, line.Length - (i + 1));    //Grab the bit after the '='
-                        line.Trim(' ');                                         //Remove the leading on trailing spaces
+                        line = line.Trim(' ');                                  //Remove the leading on trailing spaces
 
                         switch (label)  //Fill out the Main data
                         {
@@ -1359,7 +1472,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        //Parse the  [driveshaft] part of the car data file
+        //Empty the  [driveshaft] part of the car data file
         public void CarDataDriveshaftSectionProcClear()
         {
             LoadedCarData.Driveshaft.position.x = 0;
@@ -1373,7 +1486,7 @@ namespace WindowsFormsApplication1
             LoadedCarData.Driveshaft.length = 0;
         }
 
-        //Empty the  [wheels] part of the car data file
+        //Parse the  [wheels] part of the car data file
         public void CarDataWheelsSectionProc(StreamReader reader)
         {
             bool wheelssection = true;  //Control the loop below
@@ -1389,7 +1502,7 @@ namespace WindowsFormsApplication1
                         int i = line.IndexOf('=');              //Find the end of label string
                         string label = line.Substring(0, i);    //Grabs the bit upto the '='
                         line = line.Substring(i + 1, line.Length - (i + 1));    //Grab the bit after the '='
-                        line.Trim(' ');                                         //Remove the leading on trailing spaces
+                        line = line.Trim(' ');                                  //Remove the leading on trailing spaces
 
                         switch (label)  //Fill out the Main data
                         {
@@ -1466,7 +1579,7 @@ namespace WindowsFormsApplication1
                         int i = line.IndexOf('=');              //Find the end of label string
                         string label = line.Substring(0, i);    //Grabs the bit upto the '='
                         line = line.Substring(i + 1, line.Length - (i + 1));    //Grab the bit after the '='
-                        line.Trim(' ');                                         //Remove the leading on trailing spaces
+                        line = line.Trim(' ');                                  //Remove the leading on trailing spaces
 
                         switch (label)  //Fill out the Main data
                         {
@@ -1520,7 +1633,7 @@ namespace WindowsFormsApplication1
             LoadedCarData.Parts.Clear();
             PartsCounter = 0;
         }
-        
+
         //Parse the  [interior] part of the car data file
         public void CarDataInteriorSectionProc(StreamReader reader)
         {
@@ -1538,7 +1651,7 @@ namespace WindowsFormsApplication1
                         int i = line.IndexOf('=');              //Find the end of label string
                         string label = line.Substring(0, i);    //Grabs the bit upto the '='
                         line = line.Substring(i + 1, line.Length - (i + 1));    //Grab the bit after the '='
-                        line.Trim(' ');                                         //Remove the leading on trailing spaces
+                        line = line.Trim(' ');                                  //Remove the leading on trailing spaces
 
                         switch (label)  //Fill out the Interior data
                         {
@@ -1635,7 +1748,7 @@ namespace WindowsFormsApplication1
                         int i = line.IndexOf('=');              //Find the end of label string
                         string label = line.Substring(0, i);    //Grabs the bit upto the '='
                         line = line.Substring(i + 1, line.Length - (i + 1));    //Grab the bit after the '='
-                        line.Trim(' ');                                         //Remove the leading on trailing spaces
+                        line = line.Trim(' ');                                  //Remove the leading or trailing spaces
 
                         switch (label)  //Fill out the Main data
                         {
@@ -1716,6 +1829,28 @@ namespace WindowsFormsApplication1
         {
             //Return the parts counter
             return PartsCounter;
+        }
+
+        //Add a element yo the [Parts<num>] part of the car data file
+        public void CarDataPartsSectionAdd(string name, float px, float py, float pz, float rx, float ry, float rz, float scale)
+        {
+            CarPartsType LocalParts;    //Local data struct to fill out and add to overall data collection
+
+            //I have to init the parts, as the complier things it be will uninit later
+            //This clears out the old data, but only for the in-use part of the list
+            LocalParts.name = name;
+            LocalParts.position.x = px;
+            LocalParts.position.y = py;
+            LocalParts.position.z = pz;
+            LocalParts.rotation.x = rx;
+            LocalParts.rotation.y = ry;
+            LocalParts.rotation.z = rz;
+            LocalParts.scale = scale;
+
+            //We have all the data, so add the local to the collection list
+            LoadedCarData.Parts.Add(LocalParts);
+            //Update the counter
+            PartsCounter++;
         }
         #endregion
         #endregion

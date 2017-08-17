@@ -225,6 +225,8 @@ namespace WindowsFormsApplication1
         {
             int index = 0;      //local loop counter
             string name = null; //local to assemble string for list
+            //Empty out current contents
+            CarsCurrentlyListBox.Items.Clear();
 
             //Loop through all of the car in the list
             while (index < ModMan.GetCarsCurrentArraySize())
@@ -242,6 +244,8 @@ namespace WindowsFormsApplication1
         private void PopulateCarsAvailableList()
         {
             int index = 0;      //local loop counter
+            //Empty out current list
+            AvailableCarsListBox.Items.Clear();
 
             //Loop through all of the Available car file
             while (index < ModMan.GetCarsAvailableArraySize())
@@ -928,6 +932,11 @@ namespace WindowsFormsApplication1
                 ModMan.FindCarsFiles();              
                 //Repopulate it
                 PopulateCarsAvailableList();
+
+                //Car Data Tab
+                //List of available car text file already loaded
+                //Populate the available cars drop down list
+                PopulateAvailableCarsComboBox();
             }
         }
 
@@ -970,13 +979,186 @@ namespace WindowsFormsApplication1
         //Handles a call to save the updated data as a new file
         private void CDSaveAsNewbutton_Click(object sender, EventArgs e)
         {
+            //First prompt for a file name
+            //Make sure it has .txt on the end
+            //AvailableCarsDataComboBox.Text
 
+            //Local to hold new filename
+            string FileName = "";
+
+            //Use a dialog box to get an in game name
+            if (InputBox("Enter new car data filename", "Enter filename here:", ref FileName) == DialogResult.OK)
+            {
+                //Check for and add ".txt" to end if needed
+                if(!(FileName.EndsWith(".txt")))
+                {
+                    FileName = FileName + ".txt";
+                }
+
+                //Set the Current selected item to the new filename as that is what we use to get the filename
+                AvailableCarsDataComboBox.Text = FileName;
+
+                //Then commit the data changes and save
+                CDSavebutton_Click(sender, e);  //Reuse the function that does both
+
+                //Reload files list, both tabs
+
+                //Car List Tab
+                //load the list of cars file
+                ModMan.ReadCarsCurrent();
+                //Populate the cars currently in list, list box
+                PopulateCarsCurrentList();
+
+                //Find car data files
+                ModMan.FindCarsFiles();
+                //Populate the cars files available, list box
+                PopulateCarsAvailableList();
+
+                //Car Data Tab
+                //List of available car text file already loaded
+                //Populate the available cars drop down list
+                PopulateAvailableCarsComboBox();
+
+                //Need to update selected index, so save works if it's pressed
+                AvailableCarsDataComboBox.SelectedIndex = AvailableCarsDataComboBox.Items.Count-1;
+            }
         }
 
         //Handles a call to save the updated data
         private void CDSavebutton_Click(object sender, EventArgs e)
         {
+            //Need export the data from the gui to the LoadedCarData
+            //Get the index of the selected engine
+            int Index = AvailableCarsDataComboBox.SelectedIndex;
+            //Check if a line has been selected
+            if (Index > -1)
+            {
+                //[Main] section
+                ModMan.LoadedCarData.Main.name = CDMNameTextBox.Text;
+                ModMan.LoadedCarData.Main.model = CDMModelTextBox.Text;
+                ModMan.LoadedCarData.Main.rustMask = CDMRustMaskTextBox.Text;
+                ModMan.LoadedCarData.Main.rotation.x = (float)CDMRotXnumericUpDown.Value;
+                ModMan.LoadedCarData.Main.rotation.y = (float)CDMRotYnumericUpDown.Value;
+                ModMan.LoadedCarData.Main.rotation.z = (float)CDMRotZnumericUpDown.Value;
 
+                //[Other] section
+                ModMan.LoadedCarData.Other.engineSound = CDOEngineSoundtextBox.Text;
+                ModMan.LoadedCarData.Other.transmissionType = CDOTranstextBox.Text;
+                ModMan.LoadedCarData.Other.gears = (int)CDOGearsnumericUpDown.Value;
+                ModMan.LoadedCarData.Other.finalDriveRatio = (float)CDOFinalDrivenumericUpDown.Value;
+                ModMan.LoadedCarData.Other.weight = (int)CDOWeightnumericUpDown.Value;
+                ModMan.LoadedCarData.Other.rpmFactor = (int)CDORPMFactornumericUpDown.Value;
+                ModMan.LoadedCarData.Other.rpmAngle = (int)CDORPMAnglenumericUpDown.Value;
+                ModMan.LoadedCarData.Other.speedoAngle = (int)CDOSpeedoAnglenumericUpDown.Value;
+                ModMan.LoadedCarData.Other.suspTravel = (int)CDOSuspTRavelnumericUpDown.Value;
+                ModMan.LoadedCarData.Other.lifterArmsRise = (float)CDOLifterArmsRisenumericUpDown.Value;
+                ModMan.LoadedCarData.Other.cx = (float)CDOCXNumericUpDown.Value;
+
+                //[Suspension] section
+                ModMan.LoadedCarData.Suspension.frontAxleStart = (float)CDSFrontAxleStartnumericUpDown.Value;
+                ModMan.LoadedCarData.Suspension.wheelBase = (float)CDSWheelBasenumericUpDown.Value;
+                ModMan.LoadedCarData.Suspension.height = (float)CDSHeightnumericUpDown.Value;
+                ModMan.LoadedCarData.Suspension.frontTrack = (float)CDSFrontTracknumericUpDown.Value;
+                ModMan.LoadedCarData.Suspension.rearTrack = (float)CDSRearTracknumericUpDown.Value;
+                ModMan.LoadedCarData.Suspension.frontSpringLength = (float)CDSFrontSpringLengthnumericUpDown.Value;
+                ModMan.LoadedCarData.Suspension.scale = (float)CDSScalenumericUpDown.Value;
+
+                ModMan.LoadedCarData.Suspension.frontCenterSet = CDSFrontCenterSettextBox.Text;
+                ModMan.LoadedCarData.Suspension.frontRightSet = CDSFrontRightSettextBox.Text;
+                ModMan.LoadedCarData.Suspension.rearCenterSet = CDSRearCenterSettextBox.Text;
+                ModMan.LoadedCarData.Suspension.rearRightSet = CDSRearRightSettextBox.Text;
+
+                //[Engine] section
+                ModMan.LoadedCarData.Engine.position.x = (float)CDEPosXnumericUpDown.Value;
+                ModMan.LoadedCarData.Engine.position.y = (float)CDEPosYnumericUpDown.Value;
+                ModMan.LoadedCarData.Engine.position.z = (float)CDEPosZnumericUpDown.Value;
+                ModMan.LoadedCarData.Engine.rotation.x = (float)CDERotXnumericUpDown.Value;
+                ModMan.LoadedCarData.Engine.rotation.y = (float)CDERotYnumericUpDown.Value;
+                ModMan.LoadedCarData.Engine.rotation.z = (float)CDERotZnumericUpDown.Value;
+                ModMan.LoadedCarData.Engine.scale = (float)CDEScalenumericUpDown.Value;
+                ModMan.LoadedCarData.Engine.type = CDETypetextBox.Text;
+                ModMan.LoadedCarData.Engine.sound = CDESoundtextBox.Text;
+
+                //[Driveshaft] section
+                ModMan.LoadedCarData.Driveshaft.position.x = (float)CDDPosXnumericUpDown.Value;
+                ModMan.LoadedCarData.Driveshaft.position.y = (float)CDDPosYnumericUpDown.Value;
+                ModMan.LoadedCarData.Driveshaft.position.z = (float)CDDPosZnumericUpDown.Value;
+                ModMan.LoadedCarData.Driveshaft.rotation.x = (float)CDDRotXnumericUpDown.Value;
+                ModMan.LoadedCarData.Driveshaft.rotation.y = (float)CDDRotYnumericUpDown.Value;
+                ModMan.LoadedCarData.Driveshaft.rotation.z = (float)CDDRotZnumericUpDown.Value;
+                ModMan.LoadedCarData.Driveshaft.scale = (float)CDDScalenumericUpDown.Value;
+                ModMan.LoadedCarData.Driveshaft.length = (float)CDDLengthnumericUpDown.Value;
+                ModMan.LoadedCarData.Driveshaft.type = CDDTypetextBox.Text;
+
+                //[Wheel] section
+                ModMan.LoadedCarData.Wheels.wheelWidth = (int)CDWWheelWidthnumericUpDown.Value;
+                ModMan.LoadedCarData.Wheels.rimSize = (int)CDWRimSizenumericUpDown.Value;
+                ModMan.LoadedCarData.Wheels.tireSize = (int)CDWTireSizenumericUpDown.Value;
+                ModMan.LoadedCarData.Wheels.tire = CDWTiretextBox.Text;
+                ModMan.LoadedCarData.Wheels.rim = CDWRimtextBox.Text;
+
+                //[Interior] section
+                ModMan.LoadedCarData.Interior.seatLeftPos.x = (float)CDISLPosXnumericUpDown.Value;
+                ModMan.LoadedCarData.Interior.seatLeftPos.y = (float)CDISLPosYnumericUpDown.Value;
+                ModMan.LoadedCarData.Interior.seatLeftPos.z = (float)CDISLPosZnumericUpDown.Value;
+                ModMan.LoadedCarData.Interior.seatLeftRot.x = (float)CDISLRotXnumericUpDown.Value;
+                ModMan.LoadedCarData.Interior.seatLeftRot.y = (float)CDISLRotYnumericUpDown.Value;
+                ModMan.LoadedCarData.Interior.seatLeftRot.z = (float)CDISLRotZnumericUpDown.Value;
+                ModMan.LoadedCarData.Interior.seatScale = (float)CDISeatScalenumericUpDown.Value;
+                ModMan.LoadedCarData.Interior.seat = CDISeattextBox.Text;
+                ModMan.LoadedCarData.Interior.wheel = CDIWheeltextBox.Text;
+                ModMan.LoadedCarData.Interior.wheelPos.x = (float)CDIWheelPosXnumericUpDown.Value;
+                ModMan.LoadedCarData.Interior.wheelPos.y = (float)CDIWheelPosYnumericUpDown.Value;
+                ModMan.LoadedCarData.Interior.wheelPos.z = (float)CDIWheelPosZnumericUpDown.Value;
+                ModMan.LoadedCarData.Interior.wheelRot.x = (float)CDIWheelRotXnumericUpDown.Value;
+                ModMan.LoadedCarData.Interior.wheelRot.y = (float)CDIWheelRotYnumericUpDown.Value;
+                ModMan.LoadedCarData.Interior.wheelRot.z = (float)CDIWheelRotZnumericUpDown.Value;
+
+                //[Logic] section
+                ModMan.LoadedCarData.Logic.globalCondition.a = (float)CDLGloConAnumericUpDown.Value;
+                ModMan.LoadedCarData.Logic.globalCondition.b = (float)CDLGloConBnumericUpDown.Value;
+                ModMan.LoadedCarData.Logic.partsConditions.a = (float)CDLPartConAnumericUpDown.Value;
+                ModMan.LoadedCarData.Logic.partsConditions.b = (float)CDLPartConBnumericUpDown.Value;
+                ModMan.LoadedCarData.Logic.panelsConditions.a = (float)CDLPanConAnumericUpDown.Value;
+                ModMan.LoadedCarData.Logic.panelsConditions.b = (float)CDLPanConBnumericUpDown.Value;
+                ModMan.LoadedCarData.Logic.blockOBD = CDLBlockOBDcheckBox.Checked;
+
+                //Need to deal with the Parts info
+                //It's a list so it's different, need to clear out the existing,
+                // then pass in the data to add it to the list.
+                ModMan.CarDataPartsSectionProcClear();
+                if (CDP0NametextBox.Text != "")
+                {
+                    ModMan.CarDataPartsSectionAdd(CDP0NametextBox.Text, (float)CDP0PosXnumericUpDown.Value, (float)CDP0PosYnumericUpDown.Value, (float)CDP0PosZnumericUpDown.Value, (float)CDP0RotXnumericUpDown.Value, (float)CDP0RotYnumericUpDown.Value, (float)CDP0RotZnumericUpDown.Value, (float)CDP0ScalenumericUpDown.Value);
+                }
+                if (CDP1NametextBox.Text != "")
+                {
+                    ModMan.CarDataPartsSectionAdd(CDP1NametextBox.Text, (float)CDP1PosXnumericUpDown.Value, (float)CDP1PosYnumericUpDown.Value, (float)CDP1PosZnumericUpDown.Value, (float)CDP1RotXnumericUpDown.Value, (float)CDP1RotYnumericUpDown.Value, (float)CDP1RotZnumericUpDown.Value, (float)CDP1ScalenumericUpDown.Value);
+                }
+                if (CDP2NametextBox.Text != "")
+                {
+                    ModMan.CarDataPartsSectionAdd(CDP2NametextBox.Text, (float)CDP2PosXnumericUpDown.Value, (float)CDP2PosYnumericUpDown.Value, (float)CDP2PosZnumericUpDown.Value, (float)CDP2RotXnumericUpDown.Value, (float)CDP2RotYnumericUpDown.Value, (float)CDP2RotZnumericUpDown.Value, (float)CDP2ScalenumericUpDown.Value);
+                }
+                if (CDP3NametextBox.Text != "")
+                {
+                    ModMan.CarDataPartsSectionAdd(CDP3NametextBox.Text, (float)CDP3PosXnumericUpDown.Value, (float)CDP3PosYnumericUpDown.Value, (float)CDP3PosZnumericUpDown.Value, (float)CDP3RotXnumericUpDown.Value, (float)CDP3RotYnumericUpDown.Value, (float)CDP3RotZnumericUpDown.Value, (float)CDP3ScalenumericUpDown.Value);
+                }
+                if (CDP4NametextBox.Text != "")
+                {
+                    ModMan.CarDataPartsSectionAdd(CDP4NametextBox.Text, (float)CDP4PosXnumericUpDown.Value, (float)CDP4PosYnumericUpDown.Value, (float)CDP4PosZnumericUpDown.Value, (float)CDP4RotXnumericUpDown.Value, (float)CDP4RotYnumericUpDown.Value, (float)CDP4RotZnumericUpDown.Value, (float)CDP4ScalenumericUpDown.Value);
+                }
+                if (CDP5NametextBox.Text != "")
+                {
+                    ModMan.CarDataPartsSectionAdd(CDP5NametextBox.Text, (float)CDP5PosXnumericUpDown.Value, (float)CDP5PosYnumericUpDown.Value, (float)CDP5PosZnumericUpDown.Value, (float)CDP5RotXnumericUpDown.Value, (float)CDP5RotYnumericUpDown.Value, (float)CDP5RotZnumericUpDown.Value, (float)CDP5ScalenumericUpDown.Value);
+                }
+                if (CDP6NametextBox.Text != "")
+                {
+                    ModMan.CarDataPartsSectionAdd(CDP6NametextBox.Text, (float)CDP6PosXnumericUpDown.Value, (float)CDP6PosYnumericUpDown.Value, (float)CDP6PosZnumericUpDown.Value, (float)CDP6RotXnumericUpDown.Value, (float)CDP6RotYnumericUpDown.Value, (float)CDP6RotZnumericUpDown.Value, (float)CDP6ScalenumericUpDown.Value);
+                }
+
+                //Finally commit to file, using the name from the combo box
+                ModMan.WriteCarDataToFile(AvailableCarsDataComboBox.Text);
+            }
         }
 
         //Handles a call to select the car data image
