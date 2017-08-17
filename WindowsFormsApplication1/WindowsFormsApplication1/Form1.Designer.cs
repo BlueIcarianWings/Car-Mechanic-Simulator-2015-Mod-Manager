@@ -407,6 +407,7 @@
             this.AvailableCarsDataLabel = new System.Windows.Forms.Label();
             this.AvailableCarsDataComboBox = new System.Windows.Forms.ComboBox();
             this.EngineDataTabPage = new System.Windows.Forms.TabPage();
+            this.EDTImagepictureBox = new System.Windows.Forms.PictureBox();
             this.EDTResetButton = new System.Windows.Forms.Button();
             this.EDTmaxRPMLabelNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.EDTmaxRPMLabel = new System.Windows.Forms.Label();
@@ -422,6 +423,7 @@
             this.AvailableEnginesComboBox = new System.Windows.Forms.ComboBox();
             this.AvailableEnginesLabel = new System.Windows.Forms.Label();
             this.TireDatatabPage = new System.Windows.Forms.TabPage();
+            this.TDTImagepictureBox = new System.Windows.Forms.PictureBox();
             this.TDTResetbutton = new System.Windows.Forms.Button();
             this.TDTPricenumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.TDTPricelabel = new System.Windows.Forms.Label();
@@ -465,9 +467,39 @@
             this.MDTLoadModMapButton = new System.Windows.Forms.Button();
             this.MDTSetGameMapButton = new System.Windows.Forms.Button();
             this.SaveGameEditortabPage = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.EDTImagepictureBox = new System.Windows.Forms.PictureBox();
-            this.TDTImagepictureBox = new System.Windows.Forms.PictureBox();
+            this.SaveGameEditorTabtabControl = new System.Windows.Forms.TabControl();
+            this.SGETGlobaltabPage = new System.Windows.Forms.TabPage();
+            this.SGETGMoneynumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SGETGMoneylabel = new System.Windows.Forms.Label();
+            this.SGETGXPnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SGETGXPlabel = new System.Windows.Forms.Label();
+            this.SGETBankLoannumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SGETBankLoanlabel = new System.Windows.Forms.Label();
+            this.SGETGBoltsUndonenumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SGETGBoltsUndonelabel = new System.Windows.Forms.Label();
+            this.SGETGPartsUnmountednumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SGETGPartsUnmountedlabel = new System.Windows.Forms.Label();
+            this.SGETGMoneyIncomenumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SGETGMoneyIncomelabel = new System.Windows.Forms.Label();
+            this.SGETGCarsOwnednumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SGETGCarsOwnedlabel = new System.Windows.Forms.Label();
+            this.SGETGJobsCompletednumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SGETGJobsCompletedlabel = new System.Windows.Forms.Label();
+            this.SGETGCarsSoldnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SGETGCarsSoldlabel = new System.Windows.Forms.Label();
+            this.SGETGMoneyIncomeCarsnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SGETGMoneyIncomeCarslabel = new System.Windows.Forms.Label();
+            this.SGETGMoneyIncomePartsnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SGETGMoneyIncomePartslabel = new System.Windows.Forms.Label();
+            this.SGETGPartsRepairednumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SGETGPartsRepairedlabel = new System.Windows.Forms.Label();
+            this.SGETGSavebutton = new System.Windows.Forms.Button();
+            this.SGETGTitlelabel = new System.Windows.Forms.Label();
+            this.SGETGLoadbutton = new System.Windows.Forms.Button();
+            this.SGETHelpWantedtabPage = new System.Windows.Forms.TabPage();
+            this.SGETHelpWantedtextBox = new System.Windows.Forms.TextBox();
+            this.SGETGProfilelabel = new System.Windows.Forms.Label();
+            this.SGETGProfilecomboBox = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.CarsListTabPage.SuspendLayout();
@@ -606,12 +638,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.CDMRotXnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarDataThumbNailPictureBox)).BeginInit();
             this.EngineDataTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EDTImagepictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxRPMLabelNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTminRPMLabelNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxTorqueRPMNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxPowerRPMNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxPowerNumericUpDown)).BeginInit();
             this.TireDatatabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TDTImagepictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TDTPricenumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TDTGripModnumericUpDown)).BeginInit();
             this.MapDataTabPage.SuspendLayout();
@@ -620,8 +654,21 @@
             this.MDTSelectedMappanel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SaveGameEditortabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EDTImagepictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TDTImagepictureBox)).BeginInit();
+            this.SaveGameEditorTabtabControl.SuspendLayout();
+            this.SGETGlobaltabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGMoneynumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGXPnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETBankLoannumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGBoltsUndonenumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGPartsUnmountednumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGMoneyIncomenumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGCarsOwnednumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGJobsCompletednumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGCarsSoldnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGMoneyIncomeCarsnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGMoneyIncomePartsnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGPartsRepairednumericUpDown)).BeginInit();
+            this.SGETHelpWantedtabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -5015,6 +5062,15 @@
             this.EngineDataTabPage.Text = "Engine Data";
             this.EngineDataTabPage.UseVisualStyleBackColor = true;
             // 
+            // EDTImagepictureBox
+            // 
+            this.EDTImagepictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.EDTImagepictureBox.Location = new System.Drawing.Point(176, 63);
+            this.EDTImagepictureBox.Name = "EDTImagepictureBox";
+            this.EDTImagepictureBox.Size = new System.Drawing.Size(512, 512);
+            this.EDTImagepictureBox.TabIndex = 15;
+            this.EDTImagepictureBox.TabStop = false;
+            // 
             // EDTResetButton
             // 
             this.EDTResetButton.Location = new System.Drawing.Point(10, 291);
@@ -5176,6 +5232,15 @@
             this.TireDatatabPage.TabIndex = 4;
             this.TireDatatabPage.Text = "Tire Data";
             this.TireDatatabPage.UseVisualStyleBackColor = true;
+            // 
+            // TDTImagepictureBox
+            // 
+            this.TDTImagepictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.TDTImagepictureBox.Location = new System.Drawing.Point(176, 63);
+            this.TDTImagepictureBox.Name = "TDTImagepictureBox";
+            this.TDTImagepictureBox.Size = new System.Drawing.Size(512, 512);
+            this.TDTImagepictureBox.TabIndex = 28;
+            this.TDTImagepictureBox.TabStop = false;
             // 
             // TDTResetbutton
             // 
@@ -5596,7 +5661,7 @@
             // 
             // SaveGameEditortabPage
             // 
-            this.SaveGameEditortabPage.Controls.Add(this.textBox1);
+            this.SaveGameEditortabPage.Controls.Add(this.SaveGameEditorTabtabControl);
             this.SaveGameEditortabPage.Location = new System.Drawing.Point(4, 22);
             this.SaveGameEditortabPage.Name = "SaveGameEditortabPage";
             this.SaveGameEditortabPage.Size = new System.Drawing.Size(1042, 650);
@@ -5604,32 +5669,372 @@
             this.SaveGameEditortabPage.Text = "Save Game Editor";
             this.SaveGameEditortabPage.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // SaveGameEditorTabtabControl
             // 
-            this.textBox1.Location = new System.Drawing.Point(7, 7);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(527, 159);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = resources.GetString("textBox1.Text");
+            this.SaveGameEditorTabtabControl.Controls.Add(this.SGETGlobaltabPage);
+            this.SaveGameEditorTabtabControl.Controls.Add(this.SGETHelpWantedtabPage);
+            this.SaveGameEditorTabtabControl.Location = new System.Drawing.Point(7, 7);
+            this.SaveGameEditorTabtabControl.Name = "SaveGameEditorTabtabControl";
+            this.SaveGameEditorTabtabControl.SelectedIndex = 0;
+            this.SaveGameEditorTabtabControl.Size = new System.Drawing.Size(1031, 639);
+            this.SaveGameEditorTabtabControl.TabIndex = 2;
             // 
-            // EDTImagepictureBox
+            // SGETGlobaltabPage
             // 
-            this.EDTImagepictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.EDTImagepictureBox.Location = new System.Drawing.Point(176, 63);
-            this.EDTImagepictureBox.Name = "EDTImagepictureBox";
-            this.EDTImagepictureBox.Size = new System.Drawing.Size(512, 512);
-            this.EDTImagepictureBox.TabIndex = 15;
-            this.EDTImagepictureBox.TabStop = false;
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGProfilecomboBox);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGProfilelabel);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGMoneynumericUpDown);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGMoneylabel);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGXPnumericUpDown);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGXPlabel);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETBankLoannumericUpDown);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETBankLoanlabel);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGBoltsUndonenumericUpDown);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGBoltsUndonelabel);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGPartsUnmountednumericUpDown);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGPartsUnmountedlabel);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGMoneyIncomenumericUpDown);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGMoneyIncomelabel);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGCarsOwnednumericUpDown);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGCarsOwnedlabel);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGJobsCompletednumericUpDown);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGJobsCompletedlabel);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGCarsSoldnumericUpDown);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGCarsSoldlabel);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGMoneyIncomeCarsnumericUpDown);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGMoneyIncomeCarslabel);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGMoneyIncomePartsnumericUpDown);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGMoneyIncomePartslabel);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGPartsRepairednumericUpDown);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGPartsRepairedlabel);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGSavebutton);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGTitlelabel);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGLoadbutton);
+            this.SGETGlobaltabPage.Location = new System.Drawing.Point(4, 22);
+            this.SGETGlobaltabPage.Name = "SGETGlobaltabPage";
+            this.SGETGlobaltabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.SGETGlobaltabPage.Size = new System.Drawing.Size(1023, 613);
+            this.SGETGlobaltabPage.TabIndex = 0;
+            this.SGETGlobaltabPage.Text = "Global";
+            this.SGETGlobaltabPage.UseVisualStyleBackColor = true;
             // 
-            // TDTImagepictureBox
+            // SGETGMoneynumericUpDown
             // 
-            this.TDTImagepictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.TDTImagepictureBox.Location = new System.Drawing.Point(176, 63);
-            this.TDTImagepictureBox.Name = "TDTImagepictureBox";
-            this.TDTImagepictureBox.Size = new System.Drawing.Size(512, 512);
-            this.TDTImagepictureBox.TabIndex = 28;
-            this.TDTImagepictureBox.TabStop = false;
+            this.SGETGMoneynumericUpDown.Location = new System.Drawing.Point(117, 312);
+            this.SGETGMoneynumericUpDown.Maximum = new decimal(new int[] {
+            16777215,
+            0,
+            0,
+            0});
+            this.SGETGMoneynumericUpDown.Name = "SGETGMoneynumericUpDown";
+            this.SGETGMoneynumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.SGETGMoneynumericUpDown.TabIndex = 27;
+            // 
+            // SGETGMoneylabel
+            // 
+            this.SGETGMoneylabel.AutoSize = true;
+            this.SGETGMoneylabel.Location = new System.Drawing.Point(12, 314);
+            this.SGETGMoneylabel.Name = "SGETGMoneylabel";
+            this.SGETGMoneylabel.Size = new System.Drawing.Size(39, 13);
+            this.SGETGMoneylabel.TabIndex = 26;
+            this.SGETGMoneylabel.Text = "Money";
+            // 
+            // SGETGXPnumericUpDown
+            // 
+            this.SGETGXPnumericUpDown.Location = new System.Drawing.Point(117, 286);
+            this.SGETGXPnumericUpDown.Maximum = new decimal(new int[] {
+            16777215,
+            0,
+            0,
+            0});
+            this.SGETGXPnumericUpDown.Name = "SGETGXPnumericUpDown";
+            this.SGETGXPnumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.SGETGXPnumericUpDown.TabIndex = 25;
+            // 
+            // SGETGXPlabel
+            // 
+            this.SGETGXPlabel.AutoSize = true;
+            this.SGETGXPlabel.Location = new System.Drawing.Point(12, 288);
+            this.SGETGXPlabel.Name = "SGETGXPlabel";
+            this.SGETGXPlabel.Size = new System.Drawing.Size(21, 13);
+            this.SGETGXPlabel.TabIndex = 24;
+            this.SGETGXPlabel.Text = "XP";
+            // 
+            // SGETBankLoannumericUpDown
+            // 
+            this.SGETBankLoannumericUpDown.Location = new System.Drawing.Point(117, 260);
+            this.SGETBankLoannumericUpDown.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.SGETBankLoannumericUpDown.Name = "SGETBankLoannumericUpDown";
+            this.SGETBankLoannumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.SGETBankLoannumericUpDown.TabIndex = 23;
+            // 
+            // SGETBankLoanlabel
+            // 
+            this.SGETBankLoanlabel.AutoSize = true;
+            this.SGETBankLoanlabel.Location = new System.Drawing.Point(12, 262);
+            this.SGETBankLoanlabel.Name = "SGETBankLoanlabel";
+            this.SGETBankLoanlabel.Size = new System.Drawing.Size(59, 13);
+            this.SGETBankLoanlabel.TabIndex = 22;
+            this.SGETBankLoanlabel.Text = "Bank Loan";
+            // 
+            // SGETGBoltsUndonenumericUpDown
+            // 
+            this.SGETGBoltsUndonenumericUpDown.Location = new System.Drawing.Point(117, 234);
+            this.SGETGBoltsUndonenumericUpDown.Maximum = new decimal(new int[] {
+            16777215,
+            0,
+            0,
+            0});
+            this.SGETGBoltsUndonenumericUpDown.Name = "SGETGBoltsUndonenumericUpDown";
+            this.SGETGBoltsUndonenumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.SGETGBoltsUndonenumericUpDown.TabIndex = 21;
+            // 
+            // SGETGBoltsUndonelabel
+            // 
+            this.SGETGBoltsUndonelabel.AutoSize = true;
+            this.SGETGBoltsUndonelabel.Location = new System.Drawing.Point(12, 236);
+            this.SGETGBoltsUndonelabel.Name = "SGETGBoltsUndonelabel";
+            this.SGETGBoltsUndonelabel.Size = new System.Drawing.Size(71, 13);
+            this.SGETGBoltsUndonelabel.TabIndex = 20;
+            this.SGETGBoltsUndonelabel.Text = "Bolts Undone";
+            // 
+            // SGETGPartsUnmountednumericUpDown
+            // 
+            this.SGETGPartsUnmountednumericUpDown.Location = new System.Drawing.Point(117, 208);
+            this.SGETGPartsUnmountednumericUpDown.Maximum = new decimal(new int[] {
+            16777215,
+            0,
+            0,
+            0});
+            this.SGETGPartsUnmountednumericUpDown.Name = "SGETGPartsUnmountednumericUpDown";
+            this.SGETGPartsUnmountednumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.SGETGPartsUnmountednumericUpDown.TabIndex = 19;
+            // 
+            // SGETGPartsUnmountedlabel
+            // 
+            this.SGETGPartsUnmountedlabel.AutoSize = true;
+            this.SGETGPartsUnmountedlabel.Location = new System.Drawing.Point(12, 210);
+            this.SGETGPartsUnmountedlabel.Name = "SGETGPartsUnmountedlabel";
+            this.SGETGPartsUnmountedlabel.Size = new System.Drawing.Size(89, 13);
+            this.SGETGPartsUnmountedlabel.TabIndex = 18;
+            this.SGETGPartsUnmountedlabel.Text = "Parts Unmounted";
+            // 
+            // SGETGMoneyIncomenumericUpDown
+            // 
+            this.SGETGMoneyIncomenumericUpDown.Location = new System.Drawing.Point(117, 182);
+            this.SGETGMoneyIncomenumericUpDown.Maximum = new decimal(new int[] {
+            16777215,
+            0,
+            0,
+            0});
+            this.SGETGMoneyIncomenumericUpDown.Name = "SGETGMoneyIncomenumericUpDown";
+            this.SGETGMoneyIncomenumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.SGETGMoneyIncomenumericUpDown.TabIndex = 17;
+            // 
+            // SGETGMoneyIncomelabel
+            // 
+            this.SGETGMoneyIncomelabel.AutoSize = true;
+            this.SGETGMoneyIncomelabel.Location = new System.Drawing.Point(12, 184);
+            this.SGETGMoneyIncomelabel.Name = "SGETGMoneyIncomelabel";
+            this.SGETGMoneyIncomelabel.Size = new System.Drawing.Size(77, 13);
+            this.SGETGMoneyIncomelabel.TabIndex = 16;
+            this.SGETGMoneyIncomelabel.Text = "Money Income";
+            // 
+            // SGETGCarsOwnednumericUpDown
+            // 
+            this.SGETGCarsOwnednumericUpDown.Location = new System.Drawing.Point(117, 156);
+            this.SGETGCarsOwnednumericUpDown.Maximum = new decimal(new int[] {
+            16777215,
+            0,
+            0,
+            0});
+            this.SGETGCarsOwnednumericUpDown.Name = "SGETGCarsOwnednumericUpDown";
+            this.SGETGCarsOwnednumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.SGETGCarsOwnednumericUpDown.TabIndex = 15;
+            // 
+            // SGETGCarsOwnedlabel
+            // 
+            this.SGETGCarsOwnedlabel.AutoSize = true;
+            this.SGETGCarsOwnedlabel.Location = new System.Drawing.Point(12, 158);
+            this.SGETGCarsOwnedlabel.Name = "SGETGCarsOwnedlabel";
+            this.SGETGCarsOwnedlabel.Size = new System.Drawing.Size(65, 13);
+            this.SGETGCarsOwnedlabel.TabIndex = 14;
+            this.SGETGCarsOwnedlabel.Text = "Cars Owned";
+            // 
+            // SGETGJobsCompletednumericUpDown
+            // 
+            this.SGETGJobsCompletednumericUpDown.Location = new System.Drawing.Point(117, 130);
+            this.SGETGJobsCompletednumericUpDown.Maximum = new decimal(new int[] {
+            16777215,
+            0,
+            0,
+            0});
+            this.SGETGJobsCompletednumericUpDown.Name = "SGETGJobsCompletednumericUpDown";
+            this.SGETGJobsCompletednumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.SGETGJobsCompletednumericUpDown.TabIndex = 13;
+            // 
+            // SGETGJobsCompletedlabel
+            // 
+            this.SGETGJobsCompletedlabel.AutoSize = true;
+            this.SGETGJobsCompletedlabel.Location = new System.Drawing.Point(12, 132);
+            this.SGETGJobsCompletedlabel.Name = "SGETGJobsCompletedlabel";
+            this.SGETGJobsCompletedlabel.Size = new System.Drawing.Size(82, 13);
+            this.SGETGJobsCompletedlabel.TabIndex = 12;
+            this.SGETGJobsCompletedlabel.Text = "Jobs Completed";
+            // 
+            // SGETGCarsSoldnumericUpDown
+            // 
+            this.SGETGCarsSoldnumericUpDown.Location = new System.Drawing.Point(117, 104);
+            this.SGETGCarsSoldnumericUpDown.Maximum = new decimal(new int[] {
+            16777215,
+            0,
+            0,
+            0});
+            this.SGETGCarsSoldnumericUpDown.Name = "SGETGCarsSoldnumericUpDown";
+            this.SGETGCarsSoldnumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.SGETGCarsSoldnumericUpDown.TabIndex = 11;
+            // 
+            // SGETGCarsSoldlabel
+            // 
+            this.SGETGCarsSoldlabel.AutoSize = true;
+            this.SGETGCarsSoldlabel.Location = new System.Drawing.Point(12, 106);
+            this.SGETGCarsSoldlabel.Name = "SGETGCarsSoldlabel";
+            this.SGETGCarsSoldlabel.Size = new System.Drawing.Size(52, 13);
+            this.SGETGCarsSoldlabel.TabIndex = 10;
+            this.SGETGCarsSoldlabel.Text = "Cars Sold";
+            // 
+            // SGETGMoneyIncomeCarsnumericUpDown
+            // 
+            this.SGETGMoneyIncomeCarsnumericUpDown.Location = new System.Drawing.Point(117, 78);
+            this.SGETGMoneyIncomeCarsnumericUpDown.Maximum = new decimal(new int[] {
+            16777215,
+            0,
+            0,
+            0});
+            this.SGETGMoneyIncomeCarsnumericUpDown.Name = "SGETGMoneyIncomeCarsnumericUpDown";
+            this.SGETGMoneyIncomeCarsnumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.SGETGMoneyIncomeCarsnumericUpDown.TabIndex = 9;
+            // 
+            // SGETGMoneyIncomeCarslabel
+            // 
+            this.SGETGMoneyIncomeCarslabel.AutoSize = true;
+            this.SGETGMoneyIncomeCarslabel.Location = new System.Drawing.Point(12, 80);
+            this.SGETGMoneyIncomeCarslabel.Name = "SGETGMoneyIncomeCarslabel";
+            this.SGETGMoneyIncomeCarslabel.Size = new System.Drawing.Size(101, 13);
+            this.SGETGMoneyIncomeCarslabel.TabIndex = 8;
+            this.SGETGMoneyIncomeCarslabel.Text = "Money Income Cars";
+            // 
+            // SGETGMoneyIncomePartsnumericUpDown
+            // 
+            this.SGETGMoneyIncomePartsnumericUpDown.Location = new System.Drawing.Point(117, 52);
+            this.SGETGMoneyIncomePartsnumericUpDown.Maximum = new decimal(new int[] {
+            16777215,
+            0,
+            0,
+            0});
+            this.SGETGMoneyIncomePartsnumericUpDown.Name = "SGETGMoneyIncomePartsnumericUpDown";
+            this.SGETGMoneyIncomePartsnumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.SGETGMoneyIncomePartsnumericUpDown.TabIndex = 7;
+            // 
+            // SGETGMoneyIncomePartslabel
+            // 
+            this.SGETGMoneyIncomePartslabel.AutoSize = true;
+            this.SGETGMoneyIncomePartslabel.Location = new System.Drawing.Point(12, 54);
+            this.SGETGMoneyIncomePartslabel.Name = "SGETGMoneyIncomePartslabel";
+            this.SGETGMoneyIncomePartslabel.Size = new System.Drawing.Size(104, 13);
+            this.SGETGMoneyIncomePartslabel.TabIndex = 6;
+            this.SGETGMoneyIncomePartslabel.Text = "Money Income Parts";
+            // 
+            // SGETGPartsRepairednumericUpDown
+            // 
+            this.SGETGPartsRepairednumericUpDown.Location = new System.Drawing.Point(117, 26);
+            this.SGETGPartsRepairednumericUpDown.Maximum = new decimal(new int[] {
+            16777215,
+            0,
+            0,
+            0});
+            this.SGETGPartsRepairednumericUpDown.Name = "SGETGPartsRepairednumericUpDown";
+            this.SGETGPartsRepairednumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.SGETGPartsRepairednumericUpDown.TabIndex = 5;
+            // 
+            // SGETGPartsRepairedlabel
+            // 
+            this.SGETGPartsRepairedlabel.AutoSize = true;
+            this.SGETGPartsRepairedlabel.Location = new System.Drawing.Point(12, 28);
+            this.SGETGPartsRepairedlabel.Name = "SGETGPartsRepairedlabel";
+            this.SGETGPartsRepairedlabel.Size = new System.Drawing.Size(77, 13);
+            this.SGETGPartsRepairedlabel.TabIndex = 4;
+            this.SGETGPartsRepairedlabel.Text = "Parts Repaired";
+            // 
+            // SGETGSavebutton
+            // 
+            this.SGETGSavebutton.Location = new System.Drawing.Point(263, 100);
+            this.SGETGSavebutton.Name = "SGETGSavebutton";
+            this.SGETGSavebutton.Size = new System.Drawing.Size(96, 23);
+            this.SGETGSavebutton.TabIndex = 3;
+            this.SGETGSavebutton.Text = "Save Save File";
+            this.SGETGSavebutton.UseVisualStyleBackColor = true;
+            this.SGETGSavebutton.Click += new System.EventHandler(this.SGETGSavebutton_Click);
+            // 
+            // SGETGTitlelabel
+            // 
+            this.SGETGTitlelabel.AutoSize = true;
+            this.SGETGTitlelabel.Location = new System.Drawing.Point(7, 7);
+            this.SGETGTitlelabel.Name = "SGETGTitlelabel";
+            this.SGETGTitlelabel.Size = new System.Drawing.Size(326, 13);
+            this.SGETGTitlelabel.TabIndex = 2;
+            this.SGETGTitlelabel.Text = "This tab loads the Global file which contains the following save data";
+            // 
+            // SGETGLoadbutton
+            // 
+            this.SGETGLoadbutton.Location = new System.Drawing.Point(263, 71);
+            this.SGETGLoadbutton.Name = "SGETGLoadbutton";
+            this.SGETGLoadbutton.Size = new System.Drawing.Size(96, 23);
+            this.SGETGLoadbutton.TabIndex = 1;
+            this.SGETGLoadbutton.Text = "Load Save File";
+            this.SGETGLoadbutton.UseVisualStyleBackColor = true;
+            this.SGETGLoadbutton.Click += new System.EventHandler(this.SGETGLoadbutton_Click);
+            // 
+            // SGETHelpWantedtabPage
+            // 
+            this.SGETHelpWantedtabPage.Controls.Add(this.SGETHelpWantedtextBox);
+            this.SGETHelpWantedtabPage.Location = new System.Drawing.Point(4, 22);
+            this.SGETHelpWantedtabPage.Name = "SGETHelpWantedtabPage";
+            this.SGETHelpWantedtabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.SGETHelpWantedtabPage.Size = new System.Drawing.Size(1023, 613);
+            this.SGETHelpWantedtabPage.TabIndex = 1;
+            this.SGETHelpWantedtabPage.Text = "Help Wanted";
+            this.SGETHelpWantedtabPage.UseVisualStyleBackColor = true;
+            // 
+            // SGETHelpWantedtextBox
+            // 
+            this.SGETHelpWantedtextBox.Location = new System.Drawing.Point(6, 6);
+            this.SGETHelpWantedtextBox.Multiline = true;
+            this.SGETHelpWantedtextBox.Name = "SGETHelpWantedtextBox";
+            this.SGETHelpWantedtextBox.Size = new System.Drawing.Size(527, 162);
+            this.SGETHelpWantedtextBox.TabIndex = 0;
+            this.SGETHelpWantedtextBox.Text = resources.GetString("SGETHelpWantedtextBox.Text");
+            // 
+            // SGETGProfilelabel
+            // 
+            this.SGETGProfilelabel.AutoSize = true;
+            this.SGETGProfilelabel.Location = new System.Drawing.Point(260, 27);
+            this.SGETGProfilelabel.Name = "SGETGProfilelabel";
+            this.SGETGProfilelabel.Size = new System.Drawing.Size(125, 13);
+            this.SGETGProfilelabel.TabIndex = 28;
+            this.SGETGProfilelabel.Text = "Currently Selected Profile";
+            // 
+            // SGETGProfilecomboBox
+            // 
+            this.SGETGProfilecomboBox.FormattingEnabled = true;
+            this.SGETGProfilecomboBox.Location = new System.Drawing.Point(263, 44);
+            this.SGETGProfilecomboBox.Name = "SGETGProfilecomboBox";
+            this.SGETGProfilecomboBox.Size = new System.Drawing.Size(121, 21);
+            this.SGETGProfilecomboBox.TabIndex = 29;
             // 
             // Form1
             // 
@@ -5799,6 +6204,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CarDataThumbNailPictureBox)).EndInit();
             this.EngineDataTabPage.ResumeLayout(false);
             this.EngineDataTabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EDTImagepictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxRPMLabelNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTminRPMLabelNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxTorqueRPMNumericUpDown)).EndInit();
@@ -5806,6 +6212,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxPowerNumericUpDown)).EndInit();
             this.TireDatatabPage.ResumeLayout(false);
             this.TireDatatabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TDTImagepictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TDTPricenumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TDTGripModnumericUpDown)).EndInit();
             this.MapDataTabPage.ResumeLayout(false);
@@ -5818,9 +6225,23 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.SaveGameEditortabPage.ResumeLayout(false);
-            this.SaveGameEditortabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EDTImagepictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TDTImagepictureBox)).EndInit();
+            this.SaveGameEditorTabtabControl.ResumeLayout(false);
+            this.SGETGlobaltabPage.ResumeLayout(false);
+            this.SGETGlobaltabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGMoneynumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGXPnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETBankLoannumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGBoltsUndonenumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGPartsUnmountednumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGMoneyIncomenumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGCarsOwnednumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGJobsCompletednumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGCarsSoldnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGMoneyIncomeCarsnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGMoneyIncomePartsnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SGETGPartsRepairednumericUpDown)).EndInit();
+            this.SGETHelpWantedtabPage.ResumeLayout(false);
+            this.SGETHelpWantedtabPage.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6253,7 +6674,7 @@
         private System.Windows.Forms.Button MDTMDFResetbutton;
         private System.Windows.Forms.Button MDTMDFOpenbutton;
         private System.Windows.Forms.TabPage SaveGameEditortabPage;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox SGETHelpWantedtextBox;
         private System.Windows.Forms.ComboBox CDETypecomboBox;
         private System.Windows.Forms.Button MDTRefreshbutton;
         private System.Windows.Forms.Button DeleteMapbutton;
@@ -6267,6 +6688,38 @@
         private System.Windows.Forms.PictureBox MDTMDFPreviewpictureBox;
         private System.Windows.Forms.PictureBox EDTImagepictureBox;
         private System.Windows.Forms.PictureBox TDTImagepictureBox;
+        private System.Windows.Forms.Button SGETGLoadbutton;
+        private System.Windows.Forms.TabControl SaveGameEditorTabtabControl;
+        private System.Windows.Forms.TabPage SGETGlobaltabPage;
+        private System.Windows.Forms.TabPage SGETHelpWantedtabPage;
+        private System.Windows.Forms.Label SGETGTitlelabel;
+        private System.Windows.Forms.Button SGETGSavebutton;
+        private System.Windows.Forms.NumericUpDown SGETGPartsRepairednumericUpDown;
+        private System.Windows.Forms.Label SGETGPartsRepairedlabel;
+        private System.Windows.Forms.NumericUpDown SGETGMoneynumericUpDown;
+        private System.Windows.Forms.Label SGETGMoneylabel;
+        private System.Windows.Forms.NumericUpDown SGETGXPnumericUpDown;
+        private System.Windows.Forms.Label SGETGXPlabel;
+        private System.Windows.Forms.NumericUpDown SGETBankLoannumericUpDown;
+        private System.Windows.Forms.Label SGETBankLoanlabel;
+        private System.Windows.Forms.NumericUpDown SGETGBoltsUndonenumericUpDown;
+        private System.Windows.Forms.Label SGETGBoltsUndonelabel;
+        private System.Windows.Forms.NumericUpDown SGETGPartsUnmountednumericUpDown;
+        private System.Windows.Forms.Label SGETGPartsUnmountedlabel;
+        private System.Windows.Forms.NumericUpDown SGETGMoneyIncomenumericUpDown;
+        private System.Windows.Forms.Label SGETGMoneyIncomelabel;
+        private System.Windows.Forms.NumericUpDown SGETGCarsOwnednumericUpDown;
+        private System.Windows.Forms.Label SGETGCarsOwnedlabel;
+        private System.Windows.Forms.NumericUpDown SGETGJobsCompletednumericUpDown;
+        private System.Windows.Forms.Label SGETGJobsCompletedlabel;
+        private System.Windows.Forms.NumericUpDown SGETGCarsSoldnumericUpDown;
+        private System.Windows.Forms.Label SGETGCarsSoldlabel;
+        private System.Windows.Forms.NumericUpDown SGETGMoneyIncomeCarsnumericUpDown;
+        private System.Windows.Forms.Label SGETGMoneyIncomeCarslabel;
+        private System.Windows.Forms.NumericUpDown SGETGMoneyIncomePartsnumericUpDown;
+        private System.Windows.Forms.Label SGETGMoneyIncomePartslabel;
+        private System.Windows.Forms.Label SGETGProfilelabel;
+        private System.Windows.Forms.ComboBox SGETGProfilecomboBox;
     }
 }
 

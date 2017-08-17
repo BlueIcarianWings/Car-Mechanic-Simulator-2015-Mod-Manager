@@ -136,8 +136,9 @@ namespace CMS2015ModManager
             //So I've disabled them for now, when I redo this in it's own class, I'll figure out a better way todo it
 
             //If the file doesn't exist load defaults
-            SavedGamesDir = "%userprofile%\\appdata\\locallow\\Red Dot Games\\Car Mechanic Simulator 2015";
-            SavedGamesDirBkUp = "%userprofile%\\appdata\\locallow\\Red Dot Games\\Car Mechanic Simulator 2015\\MMBackUp";
+            String User = Environment.UserName;    //Determine the name of the user
+            SavedGamesDir = "C:\\Users\\" + User + "\\appdata\\locallow\\Red Dot Games\\Car Mechanic Simulator 2015";   //Assemble the save dir path
+            SavedGamesDirBkUp = SavedGamesDir  + "\\MMBackUp";      //Assemble the save backup dir
             CarsDataDir = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Car Mechanic Simulator 2015\\cms2015_Data\\Datacars";
             CarsDataDirBkUp = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Car Mechanic Simulator 2015\\cms2015_Data\\Datacars\\MMBackUp";
             ModMapDir = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Car Mechanic Simulator 2015\\Mods\\Tracks";
@@ -247,7 +248,7 @@ namespace CMS2015ModManager
             if (result == System.Windows.Forms.DialogResult.OK)
             {
                 //Retrieve and set the selected dir
-                SavedGamesDir = fbd.SelectedPath;
+                CarsDataDir = fbd.SelectedPath;
             }
         }
 

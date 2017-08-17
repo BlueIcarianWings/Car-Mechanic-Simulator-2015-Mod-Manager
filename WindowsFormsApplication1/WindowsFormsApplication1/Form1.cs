@@ -13,7 +13,7 @@ namespace CMS2015ModManager
 {
     public partial class Form1 : Form
     {
-        private string ModManVersion = "0.9.0.2";     //Version constant
+        private string ModManVersion = "0.9.1";     //Version constant
 
         //Class object for class that does the acutal mod managing stuff    //here so it's scope is within the form object  //should move the config stuff out at somepoint
         CMS2015MM ModMan;
@@ -92,6 +92,10 @@ namespace CMS2015ModManager
             LoadMapData();
             //Populate the map data list box
             PopulateAvailableMapslistBox();
+
+            //Save Games Tab
+            //Get the list of profiles
+            PopulateProfileComboBox();
         }
 
         #region Menu bar
@@ -1927,5 +1931,63 @@ namespace CMS2015ModManager
         }
         #endregion
 
+        #region Save File - Global
+        //Populate the profile list combo box
+        private void PopulateProfileComboBox()
+        {
+            //Get directories
+            DirectoryInfo di = new DirectoryInfo(ModMan.GetSavedGamesDir());
+
+            foreach (System.IO.DirectoryInfo Folder in di.GetDirectories())
+            {
+                //Add folder to the combo box lists
+                SGETGProfilecomboBox.Items.Add(Folder);
+            }
+        }
+
+        //Load the global save file
+        private void SGETGLoadbutton_Click(object sender, EventArgs e)
+        {
+            SaveGameDataGlobal LocalGrab = new SaveGameDataGlobal();        //Create a local to get save data
+            LocalGrab.LoadGlobalSaveFile(ModMan.GetSavedGamesDir() + "\\" + SGETGProfilecomboBox.Text);     //Load the save file
+
+            //Fill out the GUI
+            SGETGPartsRepairednumericUpDown.Value = LocalGrab._Stats_PartsRepaired;
+            SGETGMoneyIncomePartsnumericUpDown.Value = LocalGrab._Stats_MoneyIncomeParts;
+            SGETGMoneyIncomeCarsnumericUpDown.Value = LocalGrab._Stats_MoneyIncomeCars;
+            SGETGCarsSoldnumericUpDown.Value = LocalGrab._Stats_CarsSold;
+            SGETGJobsCompletednumericUpDown.Value = LocalGrab._Stats_JobsCompletted;
+            SGETGCarsOwnednumericUpDown.Value = LocalGrab._Stats_CarsOwned;
+            SGETGMoneyIncomenumericUpDown.Value = LocalGrab._Stats_MoneyIncome;
+            SGETGPartsUnmountednumericUpDown.Value = LocalGrab._Stats_PartsUnmounted;
+            SGETGBoltsUndonenumericUpDown.Value = LocalGrab._Stats_Bolts;
+            SGETBankLoannumericUpDown.Value = LocalGrab._bankLoan;
+            SGETGXPnumericUpDown.Value = LocalGrab._xp;
+            SGETGMoneynumericUpDown.Value = LocalGrab._money;
+        }
+
+        //Save the global save file
+        private void SGETGSavebutton_Click(object sender, EventArgs e)
+        {
+            SaveGameDataGlobal LocalSave = new SaveGameDataGlobal();        //Create a local to get save data
+
+            //Fill out the data object
+            LocalSave._Stats_PartsRepaired = (int)SGETGPartsRepairednumericUpDown.Value;
+            LocalSave._Stats_MoneyIncomeParts = (int)SGETGMoneyIncomePartsnumericUpDown.Value;
+            LocalSave._Stats_MoneyIncomeCars = (int)SGETGMoneyIncomeCarsnumericUpDown.Value;
+            LocalSave._Stats_CarsSold = (int)SGETGCarsSoldnumericUpDown.Value;
+            LocalSave._Stats_JobsCompletted = (int)SGETGJobsCompletednumericUpDown.Value;
+            LocalSave._Stats_CarsOwned = (int)SGETGCarsOwnednumericUpDown.Value;
+            LocalSave._Stats_MoneyIncome = (int)SGETGMoneyIncomenumericUpDown.Value;
+            LocalSave._Stats_PartsUnmounted = (int)SGETGPartsUnmountednumericUpDown.Value;
+            LocalSave._Stats_Bolts = (int)SGETGBoltsUndonenumericUpDown.Value;
+            LocalSave._bankLoan = (int)SGETBankLoannumericUpDown.Value;
+            LocalSave._xp = (int)SGETGXPnumericUpDown.Value;
+            LocalSave._money = (int)SGETGMoneynumericUpDown.Value;
+
+            LocalSave.WriteGlobalSaveFile(ModMan.GetSavedGamesDir() + "\\" + SGETGProfilecomboBox.Text);     //Load the save file
+        }
+
+        #endregion
     }
 }

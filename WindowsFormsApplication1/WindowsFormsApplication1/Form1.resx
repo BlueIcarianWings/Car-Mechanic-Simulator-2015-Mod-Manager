@@ -120,14 +120,14 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="textBox1.Text" xml:space="preserve">
+  <data name="SGETHelpWantedtextBox.Text" xml:space="preserve">
     <value>Wanted: people to investigate the save game files in
 C:\Users\&lt;user name&gt;\AppData\LocalLow\Red Dot Games\Car Mechanic Simulator 2015
 
 When we know, what data values do what, in which files. I can write something to edit the files.
 
-global -&gt; probably money, experience, and other stats
-inventory -&gt; your inventory, this will require some reverse engineering to figure stuff out, but will be need for,...
+inventory -&gt; your inventory, this will require some reverse engineering to figure stuff out, PartID's in particular
+However that will be needed for,...
 garage and parking -&gt; cars currently in your garage and parking
 jobs -&gt; jobs pending on the phone
 
