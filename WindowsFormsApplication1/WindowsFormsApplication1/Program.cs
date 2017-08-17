@@ -60,12 +60,16 @@ namespace WindowsFormsApplication1
         #region Struts for Car Data
         public struct DoubleFloatPoint
         {
+            //vector might work for this but it's seem to designed for 3D maths instead of storage
+            //or pointf
             public float a;
             public float b;
         }
 
         public struct TripleFloatPoint
         {
+            //vector3 might work for this but it's seem to designed for 3D maths instead of storage
+            //or point3d
             public float x;
             public float y;
             public float z;
@@ -82,15 +86,19 @@ namespace WindowsFormsApplication1
         public struct CarOtherType
         {
             public string engineSound;
+            public int power;
             public string transmissionType;
             public int gears;
             public float finalDriveRatio;
             public int weight;
             public float rpmFactor;
             public int rpmAngle;
+            public float speedoFactor;
             public float speedoAngle;
             public float suspTravel;
             public float lifterArmsRise;
+            public float lifterArmsAngle;
+            public float doorAngle;
             public float cx;
         }
 
@@ -104,10 +112,14 @@ namespace WindowsFormsApplication1
             public float frontSpringLength;
             public float scale;
 
+            public int sidesFlip;			//Kaszlak specfic at the moment
+
             public string frontCenterSet;
             public string frontRightSet;
+            public string frontLeftSet;		//Kaszlak specfic at the moment
             public string rearCenterSet;
             public string rearRightSet;
+            public string rearLeftSet;		//Kaszlak specfic at the moment
         }
 
         public struct CarEngineType
@@ -126,6 +138,7 @@ namespace WindowsFormsApplication1
             public float scale;
             public string type;
             public float length;
+            public int size;
         }
 
         public struct CarWheelsType
@@ -133,6 +146,7 @@ namespace WindowsFormsApplication1
             public int wheelWidth;
             public string tire;
             public string rim;
+            public string rimcap;		//Mercedes 300SL specfic at the moment
             public int rimSize;
             public int tireSize;
         }
@@ -150,10 +164,12 @@ namespace WindowsFormsApplication1
             public TripleFloatPoint seatLeftPos;
             public TripleFloatPoint seatLeftRot;
             public float seatScale;
+            public float seatHeightMod;
             public string seat;
             public string wheel;
             public TripleFloatPoint wheelPos;
             public TripleFloatPoint wheelRot;
+            public float wheelScale;
         }
 
         public struct CarLogicType
@@ -844,7 +860,7 @@ namespace WindowsFormsApplication1
         #region Car Data stuff
 
         //Load and parse the car data file
-        public void LoadCarDataFromFile(string filename)
+        public void LoadCarDataFromFile(string filename)    //READ TO REWRITE THIS, to many special cases and not robust enough, also need to update for all strut bits
         {
             //Loads the contents of a car data file and stores it in LoadedCarData
             //Labels in the strut are the same as the file
@@ -949,104 +965,115 @@ namespace WindowsFormsApplication1
         //Write the car data to file
         public void WriteCarDataToFile(string filename)
         {
-            //local to index through engine data array
+            //local to index through data array
             int Index = 0;
 
             //Create a local file writer
             StreamWriter writer = new StreamWriter(CarsDataDir + "\\" + filename);
 
-                writer.WriteLine("[main]");
-                writer.WriteLine(";name= " + LoadedCarData.Main.name);
-                writer.WriteLine("model= " + LoadedCarData.Main.model);
-                writer.WriteLine("rustMask= " + LoadedCarData.Main.rustMask);
-                writer.WriteLine("rotation= " + LoadedCarData.Main.rotation.x + "," + LoadedCarData.Main.rotation.y + "," + LoadedCarData.Main.rotation.z);
+            writer.WriteLine("[main]");
+            writer.WriteLine(";name= " + LoadedCarData.Main.name);
+            writer.WriteLine("model= " + LoadedCarData.Main.model);
+            writer.WriteLine("rustMask= " + LoadedCarData.Main.rustMask);
+            writer.WriteLine("rotation= " + LoadedCarData.Main.rotation.x.ToString("n1") + "," + LoadedCarData.Main.rotation.y.ToString("n1") + "," + LoadedCarData.Main.rotation.z.ToString("n1"));
+            writer.WriteLine();     //Blank line seperator
+
+            writer.WriteLine("[other]");
+            writer.WriteLine("engineSound= " + LoadedCarData.Other.engineSound);
+            writer.WriteLine("power= " + LoadedCarData.Other.power);
+            writer.WriteLine("transmissionType= " + LoadedCarData.Other.transmissionType);
+            writer.WriteLine("gears= " + LoadedCarData.Other.gears);
+            writer.WriteLine("finalDriveRatio= " + LoadedCarData.Other.finalDriveRatio);
+            writer.WriteLine("weight= " + LoadedCarData.Other.weight);
+            writer.WriteLine("rpmFactor= " + LoadedCarData.Other.rpmFactor);
+            writer.WriteLine("rpmAngle= " + LoadedCarData.Other.rpmAngle);
+            writer.WriteLine("speedoFactor= " + LoadedCarData.Other.speedoFactor);
+            writer.WriteLine("speedoAngle= " + LoadedCarData.Other.speedoAngle);
+            writer.WriteLine("suspTravel= " + LoadedCarData.Other.suspTravel);
+            writer.WriteLine("lifterArmsRise= " + LoadedCarData.Other.lifterArmsRise);
+            writer.WriteLine("lifterArmsAngle= " + LoadedCarData.Other.lifterArmsAngle);
+            writer.WriteLine("doorAngle= " + LoadedCarData.Other.doorAngle);
+            writer.WriteLine("cx= " + LoadedCarData.Other.cx);
+            writer.WriteLine();     //Blank line seperator
+
+            writer.WriteLine("[suspension]");
+            writer.WriteLine("frontAxleStart= " + LoadedCarData.Suspension.frontAxleStart);
+            writer.WriteLine("wheelBase= " + LoadedCarData.Suspension.wheelBase);
+            writer.WriteLine("height= " + LoadedCarData.Suspension.height);
+            writer.WriteLine("frontTrack= " + LoadedCarData.Suspension.frontTrack);
+            writer.WriteLine("rearTrack= " + LoadedCarData.Suspension.rearTrack);
+            writer.WriteLine("frontSpringLength= " + LoadedCarData.Suspension.frontSpringLength);
+            writer.WriteLine("scale= " + LoadedCarData.Suspension.scale);
+            writer.WriteLine();     //Blank line seperator to match style of existing car data files
+            writer.WriteLine("sidesFlip= " + LoadedCarData.Suspension.sidesFlip);               //Kaszlak specfic at the moment
+            writer.WriteLine();     //Blank line seperator to match style of existing car data files
+            writer.WriteLine("frontCenterSet= " + LoadedCarData.Suspension.frontCenterSet);
+            writer.WriteLine("frontRightSet= " + LoadedCarData.Suspension.frontRightSet);
+            writer.WriteLine("frontLeftSet= " + LoadedCarData.Suspension.frontLeftSet);         //Kaszlak specfic at the moment
+            writer.WriteLine("rearCenterSet= " + LoadedCarData.Suspension.rearCenterSet);
+            writer.WriteLine("rearRightSet= " + LoadedCarData.Suspension.rearRightSet);
+            writer.WriteLine("rearLeftSet= " + LoadedCarData.Suspension.rearLeftSet);           //Kaszlak specfic at the moment
+            writer.WriteLine();     //Blank line seperator
+
+            writer.WriteLine("[engine]");
+            writer.WriteLine("position= " + LoadedCarData.Engine.position.x + "," + LoadedCarData.Engine.position.y + "," + LoadedCarData.Engine.position.z);
+            writer.WriteLine("rotation= " + LoadedCarData.Engine.rotation.x + "," + LoadedCarData.Engine.rotation.y + "," + LoadedCarData.Engine.rotation.z);
+            writer.WriteLine("scale= " + LoadedCarData.Engine.scale);
+            writer.WriteLine("type= " + LoadedCarData.Engine.type);
+            writer.WriteLine("sound= " + LoadedCarData.Engine.sound);
+            writer.WriteLine();     //Blank line seperator
+
+            writer.WriteLine("[driveshaft]");
+            writer.WriteLine("position= " + LoadedCarData.Driveshaft.position.x + "," + LoadedCarData.Driveshaft.position.y + "," + LoadedCarData.Driveshaft.position.z);
+            writer.WriteLine("rotation= " + LoadedCarData.Driveshaft.rotation.x + "," + LoadedCarData.Driveshaft.rotation.y + "," + LoadedCarData.Driveshaft.rotation.z);
+            writer.WriteLine("scale= " + LoadedCarData.Driveshaft.scale);
+            writer.WriteLine("type= " + LoadedCarData.Driveshaft.type);
+            writer.WriteLine("length= " + LoadedCarData.Driveshaft.length);
+            writer.WriteLine("size= " + LoadedCarData.Driveshaft.size);
+            writer.WriteLine();     //Blank line seperator
+
+            writer.WriteLine("[wheels]");
+            writer.WriteLine("wheelWidth= " + LoadedCarData.Wheels.wheelWidth);
+            writer.WriteLine("tire= " + LoadedCarData.Wheels.tire);
+            writer.WriteLine("rim= " + LoadedCarData.Wheels.rim);
+            writer.WriteLine("rimcap= " + LoadedCarData.Wheels.rimcap);
+            writer.WriteLine("rimSize= " + LoadedCarData.Wheels.rimSize);
+            writer.WriteLine("tireSize= " + LoadedCarData.Wheels.tireSize);
+            writer.WriteLine();     //Blank line seperator
+
+            //PARTS HERE
+            int LocalCounter = 0;
+            while (LocalCounter < PartsCounter)
+            {
+                writer.WriteLine("[parts" + LocalCounter + "]");
+                writer.WriteLine("name= " + LoadedCarData.Parts[LocalCounter].name);
+                writer.WriteLine("position= " + LoadedCarData.Parts[LocalCounter].position.x + "," + LoadedCarData.Parts[LocalCounter].position.y + "," + LoadedCarData.Parts[LocalCounter].position.z);
+                writer.WriteLine("rotation= " + LoadedCarData.Parts[LocalCounter].rotation.x + "," + LoadedCarData.Parts[LocalCounter].rotation.y + "," + LoadedCarData.Parts[LocalCounter].rotation.z);
+                writer.WriteLine("scale= " + LoadedCarData.Parts[LocalCounter].scale);
                 writer.WriteLine();     //Blank line seperator
+                LocalCounter ++;
+            }
 
-                writer.WriteLine("[other]");
-                writer.WriteLine("engineSound= " + LoadedCarData.Other.engineSound);
-                writer.WriteLine("transmissionType= " + LoadedCarData.Other.transmissionType);
-                writer.WriteLine("gears= " + LoadedCarData.Other.gears);
-                writer.WriteLine("finalDriveRatio= " + LoadedCarData.Other.finalDriveRatio);
-                writer.WriteLine("weight= " + LoadedCarData.Other.weight);
-                writer.WriteLine("rpmFactor= " + LoadedCarData.Other.rpmFactor);
-                writer.WriteLine("rpmAngle= " + LoadedCarData.Other.rpmAngle);
-                writer.WriteLine("speedoAngle= " + LoadedCarData.Other.speedoAngle);
-                writer.WriteLine("suspTravel= " + LoadedCarData.Other.suspTravel);
-                writer.WriteLine("lifterArmsRise= " + LoadedCarData.Other.lifterArmsRise);
-                writer.WriteLine("cx= " + LoadedCarData.Other.cx);
-                writer.WriteLine();     //Blank line seperator
+            writer.WriteLine("[interior]");
+            writer.WriteLine("seatLeftPos= " + LoadedCarData.Interior.seatLeftPos.x + "," + LoadedCarData.Interior.seatLeftPos.y + "," + LoadedCarData.Interior.seatLeftPos.z);
+            writer.WriteLine("seatLeftRot= " + LoadedCarData.Interior.seatLeftRot.x + "," + LoadedCarData.Interior.seatLeftRot.y + "," + LoadedCarData.Interior.seatLeftRot.z);
+            writer.WriteLine("seatScale= " + LoadedCarData.Interior.seatScale);
+            writer.WriteLine("seatHeightMod= " + LoadedCarData.Interior.seatHeightMod);
+            writer.WriteLine("seat= " + LoadedCarData.Interior.seat);
+            writer.WriteLine("wheel= " + LoadedCarData.Interior.wheel);
+            writer.WriteLine("wheelPos= " + LoadedCarData.Interior.wheelPos.x + "," + LoadedCarData.Interior.wheelPos.y + "," + LoadedCarData.Interior.wheelPos.z);
+            writer.WriteLine("wheelRot= " + LoadedCarData.Interior.wheelRot.x + "," + LoadedCarData.Interior.wheelRot.y + "," + LoadedCarData.Interior.wheelRot.z);
+            writer.WriteLine("wheelScale= " + LoadedCarData.Interior.wheelScale);
+            writer.WriteLine();     //Blank line seperator
 
-                writer.WriteLine("[suspension]");
-                writer.WriteLine("frontAxleStart= " + LoadedCarData.Suspension.frontAxleStart);
-                writer.WriteLine("wheelBase= " + LoadedCarData.Suspension.wheelBase);
-                writer.WriteLine("height= " + LoadedCarData.Suspension.height);
-                writer.WriteLine("frontTrack= " + LoadedCarData.Suspension.frontTrack);
-                writer.WriteLine("rearTrack= " + LoadedCarData.Suspension.rearTrack);
-                writer.WriteLine("frontSpringLength= " + LoadedCarData.Suspension.frontSpringLength);
-                writer.WriteLine("scale= " + LoadedCarData.Suspension.scale);
-                writer.WriteLine();     //Blank line seperator
-                writer.WriteLine("frontCenterSet= " + LoadedCarData.Suspension.frontCenterSet);
-                writer.WriteLine("frontRightSet= " + LoadedCarData.Suspension.frontRightSet);
-                writer.WriteLine("rearCenterSet= " + LoadedCarData.Suspension.rearCenterSet);
-                writer.WriteLine("rearRightSet= " + LoadedCarData.Suspension.rearRightSet);
-                writer.WriteLine();     //Blank line seperator
+            writer.WriteLine("[logic]");
+            writer.WriteLine("globalCondition= " + LoadedCarData.Logic.globalCondition.a + "," + LoadedCarData.Logic.globalCondition.b);
+            writer.WriteLine("partsConditions= " + LoadedCarData.Logic.partsConditions.a + "," + LoadedCarData.Logic.partsConditions.b);
+            writer.WriteLine("panelsConditions= " + LoadedCarData.Logic.panelsConditions.a + "," + LoadedCarData.Logic.panelsConditions.b);
+            writer.WriteLine("uniqueMod= " + LoadedCarData.Logic.uniqueMod);
+            writer.WriteLine("blockOBD= " + LoadedCarData.Logic.blockOBD);
 
-                writer.WriteLine("[engine]");
-                writer.WriteLine("position= " + LoadedCarData.Engine.position.x + "," + LoadedCarData.Engine.position.y + "," + LoadedCarData.Engine.position.z);
-                writer.WriteLine("rotation= " + LoadedCarData.Engine.rotation.x + "," + LoadedCarData.Engine.rotation.y + "," + LoadedCarData.Engine.rotation.z);
-                writer.WriteLine("scale= " + LoadedCarData.Engine.scale);
-                writer.WriteLine("type= " + LoadedCarData.Engine.type);
-                writer.WriteLine("sound= " + LoadedCarData.Engine.sound);
-                writer.WriteLine();     //Blank line seperator
-
-                writer.WriteLine("[driveshaft]");
-                writer.WriteLine("position= " + LoadedCarData.Driveshaft.position.x + "," + LoadedCarData.Driveshaft.position.y + "," + LoadedCarData.Driveshaft.position.z);
-                writer.WriteLine("rotation= " + LoadedCarData.Driveshaft.rotation.x + "," + LoadedCarData.Driveshaft.rotation.y + "," + LoadedCarData.Driveshaft.rotation.z);
-                writer.WriteLine("scale= " + LoadedCarData.Driveshaft.scale);
-                writer.WriteLine("type= " + LoadedCarData.Driveshaft.type);
-                writer.WriteLine("length= " + LoadedCarData.Driveshaft.length);
-                writer.WriteLine();     //Blank line seperator
-
-                writer.WriteLine("[wheels]");
-                writer.WriteLine("wheelWidth= " + LoadedCarData.Wheels.wheelWidth);
-                writer.WriteLine("tire= " + LoadedCarData.Wheels.tire);
-                writer.WriteLine("rim= " + LoadedCarData.Wheels.rim);
-                writer.WriteLine("rimSize= " + LoadedCarData.Wheels.rimSize);
-                writer.WriteLine("tireSize= " + LoadedCarData.Wheels.tireSize);
-                writer.WriteLine();     //Blank line seperator
-
-                //
-                //PARTS HERE
-                int LocalCounter = 0;
-                while (LocalCounter < PartsCounter)
-                {
-                    writer.WriteLine("[parts" + LocalCounter + "]");
-                    writer.WriteLine("name= " + LoadedCarData.Parts[LocalCounter].name);
-                    writer.WriteLine("position= " + LoadedCarData.Parts[LocalCounter].position.x + "," + LoadedCarData.Parts[LocalCounter].position.y + "," + LoadedCarData.Parts[LocalCounter].position.z);
-                    writer.WriteLine("rotation= " + LoadedCarData.Parts[LocalCounter].rotation.x + "," + LoadedCarData.Parts[LocalCounter].rotation.y + "," + LoadedCarData.Parts[LocalCounter].rotation.z);
-                    writer.WriteLine("scale= " + LoadedCarData.Parts[LocalCounter].scale);
-                    writer.WriteLine();     //Blank line seperator
-                    LocalCounter ++;
-                }
-
-                writer.WriteLine("[interior]");
-                writer.WriteLine("seatLeftPos= " + LoadedCarData.Interior.seatLeftPos.x + "," + LoadedCarData.Interior.seatLeftPos.y + "," + LoadedCarData.Interior.seatLeftPos.z);
-                writer.WriteLine("seatLeftRot= " + LoadedCarData.Interior.seatLeftRot.x + "," + LoadedCarData.Interior.seatLeftRot.y + "," + LoadedCarData.Interior.seatLeftRot.z);
-                writer.WriteLine("seatScale= " + LoadedCarData.Interior.seatScale);
-                writer.WriteLine("seat= " + LoadedCarData.Interior.seat);
-                writer.WriteLine("wheel= " + LoadedCarData.Interior.wheel);
-                writer.WriteLine("wheelPos= " + LoadedCarData.Interior.wheelPos.x + "," + LoadedCarData.Interior.wheelPos.y + "," + LoadedCarData.Interior.wheelPos.z);
-                writer.WriteLine("wheelRot= " + LoadedCarData.Interior.wheelRot.x + "," + LoadedCarData.Interior.wheelRot.y + "," + LoadedCarData.Interior.wheelRot.z);
-                writer.WriteLine();     //Blank line seperator
-
-                writer.WriteLine("[logic]");
-                writer.WriteLine("globalCondition= " + LoadedCarData.Logic.globalCondition.a + "," + LoadedCarData.Logic.globalCondition.b);
-                writer.WriteLine("partsConditions= " + LoadedCarData.Logic.partsConditions.a + "," + LoadedCarData.Logic.partsConditions.b);
-                writer.WriteLine("panelsConditions= " + LoadedCarData.Logic.panelsConditions.a + "," + LoadedCarData.Logic.panelsConditions.b);
-                writer.WriteLine("uniqueMod= " + LoadedCarData.Logic.uniqueMod);
-                writer.WriteLine("blockOBD= " + LoadedCarData.Logic.blockOBD);
-
-                Index++;    //Increment counter
+            Index++;    //Increment counter
 
             //we are finished with the writer so close and bin it
             writer.Close();
