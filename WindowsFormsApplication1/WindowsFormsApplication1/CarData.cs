@@ -41,6 +41,8 @@ namespace CMS2015ModManager
             public float PartsScale;
         }
 
+        private string ModManVersion;       //Hold the version string of this tool, shows which version a file was made with
+
         //----------------------------
         //Class Data
         #region Data Definitions
@@ -138,7 +140,7 @@ namespace CMS2015ModManager
 
         //----------------------------
         //Class methods
-        public CarData()
+        public CarData(string Version)
         {
             //Need to initialize(/create) the parts list here
             Parts = new List<PartsType>();
@@ -146,6 +148,8 @@ namespace CMS2015ModManager
             EngineSwapOptions = new List<string>();
             //Call the clear all method to reset the lot;
             CarDataClearAll();
+            //Store the passed in version number
+            ModManVersion = Version;
         }
 
         //Loads a car data file into the object from the fullpath and filename given
@@ -369,6 +373,9 @@ namespace CMS2015ModManager
             writer.WriteLine("uniqueMod= " + LogicUniqueMod);
             writer.WriteLine("blockOBD= " + LogicBlockOBD);
             writer.WriteLine();     //Blank line seperator
+
+            writer.WriteLine();     //Blank line seperator
+            writer.WriteLine("\nMade with= CMS15ModManager {0}", ModManVersion);
 
             //we are finished with the writer so close and bin it
             writer.Close();

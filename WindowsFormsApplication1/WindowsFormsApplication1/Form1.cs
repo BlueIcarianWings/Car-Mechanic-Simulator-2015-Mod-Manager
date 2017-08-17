@@ -13,7 +13,7 @@ namespace CMS2015ModManager
 {
     public partial class Form1 : Form
     {
-        private string ModManVersion = "0.9.0.1";     //Version constant
+        private string ModManVersion = "0.9.0.2";     //Version constant
 
         //Class object for class that does the acutal mod managing stuff    //here so it's scope is within the form object  //should move the config stuff out at somepoint
         CMS2015MM ModMan;
@@ -48,7 +48,7 @@ namespace CMS2015ModManager
             MapDataList = new List<MapData>();
 
             //Setup the the class objects that'll handle car data
-            CarDataObject = new CarData();
+            CarDataObject = new CarData(ModManVersion);     //Pass in the version number of this tool
         }
 
         //stuff to do when the form is loaded
@@ -162,7 +162,7 @@ namespace CMS2015ModManager
         //Handle a click on the about menu item
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Car Mechanic Simulator 2015 Mod Manager Version {0}\nVery much a work in progress\nDesigned for V1.0.7.3\nBy Blue Icarian Wings", ModManVersion);
+            MessageBox.Show("Car Mechanic Simulator 2015 Mod Manager Version " + ModManVersion + "\nVery much a work in progress\nDesigned for V1.0.7.3\nBy Blue Icarian Wings");
         }
 
         //Handle the menu request to backup the save dir
@@ -300,6 +300,12 @@ namespace CMS2015ModManager
                                 case "file":
                                     LocalMap._File = line;
                                     break;
+                                case "image":
+                                    LocalMap._Preview = line;
+                                    break;
+                                case "description":
+                                    LocalMap._Description = line;
+                                    break;
                                 default:
                                     //Nothing here
                                     //Blank lines and malformed lines will end up here
@@ -352,6 +358,10 @@ namespace CMS2015ModManager
             line = "type = " + MapDataList[Index]._Type;
             MDTSelectedMaplistBox.Items.Add(line);
             line = "file = " + MapDataList[Index]._File;
+            MDTSelectedMaplistBox.Items.Add(line);
+            line = "image = " + MapDataList[Index]._Preview;
+            MDTSelectedMaplistBox.Items.Add(line);
+            line = "description = " + MapDataList[Index]._Description;
             MDTSelectedMaplistBox.Items.Add(line);
         }
 
@@ -414,6 +424,12 @@ namespace CMS2015ModManager
                                 break;
                             case "file":
                                 MDTMDFBundleFiletextBox.Text = line;
+                                break;
+                            case "image":
+                                MDTMDFPicturetextBox.Text = line;
+                                break;
+                            case "description":
+                                MDTMDFDescriptiontextBox.Text = line;
                                 break;
                             default:
                                 //Nothing here
@@ -629,6 +645,27 @@ namespace CMS2015ModManager
             //Get the index of the selected engine
             int Index = AvailableEnginesComboBox.SelectedIndex;
 
+            //Show the picture file
+            //Assemble the path and filename
+            string PicturePath = null;
+            string SelectedCar = AvailableEnginesComboBox.Text;
+            SelectedCar = SelectedCar.Substring(1, SelectedCar.Length-2);
+            PicturePath = ModMan.GetConfigDir() + "\\Images\\" + SelectedCar + ".png";
+            //PicturePath = PicturePath + ".png";                                  //Add jpg
+
+            //Check if there is a thumbnail picture present to use
+            if (File.Exists(PicturePath))
+            {
+                Image image = Image.FromFile(PicturePath);  //Use the picture if it exists
+                EDTImagepictureBox.Image = image;
+            }
+            else
+            {
+                PicturePath = ModMan.GetCarsDataDir() + "\\car_placeholder.jpg";
+                Image image = Image.FromFile(PicturePath);  //Use the place holder image
+                EDTImagepictureBox.Image = image;
+            }
+
             //Set the data fields with the values from the selected engine
             EDTmaxPowerNumericUpDown.Value = EngineDataList[Index]._maxPower;
             EDTmaxPowerRPMNumericUpDown.Value = EngineDataList[Index]._maxPowerRPM;
@@ -766,6 +803,27 @@ namespace CMS2015ModManager
             //Get the index of the selected engine
             int Index = AvailableTirescomboBox.SelectedIndex;
 
+            //Show the picture file
+            //Assemble the path and filename
+            string PicturePath = null;
+            string SelectedCar = AvailableTirescomboBox.Text;
+            SelectedCar = SelectedCar.Substring(1, SelectedCar.Length - 2);
+            PicturePath = ModMan.GetConfigDir() + "\\Images\\" + SelectedCar + ".png";
+            //PicturePath = PicturePath + ".png";                                  //Add jpg
+
+            //Check if there is a thumbnail picture present to use
+            if (File.Exists(PicturePath))
+            {
+                Image image = Image.FromFile(PicturePath);  //Use the picture if it exists
+                TDTImagepictureBox.Image = image;
+            }
+            else
+            {
+                PicturePath = ModMan.GetCarsDataDir() + "\\car_placeholder.jpg";
+                Image image = Image.FromFile(PicturePath);  //Use the place holder image
+                TDTImagepictureBox.Image = image;
+            }
+
             //Set the data fields with the values from the selected engine
             TDTGripModnumericUpDown.Value = (decimal)TireDataList[Index]._gripMod;
             TDTPricenumericUpDown.Value = TireDataList[Index]._price;
@@ -803,8 +861,8 @@ namespace CMS2015ModManager
                     Index++;    //Increment counter
                 }
 
-                //writer.WriteLine();     //Blank line seperator
-                //writer.WriteLine("\nMade with= CMS15ModManager {0}", ModManVersion);
+                writer.WriteLine();     //Blank line seperator
+                writer.WriteLine("\nMade with= CMS15ModManager {0}", ModManVersion);
                 //we are finished with the writer so close and bin it
                 writer.Close();
                 writer.Dispose();

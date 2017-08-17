@@ -407,8 +407,6 @@
             this.AvailableCarsDataLabel = new System.Windows.Forms.Label();
             this.AvailableCarsDataComboBox = new System.Windows.Forms.ComboBox();
             this.EngineDataTabPage = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.EDTResetButton = new System.Windows.Forms.Button();
             this.EDTmaxRPMLabelNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.EDTmaxRPMLabel = new System.Windows.Forms.Label();
@@ -424,8 +422,6 @@
             this.AvailableEnginesComboBox = new System.Windows.Forms.ComboBox();
             this.AvailableEnginesLabel = new System.Windows.Forms.Label();
             this.TireDatatabPage = new System.Windows.Forms.TabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.TDTResetbutton = new System.Windows.Forms.Button();
             this.TDTPricenumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.TDTPricelabel = new System.Windows.Forms.Label();
@@ -470,6 +466,8 @@
             this.MDTSetGameMapButton = new System.Windows.Forms.Button();
             this.SaveGameEditortabPage = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.EDTImagepictureBox = new System.Windows.Forms.PictureBox();
+            this.TDTImagepictureBox = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.CarsListTabPage.SuspendLayout();
@@ -608,14 +606,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.CDMRotXnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarDataThumbNailPictureBox)).BeginInit();
             this.EngineDataTabPage.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxRPMLabelNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTminRPMLabelNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxTorqueRPMNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxPowerRPMNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxPowerNumericUpDown)).BeginInit();
             this.TireDatatabPage.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TDTPricenumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TDTGripModnumericUpDown)).BeginInit();
             this.MapDataTabPage.SuspendLayout();
@@ -624,6 +620,8 @@
             this.MDTSelectedMappanel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SaveGameEditortabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EDTImagepictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TDTImagepictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -4994,7 +4992,7 @@
             // 
             // EngineDataTabPage
             // 
-            this.EngineDataTabPage.Controls.Add(this.panel1);
+            this.EngineDataTabPage.Controls.Add(this.EDTImagepictureBox);
             this.EngineDataTabPage.Controls.Add(this.EDTResetButton);
             this.EngineDataTabPage.Controls.Add(this.EDTmaxRPMLabelNumericUpDown);
             this.EngineDataTabPage.Controls.Add(this.EDTmaxRPMLabel);
@@ -5016,24 +5014,6 @@
             this.EngineDataTabPage.TabIndex = 1;
             this.EngineDataTabPage.Text = "Engine Data";
             this.EngineDataTabPage.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(180, 63);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 100);
-            this.panel1.TabIndex = 14;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 7);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(162, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "If I had a picture it would go here";
             // 
             // EDTResetButton
             // 
@@ -5180,7 +5160,7 @@
             // 
             // TireDatatabPage
             // 
-            this.TireDatatabPage.Controls.Add(this.panel2);
+            this.TireDatatabPage.Controls.Add(this.TDTImagepictureBox);
             this.TireDatatabPage.Controls.Add(this.TDTResetbutton);
             this.TireDatatabPage.Controls.Add(this.TDTPricenumericUpDown);
             this.TireDatatabPage.Controls.Add(this.TDTPricelabel);
@@ -5196,24 +5176,6 @@
             this.TireDatatabPage.TabIndex = 4;
             this.TireDatatabPage.Text = "Tire Data";
             this.TireDatatabPage.UseVisualStyleBackColor = true;
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(180, 63);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 100);
-            this.panel2.TabIndex = 28;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 7);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(162, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "If I had a picture it would go here";
             // 
             // TDTResetbutton
             // 
@@ -5651,6 +5613,24 @@
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
+            // EDTImagepictureBox
+            // 
+            this.EDTImagepictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.EDTImagepictureBox.Location = new System.Drawing.Point(176, 63);
+            this.EDTImagepictureBox.Name = "EDTImagepictureBox";
+            this.EDTImagepictureBox.Size = new System.Drawing.Size(512, 512);
+            this.EDTImagepictureBox.TabIndex = 15;
+            this.EDTImagepictureBox.TabStop = false;
+            // 
+            // TDTImagepictureBox
+            // 
+            this.TDTImagepictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.TDTImagepictureBox.Location = new System.Drawing.Point(176, 63);
+            this.TDTImagepictureBox.Name = "TDTImagepictureBox";
+            this.TDTImagepictureBox.Size = new System.Drawing.Size(512, 512);
+            this.TDTImagepictureBox.TabIndex = 28;
+            this.TDTImagepictureBox.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5819,8 +5799,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.CarDataThumbNailPictureBox)).EndInit();
             this.EngineDataTabPage.ResumeLayout(false);
             this.EngineDataTabPage.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxRPMLabelNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTminRPMLabelNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxTorqueRPMNumericUpDown)).EndInit();
@@ -5828,8 +5806,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.EDTmaxPowerNumericUpDown)).EndInit();
             this.TireDatatabPage.ResumeLayout(false);
             this.TireDatatabPage.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TDTPricenumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TDTGripModnumericUpDown)).EndInit();
             this.MapDataTabPage.ResumeLayout(false);
@@ -5843,6 +5819,8 @@
             this.panel3.PerformLayout();
             this.SaveGameEditortabPage.ResumeLayout(false);
             this.SaveGameEditortabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EDTImagepictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TDTImagepictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6256,10 +6234,6 @@
         private System.Windows.Forms.Panel MDTSelectedMappanel;
         private System.Windows.Forms.Label MDTSelectedMaplabel;
         private System.Windows.Forms.ListBox MDTSelectedMaplistBox;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
@@ -6291,6 +6265,8 @@
         private System.Windows.Forms.Label MDTMDFDescriptionlabel;
         private System.Windows.Forms.TextBox MDTMDFDescriptiontextBox;
         private System.Windows.Forms.PictureBox MDTMDFPreviewpictureBox;
+        private System.Windows.Forms.PictureBox EDTImagepictureBox;
+        private System.Windows.Forms.PictureBox TDTImagepictureBox;
     }
 }
 

@@ -317,6 +317,16 @@ namespace CMS2015ModManager
         {
             ModMapDir = Input;
         }
+
+        public string GetConfigDir()
+        {
+            return ConfigDir;
+        }
+
+        public void SetConfigDir(string Input)
+        {
+            ConfigDir = Input;
+        }
         #endregion
         #endregion
 
