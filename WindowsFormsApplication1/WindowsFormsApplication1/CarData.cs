@@ -90,7 +90,6 @@ namespace CMS2015ModManager
         private TripleFloatPoint EngineRotation;
         private float EngineScale;
         private string EngineType;
-        private string EngineSound;
         private float EnginePM;
         //Declare the list of the engine swap options
         private List<string> EngineSwapOptions;
@@ -135,7 +134,6 @@ namespace CMS2015ModManager
         private DoubleFloatPoint LogicPartsConditions;
         private DoubleFloatPoint LogicPanelsConditions;
         private float LogicUniqueMod;
-        private bool LogicBlockOBD;
         #endregion
 
         //----------------------------
@@ -269,14 +267,21 @@ namespace CMS2015ModManager
             if (SuspensionFrontTrack != 0)        { writer.WriteLine("frontTrack= " + SuspensionFrontTrack); }
             if (SuspensionRearTrack != 0)         { writer.WriteLine("rearTrack= " + SuspensionRearTrack); }
             if (SuspensionFrontSpringLength != 0) { writer.WriteLine("frontSpringLength= " + SuspensionFrontSpringLength); }
-            if (SuspensionScale != 0)             { writer.WriteLine("scale= " + SuspensionScale); }
-            if (SuspensionSidesFlip != 0)         { writer.WriteLine("sidesFlip= " + SuspensionSidesFlip); }           //Kaszlak specfic at the moment
+            if (MainName == "car_Kaszlak")     //Kaszlak specfic bits
+            {
+                if (SuspensionScale != 0) { writer.WriteLine("forceScale= " + SuspensionScale); }
+                if (SuspensionSidesFlip != 0) { writer.WriteLine("sidesFlip= " + SuspensionSidesFlip); }                //Kaszlak specfic at the moment
+                if (SuspensionFrontLeftSet != "") { writer.WriteLine("frontLeftSet= " + SuspensionFrontLeftSet); }      //Kaszlak specfic at the moment
+                if (SuspensionRearLeftSet != "") { writer.WriteLine("rearLeftSet= " + SuspensionRearLeftSet); }         //Kaszlak specfic at the moment
+            }
+            else    //This will be obsolete later (post 1.0.8.0)
+            {
+                if (SuspensionScale != 0) { writer.WriteLine("scale= " + SuspensionScale); }
+            }
             if (SuspensionFrontCenterSet != "")   { writer.WriteLine("frontCenterSet= " + SuspensionFrontCenterSet); }
             if (SuspensionFrontRightSet != "")    { writer.WriteLine("frontRightSet= " + SuspensionFrontRightSet); }
-            if (SuspensionFrontLeftSet != "")     { writer.WriteLine("frontLeftSet= " + SuspensionFrontLeftSet); }     //Kaszlak specfic at the moment
             if (SuspensionRearCenterSet != "")    { writer.WriteLine("rearCenterSet= " + SuspensionRearCenterSet); }
-            if (SuspensionRearRightSet != "")     { writer.WriteLine("rearRightSet= " + SuspensionRearRightSet); }
-            if (SuspensionRearLeftSet != "")      { writer.WriteLine("rearLeftSet= " + SuspensionRearLeftSet); }      //Kaszlak specfic at the moment
+            if (SuspensionRearRightSet != "")     { writer.WriteLine("rearRightSet= " + SuspensionRearRightSet); }            
             writer.WriteLine();     //Blank line seperator
 
             //[Engine]
@@ -287,7 +292,6 @@ namespace CMS2015ModManager
             { writer.WriteLine("rotation= " + EngineRotation.x + ", " + EngineRotation.y + ", " + EngineRotation.z); }
             if (EngineScale != 0)  { writer.WriteLine("scale= " + EngineScale); }
             if (EngineType != "")  { writer.WriteLine("type= " + EngineType); }
-            if (EngineSound != "") { writer.WriteLine("sound= " + EngineSound); }
             if (EnginePM != 0)     { writer.WriteLine("pm= " + EnginePM); }
             //Declare the list of the engine swap options
             if (EngineSwapOptions.Count > 1)
@@ -383,7 +387,6 @@ namespace CMS2015ModManager
             writer.WriteLine("partssConditions= " + LogicPartsConditions.a + "," + LogicPartsConditions.b);
             writer.WriteLine("panelsConditions= " + LogicPanelsConditions.a + "," + LogicPanelsConditions.b);
             writer.WriteLine("uniqueMod= " + LogicUniqueMod);
-            writer.WriteLine("blockOBD= " + LogicBlockOBD);
             writer.WriteLine();     //Blank line seperator
 
             writer.WriteLine();     //Blank line seperator
@@ -576,10 +579,13 @@ namespace CMS2015ModManager
                         case "frontSpringLength":
                             float.TryParse(line, out SuspensionFrontSpringLength);   //convert the strings to numbers
                             break;
-                        case "scale":
+                        case "scale":   //Will be removed after patch 1.0.8.0 (should be)
                             float.TryParse(line, out SuspensionScale);   //convert the strings to numbers
                             break;
-                        case "sidesFlip":
+                        case "forceScale":   //Kaszlak / Maluch
+                            float.TryParse(line, out SuspensionScale);   //convert the strings to numbers
+                            break;
+                        case "sidesFlip":   //Kaszlak / Maluch
                             int.TryParse(line, out SuspensionSidesFlip);   //convert the strings to numbers
                             break;
                         case "frontCenterSet":
@@ -656,9 +662,6 @@ namespace CMS2015ModManager
                             break;
                         case "type":
                             EngineType = line;
-                            break;
-                        case "sound":
-                            EngineSound = line;
                             break;
                         case "pm":
                             float.TryParse(line, out EnginePM);   //convert the strings to numbers
@@ -998,9 +1001,6 @@ namespace CMS2015ModManager
                         case "uniqueMod":
                             float.TryParse(line, out LogicUniqueMod);   //convert the strings to numbers
                             break;
-                        case "blockOBD":
-                            bool.TryParse(line, out LogicBlockOBD);   //convert the strings to numbers
-                            break;
                         default:
                             //Nothing here
                             //Blank lines and comments should be eaten outside of this if
@@ -1054,7 +1054,7 @@ namespace CMS2015ModManager
             SuspensionFrontTrack = 0.0f;
             SuspensionRearTrack = 0.0f;
             SuspensionFrontSpringLength = 0.0f;
-            SuspensionScale = 0.0f;
+            SuspensionScale = 0.0f;             //Kaszlak specfic post 1.0.8.0 (should be)
             SuspensionSidesFlip = 0;			//Kaszlak specfic at the moment
             SuspensionFrontCenterSet = "";
             SuspensionFrontRightSet = "";
@@ -1072,7 +1072,6 @@ namespace CMS2015ModManager
             EngineRotation.z = 0.0f;
             EngineScale = 0.0f;
             EngineType = "";
-            EngineSound = "";
             EnginePM = 0.0f;
             //Empty out the list of engine swap options
             RemoveAllSwapOptions();
@@ -1127,8 +1126,7 @@ namespace CMS2015ModManager
             LogicPartsConditions.b = 0.0f;
             LogicPanelsConditions.a = 0.0f;
             LogicPanelsConditions.b = 0.0f;
-            LogicUniqueMod = 0.0f;
-            LogicBlockOBD = false;            
+            LogicUniqueMod = 0.0f;            
     }
         #endregion
 
@@ -1479,12 +1477,6 @@ namespace CMS2015ModManager
             set { EngineType = value; }
         }
 
-        public string _EngineSound
-        {
-            get { return EngineSound; }
-            set { EngineSound = value; }
-        }
-
         public float _EnginePM
         {
             get { return EnginePM; }
@@ -1795,11 +1787,6 @@ namespace CMS2015ModManager
             set { LogicUniqueMod = value; }
         }
 
-        public bool _LogicBlockOBD
-        {
-            get { return LogicBlockOBD; }
-            set { LogicBlockOBD = value; }
-        }
         #endregion
         #endregion
     }

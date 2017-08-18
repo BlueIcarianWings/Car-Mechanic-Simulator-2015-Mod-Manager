@@ -11,6 +11,8 @@ namespace CMS2015ModManager
     {
         //Class data
         private string name;
+        private string engineSound;
+        private bool BlockOBD;
         private int maxPower;
         private int maxPowerRPM;
         private int maxTorqueRPM;
@@ -25,6 +27,8 @@ namespace CMS2015ModManager
         {
             //Need to init the data
             name = "";
+            engineSound = "";
+            BlockOBD = false;
             maxPower = 0;
             maxPowerRPM = 0;
             maxTorqueRPM = 0;
@@ -37,6 +41,8 @@ namespace CMS2015ModManager
         {
             //Need to reset the data
             name = "";
+            engineSound = "";
+            BlockOBD = false;
             maxPower = 0;
             maxPowerRPM = 0;
             maxTorqueRPM = 0;
@@ -50,6 +56,18 @@ namespace CMS2015ModManager
         {
             get { return name; }
             set { name = value; }
+        }
+
+        public bool _BlockOBD
+        {
+            get { return BlockOBD; }
+            set { BlockOBD = value; }
+        }
+
+        public string _EngineSound
+        {
+            get { return engineSound; }
+            set { engineSound = value; }
         }
 
         public int _maxPower

@@ -1,10 +1,19 @@
 Car Mechanic simulator 2015 Mod Manager
 
-A modding tool for editing and handling mods for Car Mechanic simulator 2015
+A modding and save file tool for editing and handling mods for Car Mechanic simulator 2015
 
+http://steamcommunity.com/app/320300/discussions/1/368542844485671388/
 //-------------------
 
 Release notes
+
+0.9.1.3
+23/Aug/2016
+DeLorean DLC 1.0.8.0 release
+Updated the Engine Data tab, BlockOBD and EngineSound added
+Updated the Car Data tab, BlockOBD and EngineSound removed
+Changed the suspension scale handling for the Maluch (is now forceScale)
+Added pictures for two new DeLorean engines
 
 0.9.1.2
 Changed [parts<number>] output for Maluch to start at 1 to match a fix applied for patch 1.0.7.7

@@ -62,7 +62,6 @@
             this.AvailableCarsListLabel = new System.Windows.Forms.Label();
             this.CarDataTabPage = new System.Windows.Forms.TabPage();
             this.CDLogicpanel = new System.Windows.Forms.Panel();
-            this.CDLBlockOBDcheckBox = new System.Windows.Forms.CheckBox();
             this.CDLUniqueModnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDLPanConAlabel = new System.Windows.Forms.Label();
             this.CDLUniqueModlabel = new System.Windows.Forms.Label();
@@ -357,8 +356,6 @@
             this.CDEEngineSwapOptionsbutton = new System.Windows.Forms.Button();
             this.CDEPMnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDEPMlabel = new System.Windows.Forms.Label();
-            this.CDESoundtextBox = new System.Windows.Forms.TextBox();
-            this.CDESoundlabel = new System.Windows.Forms.Label();
             this.CDETypelabel = new System.Windows.Forms.Label();
             this.CDEScalenumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDEScalelabel = new System.Windows.Forms.Label();
@@ -557,6 +554,9 @@
             this.SGETGLoadbutton = new System.Windows.Forms.Button();
             this.SGETHelpWantedtabPage = new System.Windows.Forms.TabPage();
             this.SGETHelpWantedtextBox = new System.Windows.Forms.TextBox();
+            this.EDTBlockOBDcheckBox = new System.Windows.Forms.CheckBox();
+            this.EDTEngineSoundlabel = new System.Windows.Forms.Label();
+            this.EDTEngineSoundtextBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.CarsListTabPage.SuspendLayout();
@@ -877,7 +877,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -1072,7 +1072,6 @@
             // CDLogicpanel
             // 
             this.CDLogicpanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.CDLogicpanel.Controls.Add(this.CDLBlockOBDcheckBox);
             this.CDLogicpanel.Controls.Add(this.CDLUniqueModnumericUpDown);
             this.CDLogicpanel.Controls.Add(this.CDLPanConAlabel);
             this.CDLogicpanel.Controls.Add(this.CDLUniqueModlabel);
@@ -1093,18 +1092,8 @@
             this.CDLogicpanel.Controls.Add(this.CDLTitlelabel);
             this.CDLogicpanel.Location = new System.Drawing.Point(629, 536);
             this.CDLogicpanel.Name = "CDLogicpanel";
-            this.CDLogicpanel.Size = new System.Drawing.Size(344, 108);
+            this.CDLogicpanel.Size = new System.Drawing.Size(276, 108);
             this.CDLogicpanel.TabIndex = 36;
-            // 
-            // CDLBlockOBDcheckBox
-            // 
-            this.CDLBlockOBDcheckBox.AutoSize = true;
-            this.CDLBlockOBDcheckBox.Location = new System.Drawing.Point(263, 78);
-            this.CDLBlockOBDcheckBox.Name = "CDLBlockOBDcheckBox";
-            this.CDLBlockOBDcheckBox.Size = new System.Drawing.Size(76, 17);
-            this.CDLBlockOBDcheckBox.TabIndex = 42;
-            this.CDLBlockOBDcheckBox.Text = "BlockOBD";
-            this.CDLBlockOBDcheckBox.UseVisualStyleBackColor = true;
             // 
             // CDLUniqueModnumericUpDown
             // 
@@ -4656,8 +4645,6 @@
             this.CDEnginepanel.Controls.Add(this.CDEEngineSwapOptionsbutton);
             this.CDEnginepanel.Controls.Add(this.CDEPMnumericUpDown);
             this.CDEnginepanel.Controls.Add(this.CDEPMlabel);
-            this.CDEnginepanel.Controls.Add(this.CDESoundtextBox);
-            this.CDEnginepanel.Controls.Add(this.CDESoundlabel);
             this.CDEnginepanel.Controls.Add(this.CDETypelabel);
             this.CDEnginepanel.Controls.Add(this.CDEScalenumericUpDown);
             this.CDEnginepanel.Controls.Add(this.CDEScalelabel);
@@ -4678,7 +4665,7 @@
             this.CDEnginepanel.Controls.Add(this.CDETitlelabel);
             this.CDEnginepanel.Location = new System.Drawing.Point(840, 162);
             this.CDEnginepanel.Name = "CDEnginepanel";
-            this.CDEnginepanel.Size = new System.Drawing.Size(200, 266);
+            this.CDEnginepanel.Size = new System.Drawing.Size(200, 240);
             this.CDEnginepanel.TabIndex = 11;
             // 
             // CDETypecomboBox
@@ -4691,7 +4678,7 @@
             // 
             // CDEEngineSwapOptionsbutton
             // 
-            this.CDEEngineSwapOptionsbutton.Location = new System.Drawing.Point(4, 236);
+            this.CDEEngineSwapOptionsbutton.Location = new System.Drawing.Point(3, 211);
             this.CDEEngineSwapOptionsbutton.Name = "CDEEngineSwapOptionsbutton";
             this.CDEEngineSwapOptionsbutton.Size = new System.Drawing.Size(127, 23);
             this.CDEEngineSwapOptionsbutton.TabIndex = 35;
@@ -4702,7 +4689,7 @@
             // CDEPMnumericUpDown
             // 
             this.CDEPMnumericUpDown.DecimalPlaces = 2;
-            this.CDEPMnumericUpDown.Location = new System.Drawing.Point(70, 209);
+            this.CDEPMnumericUpDown.Location = new System.Drawing.Point(69, 184);
             this.CDEPMnumericUpDown.Name = "CDEPMnumericUpDown";
             this.CDEPMnumericUpDown.Size = new System.Drawing.Size(59, 20);
             this.CDEPMnumericUpDown.TabIndex = 34;
@@ -4710,27 +4697,11 @@
             // CDEPMlabel
             // 
             this.CDEPMlabel.AutoSize = true;
-            this.CDEPMlabel.Location = new System.Drawing.Point(7, 211);
+            this.CDEPMlabel.Location = new System.Drawing.Point(6, 186);
             this.CDEPMlabel.Name = "CDEPMlabel";
             this.CDEPMlabel.Size = new System.Drawing.Size(23, 13);
             this.CDEPMlabel.TabIndex = 33;
             this.CDEPMlabel.Text = "PM";
-            // 
-            // CDESoundtextBox
-            // 
-            this.CDESoundtextBox.Location = new System.Drawing.Point(69, 183);
-            this.CDESoundtextBox.Name = "CDESoundtextBox";
-            this.CDESoundtextBox.Size = new System.Drawing.Size(124, 20);
-            this.CDESoundtextBox.TabIndex = 32;
-            // 
-            // CDESoundlabel
-            // 
-            this.CDESoundlabel.AutoSize = true;
-            this.CDESoundlabel.Location = new System.Drawing.Point(3, 186);
-            this.CDESoundlabel.Name = "CDESoundlabel";
-            this.CDESoundlabel.Size = new System.Drawing.Size(38, 13);
-            this.CDESoundlabel.TabIndex = 31;
-            this.CDESoundlabel.Text = "Sound";
             // 
             // CDETypelabel
             // 
@@ -5133,9 +5104,9 @@
             this.CDSScalelabel.AutoSize = true;
             this.CDSScalelabel.Location = new System.Drawing.Point(4, 101);
             this.CDSScalelabel.Name = "CDSScalelabel";
-            this.CDSScalelabel.Size = new System.Drawing.Size(34, 13);
+            this.CDSScalelabel.Size = new System.Drawing.Size(70, 13);
             this.CDSScalelabel.TabIndex = 13;
-            this.CDSScalelabel.Text = "Scale";
+            this.CDSScalelabel.Text = "(Force) Scale";
             // 
             // CDSFrontSpringLengthnumericUpDown
             // 
@@ -5878,6 +5849,9 @@
             // 
             // EngineDataTabPage
             // 
+            this.EngineDataTabPage.Controls.Add(this.EDTEngineSoundtextBox);
+            this.EngineDataTabPage.Controls.Add(this.EDTEngineSoundlabel);
+            this.EngineDataTabPage.Controls.Add(this.EDTBlockOBDcheckBox);
             this.EngineDataTabPage.Controls.Add(this.EDTImagepictureBox);
             this.EngineDataTabPage.Controls.Add(this.EDTResetButton);
             this.EngineDataTabPage.Controls.Add(this.EDTmaxRPMLabelNumericUpDown);
@@ -5912,7 +5886,7 @@
             // 
             // EDTResetButton
             // 
-            this.EDTResetButton.Location = new System.Drawing.Point(10, 291);
+            this.EDTResetButton.Location = new System.Drawing.Point(7, 355);
             this.EDTResetButton.Name = "EDTResetButton";
             this.EDTResetButton.Size = new System.Drawing.Size(75, 23);
             this.EDTResetButton.TabIndex = 13;
@@ -5922,7 +5896,7 @@
             // 
             // EDTmaxRPMLabelNumericUpDown
             // 
-            this.EDTmaxRPMLabelNumericUpDown.Location = new System.Drawing.Point(10, 235);
+            this.EDTmaxRPMLabelNumericUpDown.Location = new System.Drawing.Point(7, 299);
             this.EDTmaxRPMLabelNumericUpDown.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -5935,7 +5909,7 @@
             // EDTmaxRPMLabel
             // 
             this.EDTmaxRPMLabel.AutoSize = true;
-            this.EDTmaxRPMLabel.Location = new System.Drawing.Point(10, 219);
+            this.EDTmaxRPMLabel.Location = new System.Drawing.Point(7, 283);
             this.EDTmaxRPMLabel.Name = "EDTmaxRPMLabel";
             this.EDTmaxRPMLabel.Size = new System.Drawing.Size(54, 13);
             this.EDTmaxRPMLabel.TabIndex = 11;
@@ -5943,7 +5917,7 @@
             // 
             // EDTminRPMLabelNumericUpDown
             // 
-            this.EDTminRPMLabelNumericUpDown.Location = new System.Drawing.Point(10, 196);
+            this.EDTminRPMLabelNumericUpDown.Location = new System.Drawing.Point(7, 260);
             this.EDTminRPMLabelNumericUpDown.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -5956,7 +5930,7 @@
             // EDTminRPMLabel
             // 
             this.EDTminRPMLabel.AutoSize = true;
-            this.EDTminRPMLabel.Location = new System.Drawing.Point(10, 180);
+            this.EDTminRPMLabel.Location = new System.Drawing.Point(7, 244);
             this.EDTminRPMLabel.Name = "EDTminRPMLabel";
             this.EDTminRPMLabel.Size = new System.Drawing.Size(51, 13);
             this.EDTminRPMLabel.TabIndex = 9;
@@ -5964,7 +5938,7 @@
             // 
             // EDTmaxTorqueRPMNumericUpDown
             // 
-            this.EDTmaxTorqueRPMNumericUpDown.Location = new System.Drawing.Point(10, 157);
+            this.EDTmaxTorqueRPMNumericUpDown.Location = new System.Drawing.Point(7, 221);
             this.EDTmaxTorqueRPMNumericUpDown.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -5977,7 +5951,7 @@
             // EDTmaxTorqueRPMLabel
             // 
             this.EDTmaxTorqueRPMLabel.AutoSize = true;
-            this.EDTmaxTorqueRPMLabel.Location = new System.Drawing.Point(10, 141);
+            this.EDTmaxTorqueRPMLabel.Location = new System.Drawing.Point(7, 205);
             this.EDTmaxTorqueRPMLabel.Name = "EDTmaxTorqueRPMLabel";
             this.EDTmaxTorqueRPMLabel.Size = new System.Drawing.Size(88, 13);
             this.EDTmaxTorqueRPMLabel.TabIndex = 7;
@@ -5985,7 +5959,7 @@
             // 
             // EDTmaxPowerRPMNumericUpDown
             // 
-            this.EDTmaxPowerRPMNumericUpDown.Location = new System.Drawing.Point(10, 118);
+            this.EDTmaxPowerRPMNumericUpDown.Location = new System.Drawing.Point(7, 182);
             this.EDTmaxPowerRPMNumericUpDown.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -5998,7 +5972,7 @@
             // EDTmaxPowerRPMLabel
             // 
             this.EDTmaxPowerRPMLabel.AutoSize = true;
-            this.EDTmaxPowerRPMLabel.Location = new System.Drawing.Point(10, 102);
+            this.EDTmaxPowerRPMLabel.Location = new System.Drawing.Point(7, 166);
             this.EDTmaxPowerRPMLabel.Name = "EDTmaxPowerRPMLabel";
             this.EDTmaxPowerRPMLabel.Size = new System.Drawing.Size(87, 13);
             this.EDTmaxPowerRPMLabel.TabIndex = 5;
@@ -6006,7 +5980,7 @@
             // 
             // EDTmaxPowerNumericUpDown
             // 
-            this.EDTmaxPowerNumericUpDown.Location = new System.Drawing.Point(10, 79);
+            this.EDTmaxPowerNumericUpDown.Location = new System.Drawing.Point(7, 143);
             this.EDTmaxPowerNumericUpDown.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -6019,7 +5993,7 @@
             // EDTmaxPowerLabel
             // 
             this.EDTmaxPowerLabel.AutoSize = true;
-            this.EDTmaxPowerLabel.Location = new System.Drawing.Point(10, 63);
+            this.EDTmaxPowerLabel.Location = new System.Drawing.Point(7, 127);
             this.EDTmaxPowerLabel.Name = "EDTmaxPowerLabel";
             this.EDTmaxPowerLabel.Size = new System.Drawing.Size(60, 13);
             this.EDTmaxPowerLabel.TabIndex = 3;
@@ -6027,7 +6001,7 @@
             // 
             // EDTCommitButton
             // 
-            this.EDTCommitButton.Location = new System.Drawing.Point(10, 261);
+            this.EDTCommitButton.Location = new System.Drawing.Point(7, 325);
             this.EDTCommitButton.Name = "EDTCommitButton";
             this.EDTCommitButton.Size = new System.Drawing.Size(75, 23);
             this.EDTCommitButton.TabIndex = 2;
@@ -6876,6 +6850,32 @@
             this.SGETHelpWantedtextBox.TabIndex = 0;
             this.SGETHelpWantedtextBox.Text = resources.GetString("SGETHelpWantedtextBox.Text");
             // 
+            // EDTBlockOBDcheckBox
+            // 
+            this.EDTBlockOBDcheckBox.AutoSize = true;
+            this.EDTBlockOBDcheckBox.Location = new System.Drawing.Point(10, 63);
+            this.EDTBlockOBDcheckBox.Name = "EDTBlockOBDcheckBox";
+            this.EDTBlockOBDcheckBox.Size = new System.Drawing.Size(79, 17);
+            this.EDTBlockOBDcheckBox.TabIndex = 17;
+            this.EDTBlockOBDcheckBox.Text = "Block OBD";
+            this.EDTBlockOBDcheckBox.UseVisualStyleBackColor = true;
+            // 
+            // EDTEngineSoundlabel
+            // 
+            this.EDTEngineSoundlabel.AutoSize = true;
+            this.EDTEngineSoundlabel.Location = new System.Drawing.Point(10, 87);
+            this.EDTEngineSoundlabel.Name = "EDTEngineSoundlabel";
+            this.EDTEngineSoundlabel.Size = new System.Drawing.Size(74, 13);
+            this.EDTEngineSoundlabel.TabIndex = 18;
+            this.EDTEngineSoundlabel.Text = "Engine Sound";
+            // 
+            // EDTEngineSoundtextBox
+            // 
+            this.EDTEngineSoundtextBox.Location = new System.Drawing.Point(7, 104);
+            this.EDTEngineSoundtextBox.Name = "EDTEngineSoundtextBox";
+            this.EDTEngineSoundtextBox.Size = new System.Drawing.Size(100, 20);
+            this.EDTEngineSoundtextBox.TabIndex = 19;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -7251,8 +7251,6 @@
         private System.Windows.Forms.NumericUpDown CDEPosXnumericUpDown;
         private System.Windows.Forms.NumericUpDown CDEScalenumericUpDown;
         private System.Windows.Forms.Label CDEScalelabel;
-        private System.Windows.Forms.TextBox CDESoundtextBox;
-        private System.Windows.Forms.Label CDESoundlabel;
         private System.Windows.Forms.Label CDETypelabel;
         private System.Windows.Forms.Panel CDWheelspanel;
         private System.Windows.Forms.Panel CDDriveShaftpanel;
@@ -7342,7 +7340,6 @@
         private System.Windows.Forms.Label CDLPanConAlabel;
         private System.Windows.Forms.NumericUpDown CDLUniqueModnumericUpDown;
         private System.Windows.Forms.Label CDLUniqueModlabel;
-        private System.Windows.Forms.CheckBox CDLBlockOBDcheckBox;
         private System.Windows.Forms.Button CarsListImportbutton;
         private System.Windows.Forms.Button CarListOverwritebutton;
         private System.Windows.Forms.Button CarListCopybutton;
@@ -7644,6 +7641,9 @@
         private System.Windows.Forms.Label SGETGMoneyIncomePartslabel;
         private System.Windows.Forms.Label SGETGProfilelabel;
         private System.Windows.Forms.ComboBox SGETGProfilecomboBox;
+        private System.Windows.Forms.CheckBox EDTBlockOBDcheckBox;
+        private System.Windows.Forms.Label EDTEngineSoundlabel;
+        private System.Windows.Forms.TextBox EDTEngineSoundtextBox;
     }
 }
 

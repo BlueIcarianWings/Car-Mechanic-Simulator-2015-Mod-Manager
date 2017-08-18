@@ -13,8 +13,8 @@ namespace CMS2015ModManager
 {
     public partial class Form1 : Form
     {
-        private string ModManVersion = "0.9.1.2";       //Version constant for ModManager
-        private string GameVersion = "1.0.7.7 hf1";     //Version constant for the game
+        private string ModManVersion = "0.9.1.3";       //Version constant for ModManager
+        private string GameVersion = "1.0.8.0";     //Version constant for the game
 
         //Class object for class that does the acutal mod managing stuff    //here so it's scope is within the form object  //should move the config stuff out at somepoint
         CMS2015MM ModMan;
@@ -570,61 +570,85 @@ namespace CMS2015ModManager
                 string[] EDFlines = System.IO.File.ReadAllLines(FileName);
                 //Local to fill out before adding to the EngineDataList
                 EngineData LocalED;
-
+                //Locals to fill out before putting into LocalED (A property or indexer may not be passed as an out or ref parameter)
+                bool LocalBool = false;
+                int LocalInt = 0;
+                
                 //Loop through the lines to process them
                 for (int i = 0; i < EDFlines.Length; i++)
                 {
+
                     //Fill out the local until we get a new new heading (starts with[)
                     // then save the local to the list and start again
-
+                    
                     //If this is a new definition
                     if (EDFlines[i].StartsWith("["))
                     {
                         //New definition so start to fill out the local
                         LocalED = new EngineData(); //Call it's constructor to init it
 
-                        //I'm assuming the order will always be the same (a loop would be neater, until I had to pick between text and numbers)
-                        // if the engine file does change I'll probably need to change this anyway
-
+                        //We are currently sat on the [<name>] line so lets get the name
                         int j = EDFlines[i].IndexOf('=');               //Find the end of label string
                         string line = EDFlines[i].Substring(j + 1, EDFlines[i].Length - (j + 1));    //Grab the bit after the '='
                         LocalED._Name = line.Trim(' ');                 //Remove the leading on trailing spaces and store the name of the new definition
-                        i++;    //Inc to next array slot
+                        i++;    //Move it along to the next line, so the if condition check doesn't end it immediately
 
-                        j = EDFlines[i].IndexOf('=');              //Find the end of label string
-                        line = EDFlines[i].Substring(j + 1, EDFlines[i].Length - (j + 1));    //Grab the bit after the '='
-                        int temp = 0;
-                        int.TryParse(line, out temp);   //Convert string to number
-                        LocalED._maxPower = temp;       //Store maxPower
-                        i++;    //Inc to next array slot
+                        //TO-DO wrap the if here in a loop
+                        while ((i < EDFlines.Length) && (!(EDFlines[i].StartsWith("["))))   //Keep reading lines until another section header line is found or out of lines
+                        {
 
-                        j = EDFlines[i].IndexOf('=');              //Find the end of label string
-                        line = EDFlines[i].Substring(j + 1, EDFlines[i].Length - (j + 1));    //Grab the bit after the '='
-                        temp = 0;
-                        int.TryParse(line, out temp);   //Convert string to number
-                        LocalED. _maxPowerRPM = temp;   //Store maxPowerRPM
-                        i++;    //Inc to next array slot
+                            //Check for blank lines and null lines (end of file(might be able to remove the null check, legacy from a stream reader style))
+                            if ((EDFlines[i] != "") && (EDFlines[i] != null) && (!(EDFlines[i].StartsWith(";"))))    //if the line is empty or a comment skip over all this
+                            {
+                                j = EDFlines[i].IndexOf('=');              //Find the end of label string
+                                string label = EDFlines[i].Substring(0, j);    //Grabs the bit upto the '='
+                                                                               //Grab the bit after the '=' and remove the leading and trailing spaces
+                                line = EDFlines[i].Substring(j + 1, EDFlines[i].Length - (j + 1)).Trim(' ');
 
-                        j = EDFlines[i].IndexOf('=');              //Find the end of label string
-                        line = EDFlines[i].Substring(j + 1, EDFlines[i].Length - (j + 1));    //Grab the bit after the '='
-                        temp = 0;
-                        int.TryParse(line, out temp);   //Convert string to number
-                        LocalED._maxTorqueRPM = temp;   //Store maxTorqueRPM
-                        i++;    //Inc to next array slot
-
-                        j = EDFlines[i].IndexOf('=');              //Find the end of label string
-                        line = EDFlines[i].Substring(j + 1, EDFlines[i].Length - (j + 1));    //Grab the bit after the '='
-                        temp = 0;
-                        int.TryParse(line, out temp);   //Convert string to number
-                        LocalED._minRPM = temp;         //Store minRPM
-                        i++;    //Inc to next array slot
-
-                        j = EDFlines[i].IndexOf('=');              //Find the end of label string
-                        line = EDFlines[i].Substring(j + 1, EDFlines[i].Length - (j + 1));    //Grab the bit after the '='
-                        temp = 0;
-                        int.TryParse(line, out temp);   //Convert string to number
-                        LocalED._maxRPM = temp;         //Store maxRPM
-
+                                switch (label)  //Fill out the Main data
+                                {
+                                    case "blockOBD":
+                                        bool.TryParse(line, out LocalBool);     //convert the strings to a bool
+                                        LocalED._BlockOBD = LocalBool;          //copy into the local object (we cannot use it directly with 'out')
+                                        break;
+                                    case "engineSound":
+                                        LocalED._EngineSound = line;
+                                        break;
+                                    case "maxPower":
+                                        int.TryParse(line, out LocalInt);       //convert the strings to a number
+                                        LocalED._maxPower = LocalInt;           //copy into the local object (we cannot use it directly with 'out')
+                                        break;
+                                    case "maxPowerRPM":
+                                        int.TryParse(line, out LocalInt);       //convert the strings to a number
+                                        LocalED._maxPowerRPM = LocalInt;        //copy into the local object (we cannot use it directly with 'out')
+                                        break;
+                                    case "maxTorqueRPM":
+                                        int.TryParse(line, out LocalInt);       //convert the strings to a number
+                                        LocalED._maxTorqueRPM = LocalInt;       //copy into the local object (we cannot use it directly with 'out')
+                                        break;
+                                    case "minRPM":
+                                        int.TryParse(line, out LocalInt);       //convert the strings to a number
+                                        LocalED._minRPM = LocalInt;             //copy into the local object (we cannot use it directly with 'out')
+                                        break;
+                                    case "maxRPM":
+                                        int.TryParse(line, out LocalInt);       //convert the strings to a number
+                                        LocalED._maxRPM = LocalInt;             //copy into the local object (we cannot use it directly with 'out')
+                                        break;
+                                    default:
+                                        //Nothing here
+                                        //Blank lines and comments should be eaten outside of this if
+                                        //malformed lines will end up here
+                                        break;
+                                }
+                                i++;    //Move to next line
+                            }
+                            else
+                            {
+                                //Blank line or comment(or null line, shouldn't be I'll see later if it needs a break)
+                                i++;    //Move to next line
+                            }
+                        }
+                        i--;    //Knock the counter back a line as the while loop that called us, will inc it and step over the section header we just found.
                         EngineDataList.Add(LocalED);    //Add full definition to the list
                     }
                 }
@@ -672,6 +696,8 @@ namespace CMS2015ModManager
             }
 
             //Set the data fields with the values from the selected engine
+            EDTBlockOBDcheckBox.Checked = EngineDataList[Index]._BlockOBD;
+            EDTEngineSoundtextBox.Text = EngineDataList[Index]._EngineSound;
             EDTmaxPowerNumericUpDown.Value = EngineDataList[Index]._maxPower;
             EDTmaxPowerRPMNumericUpDown.Value = EngineDataList[Index]._maxPowerRPM;
             EDTmaxTorqueRPMNumericUpDown.Value = EngineDataList[Index]._maxTorqueRPM;
@@ -707,6 +733,11 @@ namespace CMS2015ModManager
                 while (Index < EngineDataList.Count)
                 {
                     writer.WriteLine(EngineDataList[Index]._Name);
+                    if (EngineDataList[Index]._BlockOBD)
+                    {
+                        writer.WriteLine("blockOBD=" + EngineDataList[Index]._BlockOBD);
+                    }
+                    writer.WriteLine("engineSound=" + EngineDataList[Index]._EngineSound);
                     writer.WriteLine("maxPower=" + EngineDataList[Index]._maxPower);
                     writer.WriteLine("maxPowerRPM=" + EngineDataList[Index]._maxPowerRPM);
                     writer.WriteLine("maxTorqueRPM=" + EngineDataList[Index]._maxTorqueRPM);
@@ -1273,7 +1304,6 @@ namespace CMS2015ModManager
             CDERotZnumericUpDown.Value = (Decimal)CarDataObject._EngineRotationZ;
             CDEScalenumericUpDown.Value = (Decimal)CarDataObject._EngineScale;
             CDETypecomboBox.SelectedText = CarDataObject._EngineType;
-            CDESoundtextBox.Text = CarDataObject._EngineSound;
             CDEPMnumericUpDown.Value = (Decimal)CarDataObject._EnginePM;
             //Engine swaps handled by the swap options dialog box
 
@@ -1324,7 +1354,6 @@ namespace CMS2015ModManager
             CDLPartConBnumericUpDown.Value = (Decimal)CarDataObject._LogicPartsConditionsB;
             CDLPanConAnumericUpDown.Value = (Decimal)CarDataObject._LogicPanelsConditionsA;
             CDLPanConBnumericUpDown.Value = (Decimal)CarDataObject._LogicPanelsConditionsB;
-            CDLBlockOBDcheckBox.Checked = CarDataObject._LogicBlockOBD;
             CDLUniqueModnumericUpDown.Value = (Decimal)CarDataObject._LogicUniqueMod;
 
             //Need to deal with the Parts info
@@ -1502,7 +1531,6 @@ namespace CMS2015ModManager
             CDEScalenumericUpDown.Value = 0;
             CDETypecomboBox.SelectedText = "";
             CDETypecomboBox.Text = "";
-            CDESoundtextBox.Text = "";
             CDEPMnumericUpDown.Value = 0;
             //Engine swaps handled by the swap options dialog box
 
@@ -1549,7 +1577,6 @@ namespace CMS2015ModManager
             CDLPartConBnumericUpDown.Value = 0;
             CDLPanConAnumericUpDown.Value = 0;
             CDLPanConBnumericUpDown.Value = 0;
-            CDLBlockOBDcheckBox.Checked = false;
 
             //[Parts] section
             //Hardcoded badness, should look into building this up programmatically at somepoint
@@ -1820,7 +1847,6 @@ namespace CMS2015ModManager
                 CarDataObject._EngineRotationZ = (float)CDERotZnumericUpDown.Value;
                 CarDataObject._EngineScale = (float)CDEScalenumericUpDown.Value;
                 CarDataObject._EngineType = CDETypecomboBox.Text;
-                CarDataObject._EngineSound = CDESoundtextBox.Text;
                 CarDataObject._EnginePM = (float)CDEPMnumericUpDown.Value;
                 //Engine swaps handled by it's own dialog box
 
@@ -1872,8 +1898,6 @@ namespace CMS2015ModManager
                 CarDataObject._LogicPartsConditionsB = (float)CDLPartConBnumericUpDown.Value;
                 CarDataObject._LogicPanelsConditionsA = (float)CDLPanConAnumericUpDown.Value;
                 CarDataObject._LogicPanelsConditionsB = (float)CDLPanConBnumericUpDown.Value;
-                CarDataObject._LogicBlockOBD = CDLBlockOBDcheckBox.Checked;
-                CarDataObject._LogicUniqueMod = (float)CDLUniqueModnumericUpDown.Value;
 
                 //Need to deal with the Parts info
                 //It's a list so it's different, need to clear out the existing,
@@ -2064,6 +2088,6 @@ namespace CMS2015ModManager
             SGETGLoadbutton_Click(sender, e);   //Calls the existing load button method
         }
 
-    #endregion
-}
+        #endregion
+    }
 }
