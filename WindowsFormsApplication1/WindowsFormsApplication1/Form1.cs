@@ -13,8 +13,8 @@ namespace CMS2015ModManager
 {
     public partial class Form1 : Form
     {
-        private string ModManVersion = "0.9.1.3";       //Version constant for ModManager
-        private string GameVersion = "1.0.8.0";     //Version constant for the game
+        private string ModManVersion = "0.9.1.4";       //Version constant for ModManager
+        private string GameVersion = "1.0.8.3";     //Version constant for the game
 
         //Class object for class that does the acutal mod managing stuff    //here so it's scope is within the form object  //should move the config stuff out at somepoint
         CMS2015MM ModMan;
@@ -1263,7 +1263,6 @@ namespace CMS2015ModManager
             CDMRotZnumericUpDown.Value = (Decimal)CarDataObject._MainRotationZ;
 
             //[Other] section
-            CDOEngineSoundtextBox.Text = CarDataObject._OtherEngineSound;
             CDOPowernumericUpDown.Value = (Decimal)CarDataObject._OtherPower;
             CDOTranstextBox.Text = CarDataObject._OtherTransmissionType;
             CDOGearsnumericUpDown.Value = (Decimal)CarDataObject._OtherGears;
@@ -1282,6 +1281,7 @@ namespace CMS2015ModManager
             CDSFrontAxleStartnumericUpDown.Value = (Decimal)CarDataObject._SuspensionFrontAxleStart;
             CDSWheelBasenumericUpDown.Value = (Decimal)CarDataObject._SuspensionWheelBase;
             CDSHeightnumericUpDown.Value = (Decimal)CarDataObject._SuspensionHeight;
+            CDSHeightRearnumericUpDown.Value = (Decimal)CarDataObject._SuspensionHeightRear;
             CDSFrontTracknumericUpDown.Value = (Decimal)CarDataObject._SuspensionFrontTrack;
             CDSRearTracknumericUpDown.Value = (Decimal)CarDataObject._SuspensionRearTrack;
             CDSFrontSpringLengthnumericUpDown.Value = (Decimal)CarDataObject._SuspensionFrontSpringLength;
@@ -1320,13 +1320,15 @@ namespace CMS2015ModManager
             CDDTypetextBox.Text = CarDataObject._DriveshaftType;
             CDDPMnumericUpDown.Value = (Decimal)CarDataObject._DriveshaftPM;
 
-            //[Wheel] section
+            //[Wheels] section
             CDWWheelWidthnumericUpDown.Value = (Decimal)CarDataObject._WheelsWheelWidth;
             CDWRimSizenumericUpDown.Value = (Decimal)CarDataObject._WheelsRimSize;
             CDWTireSizenumericUpDown.Value = (Decimal)CarDataObject._WheelsTireSize;
             CDWTirecomboBox.SelectedText = CarDataObject._WheelsTire;
             CDWRimtextBox.Text = CarDataObject._WheelsRim;
             CDWRimCaptextBox.Text = CarDataObject._WheelsRimcap;
+
+            //[Wheels_Rear] section
 
             //[Interior] section
             CDISLPosXnumericUpDown.Value = (Decimal)CarDataObject._InteriorSeatLeftPosX;
@@ -1495,7 +1497,6 @@ namespace CMS2015ModManager
             CDMRotZnumericUpDown.Value = 0;
 
             //[Other] section
-            CDOEngineSoundtextBox.Text = "";
             CDOTranstextBox.Text = "";
             CDOGearsnumericUpDown.Value = 0;
             CDOFinalDrivenumericUpDown.Value = 0;
@@ -1511,6 +1512,7 @@ namespace CMS2015ModManager
             CDSFrontAxleStartnumericUpDown.Value = 0;
             CDSWheelBasenumericUpDown.Value = 0;
             CDSHeightnumericUpDown.Value = 0;
+            CDSHeightRearnumericUpDown.Value = 0;
             CDSFrontTracknumericUpDown.Value = 0;
             CDSRearTracknumericUpDown.Value = 0;
             CDSFrontSpringLengthnumericUpDown.Value = 0;
@@ -1806,7 +1808,6 @@ namespace CMS2015ModManager
                 CarDataObject._MainRotationZ = (float)CDMRotZnumericUpDown.Value;
 
                 //[Other] section
-                CarDataObject._OtherEngineSound = CDOEngineSoundtextBox.Text;
                 CarDataObject._OtherPower = (int)CDOPowernumericUpDown.Value;
                 CarDataObject._OtherTransmissionType = CDOTranstextBox.Text;
                 CarDataObject._OtherGears = (int)CDOGearsnumericUpDown.Value;
@@ -1825,6 +1826,7 @@ namespace CMS2015ModManager
                 CarDataObject._SuspensionFrontAxleStart = (float)CDSFrontAxleStartnumericUpDown.Value;
                 CarDataObject._SuspensionWheelBase = (float)CDSWheelBasenumericUpDown.Value;
                 CarDataObject._SuspensionHeight = (float)CDSHeightnumericUpDown.Value;
+                CarDataObject._SuspensionHeightRear = (float)CDSHeightRearnumericUpDown.Value;
                 CarDataObject._SuspensionFrontTrack = (float)CDSFrontTracknumericUpDown.Value;
                 CarDataObject._SuspensionRearTrack = (float)CDSRearTracknumericUpDown.Value;
                 CarDataObject._SuspensionFrontSpringLength = (float)CDSFrontSpringLengthnumericUpDown.Value;
@@ -2025,7 +2027,7 @@ namespace CMS2015ModManager
         }
         #endregion
 
-        #region Save File - Global
+        #region Save File - Global file
         //Populate the profile list combo box
         private void PopulateProfileComboBox()
         {
@@ -2042,22 +2044,25 @@ namespace CMS2015ModManager
         //Load the global save file
         private void SGETGLoadbutton_Click(object sender, EventArgs e)
         {
-            SaveGameDataGlobal LocalGrab = new SaveGameDataGlobal();        //Create a local to get save data
-            LocalGrab.LoadGlobalSaveFile(ModMan.GetSavedGamesDir() + "\\" + SGETGProfilecomboBox.Text);     //Load the save file
+            if (SGETGProfilecomboBox.Text != "")
+            {
+                SaveGameDataGlobal LocalGrab = new SaveGameDataGlobal();        //Create a local to get save data
+                LocalGrab.LoadGlobalSaveFile(ModMan.GetSavedGamesDir() + "\\" + SGETGProfilecomboBox.Text);     //Load the save file
 
-            //Fill out the GUI
-            SGETGPartsRepairednumericUpDown.Value = LocalGrab._Stats_PartsRepaired;
-            SGETGMoneyIncomePartsnumericUpDown.Value = LocalGrab._Stats_MoneyIncomeParts;
-            SGETGMoneyIncomeCarsnumericUpDown.Value = LocalGrab._Stats_MoneyIncomeCars;
-            SGETGCarsSoldnumericUpDown.Value = LocalGrab._Stats_CarsSold;
-            SGETGJobsCompletednumericUpDown.Value = LocalGrab._Stats_JobsCompletted;
-            SGETGCarsOwnednumericUpDown.Value = LocalGrab._Stats_CarsOwned;
-            SGETGMoneyIncomenumericUpDown.Value = LocalGrab._Stats_MoneyIncome;
-            SGETGPartsUnmountednumericUpDown.Value = LocalGrab._Stats_PartsUnmounted;
-            SGETGBoltsUndonenumericUpDown.Value = LocalGrab._Stats_Bolts;
-            SGETBankLoannumericUpDown.Value = LocalGrab._bankLoan;
-            SGETGXPnumericUpDown.Value = LocalGrab._xp;
-            SGETGMoneynumericUpDown.Value = LocalGrab._money;
+                //Fill out the GUI
+                SGETGPartsRepairednumericUpDown.Value = LocalGrab._Stats_PartsRepaired;
+                SGETGMoneyIncomePartsnumericUpDown.Value = LocalGrab._Stats_MoneyIncomeParts;
+                SGETGMoneyIncomeCarsnumericUpDown.Value = LocalGrab._Stats_MoneyIncomeCars;
+                SGETGCarsSoldnumericUpDown.Value = LocalGrab._Stats_CarsSold;
+                SGETGJobsCompletednumericUpDown.Value = LocalGrab._Stats_JobsCompletted;
+                SGETGCarsOwnednumericUpDown.Value = LocalGrab._Stats_CarsOwned;
+                SGETGMoneyIncomenumericUpDown.Value = LocalGrab._Stats_MoneyIncome;
+                SGETGPartsUnmountednumericUpDown.Value = LocalGrab._Stats_PartsUnmounted;
+                SGETGBoltsUndonenumericUpDown.Value = LocalGrab._Stats_Bolts;
+                SGETBankLoannumericUpDown.Value = LocalGrab._bankLoan;
+                SGETGXPnumericUpDown.Value = LocalGrab._xp;
+                SGETGMoneynumericUpDown.Value = LocalGrab._money;
+            }
         }
 
         //Save the global save file

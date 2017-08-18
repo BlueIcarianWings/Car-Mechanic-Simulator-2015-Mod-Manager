@@ -53,7 +53,6 @@ namespace CMS2015ModManager
         private TripleFloatPoint MainRotation;
 
         //[Other]
-        private string OtherEngineSound;
         private int OtherPower;
         private string OtherTransmissionType;
         private int OtherGears;
@@ -73,6 +72,7 @@ namespace CMS2015ModManager
         private float SuspensionFrontAxleStart;
         private float SuspensionWheelBase;
         private float SuspensionHeight;
+        private float SuspensionHeightRear;
         private float SuspensionFrontTrack;
         private float SuspensionRearTrack;
         private float SuspensionFrontSpringLength;
@@ -110,6 +110,18 @@ namespace CMS2015ModManager
         private string WheelsRimcap;		//Mercedes 300SL specfic at the moment
         private int WheelsRimSize;
         private int WheelsTireSize;
+        //Maserati specfic at the moment
+        private int WheelsWheelWidthRear;
+        private int WheelsRimSizeRear;
+        private int WheelsTireSizeRear;
+
+        //[Wheels_Rear]
+        private int WheelsRearWheelWidth;
+        private string WheelsRearTire;
+        private string WheelsRearRim;
+        private string WheelsRearRimcap;		//Mercedes 300SL specfic at the moment
+        private int WheelsRearRimSize;
+        private int WheelsRearTireSize;
 
         //[PartsType] //0 to 6 (index)
         //As a car may have 0 to 7 of these, I'm going to use a struct in a <List> internaly
@@ -194,6 +206,9 @@ namespace CMS2015ModManager
                             case "wheels":
                                 CarDataWheelsSectionProc(CDFlines, ref i);
                                 break;
+                            case "wheels_rear":
+                                CarDataWheelsRearSectionProc(CDFlines, ref i);
+                                break;
                             case "interior":
                                 CarDataInteriorSectionProc(CDFlines, ref i);
                                 break;
@@ -242,7 +257,6 @@ namespace CMS2015ModManager
 
             //[Other]
             writer.WriteLine("[other]");
-            if (OtherEngineSound != "")     { writer.WriteLine("engineSound= " + OtherEngineSound); }
             if (OtherPower != 0)            { writer.WriteLine("otherPower= " + OtherPower); }
             if (OtherTransmissionType != ""){ writer.WriteLine("transmissionType= " + OtherTransmissionType); }
             if (OtherGears != 0)            { writer.WriteLine("gears= " + OtherGears); }
@@ -264,10 +278,11 @@ namespace CMS2015ModManager
             if (SuspensionFrontAxleStart != 0)    { writer.WriteLine("frontAxleStart= " + SuspensionFrontAxleStart); }
             if (SuspensionWheelBase != 0)         { writer.WriteLine("wheelBase= " + SuspensionWheelBase); }
             if (SuspensionHeight != 0)            { writer.WriteLine("height= " + SuspensionHeight); }
+            if (SuspensionHeightRear != 0)        { writer.WriteLine("heightRear= " + SuspensionHeightRear); }
             if (SuspensionFrontTrack != 0)        { writer.WriteLine("frontTrack= " + SuspensionFrontTrack); }
             if (SuspensionRearTrack != 0)         { writer.WriteLine("rearTrack= " + SuspensionRearTrack); }
             if (SuspensionFrontSpringLength != 0) { writer.WriteLine("frontSpringLength= " + SuspensionFrontSpringLength); }
-            if (MainName == "car_Kaszlak")     //Kaszlak specfic bits
+            if (MainModel == "car_Kaszlak")     //Kaszlak specfic bits
             {
                 if (SuspensionScale != 0) { writer.WriteLine("forceScale= " + SuspensionScale); }
                 if (SuspensionSidesFlip != 0) { writer.WriteLine("sidesFlip= " + SuspensionSidesFlip); }                //Kaszlak specfic at the moment
@@ -316,7 +331,7 @@ namespace CMS2015ModManager
             writer.WriteLine();     //Blank line seperator
 
             //[Driveshaft]
-            if (DriveshaftType != null)     //Skip all this if there is no driveshaft
+            if (DriveshaftType != "")     //Skip all this if there is no driveshaft
             {
                 writer.WriteLine("[driveshaft]");
                 if ((DriveshaftPosition.x != 0) || (DriveshaftPosition.y != 0) || (DriveshaftPosition.z != 0))
@@ -339,6 +354,20 @@ namespace CMS2015ModManager
             if (WheelsRimcap != "")    { writer.WriteLine("rimCap= " + WheelsRimcap); }        //Mercedes 300SL specfic at the moment
             if (WheelsRimSize != 0)    { writer.WriteLine("rimSize= " + WheelsRimSize); }
             if (WheelsTireSize != 0)   { writer.WriteLine("tireSize= " + WheelsTireSize); }
+            //Maserati specfic at the moment
+            if (WheelsWheelWidthRear != 0) { writer.WriteLine("wheelWidthRear= " + WheelsWheelWidthRear); }
+            if (WheelsRimSizeRear != 0)    { writer.WriteLine("rimSizeRear= " + WheelsRimSizeRear); }
+            if (WheelsTireSizeRear != 0)   { writer.WriteLine("tireSizeRear= " + WheelsTireSizeRear); }
+            writer.WriteLine();     //Blank line seperator
+
+            //[Wheels_Rear]
+            writer.WriteLine("[wheels_rear]");
+            if (WheelsRearWheelWidth != 0) { writer.WriteLine("wheelWidth= " + WheelsRearWheelWidth); }
+            if (WheelsRearTire != "")      { writer.WriteLine("tire= " + WheelsRearTire); }
+            if (WheelsRearRim != "")       { writer.WriteLine("rim= " + WheelsRearRim); }
+            if (WheelsRearRimcap != "")    { writer.WriteLine("rimCap= " + WheelsRearRimcap); }        //Mercedes 300SL specfic at the moment
+            if (WheelsRearRimSize != 0)    { writer.WriteLine("rimSize= " + WheelsRearRimSize); }
+            if (WheelsRearTireSize != 0)   { writer.WriteLine("tireSize= " + WheelsRearTireSize); }
             writer.WriteLine();     //Blank line seperator
 
             //[PartsType] //0 to 6 (index)
@@ -480,9 +509,6 @@ namespace CMS2015ModManager
 
                     switch (label)  //Fill out the Main data
                     {
-                        case "engineSound":
-                            OtherEngineSound = line;
-                            break;
                         case "transmissionType":
                             OtherTransmissionType = line;
                             break;
@@ -569,6 +595,9 @@ namespace CMS2015ModManager
                             break;
                         case "height":
                             float.TryParse(line, out SuspensionHeight);      //convert the strings to numbers
+                            break;
+                        case "heightRear":
+                            float.TryParse(line, out SuspensionHeightRear);  //convert the strings to numbers
                             break;
                         case "frontTrack":
                             float.TryParse(line, out SuspensionFrontTrack);  //convert the strings to numbers
@@ -790,6 +819,70 @@ namespace CMS2015ModManager
                             break;
                         case "tireSize":
                             int.TryParse(line, out WheelsTireSize);   //convert the strings to numbers
+                            break;
+                        //Maserati specfic at the moment
+                        case "wheelWidthRear":
+                            int.TryParse(line, out WheelsWheelWidthRear);   //convert the strings to numbers
+                            break;
+                        case "rimSizeRear":
+                            int.TryParse(line, out WheelsRimSizeRear);   //convert the strings to numbers
+                            break;
+                        case "tireSizeRear":
+                            int.TryParse(line, out WheelsTireSizeRear);   //convert the strings to numbers
+                            break;
+                        default:
+                            //Nothing here
+                            //Blank lines and comments should be eaten outside of this if
+                            //malformed lines will end up here
+                            break;
+                    }
+                    i++;    //Move to next line
+                }
+                else
+                {
+                    //Blank line or comment(or null line, shouldn't be I'll see later if it needs a break)
+                    //Normal comment or Special case ;name either way we need to,...
+                    i++;    //Move to next line
+                }
+            }
+            i--;    //Knock the counter back a line as the while loop that called us, will inc it and step over the section header we just found.
+        }
+
+        //Parse the  [wheels] part of the car data file
+        private void CarDataWheelsRearSectionProc(string[] CDFlines, ref int i)
+        {
+            //the i passed in is the line counter, is currently sat on the "[Main]" line
+            i++;    //Move it along to the next line, so the while loop condition check doesn't end immediately
+
+            while ((i < CDFlines.Length) && (!(CDFlines[i].StartsWith("["))))   //Keep reading lines until another section header line is found or out of lines
+            {
+                //Check for blank lines and null lines (end of file(might be able to remove the null check, legacy from a stream reader style))
+                if ((CDFlines[i] != "") && (CDFlines[i] != null) && (!(CDFlines[i].StartsWith(";"))))    //if the line is empty or a comment skip over all this
+                {
+                    int j = CDFlines[i].IndexOf('=');              //Find the end of label string
+                    string label = CDFlines[i].Substring(0, j);    //Grabs the bit upto the '='
+                                                                   //Grab the bit after the '=' and remove the leading and trailing spaces
+                    string line = CDFlines[i].Substring(j + 1, CDFlines[i].Length - (j + 1)).Trim(' ');
+
+                    switch (label)  //Fill out the Main data
+                    {
+                        case "wheelWidth":
+                            int.TryParse(line, out WheelsRearWheelWidth);   //convert the strings to numbers
+                            break;
+                        case "tire":
+                            WheelsRearTire = line;
+                            break;
+                        case "rim":
+                            WheelsRearRim = line;
+                            break;
+                        case "rimSize":
+                            int.TryParse(line, out WheelsRearRimSize);   //convert the strings to numbers
+                            break;
+                        case "rimcap":
+                            WheelsRearRimcap = line;
+                            break;
+                        case "tireSize":
+                            int.TryParse(line, out WheelsRearTireSize);   //convert the strings to numbers
                             break;
                         default:
                             //Nothing here
@@ -1031,7 +1124,6 @@ namespace CMS2015ModManager
             MainRotation.z = 0;
 
             //[Other]
-            OtherEngineSound = "";
             OtherPower = 0;
             OtherTransmissionType = "";
             OtherGears = 0;
@@ -1051,6 +1143,7 @@ namespace CMS2015ModManager
             SuspensionFrontAxleStart = 0.0f;
             SuspensionWheelBase = 0.0f;
             SuspensionHeight = 0.0f;
+            SuspensionHeightRear = 0.0f;
             SuspensionFrontTrack = 0.0f;
             SuspensionRearTrack = 0.0f;
             SuspensionFrontSpringLength = 0.0f;
@@ -1096,6 +1189,18 @@ namespace CMS2015ModManager
             WheelsRimcap = "";		//Mercedes 300SL specfic at the moment
             WheelsRimSize = 0;
             WheelsTireSize = 0;
+            //Maserati specfic at the moment
+            WheelsWheelWidthRear = 0;
+            WheelsRimSizeRear = 0;
+            WheelsTireSizeRear = 0;
+
+            //[Wheels_Rear]
+            WheelsRearWheelWidth = 0;
+            WheelsRearTire = "";
+            WheelsRearRim = "";
+            WheelsRearRimcap = "";		//Mercedes 300SL specfic at the moment
+            WheelsRearRimSize = 0;
+            WheelsRearTireSize = 0;
 
             //[PartsType] //0 to 6 (index)
             RemoveAllParts();
@@ -1251,12 +1356,6 @@ namespace CMS2015ModManager
         #endregion
 
         #region [Other]
-        public string _OtherEngineSound
-        {
-            get { return OtherEngineSound; }
-            set { OtherEngineSound = value; }
-        }
-
         public int _OtherPower
         {
             get { return OtherPower; }
@@ -1359,6 +1458,12 @@ namespace CMS2015ModManager
         {
             get { return SuspensionHeight; }
             set { SuspensionHeight = value; }
+        }
+
+        public float _SuspensionHeightRear
+        {
+            get { return SuspensionHeightRear; }
+            set { SuspensionHeightRear = value; }
         }
 
         public float _SuspensionFrontTrack

@@ -7,6 +7,15 @@ http://steamcommunity.com/app/320300/discussions/1/368542844485671388/
 
 Release notes
 
+0.9.1.4
+30/Aug/2016
+Fixed crash bug on trying to load a save game file when none is selected
+Fixed bug in writing Maluch car data file
+Removed redundant Engine sound from [other]
+Added heightRear to [suspension]
+Added internal support for wheelWidthRear, rimSizeRear, and tireSizeRear into [wheels] - GUI parts to follow (this prevents corrupting the save file due to missing parts)
+Added internal support for new section [wheels_rear] - GUI parts to follow (this prevents corrupting the save file due to missing parts)
+
 0.9.1.3
 23/Aug/2016
 DeLorean DLC 1.0.8.0 release
