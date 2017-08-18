@@ -877,7 +877,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -6564,6 +6564,7 @@
             this.SGETGProfilecomboBox.Name = "SGETGProfilecomboBox";
             this.SGETGProfilecomboBox.Size = new System.Drawing.Size(121, 21);
             this.SGETGProfilecomboBox.TabIndex = 29;
+            this.SGETGProfilecomboBox.SelectedIndexChanged += new System.EventHandler(this.SGETGProfilecomboBox_SelectedIndexChanged);
             // 
             // SGETGProfilelabel
             // 

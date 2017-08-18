@@ -239,7 +239,7 @@ namespace CMS2015ModManager
             if (MainName != "") { writer.WriteLine(";name= " + MainName); }
             writer.WriteLine("model= " + MainModel);
             writer.WriteLine("rustMask= " + MainRustMask);
-            writer.WriteLine("rotation= " + MainRotation.x + "," + MainRotation.y + "," + MainRotation.z);
+            writer.WriteLine("rotation= {0:f1},{1:f1},{2:f1}", MainRotation.x, MainRotation.y, MainRotation.z); //apply formatting of float to 1DP
             writer.WriteLine();     //Blank line seperator
 
             //[Other]
@@ -276,7 +276,7 @@ namespace CMS2015ModManager
             if (SuspensionFrontLeftSet != "")     { writer.WriteLine("frontLeftSet= " + SuspensionFrontLeftSet); }     //Kaszlak specfic at the moment
             if (SuspensionRearCenterSet != "")    { writer.WriteLine("rearCenterSet= " + SuspensionRearCenterSet); }
             if (SuspensionRearRightSet != "")     { writer.WriteLine("rearRightSet= " + SuspensionRearRightSet); }
-            if (SuspensionRearLeftSet != "")      { writer.WriteLine("rearLeftSet " + SuspensionRearLeftSet); }      //Kaszlak specfic at the moment
+            if (SuspensionRearLeftSet != "")      { writer.WriteLine("rearLeftSet= " + SuspensionRearLeftSet); }      //Kaszlak specfic at the moment
             writer.WriteLine();     //Blank line seperator
 
             //[Engine]
@@ -312,17 +312,20 @@ namespace CMS2015ModManager
             writer.WriteLine();     //Blank line seperator
 
             //[Driveshaft]
-            writer.WriteLine("[driveshaft]");
-            if ((DriveshaftPosition.x != 0) || (DriveshaftPosition.y != 0) || (DriveshaftPosition.z != 0))
-            { writer.WriteLine("position= " + DriveshaftPosition.x + ", " + DriveshaftPosition.y + ", " + DriveshaftPosition.z); }
-            if ((DriveshaftRotation.x != 0) || (DriveshaftRotation.y != 0) || (DriveshaftRotation.z != 0))
-            { writer.WriteLine("rotation= " + DriveshaftRotation.x + ", " + DriveshaftRotation.y + ", " + DriveshaftRotation.z); }
-            if (DriveshaftScale != 0)  { writer.WriteLine("scale= " + DriveshaftScale); }
-            if (DriveshaftType != "")  { writer.WriteLine("type= " + DriveshaftType); }
-            if (DriveshaftLength != 0) { writer.WriteLine("length= " + DriveshaftLength); }
-            if (DriveshaftSize != 0)   { writer.WriteLine("size= " + DriveshaftSize);  }
-            if (DriveshaftPM != 0)     { writer.WriteLine("pm= " + DriveshaftPM); }
-            writer.WriteLine();     //Blank line seperator
+            if (DriveshaftType != null)     //Skip all this if there is no driveshaft
+            {
+                writer.WriteLine("[driveshaft]");
+                if ((DriveshaftPosition.x != 0) || (DriveshaftPosition.y != 0) || (DriveshaftPosition.z != 0))
+                { writer.WriteLine("position= " + DriveshaftPosition.x + ", " + DriveshaftPosition.y + ", " + DriveshaftPosition.z); }
+                if ((DriveshaftRotation.x != 0) || (DriveshaftRotation.y != 0) || (DriveshaftRotation.z != 0))
+                { writer.WriteLine("rotation= " + DriveshaftRotation.x + ", " + DriveshaftRotation.y + ", " + DriveshaftRotation.z); }
+                if (DriveshaftScale != 0) { writer.WriteLine("scale= " + DriveshaftScale); }
+                if (DriveshaftType != "") { writer.WriteLine("type= " + DriveshaftType); }
+                if (DriveshaftLength != 0) { writer.WriteLine("length= " + DriveshaftLength); }
+                if (DriveshaftSize != 0) { writer.WriteLine("size= " + DriveshaftSize); }
+                if (DriveshaftPM != 0) { writer.WriteLine("pm= " + DriveshaftPM); }
+                writer.WriteLine();     //Blank line seperator
+            }
 
             //[Wheels]
             writer.WriteLine("[wheels]");
@@ -336,16 +339,25 @@ namespace CMS2015ModManager
 
             //[PartsType] //0 to 6 (index)
             //As a car may have 0 to 7 of these, I'm going to use a struct in a <List> internaly
-            int LocalCounter = 0;
-            while (LocalCounter < Parts.Count())
+            int LocalCounter = 0;       //Index to use in output labels
+            int ControlCounter = 0;     //Index to use in working through stored data
+            //in 1.0.7.7 RedDot Fixed a bug with the Maluch (car_Kaszlak) by starting it's [parts<number>] at 1 instead of 0
+            //This check and the use of the seperate counters allows for this special case
+            if(MainModel == "car_Kaszlak")
+            {
+                LocalCounter = 1;   //If the Maluch/Kaszlak special case set the different start position
+            }
+
+            while (ControlCounter < Parts.Count())
             {
                 writer.WriteLine("[parts" + LocalCounter + "]");
-                writer.WriteLine("name= " + Parts[LocalCounter].PartsName);
-                writer.WriteLine("position= " + Parts[LocalCounter].PartsPosition.x + "," + Parts[LocalCounter].PartsPosition.y + "," + Parts[LocalCounter].PartsPosition.z);
-                writer.WriteLine("rotation= " + Parts[LocalCounter].PartsRotation.x + "," + Parts[LocalCounter].PartsRotation.y + "," + Parts[LocalCounter].PartsRotation.z);
-                writer.WriteLine("scale= " + Parts[LocalCounter].PartsScale);
+                writer.WriteLine("name= " + Parts[ControlCounter].PartsName);
+                writer.WriteLine("position= " + Parts[ControlCounter].PartsPosition.x + "," + Parts[ControlCounter].PartsPosition.y + "," + Parts[ControlCounter].PartsPosition.z);
+                writer.WriteLine("rotation= " + Parts[ControlCounter].PartsRotation.x + "," + Parts[ControlCounter].PartsRotation.y + "," + Parts[ControlCounter].PartsRotation.z);
+                writer.WriteLine("scale= " + Parts[ControlCounter].PartsScale);
                 writer.WriteLine();     //Blank line seperator
                 LocalCounter++;
+                ControlCounter++;
             }
 
             //[Interior]

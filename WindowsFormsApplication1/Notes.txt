@@ -6,11 +6,19 @@ A modding tool for editing and handling mods for Car Mechanic simulator 2015
 
 Release notes
 
+0.9.1.2
+Changed [parts<number>] output for Maluch to start at 1 to match a fix applied for patch 1.0.7.7
+Changed the [driveshaft] section to not be output if that section is empty
+Fixed an error in output of [suspension] section (affected rearLeftSet)
+Added decimal place formatting [main] section
+
+(Update between these releases to add two new engine pictures only due to the new DLC with patch 1.0.7.4)
+
 0.9.1.1
 Expanded the [parts<number>] to 9 for a total of 10 possible extra parts
 Added an error-catcher to allow use of the application if the config file fails to write
-Fixed an error with the engines combobox in the dar data tab
-Fixed an error with the tires combobox in the dar data tab
+Fixed an error with the engines combobox in the car data tab
+Fixed an error with the tires combobox in the car data tab
 
 0.9.1
 Fixed an error with the path to the saves directory

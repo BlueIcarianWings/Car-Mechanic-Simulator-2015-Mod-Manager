@@ -13,7 +13,8 @@ namespace CMS2015ModManager
 {
     public partial class Form1 : Form
     {
-        private string ModManVersion = "0.9.1.1";     //Version constant
+        private string ModManVersion = "0.9.1.2";       //Version constant for ModManager
+        private string GameVersion = "1.0.7.7 hf1";     //Version constant for the game
 
         //Class object for class that does the acutal mod managing stuff    //here so it's scope is within the form object  //should move the config stuff out at somepoint
         CMS2015MM ModMan;
@@ -166,7 +167,7 @@ namespace CMS2015ModManager
         //Handle a click on the about menu item
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Car Mechanic Simulator 2015 Mod Manager Version " + ModManVersion + "\nVery much a work in progress\nDesigned for V1.0.7.3\nBy Blue Icarian Wings");
+            MessageBox.Show("Car Mechanic Simulator 2015 Mod Manager Version " + ModManVersion + "\nVery much a work in progress\nDesigned for " + GameVersion + "\nBy Blue Icarian Wings");
         }
 
         //Handle the menu request to backup the save dir
@@ -2057,7 +2058,12 @@ namespace CMS2015ModManager
             LocalSave.WriteGlobalSaveFile(ModMan.GetSavedGamesDir() + "\\" + SGETGProfilecomboBox.Text);     //Load the save file
         }
 
-        #endregion
+        //Handles a change in the selected save profile combo box
+        private void SGETGProfilecomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SGETGLoadbutton_Click(sender, e);   //Calls the existing load button method
+        }
 
-    }
+    #endregion
+}
 }
