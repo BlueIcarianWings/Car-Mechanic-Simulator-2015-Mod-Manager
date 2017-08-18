@@ -8,6 +8,26 @@ http://steamcommunity.com/app/320300/discussions/1/368542844485671388/
 
 Release notes
 
+0.9.3.1
+15/Dec/2016
+Bentley DLC 1.1.0.3 release
+Added pictures for two new Bentley engines
+Added the RightHandDrive field to the [Other] section
+Removal of Scale for all cars except Kaszlak from [Suspension] section
+Added ForceScaleRear for Kaszlak to [Suspension] section
+
+0.9.3
+15/Dec/2016
+Added Garage customisation unlocks to save editor
+Fixed a 'partssConditions' typo in output of [Logic] section
+
+0.9.2.2
+Nov to 15/Dec/2016
+Tire data handling has been refractored (backend)
+Added Single/All Restore/Default-Backup/Mod-Backup options to Tires Data Tab
+Added missing set defaults in SaveGameDataGlobal class constructor
+Changed RPMAngle and SpeedoAngle in [Other] section to have wider range of angles (RPMAngle was causing a crash with the Bentley DLC)
+
 0.9.2.1
 30/Oct/2016
 Added New engine and tire pictures for newly released Maserati Quattroporte

@@ -24,6 +24,7 @@ namespace CMS2015ModManager
         private int bankLoan;
         private int xp;
         private int money;
+
         //Memory location (values are set in the constructor, and is the bit that will need the most maintenance)
         private int Stats_PartsRepaired_MemLoc;
         private int Stats_MoneyIncomeParts_MemLoc;
@@ -44,6 +45,20 @@ namespace CMS2015ModManager
         // Constructor
         public SaveGameDataGlobal()
         {
+            //Set the initial vales to default nothings
+            Stats_PartsRepaired = 0;
+            Stats_MoneyIncomeParts = 0;
+            Stats_MoneyIncomeCars = 0;
+            Stats_CarsSold = 0;
+            Stats_JobsCompleted = 0;
+            Stats_CarsOwned = 0;
+            Stats_MoneyIncome = 0;
+            Stats_PartsUnmounted = 0;
+            Stats_Bolts = 0;
+            bankLoan = 0;
+            xp = 0;
+            money = 0;
+
             //Set the memory locations of the values
             Stats_PartsRepaired_MemLoc = 158;//9e
             Stats_MoneyIncomeParts_MemLoc = 196;//c4
@@ -59,7 +74,7 @@ namespace CMS2015ModManager
             money_MemLoc = 489;//1e9
         }
 
-        //Loads a car data file into the object from the fullpath and filename given
+        //Loads a Save game Global data file into the object from the fullpath and filename given
         public bool LoadGlobalSaveFile(string path)
         {
             bool RetVal = false;    //Setup the return value, default false
@@ -111,7 +126,7 @@ namespace CMS2015ModManager
             return RetVal;      //Return success or failure
         }
 
-        //Writes the car data file from the object
+        //Writes the Save game Global data file from the object
         public void WriteGlobalSaveFile(string path)
         {
             string fullpath = path + "\\global";

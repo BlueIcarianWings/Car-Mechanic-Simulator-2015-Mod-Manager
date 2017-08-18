@@ -65,6 +65,7 @@
             this.CarsCurrentlyListBox = new System.Windows.Forms.ListBox();
             this.AvailableCarsListLabel = new System.Windows.Forms.Label();
             this.CarDataTabPage = new System.Windows.Forms.TabPage();
+            this.CDBackupAllModsbutton = new System.Windows.Forms.Button();
             this.CDGetTextbutton = new System.Windows.Forms.Button();
             this.CDLoadFromTextbutton = new System.Windows.Forms.Button();
             this.CDLoadFromFilebutton = new System.Windows.Forms.Button();
@@ -371,8 +372,8 @@
             this.CDSFrontRightSetlabel = new System.Windows.Forms.Label();
             this.CDSFrontCenterSettextBox = new System.Windows.Forms.TextBox();
             this.CDSFrontCenterSetlabel = new System.Windows.Forms.Label();
-            this.CDSScalenumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.CDSScalelabel = new System.Windows.Forms.Label();
+            this.CDSForceScalenumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDSForceScalelabel = new System.Windows.Forms.Label();
             this.CDSFrontSpringLengthnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDSFrontSpringLengthlabel = new System.Windows.Forms.Label();
             this.CDSRearTracknumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -495,6 +496,11 @@
             this.AvailableCarsDataLabel = new System.Windows.Forms.Label();
             this.AvailableCarsDataComboBox = new System.Windows.Forms.ComboBox();
             this.EngineDataTabPage = new System.Windows.Forms.TabPage();
+            this.EDTBackupAllModbutton = new System.Windows.Forms.Button();
+            this.EDTRestoreAllModbutton = new System.Windows.Forms.Button();
+            this.EDTRestoreModbutton = new System.Windows.Forms.Button();
+            this.EDTRestoreDefaultbutton = new System.Windows.Forms.Button();
+            this.EDTRestoreAllDefaultbutton = new System.Windows.Forms.Button();
             this.EDTEngineSoundtextBox = new System.Windows.Forms.TextBox();
             this.EDTEngineSoundlabel = new System.Windows.Forms.Label();
             this.EDTBlockOBDcheckBox = new System.Windows.Forms.CheckBox();
@@ -514,6 +520,11 @@
             this.AvailableEnginesComboBox = new System.Windows.Forms.ComboBox();
             this.AvailableEnginesLabel = new System.Windows.Forms.Label();
             this.TireDatatabPage = new System.Windows.Forms.TabPage();
+            this.TDTBackupAllModbutton = new System.Windows.Forms.Button();
+            this.TDTRestoreAllModbutton = new System.Windows.Forms.Button();
+            this.TDTRestoreModbutton = new System.Windows.Forms.Button();
+            this.TDTRestoreDefaultbutton = new System.Windows.Forms.Button();
+            this.TDTRestoreAllDefaultbutton = new System.Windows.Forms.Button();
             this.TDTImagepictureBox = new System.Windows.Forms.PictureBox();
             this.TDTResetbutton = new System.Windows.Forms.Button();
             this.TDTPricenumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -588,15 +599,46 @@
             this.SGETGPartsRepairednumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.SGETGPartsRepairedlabel = new System.Windows.Forms.Label();
             this.SGETGTitlelabel = new System.Windows.Forms.Label();
+            this.SGETGarageCustomtabPage = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.SGETGCParkingFcheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCParkingEcheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCParkingDcheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCParkingCcheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCParkingABcheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCTestRoadcheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCPaintShopcheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCCarLifterscheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCFrameworkcheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCWindowscheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCFloorStripescheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCFloor2BcheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCFloorAcheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCWallBcheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCCustomisationUnlocksTitlelabel = new System.Windows.Forms.Label();
+            this.SGETGCWallAcheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCSkillspanel = new System.Windows.Forms.Panel();
+            this.SGETGCElectricalReadercheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCCompressionTestercheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCOBDReadercheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCRepairLv5checkBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCRepairLv4checkBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCRepairLv3checkBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCRepairLv2checkBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCRepairLv1checkBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCTabletcheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCFastExaminecheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCFastAssemblycheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCSkillsUnlocksTitlelabel = new System.Windows.Forms.Label();
+            this.SGETGCFastUnboltingcheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGClabel = new System.Windows.Forms.Label();
             this.SGETHelpWantedtabPage = new System.Windows.Forms.TabPage();
             this.SGETHelpWantedtextBox = new System.Windows.Forms.TextBox();
             this.SGETProfilelabel = new System.Windows.Forms.Label();
-            this.CDBackupAllModsbutton = new System.Windows.Forms.Button();
-            this.EDTRestoreAllDefaultbutton = new System.Windows.Forms.Button();
-            this.EDTRestoreDefaultbutton = new System.Windows.Forms.Button();
-            this.EDTBackupAllModbutton = new System.Windows.Forms.Button();
-            this.EDTRestoreAllModbutton = new System.Windows.Forms.Button();
-            this.EDTRestoreModbutton = new System.Windows.Forms.Button();
+            this.SGETGCSavebutton = new System.Windows.Forms.Button();
+            this.CDSForceScaleRearnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CDSForceScaleRearlabel = new System.Windows.Forms.Label();
+            this.CDORightHandDrivecheckBox = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.CarsListTabPage.SuspendLayout();
@@ -720,7 +762,7 @@
             this.CDSuspensionpanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CDSHeightRearnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDSSidesFlipnumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CDSScalenumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDSForceScalenumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDSFrontSpringLengthnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDSRearTracknumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDSFrontTracknumericUpDown)).BeginInit();
@@ -801,7 +843,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.SGETGMoneyIncomeCarsnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SGETGMoneyIncomePartsnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SGETGPartsRepairednumericUpDown)).BeginInit();
+            this.SGETGarageCustomtabPage.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.SGETGCSkillspanel.SuspendLayout();
             this.SGETHelpWantedtabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CDSForceScaleRearnumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -1116,7 +1162,7 @@
             // AvailableCarsListLabel
             // 
             this.AvailableCarsListLabel.AutoSize = true;
-            this.AvailableCarsListLabel.Location = new System.Drawing.Point(645, 7);
+            this.AvailableCarsListLabel.Location = new System.Drawing.Point(564, 7);
             this.AvailableCarsListLabel.Name = "AvailableCarsListLabel";
             this.AvailableCarsListLabel.Size = new System.Drawing.Size(74, 13);
             this.AvailableCarsListLabel.TabIndex = 3;
@@ -1148,6 +1194,16 @@
             this.CarDataTabPage.TabIndex = 0;
             this.CarDataTabPage.Text = "Car Data";
             this.CarDataTabPage.UseVisualStyleBackColor = true;
+            // 
+            // CDBackupAllModsbutton
+            // 
+            this.CDBackupAllModsbutton.Location = new System.Drawing.Point(10, 417);
+            this.CDBackupAllModsbutton.Name = "CDBackupAllModsbutton";
+            this.CDBackupAllModsbutton.Size = new System.Drawing.Size(84, 52);
+            this.CDBackupAllModsbutton.TabIndex = 46;
+            this.CDBackupAllModsbutton.Text = "Backup All Mods";
+            this.CDBackupAllModsbutton.UseVisualStyleBackColor = true;
+            this.CDBackupAllModsbutton.Click += new System.EventHandler(this.CDBackupAllModsbutton_Click);
             // 
             // CDGetTextbutton
             // 
@@ -4692,6 +4748,8 @@
             // CDSuspensionpanel
             // 
             this.CDSuspensionpanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.CDSuspensionpanel.Controls.Add(this.CDSForceScaleRearnumericUpDown);
+            this.CDSuspensionpanel.Controls.Add(this.CDSForceScaleRearlabel);
             this.CDSuspensionpanel.Controls.Add(this.CDSHeightRearnumericUpDown);
             this.CDSuspensionpanel.Controls.Add(this.CDSHeightRearlabel);
             this.CDSuspensionpanel.Controls.Add(this.CDSrearLeftSettextBox);
@@ -4708,8 +4766,8 @@
             this.CDSuspensionpanel.Controls.Add(this.CDSFrontRightSetlabel);
             this.CDSuspensionpanel.Controls.Add(this.CDSFrontCenterSettextBox);
             this.CDSuspensionpanel.Controls.Add(this.CDSFrontCenterSetlabel);
-            this.CDSuspensionpanel.Controls.Add(this.CDSScalenumericUpDown);
-            this.CDSuspensionpanel.Controls.Add(this.CDSScalelabel);
+            this.CDSuspensionpanel.Controls.Add(this.CDSForceScalenumericUpDown);
+            this.CDSuspensionpanel.Controls.Add(this.CDSForceScalelabel);
             this.CDSuspensionpanel.Controls.Add(this.CDSFrontSpringLengthnumericUpDown);
             this.CDSuspensionpanel.Controls.Add(this.CDSFrontSpringLengthlabel);
             this.CDSuspensionpanel.Controls.Add(this.CDSRearTracknumericUpDown);
@@ -4725,7 +4783,7 @@
             this.CDSuspensionpanel.Controls.Add(this.CDSTitlelabel);
             this.CDSuspensionpanel.Location = new System.Drawing.Point(6, 6);
             this.CDSuspensionpanel.Name = "CDSuspensionpanel";
-            this.CDSuspensionpanel.Size = new System.Drawing.Size(200, 413);
+            this.CDSuspensionpanel.Size = new System.Drawing.Size(200, 441);
             this.CDSuspensionpanel.TabIndex = 10;
             // 
             // CDSHeightRearnumericUpDown
@@ -4736,7 +4794,7 @@
             0,
             0,
             65536});
-            this.CDSHeightRearnumericUpDown.Location = new System.Drawing.Point(82, 151);
+            this.CDSHeightRearnumericUpDown.Location = new System.Drawing.Point(104, 177);
             this.CDSHeightRearnumericUpDown.Name = "CDSHeightRearnumericUpDown";
             this.CDSHeightRearnumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDSHeightRearnumericUpDown.TabIndex = 43;
@@ -4744,7 +4802,7 @@
             // CDSHeightRearlabel
             // 
             this.CDSHeightRearlabel.AutoSize = true;
-            this.CDSHeightRearlabel.Location = new System.Drawing.Point(3, 153);
+            this.CDSHeightRearlabel.Location = new System.Drawing.Point(2, 179);
             this.CDSHeightRearlabel.Name = "CDSHeightRearlabel";
             this.CDSHeightRearlabel.Size = new System.Drawing.Size(61, 13);
             this.CDSHeightRearlabel.TabIndex = 42;
@@ -4752,7 +4810,7 @@
             // 
             // CDSrearLeftSettextBox
             // 
-            this.CDSrearLeftSettextBox.Location = new System.Drawing.Point(83, 385);
+            this.CDSrearLeftSettextBox.Location = new System.Drawing.Point(82, 411);
             this.CDSrearLeftSettextBox.Name = "CDSrearLeftSettextBox";
             this.CDSrearLeftSettextBox.Size = new System.Drawing.Size(111, 20);
             this.CDSrearLeftSettextBox.TabIndex = 40;
@@ -4760,7 +4818,7 @@
             // CDSrearLeftSetlabel
             // 
             this.CDSrearLeftSetlabel.AutoSize = true;
-            this.CDSrearLeftSetlabel.Location = new System.Drawing.Point(4, 388);
+            this.CDSrearLeftSetlabel.Location = new System.Drawing.Point(3, 414);
             this.CDSrearLeftSetlabel.Name = "CDSrearLeftSetlabel";
             this.CDSrearLeftSetlabel.Size = new System.Drawing.Size(64, 13);
             this.CDSrearLeftSetlabel.TabIndex = 39;
@@ -4768,7 +4826,7 @@
             // 
             // CDSFrontLeftSettextBox
             // 
-            this.CDSFrontLeftSettextBox.Location = new System.Drawing.Point(82, 307);
+            this.CDSFrontLeftSettextBox.Location = new System.Drawing.Point(81, 333);
             this.CDSFrontLeftSettextBox.Name = "CDSFrontLeftSettextBox";
             this.CDSFrontLeftSettextBox.Size = new System.Drawing.Size(111, 20);
             this.CDSFrontLeftSettextBox.TabIndex = 38;
@@ -4776,7 +4834,7 @@
             // CDSFrontLeftSetlabel
             // 
             this.CDSFrontLeftSetlabel.AutoSize = true;
-            this.CDSFrontLeftSetlabel.Location = new System.Drawing.Point(3, 310);
+            this.CDSFrontLeftSetlabel.Location = new System.Drawing.Point(2, 336);
             this.CDSFrontLeftSetlabel.Name = "CDSFrontLeftSetlabel";
             this.CDSFrontLeftSetlabel.Size = new System.Drawing.Size(65, 13);
             this.CDSFrontLeftSetlabel.TabIndex = 37;
@@ -4784,7 +4842,7 @@
             // 
             // CDSSidesFlipnumericUpDown
             // 
-            this.CDSSidesFlipnumericUpDown.Location = new System.Drawing.Point(83, 229);
+            this.CDSSidesFlipnumericUpDown.Location = new System.Drawing.Point(105, 255);
             this.CDSSidesFlipnumericUpDown.Maximum = new decimal(new int[] {
             1,
             0,
@@ -4802,7 +4860,7 @@
             // CDSSidesFliplabel
             // 
             this.CDSSidesFliplabel.AutoSize = true;
-            this.CDSSidesFliplabel.Location = new System.Drawing.Point(4, 231);
+            this.CDSSidesFliplabel.Location = new System.Drawing.Point(3, 257);
             this.CDSSidesFliplabel.Name = "CDSSidesFliplabel";
             this.CDSSidesFliplabel.Size = new System.Drawing.Size(49, 13);
             this.CDSSidesFliplabel.TabIndex = 35;
@@ -4810,7 +4868,7 @@
             // 
             // CDSRearRightSettextBox
             // 
-            this.CDSRearRightSettextBox.Location = new System.Drawing.Point(82, 359);
+            this.CDSRearRightSettextBox.Location = new System.Drawing.Point(81, 385);
             this.CDSRearRightSettextBox.Name = "CDSRearRightSettextBox";
             this.CDSRearRightSettextBox.Size = new System.Drawing.Size(111, 20);
             this.CDSRearRightSettextBox.TabIndex = 22;
@@ -4818,7 +4876,7 @@
             // CDSRearRightSetlabel
             // 
             this.CDSRearRightSetlabel.AutoSize = true;
-            this.CDSRearRightSetlabel.Location = new System.Drawing.Point(3, 362);
+            this.CDSRearRightSetlabel.Location = new System.Drawing.Point(2, 388);
             this.CDSRearRightSetlabel.Name = "CDSRearRightSetlabel";
             this.CDSRearRightSetlabel.Size = new System.Drawing.Size(71, 13);
             this.CDSRearRightSetlabel.TabIndex = 21;
@@ -4826,7 +4884,7 @@
             // 
             // CDSRearCenterSettextBox
             // 
-            this.CDSRearCenterSettextBox.Location = new System.Drawing.Point(82, 333);
+            this.CDSRearCenterSettextBox.Location = new System.Drawing.Point(81, 359);
             this.CDSRearCenterSettextBox.Name = "CDSRearCenterSettextBox";
             this.CDSRearCenterSettextBox.Size = new System.Drawing.Size(111, 20);
             this.CDSRearCenterSettextBox.TabIndex = 20;
@@ -4834,7 +4892,7 @@
             // CDSRearCenterSetlabel
             // 
             this.CDSRearCenterSetlabel.AutoSize = true;
-            this.CDSRearCenterSetlabel.Location = new System.Drawing.Point(3, 336);
+            this.CDSRearCenterSetlabel.Location = new System.Drawing.Point(2, 362);
             this.CDSRearCenterSetlabel.Name = "CDSRearCenterSetlabel";
             this.CDSRearCenterSetlabel.Size = new System.Drawing.Size(77, 13);
             this.CDSRearCenterSetlabel.TabIndex = 19;
@@ -4842,7 +4900,7 @@
             // 
             // CDSFrontRightSettextBox
             // 
-            this.CDSFrontRightSettextBox.Location = new System.Drawing.Point(83, 281);
+            this.CDSFrontRightSettextBox.Location = new System.Drawing.Point(82, 307);
             this.CDSFrontRightSettextBox.Name = "CDSFrontRightSettextBox";
             this.CDSFrontRightSettextBox.Size = new System.Drawing.Size(111, 20);
             this.CDSFrontRightSettextBox.TabIndex = 18;
@@ -4850,7 +4908,7 @@
             // CDSFrontRightSetlabel
             // 
             this.CDSFrontRightSetlabel.AutoSize = true;
-            this.CDSFrontRightSetlabel.Location = new System.Drawing.Point(4, 284);
+            this.CDSFrontRightSetlabel.Location = new System.Drawing.Point(3, 310);
             this.CDSFrontRightSetlabel.Name = "CDSFrontRightSetlabel";
             this.CDSFrontRightSetlabel.Size = new System.Drawing.Size(72, 13);
             this.CDSFrontRightSetlabel.TabIndex = 17;
@@ -4858,7 +4916,7 @@
             // 
             // CDSFrontCenterSettextBox
             // 
-            this.CDSFrontCenterSettextBox.Location = new System.Drawing.Point(83, 255);
+            this.CDSFrontCenterSettextBox.Location = new System.Drawing.Point(82, 281);
             this.CDSFrontCenterSettextBox.Name = "CDSFrontCenterSettextBox";
             this.CDSFrontCenterSettextBox.Size = new System.Drawing.Size(111, 20);
             this.CDSFrontCenterSettextBox.TabIndex = 16;
@@ -4866,33 +4924,32 @@
             // CDSFrontCenterSetlabel
             // 
             this.CDSFrontCenterSetlabel.AutoSize = true;
-            this.CDSFrontCenterSetlabel.Location = new System.Drawing.Point(4, 258);
+            this.CDSFrontCenterSetlabel.Location = new System.Drawing.Point(3, 284);
             this.CDSFrontCenterSetlabel.Name = "CDSFrontCenterSetlabel";
             this.CDSFrontCenterSetlabel.Size = new System.Drawing.Size(78, 13);
             this.CDSFrontCenterSetlabel.TabIndex = 15;
             this.CDSFrontCenterSetlabel.Text = "FrontCenterSet";
             // 
-            // CDSScalenumericUpDown
+            // CDSForceScalenumericUpDown
             // 
-            this.CDSScalenumericUpDown.DecimalPlaces = 3;
-            this.CDSScalenumericUpDown.Increment = new decimal(new int[] {
+            this.CDSForceScalenumericUpDown.Location = new System.Drawing.Point(106, 99);
+            this.CDSForceScalenumericUpDown.Maximum = new decimal(new int[] {
             1,
             0,
             0,
-            65536});
-            this.CDSScalenumericUpDown.Location = new System.Drawing.Point(83, 99);
-            this.CDSScalenumericUpDown.Name = "CDSScalenumericUpDown";
-            this.CDSScalenumericUpDown.Size = new System.Drawing.Size(87, 20);
-            this.CDSScalenumericUpDown.TabIndex = 14;
+            0});
+            this.CDSForceScalenumericUpDown.Name = "CDSForceScalenumericUpDown";
+            this.CDSForceScalenumericUpDown.Size = new System.Drawing.Size(87, 20);
+            this.CDSForceScalenumericUpDown.TabIndex = 14;
             // 
-            // CDSScalelabel
+            // CDSForceScalelabel
             // 
-            this.CDSScalelabel.AutoSize = true;
-            this.CDSScalelabel.Location = new System.Drawing.Point(4, 101);
-            this.CDSScalelabel.Name = "CDSScalelabel";
-            this.CDSScalelabel.Size = new System.Drawing.Size(70, 13);
-            this.CDSScalelabel.TabIndex = 13;
-            this.CDSScalelabel.Text = "(Force) Scale";
+            this.CDSForceScalelabel.AutoSize = true;
+            this.CDSForceScalelabel.Location = new System.Drawing.Point(4, 101);
+            this.CDSForceScalelabel.Name = "CDSForceScalelabel";
+            this.CDSForceScalelabel.Size = new System.Drawing.Size(64, 13);
+            this.CDSForceScalelabel.TabIndex = 13;
+            this.CDSForceScalelabel.Text = "Force Scale";
             // 
             // CDSFrontSpringLengthnumericUpDown
             // 
@@ -4902,20 +4959,20 @@
             0,
             0,
             65536});
-            this.CDSFrontSpringLengthnumericUpDown.Location = new System.Drawing.Point(97, 203);
+            this.CDSFrontSpringLengthnumericUpDown.Location = new System.Drawing.Point(105, 229);
             this.CDSFrontSpringLengthnumericUpDown.Minimum = new decimal(new int[] {
             100,
             0,
             0,
             -2147483648});
             this.CDSFrontSpringLengthnumericUpDown.Name = "CDSFrontSpringLengthnumericUpDown";
-            this.CDSFrontSpringLengthnumericUpDown.Size = new System.Drawing.Size(73, 20);
+            this.CDSFrontSpringLengthnumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDSFrontSpringLengthnumericUpDown.TabIndex = 12;
             // 
             // CDSFrontSpringLengthlabel
             // 
             this.CDSFrontSpringLengthlabel.AutoSize = true;
-            this.CDSFrontSpringLengthlabel.Location = new System.Drawing.Point(4, 205);
+            this.CDSFrontSpringLengthlabel.Location = new System.Drawing.Point(3, 231);
             this.CDSFrontSpringLengthlabel.Name = "CDSFrontSpringLengthlabel";
             this.CDSFrontSpringLengthlabel.Size = new System.Drawing.Size(94, 13);
             this.CDSFrontSpringLengthlabel.TabIndex = 11;
@@ -4929,7 +4986,7 @@
             0,
             0,
             65536});
-            this.CDSRearTracknumericUpDown.Location = new System.Drawing.Point(83, 73);
+            this.CDSRearTracknumericUpDown.Location = new System.Drawing.Point(106, 73);
             this.CDSRearTracknumericUpDown.Name = "CDSRearTracknumericUpDown";
             this.CDSRearTracknumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDSRearTracknumericUpDown.TabIndex = 10;
@@ -4951,7 +5008,7 @@
             0,
             0,
             65536});
-            this.CDSFrontTracknumericUpDown.Location = new System.Drawing.Point(83, 47);
+            this.CDSFrontTracknumericUpDown.Location = new System.Drawing.Point(106, 47);
             this.CDSFrontTracknumericUpDown.Name = "CDSFrontTracknumericUpDown";
             this.CDSFrontTracknumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDSFrontTracknumericUpDown.TabIndex = 8;
@@ -4973,7 +5030,7 @@
             0,
             0,
             65536});
-            this.CDSHeightnumericUpDown.Location = new System.Drawing.Point(83, 125);
+            this.CDSHeightnumericUpDown.Location = new System.Drawing.Point(105, 151);
             this.CDSHeightnumericUpDown.Name = "CDSHeightnumericUpDown";
             this.CDSHeightnumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDSHeightnumericUpDown.TabIndex = 6;
@@ -4981,7 +5038,7 @@
             // CDSHeightlabel
             // 
             this.CDSHeightlabel.AutoSize = true;
-            this.CDSHeightlabel.Location = new System.Drawing.Point(4, 127);
+            this.CDSHeightlabel.Location = new System.Drawing.Point(3, 153);
             this.CDSHeightlabel.Name = "CDSHeightlabel";
             this.CDSHeightlabel.Size = new System.Drawing.Size(38, 13);
             this.CDSHeightlabel.TabIndex = 5;
@@ -4995,7 +5052,7 @@
             0,
             0,
             65536});
-            this.CDSWheelBasenumericUpDown.Location = new System.Drawing.Point(83, 21);
+            this.CDSWheelBasenumericUpDown.Location = new System.Drawing.Point(106, 21);
             this.CDSWheelBasenumericUpDown.Name = "CDSWheelBasenumericUpDown";
             this.CDSWheelBasenumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDSWheelBasenumericUpDown.TabIndex = 4;
@@ -5017,7 +5074,7 @@
             0,
             0,
             65536});
-            this.CDSFrontAxleStartnumericUpDown.Location = new System.Drawing.Point(83, 177);
+            this.CDSFrontAxleStartnumericUpDown.Location = new System.Drawing.Point(105, 203);
             this.CDSFrontAxleStartnumericUpDown.Name = "CDSFrontAxleStartnumericUpDown";
             this.CDSFrontAxleStartnumericUpDown.Size = new System.Drawing.Size(87, 20);
             this.CDSFrontAxleStartnumericUpDown.TabIndex = 2;
@@ -5025,7 +5082,7 @@
             // CDSFrontAxleStartlabel
             // 
             this.CDSFrontAxleStartlabel.AutoSize = true;
-            this.CDSFrontAxleStartlabel.Location = new System.Drawing.Point(4, 179);
+            this.CDSFrontAxleStartlabel.Location = new System.Drawing.Point(3, 205);
             this.CDSFrontAxleStartlabel.Name = "CDSFrontAxleStartlabel";
             this.CDSFrontAxleStartlabel.Size = new System.Drawing.Size(73, 13);
             this.CDSFrontAxleStartlabel.TabIndex = 1;
@@ -5832,6 +5889,7 @@
             // CDOpanel
             // 
             this.CDOpanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.CDOpanel.Controls.Add(this.CDORightHandDrivecheckBox);
             this.CDOpanel.Controls.Add(this.CDODoorAnglenumericUpDown);
             this.CDOpanel.Controls.Add(this.CDODoorAnglelabel);
             this.CDOpanel.Controls.Add(this.CDOLifterArmsAnglenumericUpDown);
@@ -5863,7 +5921,7 @@
             this.CDOpanel.Controls.Add(this.CDOTitlelabel);
             this.CDOpanel.Location = new System.Drawing.Point(212, 6);
             this.CDOpanel.Name = "CDOpanel";
-            this.CDOpanel.Size = new System.Drawing.Size(200, 388);
+            this.CDOpanel.Size = new System.Drawing.Size(200, 405);
             this.CDOpanel.TabIndex = 4;
             // 
             // CDODoorAnglenumericUpDown
@@ -5970,12 +6028,12 @@
             this.CDOSpeedoAnglenumericUpDown.DecimalPlaces = 2;
             this.CDOSpeedoAnglenumericUpDown.Location = new System.Drawing.Point(89, 201);
             this.CDOSpeedoAnglenumericUpDown.Maximum = new decimal(new int[] {
-            180,
+            400,
             0,
             0,
             0});
             this.CDOSpeedoAnglenumericUpDown.Minimum = new decimal(new int[] {
-            180,
+            400,
             0,
             0,
             -2147483648});
@@ -6027,8 +6085,13 @@
             // 
             this.CDORPMAnglenumericUpDown.DecimalPlaces = 2;
             this.CDORPMAnglenumericUpDown.Location = new System.Drawing.Point(89, 149);
+            this.CDORPMAnglenumericUpDown.Maximum = new decimal(new int[] {
+            400,
+            0,
+            0,
+            0});
             this.CDORPMAnglenumericUpDown.Minimum = new decimal(new int[] {
-            100,
+            400,
             0,
             0,
             -2147483648});
@@ -6268,6 +6331,56 @@
             this.EngineDataTabPage.Text = "Engine Data";
             this.EngineDataTabPage.UseVisualStyleBackColor = true;
             // 
+            // EDTBackupAllModbutton
+            // 
+            this.EDTBackupAllModbutton.Location = new System.Drawing.Point(7, 500);
+            this.EDTBackupAllModbutton.Name = "EDTBackupAllModbutton";
+            this.EDTBackupAllModbutton.Size = new System.Drawing.Size(163, 23);
+            this.EDTBackupAllModbutton.TabIndex = 49;
+            this.EDTBackupAllModbutton.Text = "Backup All Mods";
+            this.EDTBackupAllModbutton.UseVisualStyleBackColor = true;
+            this.EDTBackupAllModbutton.Click += new System.EventHandler(this.EDTBackupAllModbutton_Click);
+            // 
+            // EDTRestoreAllModbutton
+            // 
+            this.EDTRestoreAllModbutton.Location = new System.Drawing.Point(7, 471);
+            this.EDTRestoreAllModbutton.Name = "EDTRestoreAllModbutton";
+            this.EDTRestoreAllModbutton.Size = new System.Drawing.Size(163, 23);
+            this.EDTRestoreAllModbutton.TabIndex = 48;
+            this.EDTRestoreAllModbutton.Text = "Restore All To Mods";
+            this.EDTRestoreAllModbutton.UseVisualStyleBackColor = true;
+            this.EDTRestoreAllModbutton.Click += new System.EventHandler(this.EDTRestoreAllModbutton_Click);
+            // 
+            // EDTRestoreModbutton
+            // 
+            this.EDTRestoreModbutton.Location = new System.Drawing.Point(7, 442);
+            this.EDTRestoreModbutton.Name = "EDTRestoreModbutton";
+            this.EDTRestoreModbutton.Size = new System.Drawing.Size(163, 23);
+            this.EDTRestoreModbutton.TabIndex = 47;
+            this.EDTRestoreModbutton.Text = "Restore This To A Mod";
+            this.EDTRestoreModbutton.UseVisualStyleBackColor = true;
+            this.EDTRestoreModbutton.Click += new System.EventHandler(this.EDTRestoreModbutton_Click);
+            // 
+            // EDTRestoreDefaultbutton
+            // 
+            this.EDTRestoreDefaultbutton.Location = new System.Drawing.Point(7, 384);
+            this.EDTRestoreDefaultbutton.Name = "EDTRestoreDefaultbutton";
+            this.EDTRestoreDefaultbutton.Size = new System.Drawing.Size(163, 23);
+            this.EDTRestoreDefaultbutton.TabIndex = 41;
+            this.EDTRestoreDefaultbutton.Text = "Restore This To Default";
+            this.EDTRestoreDefaultbutton.UseVisualStyleBackColor = true;
+            this.EDTRestoreDefaultbutton.Click += new System.EventHandler(this.EDTRestoreDefaultbutton_Click);
+            // 
+            // EDTRestoreAllDefaultbutton
+            // 
+            this.EDTRestoreAllDefaultbutton.Location = new System.Drawing.Point(7, 413);
+            this.EDTRestoreAllDefaultbutton.Name = "EDTRestoreAllDefaultbutton";
+            this.EDTRestoreAllDefaultbutton.Size = new System.Drawing.Size(163, 23);
+            this.EDTRestoreAllDefaultbutton.TabIndex = 40;
+            this.EDTRestoreAllDefaultbutton.Text = "Restore All To Defaults";
+            this.EDTRestoreAllDefaultbutton.UseVisualStyleBackColor = true;
+            this.EDTRestoreAllDefaultbutton.Click += new System.EventHandler(this.EDTRestoreAllDefaultbutton_Click);
+            // 
             // EDTEngineSoundtextBox
             // 
             this.EDTEngineSoundtextBox.Location = new System.Drawing.Point(7, 104);
@@ -6448,6 +6561,11 @@
             // 
             // TireDatatabPage
             // 
+            this.TireDatatabPage.Controls.Add(this.TDTBackupAllModbutton);
+            this.TireDatatabPage.Controls.Add(this.TDTRestoreAllModbutton);
+            this.TireDatatabPage.Controls.Add(this.TDTRestoreModbutton);
+            this.TireDatatabPage.Controls.Add(this.TDTRestoreDefaultbutton);
+            this.TireDatatabPage.Controls.Add(this.TDTRestoreAllDefaultbutton);
             this.TireDatatabPage.Controls.Add(this.TDTImagepictureBox);
             this.TireDatatabPage.Controls.Add(this.TDTResetbutton);
             this.TireDatatabPage.Controls.Add(this.TDTPricenumericUpDown);
@@ -6465,10 +6583,60 @@
             this.TireDatatabPage.Text = "Tire Data";
             this.TireDatatabPage.UseVisualStyleBackColor = true;
             // 
+            // TDTBackupAllModbutton
+            // 
+            this.TDTBackupAllModbutton.Location = new System.Drawing.Point(10, 318);
+            this.TDTBackupAllModbutton.Name = "TDTBackupAllModbutton";
+            this.TDTBackupAllModbutton.Size = new System.Drawing.Size(163, 23);
+            this.TDTBackupAllModbutton.TabIndex = 54;
+            this.TDTBackupAllModbutton.Text = "Backup All Mods";
+            this.TDTBackupAllModbutton.UseVisualStyleBackColor = true;
+            this.TDTBackupAllModbutton.Click += new System.EventHandler(this.TDTBackupAllModbutton_Click);
+            // 
+            // TDTRestoreAllModbutton
+            // 
+            this.TDTRestoreAllModbutton.Location = new System.Drawing.Point(10, 289);
+            this.TDTRestoreAllModbutton.Name = "TDTRestoreAllModbutton";
+            this.TDTRestoreAllModbutton.Size = new System.Drawing.Size(163, 23);
+            this.TDTRestoreAllModbutton.TabIndex = 53;
+            this.TDTRestoreAllModbutton.Text = "Restore All To Mods";
+            this.TDTRestoreAllModbutton.UseVisualStyleBackColor = true;
+            this.TDTRestoreAllModbutton.Click += new System.EventHandler(this.TDTRestoreAllModbutton_Click);
+            // 
+            // TDTRestoreModbutton
+            // 
+            this.TDTRestoreModbutton.Location = new System.Drawing.Point(10, 260);
+            this.TDTRestoreModbutton.Name = "TDTRestoreModbutton";
+            this.TDTRestoreModbutton.Size = new System.Drawing.Size(163, 23);
+            this.TDTRestoreModbutton.TabIndex = 52;
+            this.TDTRestoreModbutton.Text = "Restore This To A Mod";
+            this.TDTRestoreModbutton.UseVisualStyleBackColor = true;
+            this.TDTRestoreModbutton.Click += new System.EventHandler(this.TDTRestoreModbutton_Click);
+            // 
+            // TDTRestoreDefaultbutton
+            // 
+            this.TDTRestoreDefaultbutton.Location = new System.Drawing.Point(10, 202);
+            this.TDTRestoreDefaultbutton.Name = "TDTRestoreDefaultbutton";
+            this.TDTRestoreDefaultbutton.Size = new System.Drawing.Size(163, 23);
+            this.TDTRestoreDefaultbutton.TabIndex = 51;
+            this.TDTRestoreDefaultbutton.Text = "Restore This To Default";
+            this.TDTRestoreDefaultbutton.UseVisualStyleBackColor = true;
+            this.TDTRestoreDefaultbutton.Click += new System.EventHandler(this.TDTRestoreDefaultbutton_Click);
+            // 
+            // TDTRestoreAllDefaultbutton
+            // 
+            this.TDTRestoreAllDefaultbutton.Location = new System.Drawing.Point(10, 231);
+            this.TDTRestoreAllDefaultbutton.Name = "TDTRestoreAllDefaultbutton";
+            this.TDTRestoreAllDefaultbutton.Size = new System.Drawing.Size(163, 23);
+            this.TDTRestoreAllDefaultbutton.TabIndex = 50;
+            this.TDTRestoreAllDefaultbutton.Text = "Restore All To Defaults";
+            this.TDTRestoreAllDefaultbutton.UseVisualStyleBackColor = true;
+            this.TDTRestoreAllDefaultbutton.Click += new System.EventHandler(this.TDTRestoreAllDefaultbutton_Click);
+            // 
             // TDTImagepictureBox
             // 
             this.TDTImagepictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.TDTImagepictureBox.Location = new System.Drawing.Point(176, 63);
+            this.TDTImagepictureBox.Location = new System.Drawing.Point(179, 63);
             this.TDTImagepictureBox.Name = "TDTImagepictureBox";
             this.TDTImagepictureBox.Size = new System.Drawing.Size(512, 512);
             this.TDTImagepictureBox.TabIndex = 28;
@@ -6478,7 +6646,7 @@
             // 
             this.TDTResetbutton.Location = new System.Drawing.Point(10, 173);
             this.TDTResetbutton.Name = "TDTResetbutton";
-            this.TDTResetbutton.Size = new System.Drawing.Size(160, 23);
+            this.TDTResetbutton.Size = new System.Drawing.Size(163, 23);
             this.TDTResetbutton.TabIndex = 27;
             this.TDTResetbutton.Text = "Reset Values";
             this.TDTResetbutton.UseVisualStyleBackColor = true;
@@ -6531,7 +6699,7 @@
             // 
             this.TDTCommitbutton.Location = new System.Drawing.Point(10, 144);
             this.TDTCommitbutton.Name = "TDTCommitbutton";
-            this.TDTCommitbutton.Size = new System.Drawing.Size(160, 23);
+            this.TDTCommitbutton.Size = new System.Drawing.Size(163, 23);
             this.TDTCommitbutton.TabIndex = 16;
             this.TDTCommitbutton.Text = "Save Changes";
             this.TDTCommitbutton.UseVisualStyleBackColor = true;
@@ -6542,7 +6710,7 @@
             this.AvailableTirescomboBox.FormattingEnabled = true;
             this.AvailableTirescomboBox.Location = new System.Drawing.Point(10, 23);
             this.AvailableTirescomboBox.Name = "AvailableTirescomboBox";
-            this.AvailableTirescomboBox.Size = new System.Drawing.Size(160, 21);
+            this.AvailableTirescomboBox.Size = new System.Drawing.Size(163, 21);
             this.AvailableTirescomboBox.TabIndex = 15;
             this.AvailableTirescomboBox.SelectedIndexChanged += new System.EventHandler(this.AvailableTirescomboBox_SelectedIndexChanged);
             // 
@@ -6909,9 +7077,9 @@
             this.SGTProfilesFoundlabel.AutoSize = true;
             this.SGTProfilesFoundlabel.Location = new System.Drawing.Point(9, 52);
             this.SGTProfilesFoundlabel.Name = "SGTProfilesFoundlabel";
-            this.SGTProfilesFoundlabel.Size = new System.Drawing.Size(85, 13);
+            this.SGTProfilesFoundlabel.Size = new System.Drawing.Size(83, 13);
             this.SGTProfilesFoundlabel.TabIndex = 30;
-            this.SGTProfilesFoundlabel.Text = "O Profiles Found";
+            this.SGTProfilesFoundlabel.Text = "0 Profiles Found";
             // 
             // SGETProfilecomboBox
             // 
@@ -6925,6 +7093,7 @@
             // SaveGameEditorTabtabControl
             // 
             this.SaveGameEditorTabtabControl.Controls.Add(this.SGETGlobaltabPage);
+            this.SaveGameEditorTabtabControl.Controls.Add(this.SGETGarageCustomtabPage);
             this.SaveGameEditorTabtabControl.Controls.Add(this.SGETHelpWantedtabPage);
             this.SaveGameEditorTabtabControl.Location = new System.Drawing.Point(137, 7);
             this.SaveGameEditorTabtabControl.Name = "SaveGameEditorTabtabControl";
@@ -7239,6 +7408,373 @@
             this.SGETGTitlelabel.TabIndex = 2;
             this.SGETGTitlelabel.Text = "This tab loads the Global file which contains the following save data";
             // 
+            // SGETGarageCustomtabPage
+            // 
+            this.SGETGarageCustomtabPage.Controls.Add(this.SGETGCSavebutton);
+            this.SGETGarageCustomtabPage.Controls.Add(this.panel1);
+            this.SGETGarageCustomtabPage.Controls.Add(this.SGETGCSkillspanel);
+            this.SGETGarageCustomtabPage.Controls.Add(this.SGETGClabel);
+            this.SGETGarageCustomtabPage.Location = new System.Drawing.Point(4, 22);
+            this.SGETGarageCustomtabPage.Name = "SGETGarageCustomtabPage";
+            this.SGETGarageCustomtabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.SGETGarageCustomtabPage.Size = new System.Drawing.Size(893, 613);
+            this.SGETGarageCustomtabPage.TabIndex = 2;
+            this.SGETGarageCustomtabPage.Text = "Garage Customisation";
+            this.SGETGarageCustomtabPage.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.SGETGCParkingFcheckBox);
+            this.panel1.Controls.Add(this.SGETGCParkingEcheckBox);
+            this.panel1.Controls.Add(this.SGETGCParkingDcheckBox);
+            this.panel1.Controls.Add(this.SGETGCParkingCcheckBox);
+            this.panel1.Controls.Add(this.SGETGCParkingABcheckBox);
+            this.panel1.Controls.Add(this.SGETGCTestRoadcheckBox);
+            this.panel1.Controls.Add(this.SGETGCPaintShopcheckBox);
+            this.panel1.Controls.Add(this.SGETGCCarLifterscheckBox);
+            this.panel1.Controls.Add(this.SGETGCFrameworkcheckBox);
+            this.panel1.Controls.Add(this.SGETGCWindowscheckBox);
+            this.panel1.Controls.Add(this.SGETGCFloorStripescheckBox);
+            this.panel1.Controls.Add(this.SGETGCFloor2BcheckBox);
+            this.panel1.Controls.Add(this.SGETGCFloorAcheckBox);
+            this.panel1.Controls.Add(this.SGETGCWallBcheckBox);
+            this.panel1.Controls.Add(this.SGETGCCustomisationUnlocksTitlelabel);
+            this.panel1.Controls.Add(this.SGETGCWallAcheckBox);
+            this.panel1.Location = new System.Drawing.Point(141, 23);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(265, 366);
+            this.panel1.TabIndex = 3;
+            // 
+            // SGETGCParkingFcheckBox
+            // 
+            this.SGETGCParkingFcheckBox.AutoSize = true;
+            this.SGETGCParkingFcheckBox.Location = new System.Drawing.Point(3, 342);
+            this.SGETGCParkingFcheckBox.Name = "SGETGCParkingFcheckBox";
+            this.SGETGCParkingFcheckBox.Size = new System.Drawing.Size(71, 17);
+            this.SGETGCParkingFcheckBox.TabIndex = 16;
+            this.SGETGCParkingFcheckBox.Text = "Parking F";
+            this.SGETGCParkingFcheckBox.UseVisualStyleBackColor = true;
+            this.SGETGCParkingFcheckBox.CheckedChanged += new System.EventHandler(this.SGETGCParkingFcheckBox_CheckedChanged);
+            // 
+            // SGETGCParkingEcheckBox
+            // 
+            this.SGETGCParkingEcheckBox.AutoSize = true;
+            this.SGETGCParkingEcheckBox.Location = new System.Drawing.Point(3, 319);
+            this.SGETGCParkingEcheckBox.Name = "SGETGCParkingEcheckBox";
+            this.SGETGCParkingEcheckBox.Size = new System.Drawing.Size(72, 17);
+            this.SGETGCParkingEcheckBox.TabIndex = 15;
+            this.SGETGCParkingEcheckBox.Text = "Parking E";
+            this.SGETGCParkingEcheckBox.UseVisualStyleBackColor = true;
+            this.SGETGCParkingEcheckBox.CheckedChanged += new System.EventHandler(this.SGETGCParkingEcheckBox_CheckedChanged);
+            // 
+            // SGETGCParkingDcheckBox
+            // 
+            this.SGETGCParkingDcheckBox.AutoSize = true;
+            this.SGETGCParkingDcheckBox.Location = new System.Drawing.Point(3, 296);
+            this.SGETGCParkingDcheckBox.Name = "SGETGCParkingDcheckBox";
+            this.SGETGCParkingDcheckBox.Size = new System.Drawing.Size(73, 17);
+            this.SGETGCParkingDcheckBox.TabIndex = 14;
+            this.SGETGCParkingDcheckBox.Text = "Parking D";
+            this.SGETGCParkingDcheckBox.UseVisualStyleBackColor = true;
+            this.SGETGCParkingDcheckBox.CheckedChanged += new System.EventHandler(this.SGETGCParkingDcheckBox_CheckedChanged);
+            // 
+            // SGETGCParkingCcheckBox
+            // 
+            this.SGETGCParkingCcheckBox.AutoSize = true;
+            this.SGETGCParkingCcheckBox.Location = new System.Drawing.Point(3, 273);
+            this.SGETGCParkingCcheckBox.Name = "SGETGCParkingCcheckBox";
+            this.SGETGCParkingCcheckBox.Size = new System.Drawing.Size(72, 17);
+            this.SGETGCParkingCcheckBox.TabIndex = 13;
+            this.SGETGCParkingCcheckBox.Text = "Parking C";
+            this.SGETGCParkingCcheckBox.UseVisualStyleBackColor = true;
+            this.SGETGCParkingCcheckBox.CheckedChanged += new System.EventHandler(this.SGETGCParkingCcheckBox_CheckedChanged);
+            // 
+            // SGETGCParkingABcheckBox
+            // 
+            this.SGETGCParkingABcheckBox.AutoSize = true;
+            this.SGETGCParkingABcheckBox.Location = new System.Drawing.Point(3, 250);
+            this.SGETGCParkingABcheckBox.Name = "SGETGCParkingABcheckBox";
+            this.SGETGCParkingABcheckBox.Size = new System.Drawing.Size(91, 17);
+            this.SGETGCParkingABcheckBox.TabIndex = 12;
+            this.SGETGCParkingABcheckBox.Text = "Parking A && B";
+            this.SGETGCParkingABcheckBox.UseVisualStyleBackColor = true;
+            this.SGETGCParkingABcheckBox.CheckedChanged += new System.EventHandler(this.SGETGCParkingABcheckBox_CheckedChanged);
+            // 
+            // SGETGCTestRoadcheckBox
+            // 
+            this.SGETGCTestRoadcheckBox.AutoSize = true;
+            this.SGETGCTestRoadcheckBox.Location = new System.Drawing.Point(3, 227);
+            this.SGETGCTestRoadcheckBox.Name = "SGETGCTestRoadcheckBox";
+            this.SGETGCTestRoadcheckBox.Size = new System.Drawing.Size(76, 17);
+            this.SGETGCTestRoadcheckBox.TabIndex = 10;
+            this.SGETGCTestRoadcheckBox.Text = "Test Road";
+            this.SGETGCTestRoadcheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SGETGCPaintShopcheckBox
+            // 
+            this.SGETGCPaintShopcheckBox.AutoSize = true;
+            this.SGETGCPaintShopcheckBox.Location = new System.Drawing.Point(3, 204);
+            this.SGETGCPaintShopcheckBox.Name = "SGETGCPaintShopcheckBox";
+            this.SGETGCPaintShopcheckBox.Size = new System.Drawing.Size(78, 17);
+            this.SGETGCPaintShopcheckBox.TabIndex = 9;
+            this.SGETGCPaintShopcheckBox.Text = "Paint Shop";
+            this.SGETGCPaintShopcheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SGETGCCarLifterscheckBox
+            // 
+            this.SGETGCCarLifterscheckBox.AutoSize = true;
+            this.SGETGCCarLifterscheckBox.Location = new System.Drawing.Point(3, 181);
+            this.SGETGCCarLifterscheckBox.Name = "SGETGCCarLifterscheckBox";
+            this.SGETGCCarLifterscheckBox.Size = new System.Drawing.Size(73, 17);
+            this.SGETGCCarLifterscheckBox.TabIndex = 8;
+            this.SGETGCCarLifterscheckBox.Text = "Car Lifters";
+            this.SGETGCCarLifterscheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SGETGCFrameworkcheckBox
+            // 
+            this.SGETGCFrameworkcheckBox.AutoSize = true;
+            this.SGETGCFrameworkcheckBox.Location = new System.Drawing.Point(3, 158);
+            this.SGETGCFrameworkcheckBox.Name = "SGETGCFrameworkcheckBox";
+            this.SGETGCFrameworkcheckBox.Size = new System.Drawing.Size(78, 17);
+            this.SGETGCFrameworkcheckBox.TabIndex = 7;
+            this.SGETGCFrameworkcheckBox.Text = "Framework";
+            this.SGETGCFrameworkcheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SGETGCWindowscheckBox
+            // 
+            this.SGETGCWindowscheckBox.AutoSize = true;
+            this.SGETGCWindowscheckBox.Location = new System.Drawing.Point(3, 135);
+            this.SGETGCWindowscheckBox.Name = "SGETGCWindowscheckBox";
+            this.SGETGCWindowscheckBox.Size = new System.Drawing.Size(70, 17);
+            this.SGETGCWindowscheckBox.TabIndex = 6;
+            this.SGETGCWindowscheckBox.Text = "Windows";
+            this.SGETGCWindowscheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SGETGCFloorStripescheckBox
+            // 
+            this.SGETGCFloorStripescheckBox.AutoSize = true;
+            this.SGETGCFloorStripescheckBox.Location = new System.Drawing.Point(3, 112);
+            this.SGETGCFloorStripescheckBox.Name = "SGETGCFloorStripescheckBox";
+            this.SGETGCFloorStripescheckBox.Size = new System.Drawing.Size(84, 17);
+            this.SGETGCFloorStripescheckBox.TabIndex = 5;
+            this.SGETGCFloorStripescheckBox.Text = "Floor Stripes";
+            this.SGETGCFloorStripescheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SGETGCFloor2BcheckBox
+            // 
+            this.SGETGCFloor2BcheckBox.AutoSize = true;
+            this.SGETGCFloor2BcheckBox.Location = new System.Drawing.Point(3, 89);
+            this.SGETGCFloor2BcheckBox.Name = "SGETGCFloor2BcheckBox";
+            this.SGETGCFloor2BcheckBox.Size = new System.Drawing.Size(62, 17);
+            this.SGETGCFloor2BcheckBox.TabIndex = 4;
+            this.SGETGCFloor2BcheckBox.Text = "Floor2B";
+            this.SGETGCFloor2BcheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SGETGCFloorAcheckBox
+            // 
+            this.SGETGCFloorAcheckBox.AutoSize = true;
+            this.SGETGCFloorAcheckBox.Location = new System.Drawing.Point(3, 66);
+            this.SGETGCFloorAcheckBox.Name = "SGETGCFloorAcheckBox";
+            this.SGETGCFloorAcheckBox.Size = new System.Drawing.Size(56, 17);
+            this.SGETGCFloorAcheckBox.TabIndex = 3;
+            this.SGETGCFloorAcheckBox.Text = "FloorA";
+            this.SGETGCFloorAcheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SGETGCWallBcheckBox
+            // 
+            this.SGETGCWallBcheckBox.AutoSize = true;
+            this.SGETGCWallBcheckBox.Location = new System.Drawing.Point(3, 43);
+            this.SGETGCWallBcheckBox.Name = "SGETGCWallBcheckBox";
+            this.SGETGCWallBcheckBox.Size = new System.Drawing.Size(54, 17);
+            this.SGETGCWallBcheckBox.TabIndex = 2;
+            this.SGETGCWallBcheckBox.Text = "WallB";
+            this.SGETGCWallBcheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SGETGCCustomisationUnlocksTitlelabel
+            // 
+            this.SGETGCCustomisationUnlocksTitlelabel.AutoSize = true;
+            this.SGETGCCustomisationUnlocksTitlelabel.Location = new System.Drawing.Point(4, 4);
+            this.SGETGCCustomisationUnlocksTitlelabel.Name = "SGETGCCustomisationUnlocksTitlelabel";
+            this.SGETGCCustomisationUnlocksTitlelabel.Size = new System.Drawing.Size(152, 13);
+            this.SGETGCCustomisationUnlocksTitlelabel.TabIndex = 0;
+            this.SGETGCCustomisationUnlocksTitlelabel.Text = "Garage Customisation Unlocks";
+            // 
+            // SGETGCWallAcheckBox
+            // 
+            this.SGETGCWallAcheckBox.AutoSize = true;
+            this.SGETGCWallAcheckBox.Location = new System.Drawing.Point(3, 20);
+            this.SGETGCWallAcheckBox.Name = "SGETGCWallAcheckBox";
+            this.SGETGCWallAcheckBox.Size = new System.Drawing.Size(54, 17);
+            this.SGETGCWallAcheckBox.TabIndex = 1;
+            this.SGETGCWallAcheckBox.Text = "WallA";
+            this.SGETGCWallAcheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SGETGCSkillspanel
+            // 
+            this.SGETGCSkillspanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.SGETGCSkillspanel.Controls.Add(this.SGETGCElectricalReadercheckBox);
+            this.SGETGCSkillspanel.Controls.Add(this.SGETGCCompressionTestercheckBox);
+            this.SGETGCSkillspanel.Controls.Add(this.SGETGCOBDReadercheckBox);
+            this.SGETGCSkillspanel.Controls.Add(this.SGETGCRepairLv5checkBox);
+            this.SGETGCSkillspanel.Controls.Add(this.SGETGCRepairLv4checkBox);
+            this.SGETGCSkillspanel.Controls.Add(this.SGETGCRepairLv3checkBox);
+            this.SGETGCSkillspanel.Controls.Add(this.SGETGCRepairLv2checkBox);
+            this.SGETGCSkillspanel.Controls.Add(this.SGETGCRepairLv1checkBox);
+            this.SGETGCSkillspanel.Controls.Add(this.SGETGCTabletcheckBox);
+            this.SGETGCSkillspanel.Controls.Add(this.SGETGCFastExaminecheckBox);
+            this.SGETGCSkillspanel.Controls.Add(this.SGETGCFastAssemblycheckBox);
+            this.SGETGCSkillspanel.Controls.Add(this.SGETGCSkillsUnlocksTitlelabel);
+            this.SGETGCSkillspanel.Controls.Add(this.SGETGCFastUnboltingcheckBox);
+            this.SGETGCSkillspanel.Location = new System.Drawing.Point(10, 24);
+            this.SGETGCSkillspanel.Name = "SGETGCSkillspanel";
+            this.SGETGCSkillspanel.Size = new System.Drawing.Size(125, 295);
+            this.SGETGCSkillspanel.TabIndex = 2;
+            // 
+            // SGETGCElectricalReadercheckBox
+            // 
+            this.SGETGCElectricalReadercheckBox.AutoSize = true;
+            this.SGETGCElectricalReadercheckBox.Location = new System.Drawing.Point(3, 273);
+            this.SGETGCElectricalReadercheckBox.Name = "SGETGCElectricalReadercheckBox";
+            this.SGETGCElectricalReadercheckBox.Size = new System.Drawing.Size(107, 17);
+            this.SGETGCElectricalReadercheckBox.TabIndex = 12;
+            this.SGETGCElectricalReadercheckBox.Text = "Electrical Reader";
+            this.SGETGCElectricalReadercheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SGETGCCompressionTestercheckBox
+            // 
+            this.SGETGCCompressionTestercheckBox.AutoSize = true;
+            this.SGETGCCompressionTestercheckBox.Location = new System.Drawing.Point(3, 250);
+            this.SGETGCCompressionTestercheckBox.Name = "SGETGCCompressionTestercheckBox";
+            this.SGETGCCompressionTestercheckBox.Size = new System.Drawing.Size(119, 17);
+            this.SGETGCCompressionTestercheckBox.TabIndex = 11;
+            this.SGETGCCompressionTestercheckBox.Text = "Compression Tester";
+            this.SGETGCCompressionTestercheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SGETGCOBDReadercheckBox
+            // 
+            this.SGETGCOBDReadercheckBox.AutoSize = true;
+            this.SGETGCOBDReadercheckBox.Location = new System.Drawing.Point(3, 227);
+            this.SGETGCOBDReadercheckBox.Name = "SGETGCOBDReadercheckBox";
+            this.SGETGCOBDReadercheckBox.Size = new System.Drawing.Size(87, 17);
+            this.SGETGCOBDReadercheckBox.TabIndex = 10;
+            this.SGETGCOBDReadercheckBox.Text = "OBD Reader";
+            this.SGETGCOBDReadercheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SGETGCRepairLv5checkBox
+            // 
+            this.SGETGCRepairLv5checkBox.AutoSize = true;
+            this.SGETGCRepairLv5checkBox.Location = new System.Drawing.Point(3, 204);
+            this.SGETGCRepairLv5checkBox.Name = "SGETGCRepairLv5checkBox";
+            this.SGETGCRepairLv5checkBox.Size = new System.Drawing.Size(78, 17);
+            this.SGETGCRepairLv5checkBox.TabIndex = 9;
+            this.SGETGCRepairLv5checkBox.Text = "Repair Lv5";
+            this.SGETGCRepairLv5checkBox.UseVisualStyleBackColor = true;
+            this.SGETGCRepairLv5checkBox.CheckedChanged += new System.EventHandler(this.SGETGCRepairLv5checkBox_CheckedChanged);
+            // 
+            // SGETGCRepairLv4checkBox
+            // 
+            this.SGETGCRepairLv4checkBox.AutoSize = true;
+            this.SGETGCRepairLv4checkBox.Location = new System.Drawing.Point(3, 181);
+            this.SGETGCRepairLv4checkBox.Name = "SGETGCRepairLv4checkBox";
+            this.SGETGCRepairLv4checkBox.Size = new System.Drawing.Size(78, 17);
+            this.SGETGCRepairLv4checkBox.TabIndex = 8;
+            this.SGETGCRepairLv4checkBox.Text = "Repair Lv4";
+            this.SGETGCRepairLv4checkBox.UseVisualStyleBackColor = true;
+            this.SGETGCRepairLv4checkBox.CheckedChanged += new System.EventHandler(this.SGETGCRepairLv4checkBox_CheckedChanged);
+            // 
+            // SGETGCRepairLv3checkBox
+            // 
+            this.SGETGCRepairLv3checkBox.AutoSize = true;
+            this.SGETGCRepairLv3checkBox.Location = new System.Drawing.Point(3, 158);
+            this.SGETGCRepairLv3checkBox.Name = "SGETGCRepairLv3checkBox";
+            this.SGETGCRepairLv3checkBox.Size = new System.Drawing.Size(78, 17);
+            this.SGETGCRepairLv3checkBox.TabIndex = 7;
+            this.SGETGCRepairLv3checkBox.Text = "Repair Lv3";
+            this.SGETGCRepairLv3checkBox.UseVisualStyleBackColor = true;
+            this.SGETGCRepairLv3checkBox.CheckedChanged += new System.EventHandler(this.SGETGCRepairLv3checkBox_CheckedChanged);
+            // 
+            // SGETGCRepairLv2checkBox
+            // 
+            this.SGETGCRepairLv2checkBox.AutoSize = true;
+            this.SGETGCRepairLv2checkBox.Location = new System.Drawing.Point(3, 135);
+            this.SGETGCRepairLv2checkBox.Name = "SGETGCRepairLv2checkBox";
+            this.SGETGCRepairLv2checkBox.Size = new System.Drawing.Size(78, 17);
+            this.SGETGCRepairLv2checkBox.TabIndex = 6;
+            this.SGETGCRepairLv2checkBox.Text = "Repair Lv2";
+            this.SGETGCRepairLv2checkBox.UseVisualStyleBackColor = true;
+            this.SGETGCRepairLv2checkBox.CheckedChanged += new System.EventHandler(this.SGETGCRepairLv2checkBox_CheckedChanged);
+            // 
+            // SGETGCRepairLv1checkBox
+            // 
+            this.SGETGCRepairLv1checkBox.AutoSize = true;
+            this.SGETGCRepairLv1checkBox.Location = new System.Drawing.Point(3, 112);
+            this.SGETGCRepairLv1checkBox.Name = "SGETGCRepairLv1checkBox";
+            this.SGETGCRepairLv1checkBox.Size = new System.Drawing.Size(78, 17);
+            this.SGETGCRepairLv1checkBox.TabIndex = 5;
+            this.SGETGCRepairLv1checkBox.Text = "Repair Lv1";
+            this.SGETGCRepairLv1checkBox.UseVisualStyleBackColor = true;
+            this.SGETGCRepairLv1checkBox.CheckedChanged += new System.EventHandler(this.SGETGCRepairLv1checkBox_CheckedChanged);
+            // 
+            // SGETGCTabletcheckBox
+            // 
+            this.SGETGCTabletcheckBox.AutoSize = true;
+            this.SGETGCTabletcheckBox.Location = new System.Drawing.Point(3, 89);
+            this.SGETGCTabletcheckBox.Name = "SGETGCTabletcheckBox";
+            this.SGETGCTabletcheckBox.Size = new System.Drawing.Size(56, 17);
+            this.SGETGCTabletcheckBox.TabIndex = 4;
+            this.SGETGCTabletcheckBox.Text = "Tablet";
+            this.SGETGCTabletcheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SGETGCFastExaminecheckBox
+            // 
+            this.SGETGCFastExaminecheckBox.AutoSize = true;
+            this.SGETGCFastExaminecheckBox.Location = new System.Drawing.Point(3, 66);
+            this.SGETGCFastExaminecheckBox.Name = "SGETGCFastExaminecheckBox";
+            this.SGETGCFastExaminecheckBox.Size = new System.Drawing.Size(89, 17);
+            this.SGETGCFastExaminecheckBox.TabIndex = 3;
+            this.SGETGCFastExaminecheckBox.Text = "Fast Examine";
+            this.SGETGCFastExaminecheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SGETGCFastAssemblycheckBox
+            // 
+            this.SGETGCFastAssemblycheckBox.AutoSize = true;
+            this.SGETGCFastAssemblycheckBox.Location = new System.Drawing.Point(3, 43);
+            this.SGETGCFastAssemblycheckBox.Name = "SGETGCFastAssemblycheckBox";
+            this.SGETGCFastAssemblycheckBox.Size = new System.Drawing.Size(93, 17);
+            this.SGETGCFastAssemblycheckBox.TabIndex = 2;
+            this.SGETGCFastAssemblycheckBox.Text = "Fast Assembly";
+            this.SGETGCFastAssemblycheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SGETGCSkillsUnlocksTitlelabel
+            // 
+            this.SGETGCSkillsUnlocksTitlelabel.AutoSize = true;
+            this.SGETGCSkillsUnlocksTitlelabel.Location = new System.Drawing.Point(4, 4);
+            this.SGETGCSkillsUnlocksTitlelabel.Name = "SGETGCSkillsUnlocksTitlelabel";
+            this.SGETGCSkillsUnlocksTitlelabel.Size = new System.Drawing.Size(106, 13);
+            this.SGETGCSkillsUnlocksTitlelabel.TabIndex = 0;
+            this.SGETGCSkillsUnlocksTitlelabel.Text = "Garage Skills Unlock";
+            // 
+            // SGETGCFastUnboltingcheckBox
+            // 
+            this.SGETGCFastUnboltingcheckBox.AutoSize = true;
+            this.SGETGCFastUnboltingcheckBox.Location = new System.Drawing.Point(3, 20);
+            this.SGETGCFastUnboltingcheckBox.Name = "SGETGCFastUnboltingcheckBox";
+            this.SGETGCFastUnboltingcheckBox.Size = new System.Drawing.Size(94, 17);
+            this.SGETGCFastUnboltingcheckBox.TabIndex = 1;
+            this.SGETGCFastUnboltingcheckBox.Text = "Fast Unbolting";
+            this.SGETGCFastUnboltingcheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SGETGClabel
+            // 
+            this.SGETGClabel.AutoSize = true;
+            this.SGETGClabel.Location = new System.Drawing.Point(7, 7);
+            this.SGETGClabel.Name = "SGETGClabel";
+            this.SGETGClabel.Size = new System.Drawing.Size(399, 13);
+            this.SGETGClabel.TabIndex = 0;
+            this.SGETGClabel.Text = "This tab loads the Garage Customisation file which contains the following save da" +
+    "ta";
+            // 
             // SGETHelpWantedtabPage
             // 
             this.SGETHelpWantedtabPage.Controls.Add(this.SGETHelpWantedtextBox);
@@ -7268,65 +7804,47 @@
             this.SGETProfilelabel.TabIndex = 28;
             this.SGETProfilelabel.Text = "Currently Selected Profile";
             // 
-            // CDBackupAllModsbutton
+            // SGETGCSavebutton
             // 
-            this.CDBackupAllModsbutton.Location = new System.Drawing.Point(10, 417);
-            this.CDBackupAllModsbutton.Name = "CDBackupAllModsbutton";
-            this.CDBackupAllModsbutton.Size = new System.Drawing.Size(84, 52);
-            this.CDBackupAllModsbutton.TabIndex = 46;
-            this.CDBackupAllModsbutton.Text = "Backup All Mods";
-            this.CDBackupAllModsbutton.UseVisualStyleBackColor = true;
-            this.CDBackupAllModsbutton.Click += new System.EventHandler(this.CDBackupAllModsbutton_Click);
+            this.SGETGCSavebutton.Location = new System.Drawing.Point(10, 395);
+            this.SGETGCSavebutton.Name = "SGETGCSavebutton";
+            this.SGETGCSavebutton.Size = new System.Drawing.Size(166, 23);
+            this.SGETGCSavebutton.TabIndex = 4;
+            this.SGETGCSavebutton.Text = "Save Garage Customisation File";
+            this.SGETGCSavebutton.UseVisualStyleBackColor = true;
+            this.SGETGCSavebutton.Click += new System.EventHandler(this.SGETGCSavebutton_Click);
             // 
-            // EDTRestoreAllDefaultbutton
+            // CDSForceScaleRearnumericUpDown
             // 
-            this.EDTRestoreAllDefaultbutton.Location = new System.Drawing.Point(7, 413);
-            this.EDTRestoreAllDefaultbutton.Name = "EDTRestoreAllDefaultbutton";
-            this.EDTRestoreAllDefaultbutton.Size = new System.Drawing.Size(163, 23);
-            this.EDTRestoreAllDefaultbutton.TabIndex = 40;
-            this.EDTRestoreAllDefaultbutton.Text = "Restore All To Defaults";
-            this.EDTRestoreAllDefaultbutton.UseVisualStyleBackColor = true;
-            this.EDTRestoreAllDefaultbutton.Click += new System.EventHandler(this.EDTRestoreAllDefaultbutton_Click);
+            this.CDSForceScaleRearnumericUpDown.Location = new System.Drawing.Point(105, 125);
+            this.CDSForceScaleRearnumericUpDown.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.CDSForceScaleRearnumericUpDown.Name = "CDSForceScaleRearnumericUpDown";
+            this.CDSForceScaleRearnumericUpDown.Size = new System.Drawing.Size(87, 20);
+            this.CDSForceScaleRearnumericUpDown.TabIndex = 45;
             // 
-            // EDTRestoreDefaultbutton
+            // CDSForceScaleRearlabel
             // 
-            this.EDTRestoreDefaultbutton.Location = new System.Drawing.Point(7, 384);
-            this.EDTRestoreDefaultbutton.Name = "EDTRestoreDefaultbutton";
-            this.EDTRestoreDefaultbutton.Size = new System.Drawing.Size(163, 23);
-            this.EDTRestoreDefaultbutton.TabIndex = 41;
-            this.EDTRestoreDefaultbutton.Text = "Restore This To Default";
-            this.EDTRestoreDefaultbutton.UseVisualStyleBackColor = true;
-            this.EDTRestoreDefaultbutton.Click += new System.EventHandler(this.EDTRestoreDefaultbutton_Click);
+            this.CDSForceScaleRearlabel.AutoSize = true;
+            this.CDSForceScaleRearlabel.Location = new System.Drawing.Point(3, 127);
+            this.CDSForceScaleRearlabel.Name = "CDSForceScaleRearlabel";
+            this.CDSForceScaleRearlabel.Size = new System.Drawing.Size(90, 13);
+            this.CDSForceScaleRearlabel.TabIndex = 44;
+            this.CDSForceScaleRearlabel.Text = "Force Scale Rear";
             // 
-            // EDTBackupAllModbutton
+            // CDORightHandDrivecheckBox
             // 
-            this.EDTBackupAllModbutton.Location = new System.Drawing.Point(7, 500);
-            this.EDTBackupAllModbutton.Name = "EDTBackupAllModbutton";
-            this.EDTBackupAllModbutton.Size = new System.Drawing.Size(163, 23);
-            this.EDTBackupAllModbutton.TabIndex = 49;
-            this.EDTBackupAllModbutton.Text = "Backup All Mods";
-            this.EDTBackupAllModbutton.UseVisualStyleBackColor = true;
-            this.EDTBackupAllModbutton.Click += new System.EventHandler(this.EDTBackupAllModbutton_Click);
-            // 
-            // EDTRestoreAllModbutton
-            // 
-            this.EDTRestoreAllModbutton.Location = new System.Drawing.Point(7, 471);
-            this.EDTRestoreAllModbutton.Name = "EDTRestoreAllModbutton";
-            this.EDTRestoreAllModbutton.Size = new System.Drawing.Size(163, 23);
-            this.EDTRestoreAllModbutton.TabIndex = 48;
-            this.EDTRestoreAllModbutton.Text = "Restore All To Mods";
-            this.EDTRestoreAllModbutton.UseVisualStyleBackColor = true;
-            this.EDTRestoreAllModbutton.Click += new System.EventHandler(this.EDTRestoreAllModbutton_Click);
-            // 
-            // EDTRestoreModbutton
-            // 
-            this.EDTRestoreModbutton.Location = new System.Drawing.Point(7, 442);
-            this.EDTRestoreModbutton.Name = "EDTRestoreModbutton";
-            this.EDTRestoreModbutton.Size = new System.Drawing.Size(163, 23);
-            this.EDTRestoreModbutton.TabIndex = 47;
-            this.EDTRestoreModbutton.Text = "Restore This To A Mod";
-            this.EDTRestoreModbutton.UseVisualStyleBackColor = true;
-            this.EDTRestoreModbutton.Click += new System.EventHandler(this.EDTRestoreModbutton_Click);
+            this.CDORightHandDrivecheckBox.AutoSize = true;
+            this.CDORightHandDrivecheckBox.Location = new System.Drawing.Point(4, 384);
+            this.CDORightHandDrivecheckBox.Name = "CDORightHandDrivecheckBox";
+            this.CDORightHandDrivecheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.CDORightHandDrivecheckBox.Size = new System.Drawing.Size(108, 17);
+            this.CDORightHandDrivecheckBox.TabIndex = 34;
+            this.CDORightHandDrivecheckBox.Text = "Right Hand Drive";
+            this.CDORightHandDrivecheckBox.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -7480,7 +7998,7 @@
             this.CDSuspensionpanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CDSHeightRearnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDSSidesFlipnumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CDSScalenumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CDSForceScalenumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDSFrontSpringLengthnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDSRearTracknumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CDSFrontTracknumericUpDown)).EndInit();
@@ -7573,8 +8091,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.SGETGMoneyIncomeCarsnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SGETGMoneyIncomePartsnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SGETGPartsRepairednumericUpDown)).EndInit();
+            this.SGETGarageCustomtabPage.ResumeLayout(false);
+            this.SGETGarageCustomtabPage.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.SGETGCSkillspanel.ResumeLayout(false);
+            this.SGETGCSkillspanel.PerformLayout();
             this.SGETHelpWantedtabPage.ResumeLayout(false);
             this.SGETHelpWantedtabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CDSForceScaleRearnumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -7677,8 +8202,8 @@
         private System.Windows.Forms.Label CDSRearTracklabel;
         private System.Windows.Forms.NumericUpDown CDSFrontSpringLengthnumericUpDown;
         private System.Windows.Forms.Label CDSFrontSpringLengthlabel;
-        private System.Windows.Forms.NumericUpDown CDSScalenumericUpDown;
-        private System.Windows.Forms.Label CDSScalelabel;
+        private System.Windows.Forms.NumericUpDown CDSForceScalenumericUpDown;
+        private System.Windows.Forms.Label CDSForceScalelabel;
         private System.Windows.Forms.Label CDSFrontCenterSetlabel;
         private System.Windows.Forms.TextBox CDSFrontCenterSettextBox;
         private System.Windows.Forms.TextBox CDSFrontRightSettextBox;
@@ -8150,6 +8675,48 @@
         private System.Windows.Forms.Button EDTRestoreAllModbutton;
         private System.Windows.Forms.Button EDTRestoreModbutton;
         private System.Windows.Forms.Button EDTRestoreDefaultbutton;
+        private System.Windows.Forms.Button TDTBackupAllModbutton;
+        private System.Windows.Forms.Button TDTRestoreAllModbutton;
+        private System.Windows.Forms.Button TDTRestoreModbutton;
+        private System.Windows.Forms.Button TDTRestoreDefaultbutton;
+        private System.Windows.Forms.Button TDTRestoreAllDefaultbutton;
+        private System.Windows.Forms.TabPage SGETGarageCustomtabPage;
+        private System.Windows.Forms.Label SGETGClabel;
+        private System.Windows.Forms.Panel SGETGCSkillspanel;
+        private System.Windows.Forms.Label SGETGCSkillsUnlocksTitlelabel;
+        private System.Windows.Forms.CheckBox SGETGCFastUnboltingcheckBox;
+        private System.Windows.Forms.CheckBox SGETGCElectricalReadercheckBox;
+        private System.Windows.Forms.CheckBox SGETGCCompressionTestercheckBox;
+        private System.Windows.Forms.CheckBox SGETGCOBDReadercheckBox;
+        private System.Windows.Forms.CheckBox SGETGCRepairLv5checkBox;
+        private System.Windows.Forms.CheckBox SGETGCRepairLv4checkBox;
+        private System.Windows.Forms.CheckBox SGETGCRepairLv3checkBox;
+        private System.Windows.Forms.CheckBox SGETGCRepairLv2checkBox;
+        private System.Windows.Forms.CheckBox SGETGCRepairLv1checkBox;
+        private System.Windows.Forms.CheckBox SGETGCTabletcheckBox;
+        private System.Windows.Forms.CheckBox SGETGCFastExaminecheckBox;
+        private System.Windows.Forms.CheckBox SGETGCFastAssemblycheckBox;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox SGETGCParkingABcheckBox;
+        private System.Windows.Forms.CheckBox SGETGCTestRoadcheckBox;
+        private System.Windows.Forms.CheckBox SGETGCPaintShopcheckBox;
+        private System.Windows.Forms.CheckBox SGETGCCarLifterscheckBox;
+        private System.Windows.Forms.CheckBox SGETGCFrameworkcheckBox;
+        private System.Windows.Forms.CheckBox SGETGCWindowscheckBox;
+        private System.Windows.Forms.CheckBox SGETGCFloorStripescheckBox;
+        private System.Windows.Forms.CheckBox SGETGCFloor2BcheckBox;
+        private System.Windows.Forms.CheckBox SGETGCFloorAcheckBox;
+        private System.Windows.Forms.CheckBox SGETGCWallBcheckBox;
+        private System.Windows.Forms.Label SGETGCCustomisationUnlocksTitlelabel;
+        private System.Windows.Forms.CheckBox SGETGCWallAcheckBox;
+        private System.Windows.Forms.CheckBox SGETGCParkingCcheckBox;
+        private System.Windows.Forms.CheckBox SGETGCParkingFcheckBox;
+        private System.Windows.Forms.CheckBox SGETGCParkingEcheckBox;
+        private System.Windows.Forms.CheckBox SGETGCParkingDcheckBox;
+        private System.Windows.Forms.Button SGETGCSavebutton;
+        private System.Windows.Forms.NumericUpDown CDSForceScaleRearnumericUpDown;
+        private System.Windows.Forms.Label CDSForceScaleRearlabel;
+        private System.Windows.Forms.CheckBox CDORightHandDrivecheckBox;
     }
 }
 

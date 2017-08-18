@@ -13,8 +13,8 @@ namespace CMS2015ModManager
 {
     public partial class Form1 : Form
     {
-        private string ModManVersion = "0.9.2.1";       //Version constant for ModManager
-        private string GameVersion = "1.1.0.2";         //Version constant for the game
+        private string ModManVersion = "0.9.3.1";       //Version constant for ModManager
+        private string GameVersion = "1.1.0.3";         //Version constant for the game
 
         //Class object for class that does the acutal mod managing stuff    //here so it's scope is within the form object  //should move the config stuff out at somepoint
         CMS2015MM ModMan;
@@ -1144,6 +1144,7 @@ namespace CMS2015ModManager
 
             //Setup the filename
             string FileName = ModMan.GetCarsDataDir() + "\\tires.txt";
+
             //Check if the config file exists
             if (File.Exists(FileName))
             {
@@ -1151,10 +1152,14 @@ namespace CMS2015ModManager
                 string[] TDFlines = System.IO.File.ReadAllLines(FileName);
                 //Local to fill out before adding to the EngineDataList
                 TireData LocalTD;
+                //Locals to fill out before putting into LocalED (A property or indexer may not be passed as an out or ref parameter)
+                int LocalInt = 0;
+                float LocalFloat = 0;
 
                 //Loop through the lines to process them
                 for (int i = 0; i < TDFlines.Length; i++)
                 {
+
                     //Fill out the local until we get a new new heading (starts with[)
                     // then save the local to the list and start again
 
@@ -1164,28 +1169,49 @@ namespace CMS2015ModManager
                         //New definition so start to fill out the local
                         LocalTD = new TireData(); //Call it's constructor to init it
 
-                        //I'm assuming the order will always be the same (a loop would be neater, until I had to pick between text and numbers)
-                        // if the tire file does change I'll probably need to change this anyway
-
+                        //We are currently sat on the [<name>] line so lets get the name
                         int j = TDFlines[i].IndexOf('=');               //Find the end of label string
                         string line = TDFlines[i].Substring(j + 1, TDFlines[i].Length - (j + 1));    //Grab the bit after the '='
                         LocalTD._Name = line.Trim(' ');                 //Remove the leading on trailing spaces and store the name of the new definition
-                        i++;    //Inc to next array slot
+                        i++;    //Move it along to the next line, so the if condition check doesn't end it immediately
 
-                        j = TDFlines[i].IndexOf('=');              //Find the end of label string
-                        line = TDFlines[i].Substring(j + 1, TDFlines[i].Length - (j + 1));    //Grab the bit after the '='
-                        float tempf = 0;
-                        float.TryParse(line, out tempf);   //Convert string to number
-                        LocalTD._gripMod = tempf;       //Store gripMod
-                        i++;    //Inc to next array slot
+                        //TO-DO wrap the if here in a loop
+                        while ((i < TDFlines.Length) && (!(TDFlines[i].StartsWith("["))))   //Keep reading lines until another section header line is found or out of lines
+                        {
 
-                        j = TDFlines[i].IndexOf('=');              //Find the end of label string
-                        line = TDFlines[i].Substring(j + 1, TDFlines[i].Length - (j + 1));    //Grab the bit after the '='
-                        int temp = 0;
-                        int.TryParse(line, out temp);   //Convert string to number
-                        LocalTD._price = temp;   //Store price
-                        i++;    //Inc to next array slot
+                            //Check for blank lines and null lines (end of file(might be able to remove the null check, legacy from a stream reader style))
+                            if ((TDFlines[i] != "") && (TDFlines[i] != null) && (!(TDFlines[i].StartsWith(";"))))    //if the line is empty or a comment skip over all this
+                            {
+                                j = TDFlines[i].IndexOf('=');              //Find the end of label string
+                                string label = TDFlines[i].Substring(0, j);    //Grabs the bit upto the '='
+                                                                               //Grab the bit after the '=' and remove the leading and trailing spaces
+                                line = TDFlines[i].Substring(j + 1, TDFlines[i].Length - (j + 1)).Trim(' ');
 
+                                switch (label)  //Fill out the Main data
+                                {
+                                    case "gripMod":
+                                        float.TryParse(line, out LocalFloat);   //convert the strings to a number
+                                        LocalTD._gripMod = LocalFloat;
+                                        break;
+                                    case "price":
+                                        int.TryParse(line, out LocalInt);   //convert the strings to a number
+                                        LocalTD._price = LocalInt;          //copy into the local object (we cannot use it directly with 'out')
+                                        break;
+                                    default:
+                                        //Nothing here
+                                        //Blank lines and comments should be eaten outside of this if
+                                        //malformed lines will end up here
+                                        break;
+                                }
+                                i++;    //Move to next line
+                            }
+                            else
+                            {
+                                //Blank line or comment(or null line, shouldn't be I'll see later if it needs a break)
+                                i++;    //Move to next line
+                            }
+                        }
+                        i--;    //Knock the counter back a line as the while loop that called us, will inc it and step over the section header we just found.
                         TireDataList.Add(LocalTD);    //Add full definition to the list
                     }
                 }
@@ -1287,6 +1313,272 @@ namespace CMS2015ModManager
             {
                 //Reset the engine data values, just call the other function that sets them initialy
                 AvailableTirescomboBox_SelectedIndexChanged(sender, e);
+            }
+        }
+
+        //Handles a call to restore a single tire definition from the default folder
+        private void TDTRestoreDefaultbutton_Click(object sender, EventArgs e)
+        {
+            //Messing and dulicating doing this here, but I don't feel like redesigning the TireData class to have a read function right now
+
+            //Prompt the user to see if they are sure
+            DialogResult PromptResult = MessageBox.Show("This will restore this tires values to those from the default tire data file\n\nAre you sure?", "Restore Tire Data", MessageBoxButtons.YesNo);
+
+            if (PromptResult == DialogResult.Yes)
+            {
+                //Create a local Engine Data object
+                List<TireData> DefaultTireDataList = new List<TireData>();
+
+                //Loads the file that contains the default engine definitions
+
+                //Setup the filename
+                string FileName = ModMan.GetCarsDataDirBkUpDefault() + "\\tires.txt";
+                //Check if the config file exists
+                if (File.Exists(FileName))
+                {
+                    //Load the whole file
+                    string[] TDFlines = System.IO.File.ReadAllLines(FileName);
+                    //Local to fill out before adding to the EngineDataList
+                    TireData LocalTD;
+                    //Locals to fill out before putting into LocalED (A property or indexer may not be passed as an out or ref parameter)
+                    float LocalFloat = 0;
+                    int LocalInt = 0;
+
+                    //Loop through the lines to process them
+                    for (int i = 0; i < TDFlines.Length; i++)
+                    {
+
+                        //Fill out the local until we get a new new heading (starts with[)
+                        // then save the local to the list and start again
+
+                        //If this is a new definition
+                        if (TDFlines[i].StartsWith("["))
+                        {
+                            //New definition so start to fill out the local
+                            LocalTD = new TireData(); //Call it's constructor to init it
+
+                            //We are currently sat on the [<name>] line so lets get the name
+                            int j = TDFlines[i].IndexOf('=');               //Find the end of label string
+                            string line = TDFlines[i].Substring(j + 1, TDFlines[i].Length - (j + 1));    //Grab the bit after the '='
+                            LocalTD._Name = line.Trim(' ');                 //Remove the leading on trailing spaces and store the name of the new definition
+                            i++;    //Move it along to the next line, so the if condition check doesn't end it immediately
+
+                            //TO-DO wrap the if here in a loop
+                            while ((i < TDFlines.Length) && (!(TDFlines[i].StartsWith("["))))   //Keep reading lines until another section header line is found or out of lines
+                            {
+
+                                //Check for blank lines and null lines (end of file(might be able to remove the null check, legacy from a stream reader style))
+                                if ((TDFlines[i] != "") && (TDFlines[i] != null) && (!(TDFlines[i].StartsWith(";"))))    //if the line is empty or a comment skip over all this
+                                {
+                                    j = TDFlines[i].IndexOf('=');              //Find the end of label string
+                                    string label = TDFlines[i].Substring(0, j);    //Grabs the bit upto the '='
+                                                                                   //Grab the bit after the '=' and remove the leading and trailing spaces
+                                    line = TDFlines[i].Substring(j + 1, TDFlines[i].Length - (j + 1)).Trim(' ');
+
+                                    switch (label)  //Fill out the Main data
+                                    {
+                                        case "gripMod":
+                                            float.TryParse(line, out LocalFloat);   //convert the strings to a number
+                                            LocalTD._gripMod = LocalFloat;
+                                            break;
+                                        case "price":
+                                            int.TryParse(line, out LocalInt);   //convert the strings to a number
+                                            LocalTD._price = LocalInt;          //copy into the local object (we cannot use it directly with 'out')
+                                            break;
+                                        default:
+                                            //Nothing here
+                                            //Blank lines and comments should be eaten outside of this if
+                                            //malformed lines will end up here
+                                            break;
+                                    }
+                                    i++;    //Move to next line
+                                }
+                                else
+                                {
+                                    //Blank line or comment(or null line, shouldn't be I'll see later if it needs a break)
+                                    i++;    //Move to next line
+                                }
+                            }
+                            i--;    //Knock the counter back a line as the while loop that called us, will inc it and step over the section header we just found.
+                            DefaultTireDataList.Add(LocalTD);    //Add full definition to the list
+                        }
+                    }
+                    //Now we have a full list, copy over the wanted one
+
+                    //Check the file isn't empty
+                    if (DefaultTireDataList.Count > 0)
+                    {
+                        string SelectedEngine = AvailableEnginesComboBox.Text;  //Get the currently selected engine
+
+                        //Loop through each entry
+                        foreach (TireData Tire in DefaultTireDataList)
+                        {
+                            if (Tire._Name == SelectedEngine) //If the name matches
+                            {
+                                //Set the data fields with the values from the selected engine
+                                TDTGripModnumericUpDown.Value = (decimal)Tire._gripMod;
+                                TDTPricenumericUpDown.Value = Tire._price;
+
+                                //Write the file by calling the save button
+                                EDTCommitButton_Click(sender, e);
+
+                                break;  //Exit the foreach loop
+                            }
+                        }
+                    }
+                }   //File.Exists check
+            }
+        }
+
+        //Handles a call to restore all tires to default
+        private void TDTRestoreAllDefaultbutton_Click(object sender, EventArgs e)
+        {
+            //Prompt the user to see if they are sure
+            DialogResult PromptResult = MessageBox.Show("This will restore all tires to those from the default engine data file\n\nAre you sure?", "Restore All Tire Data", MessageBoxButtons.YesNo);
+
+            if (PromptResult == DialogResult.Yes)
+            {
+                // overwrite the destination file if it already exists.
+                System.IO.File.Copy(ModMan.GetCarsDataDirBkUpDefault() + "\\tires.txt", ModMan.GetCarsDataDir() + "\\tires.txt", true);
+            }
+        }
+
+        //Handles a call to restore a single tire to a mod
+        private void TDTRestoreModbutton_Click(object sender, EventArgs e)
+        {
+
+            //Prompt the user to see if they are sure
+            DialogResult PromptResult = MessageBox.Show("This will restore this tires values to those from the default tire data file\n\nAre you sure?", "Restore Tire Data", MessageBoxButtons.YesNo);
+
+            if (PromptResult == DialogResult.Yes)
+            {
+                //Create a local Engine Data object
+                List<TireData> DefaultTireDataList = new List<TireData>();
+
+                //Loads the file that contains the default engine definitions
+
+                //Setup the filename
+                string FileName = ModMan.GetCarsDataDirBkUpMod() + "\\tires.txt";
+                //Check if the config file exists
+                if (File.Exists(FileName))
+                {
+                    //Load the whole file
+                    string[] TDFlines = System.IO.File.ReadAllLines(FileName);
+                    //Local to fill out before adding to the EngineDataList
+                    TireData LocalTD;
+                    //Locals to fill out before putting into LocalED (A property or indexer may not be passed as an out or ref parameter)
+                    float LocalFloat = 0;
+                    int LocalInt = 0;
+
+                    //Loop through the lines to process them
+                    for (int i = 0; i < TDFlines.Length; i++)
+                    {
+
+                        //Fill out the local until we get a new new heading (starts with[)
+                        // then save the local to the list and start again
+
+                        //If this is a new definition
+                        if (TDFlines[i].StartsWith("["))
+                        {
+                            //New definition so start to fill out the local
+                            LocalTD = new TireData(); //Call it's constructor to init it
+
+                            //We are currently sat on the [<name>] line so lets get the name
+                            int j = TDFlines[i].IndexOf('=');               //Find the end of label string
+                            string line = TDFlines[i].Substring(j + 1, TDFlines[i].Length - (j + 1));    //Grab the bit after the '='
+                            LocalTD._Name = line.Trim(' ');                 //Remove the leading on trailing spaces and store the name of the new definition
+                            i++;    //Move it along to the next line, so the if condition check doesn't end it immediately
+
+                            //TO-DO wrap the if here in a loop
+                            while ((i < TDFlines.Length) && (!(TDFlines[i].StartsWith("["))))   //Keep reading lines until another section header line is found or out of lines
+                            {
+
+                                //Check for blank lines and null lines (end of file(might be able to remove the null check, legacy from a stream reader style))
+                                if ((TDFlines[i] != "") && (TDFlines[i] != null) && (!(TDFlines[i].StartsWith(";"))))    //if the line is empty or a comment skip over all this
+                                {
+                                    j = TDFlines[i].IndexOf('=');              //Find the end of label string
+                                    string label = TDFlines[i].Substring(0, j);    //Grabs the bit upto the '='
+                                                                                   //Grab the bit after the '=' and remove the leading and trailing spaces
+                                    line = TDFlines[i].Substring(j + 1, TDFlines[i].Length - (j + 1)).Trim(' ');
+
+                                    switch (label)  //Fill out the Main data
+                                    {
+                                        case "gripMod":
+                                            float.TryParse(line, out LocalFloat);   //convert the strings to a number
+                                            LocalTD._gripMod = LocalFloat;
+                                            break;
+                                        case "price":
+                                            int.TryParse(line, out LocalInt);   //convert the strings to a number
+                                            LocalTD._price = LocalInt;          //copy into the local object (we cannot use it directly with 'out')
+                                            break;
+                                        default:
+                                            //Nothing here
+                                            //Blank lines and comments should be eaten outside of this if
+                                            //malformed lines will end up here
+                                            break;
+                                    }
+                                    i++;    //Move to next line
+                                }
+                                else
+                                {
+                                    //Blank line or comment(or null line, shouldn't be I'll see later if it needs a break)
+                                    i++;    //Move to next line
+                                }
+                            }
+                            i--;    //Knock the counter back a line as the while loop that called us, will inc it and step over the section header we just found.
+                            DefaultTireDataList.Add(LocalTD);    //Add full definition to the list
+                        }
+                    }
+                    //Now we have a full list, copy over the wanted one
+
+                    //Check the file isn't empty
+                    if (DefaultTireDataList.Count > 0)
+                    {
+                        string SelectedEngine = AvailableEnginesComboBox.Text;  //Get the currently selected engine
+
+                        //Loop through each entry
+                        foreach (TireData Tire in DefaultTireDataList)
+                        {
+                            if (Tire._Name == SelectedEngine) //If the name matches
+                            {
+                                //Set the data fields with the values from the selected engine
+                                TDTGripModnumericUpDown.Value = (decimal)Tire._gripMod;
+                                TDTPricenumericUpDown.Value = Tire._price;
+
+                                //Write the file by calling the save button
+                                EDTCommitButton_Click(sender, e);
+
+                                break;  //Exit the foreach loop
+                            }
+                        }
+                    }
+                }   //File.Exists check
+            }
+        }
+
+        //Handles a call to restore all tires to mods
+        private void TDTRestoreAllModbutton_Click(object sender, EventArgs e)
+        {
+            //Prompt the user to see if they are sure
+            DialogResult PromptResult = MessageBox.Show("This will restore all tires to those from the mod engine data file\n\nAre you sure?", "Restore All Mods To Tire Data", MessageBoxButtons.YesNo);
+
+            if (PromptResult == DialogResult.Yes)
+            {
+                // overwrite the destination file if it already exists.
+                System.IO.File.Copy(ModMan.GetCarsDataDirBkUpDefault() + "\\tires.txt", ModMan.GetCarsDataDir() + "\\tires.txt", true);
+            }
+        }
+
+        //Backup the all engine mods
+        private void TDTBackupAllModbutton_Click(object sender, EventArgs e)
+        {
+            //Prompt the user to see if they are sure
+            DialogResult PromptResult = MessageBox.Show("This will overwrite all the exisiting backed up modified tires\nwith the ones currently in the active folder\n\nAre you sure?", "Backup Mod Tire Data", MessageBoxButtons.YesNo);
+
+            if (PromptResult == DialogResult.Yes)
+            {
+                // overwrite the destination file if it already exists.
+                System.IO.File.Copy(ModMan.GetCarsDataDir() + "\\tires.txt", ModMan.GetCarsDataDirBkUpDefault() + "\\tires.txt", true);
             }
         }
         #endregion
@@ -1666,6 +1958,7 @@ namespace CMS2015ModManager
             CDOSuspTRavelnumericUpDown.Value = 0;
             CDOLifterArmsRisenumericUpDown.Value = 0;
             CDOCXNumericUpDown.Value = 0;
+            CDORightHandDrivecheckBox.Checked = false;
 
             //[Suspension] section
             CDSFrontAxleStartnumericUpDown.Value = 0;
@@ -1675,8 +1968,9 @@ namespace CMS2015ModManager
             CDSFrontTracknumericUpDown.Value = 0;
             CDSRearTracknumericUpDown.Value = 0;
             CDSFrontSpringLengthnumericUpDown.Value = 0;
-            CDSScalenumericUpDown.Value = 0;
-
+            //Kaszlak stuff
+            CDSForceScalenumericUpDown.Value = 0;
+            CDSForceScaleRearnumericUpDown.Value = 0;
             CDSFrontCenterSettextBox.Text = "";
             CDSFrontRightSettextBox.Text = "";
             CDSRearCenterSettextBox.Text = "";
@@ -1876,6 +2170,7 @@ namespace CMS2015ModManager
             CDOLifterArmsRisenumericUpDown.Value = (Decimal)CarDataObject._OtherLifterArmsRise;
             CDOLifterArmsAnglenumericUpDown.Value = (Decimal)CarDataObject._OtherLifterArmsAngle;
             CDOCXNumericUpDown.Value = (Decimal)CarDataObject._OtherCX;
+            CDORightHandDrivecheckBox.Checked = CarDataObject._OtherRightHandDrive;
 
             //[Suspension] section
             CDSFrontAxleStartnumericUpDown.Value = (Decimal)CarDataObject._SuspensionFrontAxleStart;
@@ -1885,7 +2180,8 @@ namespace CMS2015ModManager
             CDSFrontTracknumericUpDown.Value = (Decimal)CarDataObject._SuspensionFrontTrack;
             CDSRearTracknumericUpDown.Value = (Decimal)CarDataObject._SuspensionRearTrack;
             CDSFrontSpringLengthnumericUpDown.Value = (Decimal)CarDataObject._SuspensionFrontSpringLength;
-            CDSScalenumericUpDown.Value = (Decimal)CarDataObject._SuspensionScale;
+            CDSForceScalenumericUpDown.Value = (Decimal)CarDataObject._SuspensionForceScale;
+            CDSForceScaleRearnumericUpDown.Value = (Decimal)CarDataObject._SuspensionForceScaleRear;
             CDSSidesFlipnumericUpDown.Value = (Decimal)CarDataObject._SuspensionsidesFlip;
 
             CDSFrontCenterSettextBox.Text = CarDataObject._SuspensionFrontCenterSet;
@@ -2491,6 +2787,7 @@ namespace CMS2015ModManager
                     CarDataObject._OtherLifterArmsRise = (float)CDOLifterArmsRisenumericUpDown.Value;
                     CarDataObject._OtherLifterArmsAngle = (float)CDOLifterArmsAnglenumericUpDown.Value;
                     CarDataObject._OtherCX = (float)CDOCXNumericUpDown.Value;
+                    CarDataObject._OtherRightHandDrive = CDORightHandDrivecheckBox.Checked;
 
                     //[Suspension] section
                     CarDataObject._SuspensionFrontAxleStart = (float)CDSFrontAxleStartnumericUpDown.Value;
@@ -2500,7 +2797,8 @@ namespace CMS2015ModManager
                     CarDataObject._SuspensionFrontTrack = (float)CDSFrontTracknumericUpDown.Value;
                     CarDataObject._SuspensionRearTrack = (float)CDSRearTracknumericUpDown.Value;
                     CarDataObject._SuspensionFrontSpringLength = (float)CDSFrontSpringLengthnumericUpDown.Value;
-                    CarDataObject._SuspensionScale = (float)CDSScalenumericUpDown.Value;
+                    CarDataObject._SuspensionForceScale = (int)CDSForceScalenumericUpDown.Value;
+                    CarDataObject._SuspensionForceScaleRear = (int)CDSForceScaleRearnumericUpDown.Value;
                     CarDataObject._SuspensionsidesFlip = (int)CDSSidesFlipnumericUpDown.Value;
 
                     CarDataObject._SuspensionFrontCenterSet = CDSFrontCenterSettextBox.Text;
@@ -2830,7 +3128,7 @@ namespace CMS2015ModManager
         }
         #endregion
 
-        #region Save File - Global file
+        #region Save File - General
         //Populate the profile list combo box
         private void PopulateProfileComboBox()
         {
@@ -2850,9 +3148,11 @@ namespace CMS2015ModManager
             //Set the found profiles counter
             SGTProfilesFoundlabel.Text = ProCount + " Profiles Found";
         }
+        #endregion
 
-        //Resets the Save Data tab GUI elements
-        private void ClearOutSaveDataTabs()
+        #region Save File - Global file
+        //Resets the Save Data Global tab GUI elements
+        private void ClearOutSaveDataTabsGlobal()
         {
             //Fill out the GUI
 
@@ -2901,7 +3201,8 @@ namespace CMS2015ModManager
         //Save the global save file
         private void SGETGSavebutton_Click(object sender, EventArgs e)
         {
-            SaveGameDataGlobal LocalSave = new SaveGameDataGlobal();        //Create a local to get save data
+            //Create a local to hold save data
+            SaveGameDataGlobal LocalSave = new SaveGameDataGlobal();
 
             //Fill out the data object
             LocalSave._Stats_PartsRepaired = (int)SGETGPartsRepairednumericUpDown.Value;
@@ -2917,18 +3218,322 @@ namespace CMS2015ModManager
             LocalSave._xp = (int)SGETGXPnumericUpDown.Value;
             LocalSave._money = (int)SGETGMoneynumericUpDown.Value;
 
-            LocalSave.WriteGlobalSaveFile(ModMan.GetSavedGamesDir() + "\\" + SGETProfilecomboBox.Text);     //Load the save file
+            //Save the file
+            LocalSave.WriteGlobalSaveFile(ModMan.GetSavedGamesDir() + "\\" + SGETProfilecomboBox.Text);
         }
 
         //Handles a change in the selected save profile combo box
         private void SGETGProfilecomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ClearOutSaveDataTabs(); //Clear out the GUI
+            //Global file
+            ClearOutSaveDataTabsGlobal(); //Clear out the GUI
             SGEGobalFileLoad();     //Load the Global tab data
+            //Garage Customisation file
+            ClearOutSaveDataTabsGarageCustomisation();
+            SGEGarageFileLoad();
         }
 
         #endregion
 
-        
+        #region Save File - Garage Customisation file
+        //Resets the Save Data Garage Custmisation tab GUI elements
+        private void ClearOutSaveDataTabsGarageCustomisation()
+        {
+            //Clear out the GUI
+
+            //Garage skills unlocks
+            SGETGCFastUnboltingcheckBox.Checked = false;
+            SGETGCFastAssemblycheckBox.Checked = false;
+            SGETGCFastExaminecheckBox.Checked = false;
+            SGETGCTabletcheckBox.Checked = false;
+            SGETGCRepairLv1checkBox.Checked = false;
+            SGETGCRepairLv2checkBox.Checked = false;
+            SGETGCRepairLv3checkBox.Checked = false;
+            SGETGCRepairLv4checkBox.Checked = false;
+            SGETGCRepairLv5checkBox.Checked = false;
+            SGETGCOBDReadercheckBox.Checked = false;
+            SGETGCCompressionTestercheckBox.Checked = false;
+            SGETGCElectricalReadercheckBox.Checked = false;
+
+            //Garage customisation unlocks
+            SGETGCWallAcheckBox.Checked = false;
+            SGETGCWallBcheckBox.Checked = false;
+            SGETGCFloorAcheckBox.Checked = false;
+            SGETGCFloor2BcheckBox.Checked = false;
+            SGETGCFloorStripescheckBox.Checked = false;
+            SGETGCWindowscheckBox.Checked = false;
+            SGETGCFrameworkcheckBox.Checked = false;
+            SGETGCCarLifterscheckBox.Checked = false;
+            SGETGCPaintShopcheckBox.Checked = false;
+            SGETGCTestRoadcheckBox.Checked = false;
+            SGETGCParkingABcheckBox.Checked = false;
+            SGETGCParkingCcheckBox.Checked = false;
+            SGETGCParkingDcheckBox.Checked = false;
+            SGETGCParkingEcheckBox.Checked = false;
+            SGETGCParkingFcheckBox.Checked = false;
+        }
+
+        //Load the global save file
+        private void SGEGarageFileLoad()
+        {
+            //Check the combo box text isn't blank
+            if (SGETProfilecomboBox.Text != "")
+            {
+                //Create a local to get save data
+                SaveGameDataGarage LocalGrab = new SaveGameDataGarage();
+                //Check if the file exists
+                if (LocalGrab.LoadGarageSaveFile(ModMan.GetSavedGamesDir() + "\\" + SGETProfilecomboBox.Text))     //Load the save file
+                {
+                    //Fill out the GUI
+
+                    //Garage skills unlocks
+                    SGETGCFastUnboltingcheckBox.Checked = LocalGrab._FastUnbolting;
+                    SGETGCFastAssemblycheckBox.Checked = LocalGrab._FastAssembly;
+                    SGETGCFastExaminecheckBox.Checked = LocalGrab._FastExamine;
+                    SGETGCTabletcheckBox.Checked = LocalGrab._Tablet;
+                    SGETGCRepairLv1checkBox.Checked = LocalGrab._RepairLv1;
+                    SGETGCRepairLv2checkBox.Checked = LocalGrab._RepairLv2;
+                    SGETGCRepairLv3checkBox.Checked = LocalGrab._RepairLv3;
+                    SGETGCRepairLv4checkBox.Checked = LocalGrab._RepairLv4;
+                    SGETGCRepairLv5checkBox.Checked = LocalGrab._RepairLv5;
+                    SGETGCOBDReadercheckBox.Checked = LocalGrab._OBDReader;
+                    SGETGCCompressionTestercheckBox.Checked = LocalGrab._CompressionTester;
+                    SGETGCElectricalReadercheckBox.Checked = LocalGrab._ElectricalReader;
+
+                    //Garage customisation unlocks
+                    SGETGCWallAcheckBox.Checked = LocalGrab._WallA;
+                    SGETGCWallBcheckBox.Checked = LocalGrab._WallB;
+                    SGETGCFloorAcheckBox.Checked = LocalGrab._FloorA;
+                    SGETGCFloor2BcheckBox.Checked = LocalGrab._Floor2B;
+                    SGETGCFloorStripescheckBox.Checked = LocalGrab._FloorStripes;
+                    SGETGCWindowscheckBox.Checked = LocalGrab._Windows;
+                    SGETGCFrameworkcheckBox.Checked = LocalGrab._Framework;
+                    SGETGCCarLifterscheckBox.Checked = LocalGrab._CarLifters;
+                    SGETGCPaintShopcheckBox.Checked = LocalGrab._PaintShop;
+                    SGETGCTestRoadcheckBox.Checked = LocalGrab._TestRoad;
+                    SGETGCParkingABcheckBox.Checked = LocalGrab._ParkingAB;
+                    SGETGCParkingCcheckBox.Checked = LocalGrab._ParkingC;
+                    SGETGCParkingDcheckBox.Checked = LocalGrab._ParkingE;
+                    SGETGCParkingEcheckBox.Checked = LocalGrab._ParkingD;
+                    SGETGCParkingFcheckBox.Checked = LocalGrab._ParkingF;
+                }
+            }
+        }
+
+        #region Garage Skill unlock checkboxes
+        //Commets apply to all functions
+        //Set all levels below on set
+        //Unset all levels above on unset
+        private void SGETGCRepairLv1checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SGETGCRepairLv1checkBox.Checked == true)
+            {
+                //No lower to set
+            }
+            else
+            {
+                //Unset all above
+                SGETGCRepairLv2checkBox.Checked = false;
+                SGETGCRepairLv3checkBox.Checked = false;
+                SGETGCRepairLv4checkBox.Checked = false;
+                SGETGCRepairLv5checkBox.Checked = false;
+            }
+        }
+
+        private void SGETGCRepairLv2checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SGETGCRepairLv2checkBox.Checked == true)
+            {
+                //Set all lower
+                SGETGCRepairLv1checkBox.Checked = true;
+            }
+            else
+            {
+                //Unset all above
+                SGETGCRepairLv3checkBox.Checked = false;
+                SGETGCRepairLv4checkBox.Checked = false;
+                SGETGCRepairLv5checkBox.Checked = false;
+            }
+        }
+
+        private void SGETGCRepairLv3checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SGETGCRepairLv3checkBox.Checked == true)
+            {
+                //Set all lower
+                SGETGCRepairLv1checkBox.Checked = true;
+                SGETGCRepairLv2checkBox.Checked = true;
+            }
+            else
+            {
+                //Unset all above
+                SGETGCRepairLv4checkBox.Checked = false;
+                SGETGCRepairLv5checkBox.Checked = false;
+            }
+        }
+
+        private void SGETGCRepairLv4checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SGETGCRepairLv4checkBox.Checked == true)
+            {
+                //Set all lower
+                SGETGCRepairLv1checkBox.Checked = true;
+                SGETGCRepairLv2checkBox.Checked = true;
+                SGETGCRepairLv3checkBox.Checked = true;
+            }
+            else
+            {
+                //Unset all above
+                SGETGCRepairLv5checkBox.Checked = false;
+            }
+        }
+
+        private void SGETGCRepairLv5checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SGETGCRepairLv5checkBox.Checked == true)
+            {
+                //Set all lower
+                SGETGCRepairLv1checkBox.Checked = true;
+                SGETGCRepairLv2checkBox.Checked = true;
+                SGETGCRepairLv3checkBox.Checked = true;
+                SGETGCRepairLv4checkBox.Checked = true;
+            }
+            else
+            {
+                //No above to set                
+            }
+        }
+        #endregion
+
+        #region Garage Visual Customisation unlock checkboxes        
+        //Commets apply to all functions
+        //Set all levels below on set
+        //Unset all levels above on unset
+        private void SGETGCParkingABcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SGETGCParkingABcheckBox.Checked == true)
+            {
+                //No lower to set
+            }
+            else
+            {
+                //Unset all above
+                SGETGCParkingCcheckBox.Checked = false;
+                SGETGCParkingDcheckBox.Checked = false;
+                SGETGCParkingEcheckBox.Checked = false;
+                SGETGCParkingFcheckBox.Checked = false;
+            }
+        }
+
+        private void SGETGCParkingCcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SGETGCParkingCcheckBox.Checked == true)
+            {
+                //Set all lower
+                SGETGCParkingABcheckBox.Checked = true;
+            }
+            else
+            {
+                //Unset all above
+                SGETGCParkingDcheckBox.Checked = false;
+                SGETGCParkingEcheckBox.Checked = false;
+                SGETGCParkingFcheckBox.Checked = false;
+            }
+        }
+
+        private void SGETGCParkingDcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SGETGCParkingDcheckBox.Checked == true)
+            {
+                //Set all lower
+                SGETGCParkingABcheckBox.Checked = true;
+                SGETGCParkingCcheckBox.Checked = true;
+            }
+            else
+            {
+                //Unset all above
+                SGETGCParkingEcheckBox.Checked = false;
+                SGETGCParkingFcheckBox.Checked = false;
+            }
+        }
+
+        private void SGETGCParkingEcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SGETGCParkingEcheckBox.Checked == true)
+            {
+                //Set all lower
+                SGETGCParkingABcheckBox.Checked = true;
+                SGETGCParkingCcheckBox.Checked = true;
+                SGETGCParkingDcheckBox.Checked = true;
+            }
+            else
+            {
+                //Unset all above
+                SGETGCParkingFcheckBox.Checked = false;
+            }
+        }
+
+        private void SGETGCParkingFcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SGETGCParkingFcheckBox.Checked == true)
+            {
+                //Set all lower
+                SGETGCParkingABcheckBox.Checked = true;
+                SGETGCParkingCcheckBox.Checked = true;
+                SGETGCParkingDcheckBox.Checked = true;
+                SGETGCParkingEcheckBox.Checked = true;
+            }
+            else
+            {
+                //None above to set
+            }
+        }
+        #endregion
+
+        //Save the garage customisation save file
+        private void SGETGCSavebutton_Click(object sender, EventArgs e)
+        {
+            //Create a local to hold save data
+            SaveGameDataGarage LocalSave = new SaveGameDataGarage();
+
+            //Fill out the data object
+
+            //Garage skills unlocks   
+            LocalSave._FastUnbolting = SGETGCFastUnboltingcheckBox.Checked;
+            LocalSave._FastAssembly = SGETGCFastAssemblycheckBox.Checked;
+            LocalSave._FastExamine = SGETGCFastExaminecheckBox.Checked;
+            LocalSave._Tablet = SGETGCTabletcheckBox.Checked;
+            LocalSave._RepairLv1 = SGETGCRepairLv1checkBox.Checked;
+            LocalSave._RepairLv2 = SGETGCRepairLv2checkBox.Checked;
+            LocalSave._RepairLv3 = SGETGCRepairLv3checkBox.Checked;
+            LocalSave._RepairLv4 = SGETGCRepairLv4checkBox.Checked;
+            LocalSave._RepairLv5 = SGETGCRepairLv5checkBox.Checked;
+            LocalSave._OBDReader = SGETGCOBDReadercheckBox.Checked;
+            LocalSave._CompressionTester = SGETGCCompressionTestercheckBox.Checked;
+            LocalSave._ElectricalReader = SGETGCElectricalReadercheckBox.Checked;
+
+            //Garage customisation unlocks
+            LocalSave._WallA = SGETGCWallAcheckBox.Checked;
+            LocalSave._WallB = SGETGCWallBcheckBox.Checked;
+            LocalSave._FloorA = SGETGCFloorAcheckBox.Checked;
+            LocalSave._Floor2B = SGETGCFloor2BcheckBox.Checked;
+            LocalSave._FloorStripes = SGETGCFloorStripescheckBox.Checked;
+            LocalSave._Windows = SGETGCWindowscheckBox.Checked;
+            LocalSave._Framework = SGETGCFrameworkcheckBox.Checked;
+            LocalSave._CarLifters = SGETGCCarLifterscheckBox.Checked;
+            LocalSave._PaintShop = SGETGCPaintShopcheckBox.Checked;
+            LocalSave._TestRoad = SGETGCTestRoadcheckBox.Checked;
+            LocalSave._ParkingAB = SGETGCParkingABcheckBox.Checked;
+            LocalSave._ParkingC = SGETGCParkingCcheckBox.Checked;
+            LocalSave._ParkingE = SGETGCParkingDcheckBox.Checked;
+            LocalSave._ParkingD = SGETGCParkingEcheckBox.Checked;
+            LocalSave._ParkingF = SGETGCParkingFcheckBox.Checked;
+
+
+            //Save the file
+            LocalSave.WriteGarageSaveFile(ModMan.GetSavedGamesDir() + "\\" + SGETProfilecomboBox.Text);
+        }
+
+        #endregion
     }
 }

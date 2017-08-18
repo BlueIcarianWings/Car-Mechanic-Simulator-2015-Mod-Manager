@@ -67,6 +67,7 @@ namespace CMS2015ModManager
         private float OtherLifterArmsAngle;
         private float OtherDoorAngle;           //Gull wing door
         private float OtherCX;
+        private bool OtherRightHandDrive;       //Bentley T series
 
         //[Suspension]
         private float SuspensionFrontAxleStart;
@@ -76,7 +77,8 @@ namespace CMS2015ModManager
         private float SuspensionFrontTrack;
         private float SuspensionRearTrack;
         private float SuspensionFrontSpringLength;
-        private float SuspensionScale;
+        private float SuspensionForceScale;         //Kaszlak specfic at the moment
+        private float SuspensionForceScaleRear;     //Kaszlak specfic at the moment
         private int   SuspensionSidesFlip;			//Kaszlak specfic at the moment
         private string SuspensionFrontCenterSet;
         private string SuspensionFrontRightSet;
@@ -246,30 +248,35 @@ namespace CMS2015ModManager
             //Create a local file writer
             StreamWriter writer = new StreamWriter(Filename);
 
+            //IMPORTANT
+            //Cannot use string formatting as it auto-rounds stuff, and we don't want that
+            //eg, {0:f3} is bad
+
             //[Main]
             writer.WriteLine("[main]");
             if (MainName != "") { writer.WriteLine(";name= " + MainName); }
             writer.WriteLine("model= " + MainModel);
             writer.WriteLine("rustMask= " + MainRustMask);
-            writer.WriteLine("rotation= {0:f1},{1:f1},{2:f1}", MainRotation.x, MainRotation.y, MainRotation.z); //apply formatting of float to 1DP
+            writer.WriteLine("rotation= {0},{1},{2}", MainRotation.x, MainRotation.y, MainRotation.z); //apply formatting of float to 1DP
             writer.WriteLine();     //Blank line seperator
 
             //[Other]
             writer.WriteLine("[other]");
             if (OtherPower != 0)            { writer.WriteLine("otherPower= " + OtherPower); }
             if (OtherTransmissionType != ""){ writer.WriteLine("transmissionType= " + OtherTransmissionType); }
-            if (OtherGears != 0)            { writer.WriteLine("gears= " + OtherGears); }
-            if (OtherFinalDriveRatio != 0)  { writer.WriteLine("finalDriveRatio= {0:f3}", OtherFinalDriveRatio); }
+            if (OtherGears != 0)            { writer.WriteLine("gears= {0}", OtherGears); }
+            if (OtherFinalDriveRatio != 0)  { writer.WriteLine("finalDriveRatio= {0}", OtherFinalDriveRatio); }
             if (OtherWeight != 0)           { writer.WriteLine("weight= " + OtherWeight); }
-            if (OtherRpmFactor != 0)        { writer.WriteLine("rpmFactor= {0:f2}", OtherRpmFactor); }
-            if (OtherRpmAngle != 0)         { writer.WriteLine("rpmAngle= {0:f2}", OtherRpmAngle); }
-            if (OtherSpeedoFactor != 0)     { writer.WriteLine("speedoFactor= {0:f2}", OtherSpeedoFactor); }
-            if (OtherSpeedoAngle != 0)      { writer.WriteLine("speedoAngle= {0:f2}", OtherSpeedoAngle); }
-            if (OtherSuspTravel != 0)       { writer.WriteLine("suspTravel= {0:f2}", OtherSuspTravel); }
-            if (OtherLifterArmsRise != 0)   { writer.WriteLine("lifterArmsRise= {0:f2}", OtherLifterArmsRise); }
-            if (OtherLifterArmsAngle != 0)  { writer.WriteLine("lifterArmsAngle= {0:f2}", OtherLifterArmsAngle); }
-            if (OtherDoorAngle != 0)        { writer.WriteLine("doorAngle= " + OtherDoorAngle); }          //Gull wing door
-            if (OtherCX != 0)               { writer.WriteLine("cx= {0:f3}", OtherCX); }
+            if (OtherRpmFactor != 0)        { writer.WriteLine("rpmFactor= {0}", OtherRpmFactor); }
+            if (OtherRpmAngle != 0)         { writer.WriteLine("rpmAngle= {0}", OtherRpmAngle); }
+            if (OtherSpeedoFactor != 0)     { writer.WriteLine("speedoFactor= {0}", OtherSpeedoFactor); }
+            if (OtherSpeedoAngle != 0)      { writer.WriteLine("speedoAngle= {0}", OtherSpeedoAngle); }
+            if (OtherSuspTravel != 0)       { writer.WriteLine("suspTravel= {0}", OtherSuspTravel); }
+            if (OtherLifterArmsRise != 0)   { writer.WriteLine("lifterArmsRise= {0}", OtherLifterArmsRise); }
+            if (OtherLifterArmsAngle != 0)  { writer.WriteLine("lifterArmsAngle= {0}", OtherLifterArmsAngle); }
+            if (OtherDoorAngle != 0)        { writer.WriteLine("doorAngle= {0}", OtherDoorAngle); }          //Gull wing door
+            if (OtherCX != 0)               { writer.WriteLine("cx= {0}", OtherCX); }
+            if (OtherRightHandDrive == true) { writer.WriteLine("righthanddrive= {0}", OtherRightHandDrive); }
             writer.WriteLine();     //Blank line seperator
 
             //[Suspension]
@@ -283,14 +290,11 @@ namespace CMS2015ModManager
             if (SuspensionFrontSpringLength != 0) { writer.WriteLine("frontSpringLength= " + SuspensionFrontSpringLength); }
             if (MainModel == "car_Kaszlak")     //Kaszlak specfic bits
             {
-                if (SuspensionScale != 0) { writer.WriteLine("forceScale= " + SuspensionScale); }
-                if (SuspensionSidesFlip != 0) { writer.WriteLine("sidesFlip= " + SuspensionSidesFlip); }                //Kaszlak specfic at the moment
-                if (SuspensionFrontLeftSet != "") { writer.WriteLine("frontLeftSet= " + SuspensionFrontLeftSet); }      //Kaszlak specfic at the moment
-                if (SuspensionRearLeftSet != "") { writer.WriteLine("rearLeftSet= " + SuspensionRearLeftSet); }         //Kaszlak specfic at the moment
-            }
-            else    //This will be obsolete later (post 1.0.8.0)    (not yet done 1.1.0.2)
-            {
-                if (SuspensionScale != 0) { writer.WriteLine("scale= " + SuspensionScale); }
+                if (SuspensionForceScale != 0) { writer.WriteLine("forceScale= " + SuspensionForceScale); }
+                if (SuspensionForceScaleRear != 0) { writer.WriteLine("forceScaleRear= " + SuspensionForceScaleRear); }
+                if (SuspensionSidesFlip != 0) { writer.WriteLine("sidesFlip= " + SuspensionSidesFlip); }
+                if (SuspensionFrontLeftSet != "") { writer.WriteLine("frontLeftSet= " + SuspensionFrontLeftSet); }
+                if (SuspensionRearLeftSet != "") { writer.WriteLine("rearLeftSet= " + SuspensionRearLeftSet); }
             }
             if (SuspensionFrontCenterSet != "")   { writer.WriteLine("frontCenterSet= " + SuspensionFrontCenterSet); }
             if (SuspensionFrontRightSet != "")    { writer.WriteLine("frontRightSet= " + SuspensionFrontRightSet); }
@@ -300,11 +304,11 @@ namespace CMS2015ModManager
 
             //[Engine]
             writer.WriteLine("[engine]");
-            writer.WriteLine("position= {0:f1},{1:f1},{2:f1}", EnginePosition.x, EnginePosition.y, EnginePosition.z);   //Always write the position
-            writer.WriteLine("rotation= {0:f1},{1:f1},{2:f1}", EngineRotation.x, EngineRotation.y, EngineRotation.z);   //Always write the rotation
-            if (EngineScale != 0)  { writer.WriteLine("scale= {0:f2}", EngineScale); }
-            if (EngineType != "")  { writer.WriteLine("type= {0:f2}", EngineType); }
-            if (EnginePM != 0)     { writer.WriteLine("pm= {0:f2}", EnginePM); }
+            writer.WriteLine("position= {0},{1},{2}", EnginePosition.x, EnginePosition.y, EnginePosition.z);   //Always write the position
+            writer.WriteLine("rotation= {0},{1},{2}", EngineRotation.x, EngineRotation.y, EngineRotation.z);   //Always write the rotation
+            if (EngineScale != 0)  { writer.WriteLine("scale= {0}", EngineScale); }
+            if (EngineType != "")  { writer.WriteLine("type= {0}", EngineType); }
+            if (EnginePM != 0)     { writer.WriteLine("pm= {0}", EnginePM); }
             //Declare the list of the engine swap options
             if (EngineSwapOptions.Count > 1)
             {
@@ -413,7 +417,7 @@ namespace CMS2015ModManager
             //[Logic]
             writer.WriteLine("[logic]");
             writer.WriteLine("globalCondition= " + LogicGlobalCondition.a + "," + LogicGlobalCondition.b);
-            writer.WriteLine("partssConditions= " + LogicPartsConditions.a + "," + LogicPartsConditions.b);
+            writer.WriteLine("partsConditions= " + LogicPartsConditions.a + "," + LogicPartsConditions.b);
             writer.WriteLine("panelsConditions= " + LogicPanelsConditions.a + "," + LogicPanelsConditions.b);
             writer.WriteLine("uniqueMod= " + LogicUniqueMod);
             writer.WriteLine();     //Blank line seperator
@@ -551,6 +555,9 @@ namespace CMS2015ModManager
                         case "cx":
                             float.TryParse(line, out OtherCX);//convert the strings to numbers
                             break;
+                        case "righthanddrive":
+                            bool.TryParse(line, out OtherRightHandDrive);//convert the strings to a bool
+                            break;
                         default:
                             //Nothing here
                             //Blank lines and comments should be eaten outside of this if
@@ -608,11 +615,11 @@ namespace CMS2015ModManager
                         case "frontSpringLength":
                             float.TryParse(line, out SuspensionFrontSpringLength);   //convert the strings to numbers
                             break;
-                        case "scale":   //Will be removed after patch 1.0.8.0 (should be)
-                            float.TryParse(line, out SuspensionScale);   //convert the strings to numbers
+                        case "forceScale":  //Kaszlak / Maluch
+                            float.TryParse(line, out SuspensionForceScale);   //convert the strings to numbers
                             break;
-                        case "forceScale":   //Kaszlak / Maluch
-                            float.TryParse(line, out SuspensionScale);   //convert the strings to numbers
+                        case "forceScaleRear"://Kaszlak / Maluch
+                            float.TryParse(line, out SuspensionForceScaleRear);   //convert the strings to numbers
                             break;
                         case "sidesFlip":   //Kaszlak / Maluch
                             int.TryParse(line, out SuspensionSidesFlip);   //convert the strings to numbers
@@ -848,7 +855,7 @@ namespace CMS2015ModManager
             i--;    //Knock the counter back a line as the while loop that called us, will inc it and step over the section header we just found.
         }
 
-        //Parse the  [wheels] part of the car data file
+        //Parse the  [wheelsRear] part of the car data file
         private void CarDataWheelsRearSectionProc(string[] CDFlines, ref int i)
         {
             //the i passed in is the line counter, is currently sat on the "[Main]" line
@@ -1138,6 +1145,7 @@ namespace CMS2015ModManager
             OtherLifterArmsAngle = 0.0f;
             OtherDoorAngle = 0.0f;           //Gull wing door
             OtherCX = 0.0f;
+            OtherRightHandDrive = false;    //Bentley T Series
 
             //[Suspension]
             SuspensionFrontAxleStart = 0.0f;
@@ -1147,7 +1155,8 @@ namespace CMS2015ModManager
             SuspensionFrontTrack = 0.0f;
             SuspensionRearTrack = 0.0f;
             SuspensionFrontSpringLength = 0.0f;
-            SuspensionScale = 0.0f;             //Kaszlak specfic post 1.0.8.0 (should be)
+            SuspensionForceScale = 0;           //Kaszlak specfic at the moment
+            SuspensionForceScaleRear = 0;       //Kaszlak specfic at the moment
             SuspensionSidesFlip = 0;			//Kaszlak specfic at the moment
             SuspensionFrontCenterSet = "";
             SuspensionFrontRightSet = "";
@@ -1439,6 +1448,13 @@ namespace CMS2015ModManager
             get { return OtherCX; }
             set { OtherCX = value; }
         }
+
+        public bool _OtherRightHandDrive
+        {
+            get { return OtherRightHandDrive; }
+            set { OtherRightHandDrive = value; }
+        }
+        
         #endregion
 
         #region [Suspension]
@@ -1484,10 +1500,16 @@ namespace CMS2015ModManager
             set { SuspensionFrontSpringLength = value; }
         }
 
-        public float _SuspensionScale
+        public float _SuspensionForceScale
         {
-            get { return SuspensionScale; }
-            set { SuspensionScale = value; }
+            get { return SuspensionForceScale; }
+            set { SuspensionForceScale = value; }
+        }
+
+        public float _SuspensionForceScaleRear
+        {
+            get { return SuspensionForceScaleRear; }
+            set { SuspensionForceScaleRear = value; }
         }
 
         public int _SuspensionsidesFlip

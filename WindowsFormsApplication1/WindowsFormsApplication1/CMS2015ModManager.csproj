@@ -85,6 +85,7 @@
     <Compile Include="MapData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveGameDataGarage.cs" />
     <Compile Include="SaveGameDataGlobal.cs" />
     <Compile Include="TireData.cs" />
     <EmbeddedResource Include="Form1.resx">
