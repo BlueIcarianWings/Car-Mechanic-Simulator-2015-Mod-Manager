@@ -13,8 +13,8 @@ namespace CMS2015ModManager
 {
     public partial class Form1 : Form
     {
-        private string ModManVersion = "0.9.4.1";       //Version constant for ModManager
-        private string GameVersion = "1.1.1.2";         //Version constant for the game
+        private string ModManVersion = "0.9.4.2";       //Version constant for ModManager
+        private string GameVersion = "1.1.6.0";         //Version constant for the game
 
         //Class object for class that does the acutal mod managing stuff    //here so it's scope is within the form object  //should move the config stuff out at somepoint
         CMS2015MM ModMan;

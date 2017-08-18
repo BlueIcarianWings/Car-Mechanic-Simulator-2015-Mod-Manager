@@ -60,18 +60,18 @@ namespace CMS2015ModManager
             money = 0;
 
             //Set the memory locations of the values
-            Stats_PartsRepaired_MemLoc = 158;//9e
-            Stats_MoneyIncomeParts_MemLoc = 196;//c4
-            Stats_MoneyIncomeCars_MemLoc = 233;//e9
-            Stats_CarsSold_MemLoc = 263;//107
-            Stats_JobsCompleted_MemLoc = 299;//12b
-            Stats_CarsOwned_MemLoc = 330;//14a
-            Stats_MoneyIncome_MemLoc = 363;//16b
-            Stats_PartsUnmounted_MemLoc = 399;//18f
-            Stats_Bolts_MemLoc = 426;//1aa
-            bankLoan_MemLoc = 450;//1c2
-            xp_MemLoc = 468;//1d4
-            money_MemLoc = 489;//1e9
+            Stats_PartsRepaired_MemLoc = 308;//134
+            Stats_MoneyIncomeParts_MemLoc = 346;//15a
+            Stats_MoneyIncomeCars_MemLoc = 383;//17f
+            Stats_CarsSold_MemLoc = 413;//19d
+            Stats_JobsCompleted_MemLoc = 449;//1c1
+            Stats_CarsOwned_MemLoc = 480;//1e0
+            Stats_MoneyIncome_MemLoc = 513;//201
+            Stats_PartsUnmounted_MemLoc = 549;//225
+            Stats_Bolts_MemLoc = 576;//240
+            bankLoan_MemLoc = 600;//258
+            xp_MemLoc = 618;//26a
+            money_MemLoc = 639;//27f
         }
 
         //Loads a Save game Global data file into the object from the fullpath and filename given
