@@ -41,6 +41,7 @@ namespace CMS2015ModManager
             public TripleFloatPoint PartsRotation;
             public float PartsScale;
             public TripleFloatPoint PartsProScale;
+            public bool PartsUseProScale;
         }
 
         //[AddOnLoadType] //0 to 4 (index)
@@ -111,6 +112,7 @@ namespace CMS2015ModManager
         private TripleFloatPoint EngineRotation;
         private float EngineScale;
         private string EngineType;
+        //private string EngineSound;   //Still around but I think it's obsolete
         private float EnginePM;
         //Declare the list of the engine swap options
         private List<string> EngineSwapOptions;
@@ -312,8 +314,8 @@ namespace CMS2015ModManager
             if (OtherDoorAngle != 0)        { writer.WriteLine("doorAngle= {0}", OtherDoorAngle); }          //Gull wing door
             if (OtherCX != 0)               { writer.WriteLine("cx= {0}", OtherCX); }
             if (OtherRightHandDrive == true) { writer.WriteLine("righthanddrive= {0}", OtherRightHandDrive); }
-            //if (OtherTransVol != 0)         { writer.WriteLine("transVol= {0}", OtherTransVol); }
-                                            writer.WriteLine("transVol= {0}", OtherTransVol);       //Files contain 0 values
+            if (OtherTransVol != 0)         { writer.WriteLine("transVol= {0}", OtherTransVol); }
+            //                                writer.WriteLine("transVol= {0}", OtherTransVol);       //Files contain 0 values
             if (OtherDeleteOnLoad != "")    { writer.WriteLine("deleteOnLoad= " + OtherDeleteOnLoad); }
             if (OtherTuneOnLoad != "")      { writer.WriteLine("tuneOnLoad= " + OtherTuneOnLoad); }
             if (OtherColorMatte != false)   { writer.WriteLine("colorMatte= " + OtherColorMatte); }
@@ -349,6 +351,7 @@ namespace CMS2015ModManager
             writer.WriteLine("rotation= {0},{1},{2}", EngineRotation.x, EngineRotation.y, EngineRotation.z);   //Always write the rotation
             if (EngineScale != 0)  { writer.WriteLine("scale= {0}", EngineScale); }
             if (EngineType != "")  { writer.WriteLine("type= {0}", EngineType); }
+            //if (EngineSound != "") { writer.WriteLine("sound= {0}", EngineSound); }
             if (EnginePM != 0)     { writer.WriteLine("pm= {0}", EnginePM); }
             //Declare the list of the engine swap options
             if (EngineSwapOptions.Count > 1)
@@ -433,8 +436,16 @@ namespace CMS2015ModManager
                 writer.WriteLine("name= " + Parts[ControlCounter].PartsName);
                 writer.WriteLine("position= " + Parts[ControlCounter].PartsPosition.x + "," + Parts[ControlCounter].PartsPosition.y + "," + Parts[ControlCounter].PartsPosition.z);
                 writer.WriteLine("rotation= " + Parts[ControlCounter].PartsRotation.x + "," + Parts[ControlCounter].PartsRotation.y + "," + Parts[ControlCounter].PartsRotation.z);
-                writer.WriteLine("scale= " + Parts[ControlCounter].PartsScale);     //duplcation with the below, need to check what overwrites what.
-                writer.WriteLine("proscale= " + Parts[ControlCounter].PartsProScale.x + "," + Parts[ControlCounter].PartsProScale.y + "," + Parts[ControlCounter].PartsProScale.z);
+                //Need to perfom scale vs proscale check here
+                if (Parts[ControlCounter].PartsUseProScale)
+                {
+                    writer.WriteLine("proscale= " + Parts[ControlCounter].PartsProScale.x + "," + Parts[ControlCounter].PartsProScale.y + "," + Parts[ControlCounter].PartsProScale.z);
+                }
+                else
+                {
+                    writer.WriteLine("scale= " + Parts[ControlCounter].PartsScale);
+                }
+
                 writer.WriteLine();     //Blank line seperator
                 LocalCounter++;
                 ControlCounter++;
@@ -770,6 +781,11 @@ namespace CMS2015ModManager
                         case "type":
                             EngineType = line;
                             break;
+                            /*
+                        case "sound":
+                            EngineSound = line;
+                            break;
+                            */
                         case "pm":
                             float.TryParse(line, out EnginePM);   //convert the strings to numbers
                             break;
@@ -1005,6 +1021,7 @@ namespace CMS2015ModManager
             LocalPD.PartsProScale.x = 0;
             LocalPD.PartsProScale.y = 0;
             LocalPD.PartsProScale.z = 0;
+            LocalPD.PartsUseProScale = false;
 
             //the i passed in is the line counter, is currently sat on the "[Main]" line
             i++;    //Move it along to the next line, so the while loop condition check doesn't end immediately
@@ -1047,6 +1064,8 @@ namespace CMS2015ModManager
                             float.TryParse(words[0], out LocalPD.PartsProScale.x);
                             float.TryParse(words[1], out LocalPD.PartsProScale.y);
                             float.TryParse(words[2], out LocalPD.PartsProScale.z);
+                            //We have a proscale line so we need to set the proscale bool
+                            LocalPD.PartsUseProScale = true;
                             break;
                         default:
                             //Nothing here
@@ -1343,6 +1362,7 @@ namespace CMS2015ModManager
             EngineRotation.z = 0.0f;
             EngineScale = 0.0f;
             EngineType = "";
+            //EngineSound = "";
             EnginePM = 0.0f;
             //Empty out the list of engine swap options
             RemoveAllSwapOptions();
@@ -1422,7 +1442,7 @@ namespace CMS2015ModManager
         #region [Parts]
         //This is a bit different, as it takes a whole part item and adds it at once
         //as we use an internal <List> of structs, due to the having a possible 0 to 10 of them
-        public void PartsAdder(string name, float posX, float posY, float posZ, float rotX, float rotY, float rotZ, float scale, float proscaleX, float proscaleY, float proscaleZ)
+        public void PartsAdder(string name, float posX, float posY, float posZ, float rotX, float rotY, float rotZ, float scale, float proscaleX, float proscaleY, float proscaleZ, bool useproscale)
         {
             //Local data struct to fill out and add to overall data collection
             PartsType LocalParts;
@@ -1439,13 +1459,14 @@ namespace CMS2015ModManager
             LocalParts.PartsProScale.x = proscaleX;
             LocalParts.PartsProScale.y = proscaleY;
             LocalParts.PartsProScale.z = proscaleZ;
+            LocalParts.PartsUseProScale = useproscale;
 
             //We have all the data, so add the local to the collection list
             Parts.Add(LocalParts);
         }
 
         //Overwrite a certain part of the list
-        public void PartsSetter(int index, string name, float posX, float posY, float posZ, float rotX, float rotY, float rotZ, float scale, float proscaleX, float proscaleY, float proscaleZ)
+        public void PartsSetter(int index, string name, float posX, float posY, float posZ, float rotX, float rotY, float rotZ, float scale, float proscaleX, float proscaleY, float proscaleZ, bool useproscale)
         {
             //Local data struct to fill out and add to overall data collection
             PartsType LocalParts;
@@ -1462,6 +1483,7 @@ namespace CMS2015ModManager
             LocalParts.PartsProScale.x = proscaleX;
             LocalParts.PartsProScale.y = proscaleY;
             LocalParts.PartsProScale.z = proscaleZ;
+            LocalParts.PartsUseProScale = useproscale;
 
             //We have all the data, so add the local to the collection list
             Parts[index] = LocalParts;
@@ -1538,6 +1560,11 @@ namespace CMS2015ModManager
         public float GetPartProScaleZ(int index)
         {
             return Parts[index].PartsProScale.z;
+        }
+
+        public bool GetPartUseProScale(int index)
+        {
+            return Parts[index].PartsUseProScale;
         }
         #endregion
 
@@ -1958,7 +1985,13 @@ namespace CMS2015ModManager
             get { return EngineType; }
             set { EngineType = value; }
         }
-
+        /*
+        public string _EngineSound
+        {
+            get { return EngineSound; }
+            set { EngineSound = value; }
+        }
+        */
         public float _EnginePM
         {
             get { return EnginePM; }

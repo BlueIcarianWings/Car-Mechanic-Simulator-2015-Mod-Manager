@@ -13,7 +13,7 @@ namespace CMS2015ModManager
 {
     public partial class Form1 : Form
     {
-        private string ModManVersion = "0.9.4.2";       //Version constant for ModManager
+        private string ModManVersion = "0.9.4.3";       //Version constant for ModManager
         private string GameVersion = "1.1.6.0";         //Version constant for the game
 
         //Class object for class that does the acutal mod managing stuff    //here so it's scope is within the form object  //should move the config stuff out at somepoint
@@ -2274,6 +2274,39 @@ namespace CMS2015ModManager
             CDPProXnumericUpDown.Value = (Decimal)CarDataObject.GetPartProScaleX(index);
             CDPProYnumericUpDown.Value = (Decimal)CarDataObject.GetPartProScaleY(index);
             CDPProZnumericUpDown.Value = (Decimal)CarDataObject.GetPartProScaleZ(index);
+            CDPProscalecheckBox.Checked = CarDataObject.GetPartUseProScale(index);
+
+            //Enabled and disable the scale and proscale sections of the gui as needed
+            if (CarDataObject.GetPartUseProScale(index))
+            {
+                //Using ProScale
+
+                CDPScalelabel.Enabled = false;
+                CDPScalenumericUpDown.Enabled = false;
+
+                CDPProlabel.Enabled = true;
+                CDPProXlabel.Enabled = true;
+                CDPProXnumericUpDown.Enabled = true;
+                CDPProYlabel.Enabled = true;
+                CDPProYnumericUpDown.Enabled = true;
+                CDPProZlabel.Enabled = true;
+                CDPProZnumericUpDown.Enabled = true;
+            }
+            else
+            {
+                //Using Scale
+
+                CDPScalelabel.Enabled = true;
+                CDPScalenumericUpDown.Enabled = true;
+
+                CDPProlabel.Enabled = false;
+                CDPProXlabel.Enabled = false;
+                CDPProXnumericUpDown.Enabled = false;
+                CDPProYlabel.Enabled = false;
+                CDPProYnumericUpDown.Enabled = false;
+                CDPProZlabel.Enabled = false;
+                CDPProZnumericUpDown.Enabled = false;
+            }
         }
 
         //Update the [Parts] GUI for the selected index
@@ -2283,12 +2316,12 @@ namespace CMS2015ModManager
             if (NewPartToStore == true)
             {
                 //Store the new item into a new entry in the list
-                CarDataObject.PartsAdder(CDPNametextBox.Text, (float)CDPPosXnumericUpDown.Value, (float)CDPPosYnumericUpDown.Value, (float)CDPPosZnumericUpDown.Value, (float)CDPRotXnumericUpDown.Value, (float)CDPRotYnumericUpDown.Value, (float)CDPRotZnumericUpDown.Value, (float)CDPScalenumericUpDown.Value, (float)CDPProXnumericUpDown.Value, (float)CDPProYnumericUpDown.Value, (float)CDPProZnumericUpDown.Value);
+                CarDataObject.PartsAdder(CDPNametextBox.Text, (float)CDPPosXnumericUpDown.Value, (float)CDPPosYnumericUpDown.Value, (float)CDPPosZnumericUpDown.Value, (float)CDPRotXnumericUpDown.Value, (float)CDPRotYnumericUpDown.Value, (float)CDPRotZnumericUpDown.Value, (float)CDPScalenumericUpDown.Value, (float)CDPProXnumericUpDown.Value, (float)CDPProYnumericUpDown.Value, (float)CDPProZnumericUpDown.Value, CDPProscalecheckBox.Checked);
             }
             else if(PartsSelectedIndex != -1)   //If this is the first time here (we have loaded a new car data file) do not do anything
             {
                 //Else update the selected one
-                CarDataObject.PartsSetter(PartsSelectedIndex, CDPNametextBox.Text, (float)CDPPosXnumericUpDown.Value, (float)CDPPosYnumericUpDown.Value, (float)CDPPosZnumericUpDown.Value, (float)CDPRotXnumericUpDown.Value, (float)CDPRotYnumericUpDown.Value, (float)CDPRotZnumericUpDown.Value, (float)CDPScalenumericUpDown.Value, (float)CDPProXnumericUpDown.Value, (float)CDPProYnumericUpDown.Value, (float)CDPProZnumericUpDown.Value);
+                CarDataObject.PartsSetter(PartsSelectedIndex, CDPNametextBox.Text, (float)CDPPosXnumericUpDown.Value, (float)CDPPosYnumericUpDown.Value, (float)CDPPosZnumericUpDown.Value, (float)CDPRotXnumericUpDown.Value, (float)CDPRotYnumericUpDown.Value, (float)CDPRotZnumericUpDown.Value, (float)CDPScalenumericUpDown.Value, (float)CDPProXnumericUpDown.Value, (float)CDPProYnumericUpDown.Value, (float)CDPProZnumericUpDown.Value, CDPProscalecheckBox.Checked);
             }
 
             NewPartToStore = false;                                 //Reset the tracking flag
@@ -2853,7 +2886,21 @@ namespace CMS2015ModManager
                     CarDataObject._LogicPanelsConditionsB = (float)CDLPanConBnumericUpDown.Value;
 
                     //[Parts]
-                    //This ends up being handled by the logic that handles the CDPcomboBox logic
+                    //This ends up being mostly handled by the logic that handles the CDPcomboBox logic, as it saves to CarDataObject when it changes
+                    //but it won't save until there is a change so we need to save the current
+                    if (PartsSelectedIndex != -1)
+                    {
+                        CarDataObject.PartsSetter(CDPcomboBox.SelectedIndex, CDPNametextBox.Text, (float)CDPPosXnumericUpDown.Value, (float)CDPPosYnumericUpDown.Value, (float)CDPPosZnumericUpDown.Value, (float)CDPRotXnumericUpDown.Value, (float)CDPRotYnumericUpDown.Value, (float)CDPRotZnumericUpDown.Value, (float)CDPScalenumericUpDown.Value, (float)CDPProXnumericUpDown.Value, (float)CDPProYnumericUpDown.Value, (float)CDPProZnumericUpDown.Value, CDPProscalecheckBox.Checked);
+                    }
+
+                    //[AddOnLoad]
+                    //This ends up being mostly handled by the logic that handles the CDAcomboBox logic, as it saves to CarDataObject when it changes
+                    //but it won't save until there is a change so we need to save the current
+                    if (AddOnLoadSelectedIndex != -1)
+                    {
+                        CarDataObject.AddOnLoadSetter(CDAcomboBox.SelectedIndex, CDANametextBox.Text, (float)CDAPosXnumericUpDown.Value, (float)CDAPosYnumericUpDown.Value, (float)CDAPosZnumericUpDown.Value, (float)CDARotXnumericUpDown.Value, (float)CDARotYnumericUpDown.Value, (float)CDARotZnumericUpDown.Value, (float)CDAProXnumericUpDown.Value, (float)CDAProYnumericUpDown.Value, (float)CDAProZnumericUpDown.Value);
+                    }
+
 
                     //Finally commit to file, using the name from the combo box
                     CarDataObject.WriteCarDataToFile(ModMan.GetCarsDataDir() + "\\" + AvailableCarsDataComboBox.Text);
@@ -3054,6 +3101,42 @@ namespace CMS2015ModManager
                     CarDataObject.SwapOptionsSetter(clbox.CheckedItems[index].ToString());
                     index++;    //inc counter
                 }
+            }
+        }
+
+        //Handles a call to the Use ProScale checkbox
+        private void CDPProscalecheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            //Enabled and disable the scale and proscale sections of the gui as needed
+            if (CDPProscalecheckBox.Checked)
+            {
+                //Using ProScale
+
+                CDPScalelabel.Enabled = false;
+                CDPScalenumericUpDown.Enabled = false;
+
+                CDPProlabel.Enabled = true;
+                CDPProXlabel.Enabled = true;
+                CDPProXnumericUpDown.Enabled = true;
+                CDPProYlabel.Enabled = true;
+                CDPProYnumericUpDown.Enabled = true;
+                CDPProZlabel.Enabled = true;
+                CDPProZnumericUpDown.Enabled = true;
+            }
+            else
+            {
+                //Using Scale
+
+                CDPScalelabel.Enabled = true;
+                CDPScalenumericUpDown.Enabled = true;
+
+                CDPProlabel.Enabled = false;
+                CDPProXlabel.Enabled = false;
+                CDPProXnumericUpDown.Enabled = false;
+                CDPProYlabel.Enabled = false;
+                CDPProYnumericUpDown.Enabled = false;
+                CDPProZlabel.Enabled = false;
+                CDPProZnumericUpDown.Enabled = false;
             }
         }
         #endregion

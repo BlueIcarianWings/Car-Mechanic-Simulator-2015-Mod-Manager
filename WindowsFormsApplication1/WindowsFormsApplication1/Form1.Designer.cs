@@ -483,6 +483,8 @@
             this.SGETGarageCustomtabPage = new System.Windows.Forms.TabPage();
             this.SGETGCSavebutton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.SGETGCParkingHcheckBox = new System.Windows.Forms.CheckBox();
+            this.SGETGCParkingGcheckBox = new System.Windows.Forms.CheckBox();
             this.SGETGCParkingFcheckBox = new System.Windows.Forms.CheckBox();
             this.SGETGCParkingEcheckBox = new System.Windows.Forms.CheckBox();
             this.SGETGCParkingDcheckBox = new System.Windows.Forms.CheckBox();
@@ -517,8 +519,7 @@
             this.SGETHelpWantedtabPage = new System.Windows.Forms.TabPage();
             this.SGETHelpWantedtextBox = new System.Windows.Forms.TextBox();
             this.SGETProfilelabel = new System.Windows.Forms.Label();
-            this.SGETGCParkingHcheckBox = new System.Windows.Forms.CheckBox();
-            this.SGETGCParkingGcheckBox = new System.Windows.Forms.CheckBox();
+            this.CDPProscalecheckBox = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.CarsListTabPage.SuspendLayout();
@@ -1486,6 +1487,7 @@
             // CDPartspanel
             // 
             this.CDPartspanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.CDPartspanel.Controls.Add(this.CDPProscalecheckBox);
             this.CDPartspanel.Controls.Add(this.CDPDeletebutton);
             this.CDPartspanel.Controls.Add(this.CDPNewbutton);
             this.CDPartspanel.Controls.Add(this.CDPcomboBox);
@@ -5747,6 +5749,28 @@
             this.panel1.Size = new System.Drawing.Size(265, 410);
             this.panel1.TabIndex = 3;
             // 
+            // SGETGCParkingHcheckBox
+            // 
+            this.SGETGCParkingHcheckBox.AutoSize = true;
+            this.SGETGCParkingHcheckBox.Location = new System.Drawing.Point(3, 388);
+            this.SGETGCParkingHcheckBox.Name = "SGETGCParkingHcheckBox";
+            this.SGETGCParkingHcheckBox.Size = new System.Drawing.Size(73, 17);
+            this.SGETGCParkingHcheckBox.TabIndex = 18;
+            this.SGETGCParkingHcheckBox.Text = "Parking H";
+            this.SGETGCParkingHcheckBox.UseVisualStyleBackColor = true;
+            this.SGETGCParkingHcheckBox.CheckedChanged += new System.EventHandler(this.SGETGCParkingHcheckBox_CheckedChanged);
+            // 
+            // SGETGCParkingGcheckBox
+            // 
+            this.SGETGCParkingGcheckBox.AutoSize = true;
+            this.SGETGCParkingGcheckBox.Location = new System.Drawing.Point(3, 365);
+            this.SGETGCParkingGcheckBox.Name = "SGETGCParkingGcheckBox";
+            this.SGETGCParkingGcheckBox.Size = new System.Drawing.Size(73, 17);
+            this.SGETGCParkingGcheckBox.TabIndex = 17;
+            this.SGETGCParkingGcheckBox.Text = "Parking G";
+            this.SGETGCParkingGcheckBox.UseVisualStyleBackColor = true;
+            this.SGETGCParkingGcheckBox.CheckedChanged += new System.EventHandler(this.SGETGCParkingGcheckBox_CheckedChanged);
+            // 
             // SGETGCParkingFcheckBox
             // 
             this.SGETGCParkingFcheckBox.AutoSize = true;
@@ -6105,27 +6129,16 @@
             this.SGETProfilelabel.TabIndex = 28;
             this.SGETProfilelabel.Text = "Currently Selected Profile";
             // 
-            // SGETGCParkingHcheckBox
+            // CDPProscalecheckBox
             // 
-            this.SGETGCParkingHcheckBox.AutoSize = true;
-            this.SGETGCParkingHcheckBox.Location = new System.Drawing.Point(3, 388);
-            this.SGETGCParkingHcheckBox.Name = "SGETGCParkingHcheckBox";
-            this.SGETGCParkingHcheckBox.Size = new System.Drawing.Size(73, 17);
-            this.SGETGCParkingHcheckBox.TabIndex = 18;
-            this.SGETGCParkingHcheckBox.Text = "Parking H";
-            this.SGETGCParkingHcheckBox.UseVisualStyleBackColor = true;
-            this.SGETGCParkingHcheckBox.CheckedChanged += new System.EventHandler(this.SGETGCParkingHcheckBox_CheckedChanged);
-            // 
-            // SGETGCParkingGcheckBox
-            // 
-            this.SGETGCParkingGcheckBox.AutoSize = true;
-            this.SGETGCParkingGcheckBox.Location = new System.Drawing.Point(3, 365);
-            this.SGETGCParkingGcheckBox.Name = "SGETGCParkingGcheckBox";
-            this.SGETGCParkingGcheckBox.Size = new System.Drawing.Size(73, 17);
-            this.SGETGCParkingGcheckBox.TabIndex = 17;
-            this.SGETGCParkingGcheckBox.Text = "Parking G";
-            this.SGETGCParkingGcheckBox.UseVisualStyleBackColor = true;
-            this.SGETGCParkingGcheckBox.CheckedChanged += new System.EventHandler(this.SGETGCParkingGcheckBox_CheckedChanged);
+            this.CDPProscalecheckBox.AutoSize = true;
+            this.CDPProscalecheckBox.Location = new System.Drawing.Point(7, 131);
+            this.CDPProscalecheckBox.Name = "CDPProscalecheckBox";
+            this.CDPProscalecheckBox.Size = new System.Drawing.Size(91, 17);
+            this.CDPProscalecheckBox.TabIndex = 84;
+            this.CDPProscalecheckBox.Text = "Use ProScale";
+            this.CDPProscalecheckBox.UseVisualStyleBackColor = true;
+            this.CDPProscalecheckBox.CheckedChanged += new System.EventHandler(this.CDPProscalecheckBox_CheckedChanged);
             // 
             // Form1
             // 
@@ -6813,6 +6826,7 @@
         private System.Windows.Forms.Label CDATitlelabel;
         private System.Windows.Forms.CheckBox SGETGCParkingHcheckBox;
         private System.Windows.Forms.CheckBox SGETGCParkingGcheckBox;
+        private System.Windows.Forms.CheckBox CDPProscalecheckBox;
     }
 }
 

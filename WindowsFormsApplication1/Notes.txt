@@ -8,6 +8,12 @@ http://steamcommunity.com/app/320300/discussions/1/368542844485671388/
 
 Release notes
 
+0.9.4.3
+20/July/2017
+Fixed a bug where the currently saved [Parts] and [AddOnLoad] changes might not save
+Changed how transvol and frontspringlength were saved (was saving zero vales as some default car files had zero values saved, but this caused all modifed save to have these), changed to consistant behaviour of zero values not being saved
+Updated the [Parts] GUI to allow between scale and proscale, file saved updated to match
+
 0.9.4.2
 11/July/2017
 Updates to memory locations used in garage save file for save game editor
