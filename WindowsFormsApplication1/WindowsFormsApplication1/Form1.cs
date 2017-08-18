@@ -13,7 +13,7 @@ namespace CMS2015ModManager
 {
     public partial class Form1 : Form
     {
-        private string ModManVersion = "0.9.4";       //Version constant for ModManager
+        private string ModManVersion = "0.9.4.1";       //Version constant for ModManager
         private string GameVersion = "1.1.1.2";         //Version constant for the game
 
         //Class object for class that does the acutal mod managing stuff    //here so it's scope is within the form object  //should move the config stuff out at somepoint
@@ -31,8 +31,10 @@ namespace CMS2015ModManager
         //Map Data objects
         List<MapData> MapDataList = new List<MapData>();
 
-        int PartsSelectedIndex = -1;         //Need this to track what the previous selected [Parts] index was when updating the [Parts] data list
-        int AddOnLoadSelectedIndex = -1;     //Need this to track what the previous selected [AddOnLoad] index was when updating the [AddOnLoad] data list
+        int PartsSelectedIndex = -1;        //Need this to track what the previous selected [Parts] index was when updating the [Parts] data list
+        bool NewPartToStore = false;        //Need this to track if a new item needs saving
+        int AddOnLoadSelectedIndex = -1;    //Need this to track what the previous selected [AddOnLoad] index was when updating the [AddOnLoad] data list
+        bool NewAddOnLoadToStore = false;   //Need this to track if a new item needs saving
 
         public Form1()
         {
@@ -2061,6 +2063,9 @@ namespace CMS2015ModManager
             CDLPanConBnumericUpDown.Value = 0;
 
             //[Parts] section
+            CDPcomboBox.Items.Clear();          //Clear out the combo box list
+            NewPartToStore = false;             //Reset the tracking flag
+            PartsSelectedIndex = -1;            //Reset the tracking number
             CDPNametextBox.Text = "";
             CDPPosXnumericUpDown.Value = 0;
             CDPPosYnumericUpDown.Value = 0;
@@ -2072,9 +2077,11 @@ namespace CMS2015ModManager
             CDPProXnumericUpDown.Value = 0;
             CDPProYnumericUpDown.Value = 0;
             CDPProZnumericUpDown.Value = 0;
-            CDPcomboBox.Items.Clear();          //Clear out the combo box list
 
             //[AddOnLoad] section
+            CDAcomboBox.Items.Clear();          //Clear out the combo box list
+            NewAddOnLoadToStore = false;        //Reset the tracking flag
+            AddOnLoadSelectedIndex = -1;        //Reset the tracking number
             CDANametextBox.Text = "";
             CDAPosXnumericUpDown.Value = 0;
             CDAPosYnumericUpDown.Value = 0;
@@ -2085,7 +2092,6 @@ namespace CMS2015ModManager
             CDAProXnumericUpDown.Value = 0;
             CDAProYnumericUpDown.Value = 0;
             CDAProZnumericUpDown.Value = 0;
-            CDAcomboBox.Items.Clear();          //Clear out the combo box list
         }
 
         //Fill out the GUI from the CarDataObject
@@ -2273,16 +2279,19 @@ namespace CMS2015ModManager
         //Update the [Parts] GUI for the selected index
         private void CDPcomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Need to save the old one
-            if (PartsSelectedIndex == CarDataObject.ReturnPartsSize())  //If the selected index is the same size (a new object)
-            {   //Then add a new object
+            //Do we need to store a new item in the list?
+            if (NewPartToStore == true)
+            {
+                //Store the new item into a new entry in the list
                 CarDataObject.PartsAdder(CDPNametextBox.Text, (float)CDPPosXnumericUpDown.Value, (float)CDPPosYnumericUpDown.Value, (float)CDPPosZnumericUpDown.Value, (float)CDPRotXnumericUpDown.Value, (float)CDPRotYnumericUpDown.Value, (float)CDPRotZnumericUpDown.Value, (float)CDPScalenumericUpDown.Value, (float)CDPProXnumericUpDown.Value, (float)CDPProYnumericUpDown.Value, (float)CDPProZnumericUpDown.Value);
             }
-            else if (PartsSelectedIndex > 0)     //Prevents us overwriting the first item in the list on initial setup
-            {   //Else update the selected one
+            else if(PartsSelectedIndex != -1)   //If this is the first time here (we have loaded a new car data file) do not do anything
+            {
+                //Else update the selected one
                 CarDataObject.PartsSetter(PartsSelectedIndex, CDPNametextBox.Text, (float)CDPPosXnumericUpDown.Value, (float)CDPPosYnumericUpDown.Value, (float)CDPPosZnumericUpDown.Value, (float)CDPRotXnumericUpDown.Value, (float)CDPRotYnumericUpDown.Value, (float)CDPRotZnumericUpDown.Value, (float)CDPScalenumericUpDown.Value, (float)CDPProXnumericUpDown.Value, (float)CDPProYnumericUpDown.Value, (float)CDPProZnumericUpDown.Value);
             }
 
+            NewPartToStore = false;                                 //Reset the tracking flag
             CDFillOutCarDataPartsGUI(CDPcomboBox.SelectedIndex);    //Fill out this GUI section to the selected index
             PartsSelectedIndex = CDPcomboBox.SelectedIndex;         //Update the index
         }
@@ -2291,6 +2300,7 @@ namespace CMS2015ModManager
         private void CDPNewbutton_Click(object sender, EventArgs e)
         {
             CDPcomboBox.Items.Add(CarDataObject.ReturnPartsSize());     //Add a new entry to the parts combo box, will not add a new item to the list
+            NewPartToStore = true;                                      //Toggle the flag to let us know there is new item to store
         }
 
         //Remove the current [Parts] item
@@ -2317,16 +2327,18 @@ namespace CMS2015ModManager
         //Update the [AddOnLoad] GUI for the selected index
         private void CDAcomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Need to save the old one
-            if (AddOnLoadSelectedIndex == CarDataObject.ReturnAddOnLoadSize())  //If the selected index is the same size (a new object)
-            {   //Then add a new object
+            if (NewAddOnLoadToStore == true)
+            {
+                //Store the new item into a new entry in the list
                 CarDataObject.AddOnLoadAdder(CDANametextBox.Text, (float)CDAPosXnumericUpDown.Value, (float)CDAPosYnumericUpDown.Value, (float)CDAPosZnumericUpDown.Value, (float)CDARotXnumericUpDown.Value, (float)CDARotYnumericUpDown.Value, (float)CDARotZnumericUpDown.Value, (float)CDAProXnumericUpDown.Value, (float)CDAProYnumericUpDown.Value, (float)CDAProZnumericUpDown.Value);
             }
-            else if(AddOnLoadSelectedIndex > 0)     //Prevents us overwriting the first item in the list on initial setup
-            {   //Else update the selected one
+            else if (AddOnLoadSelectedIndex != -1)   //If this is the first time here (we have loaded a new car data file) do not do anything
+            {
+                //Else update the selected one
                 CarDataObject.AddOnLoadSetter(AddOnLoadSelectedIndex, CDANametextBox.Text, (float)CDAPosXnumericUpDown.Value, (float)CDAPosYnumericUpDown.Value, (float)CDAPosZnumericUpDown.Value, (float)CDARotXnumericUpDown.Value, (float)CDARotYnumericUpDown.Value, (float)CDARotZnumericUpDown.Value, (float)CDAProXnumericUpDown.Value, (float)CDAProYnumericUpDown.Value, (float)CDAProZnumericUpDown.Value);
             }
 
+            NewAddOnLoadToStore = false;                                //Reset the tracking flag
             CDFillOutCarDataAddOnLoadGUI(CDAcomboBox.SelectedIndex);    //Fill out this GUI section to the selected index
             AddOnLoadSelectedIndex = CDAcomboBox.SelectedIndex;         //Update the index
         }
@@ -2335,6 +2347,7 @@ namespace CMS2015ModManager
         private void CDANewbutton_Click(object sender, EventArgs e)
         {
             CDAcomboBox.Items.Add(CarDataObject.ReturnAddOnLoadSize());     //Add a new entry to the parts combo box, will not add a new item to the list
+            NewAddOnLoadToStore = true;                                     //Toggle the flag to let us know there is new item to store
         }
 
         //Remove the current [AddOnLoad] item

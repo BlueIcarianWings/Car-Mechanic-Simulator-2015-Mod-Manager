@@ -8,6 +8,10 @@ http://steamcommunity.com/app/320300/discussions/1/368542844485671388/
 
 Release notes
 
+0.9.4.1
+05/March/2017
+Bugs fixes to GUI handling for [Parts] and [AddOnLoad]
+
 0.9.4
 04/March/2017
 Total Modifications DLC 1.1.1.2
