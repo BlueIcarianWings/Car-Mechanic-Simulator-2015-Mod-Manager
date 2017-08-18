@@ -13,7 +13,7 @@ namespace CMS2015ModManager
 {
     public partial class Form1 : Form
     {
-        private string ModManVersion = "0.9.1.4";       //Version constant for ModManager
+        private string ModManVersion = "0.9.1.5";       //Version constant for ModManager
         private string GameVersion = "1.0.8.3";     //Version constant for the game
 
         //Class object for class that does the acutal mod managing stuff    //here so it's scope is within the form object  //should move the config stuff out at somepoint
@@ -1327,8 +1327,17 @@ namespace CMS2015ModManager
             CDWTirecomboBox.SelectedText = CarDataObject._WheelsTire;
             CDWRimtextBox.Text = CarDataObject._WheelsRim;
             CDWRimCaptextBox.Text = CarDataObject._WheelsRimcap;
+            CDWWheelWidthRearnumericUpDown.Value = (Decimal)CarDataObject._WheelsWheelWidthRear;
+            CDWTireSizeRearnumericUpDown.Value = (Decimal)CarDataObject._WheelsTireSizeRear;
+            CDWRimSizeRearnumericUpDown.Value = (Decimal)CarDataObject._WheelsRimSizeRear;
 
             //[Wheels_Rear] section
+            CDWRWheelWidthnumericUpDown.Value = (Decimal)CarDataObject._WheelsRearWheelWidth;
+            CDWRRimSizenumericUpDown.Value = (Decimal)CarDataObject._WheelsRearRimSize;
+            CDWRTireSizenumericUpDown.Value = (Decimal)CarDataObject._WheelsRearTireSize;
+            CDWRTirecomboBox.SelectedText = CarDataObject._WheelsRearTire;
+            CDWRRimtextBox.Text = CarDataObject._WheelsRearRim;
+            CDWRimCaptextBox.Text = CarDataObject._WheelsRearRimcap;
 
             //[Interior] section
             CDISLPosXnumericUpDown.Value = (Decimal)CarDataObject._InteriorSeatLeftPosX;
@@ -1554,6 +1563,18 @@ namespace CMS2015ModManager
             CDWTirecomboBox.SelectedText = "";
             CDWTirecomboBox.Text = "";
             CDWRimtextBox.Text = "";
+            CDWWheelWidthRearnumericUpDown.Value = 0;
+            CDWTireSizeRearnumericUpDown.Value = 0;
+            CDWRimSizeRearnumericUpDown.Value = 0;
+
+            //[Wheel_Rear] section
+            CDWRWheelWidthnumericUpDown.Value = 0;
+            CDWRRimSizenumericUpDown.Value = 0;
+            CDWRTireSizenumericUpDown.Value = 0;
+            CDWRTirecomboBox.SelectedText = "";
+            CDWRTirecomboBox.Text = "";
+            CDWRRimtextBox.Text = "";
+            CDWRimCaptextBox.Text = "";
 
             //[Interior] section
             CDISLPosXnumericUpDown.Value = 0;
@@ -1813,11 +1834,11 @@ namespace CMS2015ModManager
                 CarDataObject._OtherGears = (int)CDOGearsnumericUpDown.Value;
                 CarDataObject._OtherFinalDriveRatio = (float)CDOFinalDrivenumericUpDown.Value;
                 CarDataObject._OtherWeight = (int)CDOWeightnumericUpDown.Value;
-                CarDataObject._OtherRpmFactor = (int)CDORPMFactornumericUpDown.Value;
-                CarDataObject._OtherRpmAngle = (int)CDORPMAnglenumericUpDown.Value;
+                CarDataObject._OtherRpmFactor = (float)CDORPMFactornumericUpDown.Value;
+                CarDataObject._OtherRpmAngle = (float)CDORPMAnglenumericUpDown.Value;
                 CarDataObject._OtherSpeedoFactor = (float)CDOSpeedoFactornumericUpDown.Value;
                 CarDataObject._OtherSpeedoAngle = (float)CDOSpeedoAnglenumericUpDown.Value;
-                CarDataObject._OtherSuspTravel = (int)CDOSuspTRavelnumericUpDown.Value;
+                CarDataObject._OtherSuspTravel = (float)CDOSuspTRavelnumericUpDown.Value;
                 CarDataObject._OtherLifterArmsRise = (float)CDOLifterArmsRisenumericUpDown.Value;
                 CarDataObject._OtherLifterArmsAngle = (float)CDOLifterArmsAnglenumericUpDown.Value;
                 CarDataObject._OtherCX = (float)CDOCXNumericUpDown.Value;
@@ -1872,6 +1893,17 @@ namespace CMS2015ModManager
                 CarDataObject._WheelsTire = CDWTirecomboBox.Text;
                 CarDataObject._WheelsRim = CDWRimtextBox.Text;
                 CarDataObject._WheelsRimcap = CDWRimCaptextBox.Text;
+                CarDataObject._WheelsWheelWidthRear = (int)CDWWheelWidthRearnumericUpDown.Value;
+                CarDataObject._WheelsTireSizeRear = (int)CDWTireSizeRearnumericUpDown.Value;
+                CarDataObject._WheelsRimSizeRear = (int)CDWRimSizeRearnumericUpDown.Value;
+
+                //[Wheel_Rear] section
+                CarDataObject._WheelsRearWheelWidth = (int)CDWRWheelWidthnumericUpDown.Value;
+                CarDataObject._WheelsRearRimSize = (int)CDWRRimSizenumericUpDown.Value;
+                CarDataObject._WheelsRearTireSize = (int)CDWRTireSizenumericUpDown.Value;
+                CarDataObject._WheelsRearTire = CDWRTirecomboBox.Text;
+                CarDataObject._WheelsRearRim = CDWRRimtextBox.Text;
+                CarDataObject._WheelsRearRimcap = CDWRRimCaptextBox.Text;
 
                 //[Interior] section
                 CarDataObject._InteriorSeatLeftPosX = (float)CDISLPosXnumericUpDown.Value;
@@ -2094,5 +2126,6 @@ namespace CMS2015ModManager
         }
 
         #endregion
+
     }
 }

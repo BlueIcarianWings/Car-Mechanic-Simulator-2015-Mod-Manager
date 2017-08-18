@@ -59,7 +59,7 @@ namespace CMS2015ModManager
         private float OtherFinalDriveRatio;
         private int OtherWeight;
         private float OtherRpmFactor;
-        private int OtherRpmAngle;
+        private float OtherRpmAngle;
         private float OtherSpeedoFactor;
         private float OtherSpeedoAngle;
         private float OtherSuspTravel;
@@ -361,14 +361,17 @@ namespace CMS2015ModManager
             writer.WriteLine();     //Blank line seperator
 
             //[Wheels_Rear]
-            writer.WriteLine("[wheels_rear]");
-            if (WheelsRearWheelWidth != 0) { writer.WriteLine("wheelWidth= " + WheelsRearWheelWidth); }
-            if (WheelsRearTire != "")      { writer.WriteLine("tire= " + WheelsRearTire); }
-            if (WheelsRearRim != "")       { writer.WriteLine("rim= " + WheelsRearRim); }
-            if (WheelsRearRimcap != "")    { writer.WriteLine("rimCap= " + WheelsRearRimcap); }        //Mercedes 300SL specfic at the moment
-            if (WheelsRearRimSize != 0)    { writer.WriteLine("rimSize= " + WheelsRearRimSize); }
-            if (WheelsRearTireSize != 0)   { writer.WriteLine("tireSize= " + WheelsRearTireSize); }
-            writer.WriteLine();     //Blank line seperator
+            if (WheelsRearRim != "")
+            {
+                writer.WriteLine("[wheels_rear]");
+                if (WheelsRearWheelWidth != 0) { writer.WriteLine("wheelWidth= " + WheelsRearWheelWidth); }
+                if (WheelsRearTire != "") { writer.WriteLine("tire= " + WheelsRearTire); }
+                if (WheelsRearRim != "") { writer.WriteLine("rim= " + WheelsRearRim); }
+                if (WheelsRearRimcap != "") { writer.WriteLine("rimCap= " + WheelsRearRimcap); }        //Mercedes 300SL specfic at the moment
+                if (WheelsRearRimSize != 0) { writer.WriteLine("rimSize= " + WheelsRearRimSize); }
+                if (WheelsRearTireSize != 0) { writer.WriteLine("tireSize= " + WheelsRearTireSize); }
+                writer.WriteLine();     //Blank line seperator
+            }
 
             //[PartsType] //0 to 6 (index)
             //As a car may have 0 to 7 of these, I'm going to use a struct in a <List> internaly
@@ -528,7 +531,7 @@ namespace CMS2015ModManager
                             float.TryParse(line, out OtherRpmFactor);//convert the strings to numbers
                             break;
                         case "rpmAngle":
-                            int.TryParse(line, out OtherRpmAngle);   //convert the strings to numbers
+                            float.TryParse(line, out OtherRpmAngle);   //convert the strings to numbers
                             break;
                         case "speedoFactor":
                             float.TryParse(line, out OtherSpeedoFactor);   //convert the strings to numbers
@@ -1392,7 +1395,7 @@ namespace CMS2015ModManager
             set { OtherRpmFactor = value; }
         }
 
-        public int _OtherRpmAngle
+        public float _OtherRpmAngle
         {
             get { return OtherRpmAngle; }
             set { OtherRpmAngle = value; }
@@ -1742,6 +1745,62 @@ namespace CMS2015ModManager
         {
             get { return WheelsTireSize; }
             set { WheelsTireSize = value; }
+        }
+
+        public int _WheelsWheelWidthRear
+        {
+            get { return WheelsWheelWidthRear; }
+            set { WheelsWheelWidthRear = value; }
+        }
+
+        public int _WheelsTireSizeRear
+        {
+            get { return WheelsTireSizeRear; }
+            set { WheelsTireSizeRear = value; }
+        }
+
+        public int _WheelsRimSizeRear
+        {
+            get { return WheelsRimSizeRear; }
+            set { WheelsRimSizeRear = value; }
+        }
+        #endregion
+
+        #region [Wheels_Rear]
+        public int _WheelsRearWheelWidth
+        {
+            get { return WheelsRearWheelWidth; }
+            set { WheelsRearWheelWidth = value; }
+        }
+
+        public string _WheelsRearTire
+        {
+            get { return WheelsRearTire; }
+            set { WheelsRearTire = value; }
+        }
+
+        public string _WheelsRearRim
+        {
+            get { return WheelsRearRim; }
+            set { WheelsRearRim = value; }
+        }
+
+        public string _WheelsRearRimcap
+        {
+            get { return WheelsRearRimcap; }
+            set { WheelsRearRimcap = value; }
+        }
+
+        public int _WheelsRearRimSize
+        {
+            get { return WheelsRearRimSize; }
+            set { WheelsRearRimSize = value; }
+        }
+
+        public int _WheelsRearTireSize
+        {
+            get { return WheelsRearTireSize; }
+            set { WheelsRearTireSize = value; }
         }
         #endregion
 

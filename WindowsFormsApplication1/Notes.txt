@@ -7,6 +7,13 @@ http://steamcommunity.com/app/320300/discussions/1/368542844485671388/
 
 Release notes
 
+0.9.1.5
+09/Oct/2016
+Fixed float to int output error with RPM related values in [other] section
+Added GUI front end for new 'rear' values in [wheel] section
+Added GUI front end for new section [wheels_Rear]
+Changed Car Data tab to use tabs so that the layout is less crowded
+
 0.9.1.4
 30/Aug/2016
 Fixed crash bug on trying to load a save game file when none is selected
