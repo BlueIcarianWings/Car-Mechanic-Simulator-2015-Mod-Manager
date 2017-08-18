@@ -13,8 +13,8 @@ namespace CMS2015ModManager
 {
     public partial class Form1 : Form
     {
-        private string ModManVersion = "0.9.3.1";       //Version constant for ModManager
-        private string GameVersion = "1.1.0.3";         //Version constant for the game
+        private string ModManVersion = "0.9.4";       //Version constant for ModManager
+        private string GameVersion = "1.1.1.2";         //Version constant for the game
 
         //Class object for class that does the acutal mod managing stuff    //here so it's scope is within the form object  //should move the config stuff out at somepoint
         CMS2015MM ModMan;
@@ -30,6 +30,9 @@ namespace CMS2015ModManager
 
         //Map Data objects
         List<MapData> MapDataList = new List<MapData>();
+
+        int PartsSelectedIndex = -1;         //Need this to track what the previous selected [Parts] index was when updating the [Parts] data list
+        int AddOnLoadSelectedIndex = -1;     //Need this to track what the previous selected [AddOnLoad] index was when updating the [AddOnLoad] data list
 
         public Form1()
         {
@@ -1959,6 +1962,10 @@ namespace CMS2015ModManager
             CDOLifterArmsRisenumericUpDown.Value = 0;
             CDOCXNumericUpDown.Value = 0;
             CDORightHandDrivecheckBox.Checked = false;
+            CDOTransVolnumericUpDown.Value = 0;
+            CDODeleteOnLoadtextBox.Text = "";
+            CDOTuneOnLoadtextBox.Text = "";
+            CDOColorMattecheckBox.Checked = false;
 
             //[Suspension] section
             CDSFrontAxleStartnumericUpDown.Value = 0;
@@ -2007,6 +2014,7 @@ namespace CMS2015ModManager
             CDWTirecomboBox.SelectedText = "";
             CDWTirecomboBox.Text = "";
             CDWRimtextBox.Text = "";
+            CDWCambernumericUpDown.Value = 0;
             //Rear stuff in front wheel area
             //Maserati only, seems to crash game otherwise
             CDWWheelWidthRearnumericUpDown.Value = 0;
@@ -2025,6 +2033,7 @@ namespace CMS2015ModManager
             CDWRTirecomboBox.Text = "";
             CDWRRimtextBox.Text = "";
             CDWRimCaptextBox.Text = "";
+            CDWRCambernumericUpDown.Value = 0;
 
             //[Interior] section
             CDISLPosXnumericUpDown.Value = 0;
@@ -2052,97 +2061,31 @@ namespace CMS2015ModManager
             CDLPanConBnumericUpDown.Value = 0;
 
             //[Parts] section
-            //Hardcoded badness, should look into building this up programmatically at somepoint
-            //Parts0
-            CDP0NametextBox.Text = "";
-            CDP0PosXnumericUpDown.Value = 0;
-            CDP0PosYnumericUpDown.Value = 0;
-            CDP0PosZnumericUpDown.Value = 0;
-            CDP0RotXnumericUpDown.Value = 0;
-            CDP0RotYnumericUpDown.Value = 0;
-            CDP0RotZnumericUpDown.Value = 0;
-            CDP0ScalenumericUpDown.Value = 0;
-            //Parts1
-            CDP1NametextBox.Text = "";
-            CDP1PosXnumericUpDown.Value = 0;
-            CDP1PosYnumericUpDown.Value = 0;
-            CDP1PosZnumericUpDown.Value = 0;
-            CDP1RotXnumericUpDown.Value = 0;
-            CDP1RotYnumericUpDown.Value = 0;
-            CDP1RotZnumericUpDown.Value = 0;
-            CDP1ScalenumericUpDown.Value = 0;
-            //Parts2
-            CDP2NametextBox.Text = "";
-            CDP2PosXnumericUpDown.Value = 0;
-            CDP2PosYnumericUpDown.Value = 0;
-            CDP2PosZnumericUpDown.Value = 0;
-            CDP2RotXnumericUpDown.Value = 0;
-            CDP2RotYnumericUpDown.Value = 0;
-            CDP2RotZnumericUpDown.Value = 0;
-            CDP2ScalenumericUpDown.Value = 0;
-            //Parts3
-            CDP3NametextBox.Text = "";
-            CDP3PosXnumericUpDown.Value = 0;
-            CDP3PosYnumericUpDown.Value = 0;
-            CDP3PosZnumericUpDown.Value = 0;
-            CDP3RotXnumericUpDown.Value = 0;
-            CDP3RotYnumericUpDown.Value = 0;
-            CDP3RotZnumericUpDown.Value = 0;
-            CDP3ScalenumericUpDown.Value = 0;
-            //Parts4
-            CDP4NametextBox.Text = "";
-            CDP4PosXnumericUpDown.Value = 0;
-            CDP4PosYnumericUpDown.Value = 0;
-            CDP4PosZnumericUpDown.Value = 0;
-            CDP4RotXnumericUpDown.Value = 0;
-            CDP4RotYnumericUpDown.Value = 0;
-            CDP4RotZnumericUpDown.Value = 0;
-            CDP4ScalenumericUpDown.Value = 0;
-            //Parts5
-            CDP5NametextBox.Text = "";
-            CDP5PosXnumericUpDown.Value = 0;
-            CDP5PosYnumericUpDown.Value = 0;
-            CDP5PosZnumericUpDown.Value = 0;
-            CDP5RotXnumericUpDown.Value = 0;
-            CDP5RotYnumericUpDown.Value = 0;
-            CDP5RotZnumericUpDown.Value = 0;
-            CDP5ScalenumericUpDown.Value = 0;
-            //Parts6
-            CDP6NametextBox.Text = "";
-            CDP6PosXnumericUpDown.Value = 0;
-            CDP6PosYnumericUpDown.Value = 0;
-            CDP6PosZnumericUpDown.Value = 0;
-            CDP6RotXnumericUpDown.Value = 0;
-            CDP6RotYnumericUpDown.Value = 0;
-            CDP6RotZnumericUpDown.Value = 0;
-            CDP6ScalenumericUpDown.Value = 0;
-            //Parts7
-            CDP7NametextBox.Text = "";
-            CDP7PosXnumericUpDown.Value = 0;
-            CDP7PosYnumericUpDown.Value = 0;
-            CDP7PosZnumericUpDown.Value = 0;
-            CDP7RotXnumericUpDown.Value = 0;
-            CDP7RotYnumericUpDown.Value = 0;
-            CDP7RotZnumericUpDown.Value = 0;
-            CDP7ScalenumericUpDown.Value = 0;
-            //Parts8
-            CDP8NametextBox.Text = "";
-            CDP8PosXnumericUpDown.Value = 0;
-            CDP8PosYnumericUpDown.Value = 0;
-            CDP8PosZnumericUpDown.Value = 0;
-            CDP8RotXnumericUpDown.Value = 0;
-            CDP8RotYnumericUpDown.Value = 0;
-            CDP8RotZnumericUpDown.Value = 0;
-            CDP8ScalenumericUpDown.Value = 0;
-            //Parts9
-            CDP9NametextBox.Text = "";
-            CDP9PosXnumericUpDown.Value = 0;
-            CDP9PosYnumericUpDown.Value = 0;
-            CDP9PosZnumericUpDown.Value = 0;
-            CDP9RotXnumericUpDown.Value = 0;
-            CDP9RotYnumericUpDown.Value = 0;
-            CDP9RotZnumericUpDown.Value = 0;
-            CDP9ScalenumericUpDown.Value = 0;
+            CDPNametextBox.Text = "";
+            CDPPosXnumericUpDown.Value = 0;
+            CDPPosYnumericUpDown.Value = 0;
+            CDPPosZnumericUpDown.Value = 0;
+            CDPRotXnumericUpDown.Value = 0;
+            CDPRotYnumericUpDown.Value = 0;
+            CDPRotZnumericUpDown.Value = 0;
+            CDPScalenumericUpDown.Value = 0;
+            CDPProXnumericUpDown.Value = 0;
+            CDPProYnumericUpDown.Value = 0;
+            CDPProZnumericUpDown.Value = 0;
+            CDPcomboBox.Items.Clear();          //Clear out the combo box list
+
+            //[AddOnLoad] section
+            CDANametextBox.Text = "";
+            CDAPosXnumericUpDown.Value = 0;
+            CDAPosYnumericUpDown.Value = 0;
+            CDAPosZnumericUpDown.Value = 0;
+            CDARotXnumericUpDown.Value = 0;
+            CDARotYnumericUpDown.Value = 0;
+            CDARotZnumericUpDown.Value = 0;
+            CDAProXnumericUpDown.Value = 0;
+            CDAProYnumericUpDown.Value = 0;
+            CDAProZnumericUpDown.Value = 0;
+            CDAcomboBox.Items.Clear();          //Clear out the combo box list
         }
 
         //Fill out the GUI from the CarDataObject
@@ -2171,6 +2114,10 @@ namespace CMS2015ModManager
             CDOLifterArmsAnglenumericUpDown.Value = (Decimal)CarDataObject._OtherLifterArmsAngle;
             CDOCXNumericUpDown.Value = (Decimal)CarDataObject._OtherCX;
             CDORightHandDrivecheckBox.Checked = CarDataObject._OtherRightHandDrive;
+            CDOTransVolnumericUpDown.Value = (Decimal)CarDataObject._OtherTransVol;
+            CDODeleteOnLoadtextBox.Text = CarDataObject._OtherDeleteOnLoad;
+            CDOTuneOnLoadtextBox.Text = CarDataObject._OtherTuneOnLoad;
+            CDOColorMattecheckBox.Checked = CarDataObject._OtherColorMatte;
 
             //[Suspension] section
             CDSFrontAxleStartnumericUpDown.Value = (Decimal)CarDataObject._SuspensionFrontAxleStart;
@@ -2223,8 +2170,9 @@ namespace CMS2015ModManager
             CDWTirecomboBox.SelectedText = CarDataObject._WheelsTire;
             CDWRimtextBox.Text = CarDataObject._WheelsRim;
             CDWRimCaptextBox.Text = CarDataObject._WheelsRimcap;
-            //Re-enable the Maserati stuff
-            //AvailableCarsDataComboBox.Text
+            CDWCambernumericUpDown.Value = (Decimal)CarDataObject._WheelsCamber;
+
+            //Re-enable the Maserati stuff if needed
             if ((AvailableCarsDataComboBox.Text).Contains("Maserati"))
             {
                 CDWWheelWidthRearnumericUpDown.Enabled = true;
@@ -2242,6 +2190,7 @@ namespace CMS2015ModManager
             CDWRTirecomboBox.SelectedText = CarDataObject._WheelsRearTire;
             CDWRRimtextBox.Text = CarDataObject._WheelsRearRim;
             CDWRimCaptextBox.Text = CarDataObject._WheelsRearRimcap;
+            CDWRCambernumericUpDown.Value = (Decimal)CarDataObject._WheelsRearCamber;
 
             //[Interior] section
             CDISLPosXnumericUpDown.Value = (Decimal)CarDataObject._InteriorSeatLeftPosX;
@@ -2271,123 +2220,127 @@ namespace CMS2015ModManager
             CDLPanConBnumericUpDown.Value = (Decimal)CarDataObject._LogicPanelsConditionsB;
             CDLUniqueModnumericUpDown.Value = (Decimal)CarDataObject._LogicUniqueMod;
 
-            //Need to deal with the Parts info
-            int CDPListSize;
-            CDPListSize = CarDataObject.ReturnPartsSize();
+            //[Parts] section
+            //Populate parts panel combo
+            int CDPListSize = 0;
 
-            //Currently we can only handle 10 entries, so trim to that if it's greater
-            if (CDPListSize > 10)
+            if (CarDataObject.ReturnPartsSize() > 0)                    //If theres is more than one part
             {
-                CDPListSize = 10;
+                while (CDPListSize < CarDataObject.ReturnPartsSize())   //While counter is less than the total
+                {
+                    CDPcomboBox.Items.Add(CDPListSize);                 //Add to the list
+                    CDPListSize++;                                      //Increase the counter
+                }
+
+                CDPcomboBox.SelectedIndex = 0;  //Set the index
+                CDFillOutCarDataPartsGUI(CDPcomboBox.SelectedIndex);    //Fill out this GUI section to the selected index
             }
 
-            //Fill out the parts
-            switch (CDPListSize)    //This setup will grab the highest numbered one, then flow down
+            //[AddOnLoad] section
+            //Populate parts panel combo
+            int CDAListSize = 0;
+
+            if (CarDataObject.ReturnAddOnLoadSize() > 0)                    //If theres is more than one part
             {
-                case 10:
-                    CDP9NametextBox.Text = CarDataObject.GetPartsName(9);
-                    CDP9PosXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosX(9);
-                    CDP9PosYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosY(9);
-                    CDP9PosZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosZ(9);
-                    CDP9RotXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotX(9);
-                    CDP9RotYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotY(9);
-                    CDP9RotZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotZ(9);
-                    CDP9ScalenumericUpDown.Value = (Decimal)CarDataObject.GetPartScale(9);
-                    goto case 9;    //Switch statment fall through is not a thing in C#, so we have to use a 'goto' to force it
-                case 9:
-                    CDP8NametextBox.Text = CarDataObject.GetPartsName(8);
-                    CDP8PosXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosX(8);
-                    CDP8PosYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosY(8);
-                    CDP8PosZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosZ(8);
-                    CDP8RotXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotX(8);
-                    CDP8RotYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotY(8);
-                    CDP8RotZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotZ(8);
-                    CDP8ScalenumericUpDown.Value = (Decimal)CarDataObject.GetPartScale(8);
-                    goto case 8;    //Switch statment fall through is not a thing in C#, so we have to use a 'goto' to force it
-                case 8:
-                    CDP7NametextBox.Text = CarDataObject.GetPartsName(7);
-                    CDP7PosXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosX(7);
-                    CDP7PosYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosY(7);
-                    CDP7PosZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosZ(7);
-                    CDP7RotXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotX(7);
-                    CDP7RotYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotY(7);
-                    CDP7RotZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotZ(7);
-                    CDP7ScalenumericUpDown.Value = (Decimal)CarDataObject.GetPartScale(7);
-                    goto case 7;    //Switch statment fall through is not a thing in C#, so we have to use a 'goto' to force it
-                case 7:
-                    CDP6NametextBox.Text = CarDataObject.GetPartsName(6);
-                    CDP6PosXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosX(6);
-                    CDP6PosYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosY(6);
-                    CDP6PosZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosZ(6);
-                    CDP6RotXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotX(6);
-                    CDP6RotYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotY(6);
-                    CDP6RotZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotZ(6);
-                    CDP6ScalenumericUpDown.Value = (Decimal)CarDataObject.GetPartScale(6);
-                    goto case 6;    //Switch statment fall through is not a thing in C#, so we have to use a 'goto' to force it
-                case 6:
-                    CDP5NametextBox.Text = CarDataObject.GetPartsName(5);
-                    CDP5PosXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosX(5);
-                    CDP5PosYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosY(5);
-                    CDP5PosZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosZ(5);
-                    CDP5RotXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotX(5);
-                    CDP5RotYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotY(5);
-                    CDP5RotZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotZ(5);
-                    CDP5ScalenumericUpDown.Value = (Decimal)CarDataObject.GetPartScale(5);
-                    goto case 5;
-                case 5:
-                    CDP4NametextBox.Text = CarDataObject.GetPartsName(4);
-                    CDP4PosXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosX(4);
-                    CDP4PosYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosY(4);
-                    CDP4PosZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosZ(4);
-                    CDP4RotXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotX(4);
-                    CDP4RotYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotY(4);
-                    CDP4RotZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotZ(4);
-                    CDP4ScalenumericUpDown.Value = (Decimal)CarDataObject.GetPartScale(4);
-                    goto case 4;
-                case 4:
-                    CDP3NametextBox.Text = CarDataObject.GetPartsName(3);
-                    CDP3PosXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosX(3);
-                    CDP3PosYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosY(3);
-                    CDP3PosZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosZ(3);
-                    CDP3RotXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotX(3);
-                    CDP3RotYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotY(3);
-                    CDP3RotZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotZ(3);
-                    CDP3ScalenumericUpDown.Value = (Decimal)CarDataObject.GetPartScale(3);
-                    goto case 3;
-                case 3:
-                    CDP2NametextBox.Text = CarDataObject.GetPartsName(2);
-                    CDP2PosXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosX(2);
-                    CDP2PosYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosY(2);
-                    CDP2PosZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosZ(2);
-                    CDP2RotXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotX(2);
-                    CDP2RotYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotY(2);
-                    CDP2RotZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotZ(2);
-                    CDP2ScalenumericUpDown.Value = (Decimal)CarDataObject.GetPartScale(2);
-                    goto case 2;
-                case 2:
-                    CDP1NametextBox.Text = CarDataObject.GetPartsName(1);
-                    CDP1PosXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosX(1);
-                    CDP1PosYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosY(1);
-                    CDP1PosZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosZ(1);
-                    CDP1RotXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotX(1);
-                    CDP1RotYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotY(1);
-                    CDP1RotZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotZ(1);
-                    CDP1ScalenumericUpDown.Value = (Decimal)CarDataObject.GetPartScale(1);
-                    goto case 1;
-                case 1:
-                    CDP0NametextBox.Text = CarDataObject.GetPartsName(0);
-                    CDP0PosXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosX(0);
-                    CDP0PosYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosY(0);
-                    CDP0PosZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosZ(0);
-                    CDP0RotXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotX(0);
-                    CDP0RotYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotY(0);
-                    CDP0RotZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotZ(0);
-                    CDP0ScalenumericUpDown.Value = (Decimal)CarDataObject.GetPartScale(0);
-                    break;
-                default:
-                    //Nothing to do
-                    break;
+                while (CDAListSize < CarDataObject.ReturnAddOnLoadSize())   //While counter is less than the total
+                {
+                    CDAcomboBox.Items.Add(CDAListSize);                 //Add to the list
+                    CDAListSize++;                                      //Increase the counter
+                }
+
+                CDAcomboBox.SelectedIndex = 0;  //Set the index
+                CDFillOutCarDataAddOnLoadGUI(CDPcomboBox.SelectedIndex);    //Fill out this GUI section to the selected index
             }
+
+        }
+
+        //Fill out the [Parts] GUI section to the selected index
+        public void CDFillOutCarDataPartsGUI(int index)
+        {
+            CDPNametextBox.Text = CarDataObject.GetPartsName(index);
+            CDPPosXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosX(index);
+            CDPPosYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosY(index);
+            CDPPosZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsPosZ(index);
+            CDPRotXnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotX(index);
+            CDPRotYnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotY(index);
+            CDPRotZnumericUpDown.Value = (Decimal)CarDataObject.GetPartsRotZ(index);
+            CDPScalenumericUpDown.Value = (Decimal)CarDataObject.GetPartScale(index);
+            CDPProXnumericUpDown.Value = (Decimal)CarDataObject.GetPartProScaleX(index);
+            CDPProYnumericUpDown.Value = (Decimal)CarDataObject.GetPartProScaleY(index);
+            CDPProZnumericUpDown.Value = (Decimal)CarDataObject.GetPartProScaleZ(index);
+        }
+
+        //Update the [Parts] GUI for the selected index
+        private void CDPcomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Need to save the old one
+            if (PartsSelectedIndex == CarDataObject.ReturnPartsSize())  //If the selected index is the same size (a new object)
+            {   //Then add a new object
+                CarDataObject.PartsAdder(CDPNametextBox.Text, (float)CDPPosXnumericUpDown.Value, (float)CDPPosYnumericUpDown.Value, (float)CDPPosZnumericUpDown.Value, (float)CDPRotXnumericUpDown.Value, (float)CDPRotYnumericUpDown.Value, (float)CDPRotZnumericUpDown.Value, (float)CDPScalenumericUpDown.Value, (float)CDPProXnumericUpDown.Value, (float)CDPProYnumericUpDown.Value, (float)CDPProZnumericUpDown.Value);
+            }
+            else if (PartsSelectedIndex > 0)     //Prevents us overwriting the first item in the list on initial setup
+            {   //Else update the selected one
+                CarDataObject.PartsSetter(PartsSelectedIndex, CDPNametextBox.Text, (float)CDPPosXnumericUpDown.Value, (float)CDPPosYnumericUpDown.Value, (float)CDPPosZnumericUpDown.Value, (float)CDPRotXnumericUpDown.Value, (float)CDPRotYnumericUpDown.Value, (float)CDPRotZnumericUpDown.Value, (float)CDPScalenumericUpDown.Value, (float)CDPProXnumericUpDown.Value, (float)CDPProYnumericUpDown.Value, (float)CDPProZnumericUpDown.Value);
+            }
+
+            CDFillOutCarDataPartsGUI(CDPcomboBox.SelectedIndex);    //Fill out this GUI section to the selected index
+            PartsSelectedIndex = CDPcomboBox.SelectedIndex;         //Update the index
+        }
+
+        //Add a new [Parts] item
+        private void CDPNewbutton_Click(object sender, EventArgs e)
+        {
+            CDPcomboBox.Items.Add(CarDataObject.ReturnPartsSize());     //Add a new entry to the parts combo box, will not add a new item to the list
+        }
+
+        //Remove the current [Parts] item
+        private void CDPDeletebutton_Click(object sender, EventArgs e)
+        {
+            CarDataObject.RemovePartsItem(CDPcomboBox.SelectedIndex);   //Call the functionto remove the selected part
+        }
+
+        //Fill out the [AddOnLoad] GUI section to the selected index
+        public void CDFillOutCarDataAddOnLoadGUI(int index)
+        {
+            CDANametextBox.Text = CarDataObject.GetAddOnLoadName(index);
+            CDAPosXnumericUpDown.Value = (Decimal)CarDataObject.GetAddOnLoadPosX(index);
+            CDAPosYnumericUpDown.Value = (Decimal)CarDataObject.GetAddOnLoadPosY(index);
+            CDAPosZnumericUpDown.Value = (Decimal)CarDataObject.GetAddOnLoadPosZ(index);
+            CDARotXnumericUpDown.Value = (Decimal)CarDataObject.GetAddOnLoadRotX(index);
+            CDARotYnumericUpDown.Value = (Decimal)CarDataObject.GetAddOnLoadRotY(index);
+            CDARotZnumericUpDown.Value = (Decimal)CarDataObject.GetAddOnLoadRotZ(index);
+            CDAProXnumericUpDown.Value = (Decimal)CarDataObject.GetAddOnLoadProScaleX(index);
+            CDAProYnumericUpDown.Value = (Decimal)CarDataObject.GetAddOnLoadProScaleY(index);
+            CDAProZnumericUpDown.Value = (Decimal)CarDataObject.GetAddOnLoadProScaleZ(index);
+        }
+
+        //Update the [AddOnLoad] GUI for the selected index
+        private void CDAcomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Need to save the old one
+            if (AddOnLoadSelectedIndex == CarDataObject.ReturnAddOnLoadSize())  //If the selected index is the same size (a new object)
+            {   //Then add a new object
+                CarDataObject.AddOnLoadAdder(CDANametextBox.Text, (float)CDAPosXnumericUpDown.Value, (float)CDAPosYnumericUpDown.Value, (float)CDAPosZnumericUpDown.Value, (float)CDARotXnumericUpDown.Value, (float)CDARotYnumericUpDown.Value, (float)CDARotZnumericUpDown.Value, (float)CDAProXnumericUpDown.Value, (float)CDAProYnumericUpDown.Value, (float)CDAProZnumericUpDown.Value);
+            }
+            else if(AddOnLoadSelectedIndex > 0)     //Prevents us overwriting the first item in the list on initial setup
+            {   //Else update the selected one
+                CarDataObject.AddOnLoadSetter(AddOnLoadSelectedIndex, CDANametextBox.Text, (float)CDAPosXnumericUpDown.Value, (float)CDAPosYnumericUpDown.Value, (float)CDAPosZnumericUpDown.Value, (float)CDARotXnumericUpDown.Value, (float)CDARotYnumericUpDown.Value, (float)CDARotZnumericUpDown.Value, (float)CDAProXnumericUpDown.Value, (float)CDAProYnumericUpDown.Value, (float)CDAProZnumericUpDown.Value);
+            }
+
+            CDFillOutCarDataAddOnLoadGUI(CDAcomboBox.SelectedIndex);    //Fill out this GUI section to the selected index
+            AddOnLoadSelectedIndex = CDAcomboBox.SelectedIndex;         //Update the index
+        }
+
+        //Add a new [AddOnLoad] item
+        private void CDANewbutton_Click(object sender, EventArgs e)
+        {
+            CDAcomboBox.Items.Add(CarDataObject.ReturnAddOnLoadSize());     //Add a new entry to the parts combo box, will not add a new item to the list
+        }
+
+        //Remove the current [AddOnLoad] item
+        private void CDADeletebutton_Click(object sender, EventArgs e)
+        {
+            CarDataObject.RemoveAddOnLoadItem(CDAcomboBox.SelectedIndex);   //Call the functionto remove the selected part
         }
 
         //Restore all the default car data files to the active area
@@ -2788,6 +2741,10 @@ namespace CMS2015ModManager
                     CarDataObject._OtherLifterArmsAngle = (float)CDOLifterArmsAnglenumericUpDown.Value;
                     CarDataObject._OtherCX = (float)CDOCXNumericUpDown.Value;
                     CarDataObject._OtherRightHandDrive = CDORightHandDrivecheckBox.Checked;
+                    CarDataObject._OtherTransVol = (float)CDOTransVolnumericUpDown.Value;
+                    CarDataObject._OtherDeleteOnLoad = CDODeleteOnLoadtextBox.Text;
+                    CarDataObject._OtherTuneOnLoad = CDOTuneOnLoadtextBox.Text;
+                    CarDataObject._OtherColorMatte = CDOColorMattecheckBox.Checked;
 
                     //[Suspension] section
                     CarDataObject._SuspensionFrontAxleStart = (float)CDSFrontAxleStartnumericUpDown.Value;
@@ -2840,6 +2797,7 @@ namespace CMS2015ModManager
                     CarDataObject._WheelsTire = CDWTirecomboBox.Text;
                     CarDataObject._WheelsRim = CDWRimtextBox.Text;
                     CarDataObject._WheelsRimcap = CDWRimCaptextBox.Text;
+                    CarDataObject._WheelsCamber = (int)CDWCambernumericUpDown.Value;
                     CarDataObject._WheelsWheelWidthRear = (int)CDWWheelWidthRearnumericUpDown.Value;
                     CarDataObject._WheelsTireSizeRear = (int)CDWTireSizeRearnumericUpDown.Value;
                     CarDataObject._WheelsRimSizeRear = (int)CDWRimSizeRearnumericUpDown.Value;
@@ -2851,6 +2809,7 @@ namespace CMS2015ModManager
                     CarDataObject._WheelsRearTire = CDWRTirecomboBox.Text;
                     CarDataObject._WheelsRearRim = CDWRRimtextBox.Text;
                     CarDataObject._WheelsRearRimcap = CDWRRimCaptextBox.Text;
+                    CarDataObject._WheelsRearCamber = (int)CDWRCambernumericUpDown.Value;
 
                     //[Interior] section
                     CarDataObject._InteriorSeatLeftPosX = (float)CDISLPosXnumericUpDown.Value;
@@ -2880,50 +2839,8 @@ namespace CMS2015ModManager
                     CarDataObject._LogicPanelsConditionsA = (float)CDLPanConAnumericUpDown.Value;
                     CarDataObject._LogicPanelsConditionsB = (float)CDLPanConBnumericUpDown.Value;
 
-                    //Need to deal with the Parts info
-                    //It's a list so it's different, need to clear out the existing,
-                    // then pass in the data to add it to the list.
-                    CarDataObject.RemoveAllParts();
-                    if (CDP0NametextBox.Text != "")
-                    {
-                        CarDataObject.PartsSetter(CDP0NametextBox.Text, (float)CDP0PosXnumericUpDown.Value, (float)CDP0PosYnumericUpDown.Value, (float)CDP0PosZnumericUpDown.Value, (float)CDP0RotXnumericUpDown.Value, (float)CDP0RotYnumericUpDown.Value, (float)CDP0RotZnumericUpDown.Value, (float)CDP0ScalenumericUpDown.Value);
-                    }
-                    if (CDP1NametextBox.Text != "")
-                    {
-                        CarDataObject.PartsSetter(CDP1NametextBox.Text, (float)CDP1PosXnumericUpDown.Value, (float)CDP1PosYnumericUpDown.Value, (float)CDP1PosZnumericUpDown.Value, (float)CDP1RotXnumericUpDown.Value, (float)CDP1RotYnumericUpDown.Value, (float)CDP1RotZnumericUpDown.Value, (float)CDP1ScalenumericUpDown.Value);
-                    }
-                    if (CDP2NametextBox.Text != "")
-                    {
-                        CarDataObject.PartsSetter(CDP2NametextBox.Text, (float)CDP2PosXnumericUpDown.Value, (float)CDP2PosYnumericUpDown.Value, (float)CDP2PosZnumericUpDown.Value, (float)CDP2RotXnumericUpDown.Value, (float)CDP2RotYnumericUpDown.Value, (float)CDP2RotZnumericUpDown.Value, (float)CDP2ScalenumericUpDown.Value);
-                    }
-                    if (CDP3NametextBox.Text != "")
-                    {
-                        CarDataObject.PartsSetter(CDP3NametextBox.Text, (float)CDP3PosXnumericUpDown.Value, (float)CDP3PosYnumericUpDown.Value, (float)CDP3PosZnumericUpDown.Value, (float)CDP3RotXnumericUpDown.Value, (float)CDP3RotYnumericUpDown.Value, (float)CDP3RotZnumericUpDown.Value, (float)CDP3ScalenumericUpDown.Value);
-                    }
-                    if (CDP4NametextBox.Text != "")
-                    {
-                        CarDataObject.PartsSetter(CDP4NametextBox.Text, (float)CDP4PosXnumericUpDown.Value, (float)CDP4PosYnumericUpDown.Value, (float)CDP4PosZnumericUpDown.Value, (float)CDP4RotXnumericUpDown.Value, (float)CDP4RotYnumericUpDown.Value, (float)CDP4RotZnumericUpDown.Value, (float)CDP4ScalenumericUpDown.Value);
-                    }
-                    if (CDP5NametextBox.Text != "")
-                    {
-                        CarDataObject.PartsSetter(CDP5NametextBox.Text, (float)CDP5PosXnumericUpDown.Value, (float)CDP5PosYnumericUpDown.Value, (float)CDP5PosZnumericUpDown.Value, (float)CDP5RotXnumericUpDown.Value, (float)CDP5RotYnumericUpDown.Value, (float)CDP5RotZnumericUpDown.Value, (float)CDP5ScalenumericUpDown.Value);
-                    }
-                    if (CDP6NametextBox.Text != "")
-                    {
-                        CarDataObject.PartsSetter(CDP6NametextBox.Text, (float)CDP6PosXnumericUpDown.Value, (float)CDP6PosYnumericUpDown.Value, (float)CDP6PosZnumericUpDown.Value, (float)CDP6RotXnumericUpDown.Value, (float)CDP6RotYnumericUpDown.Value, (float)CDP6RotZnumericUpDown.Value, (float)CDP6ScalenumericUpDown.Value);
-                    }
-                    if (CDP7NametextBox.Text != "")
-                    {
-                        CarDataObject.PartsSetter(CDP7NametextBox.Text, (float)CDP7PosXnumericUpDown.Value, (float)CDP7PosYnumericUpDown.Value, (float)CDP7PosZnumericUpDown.Value, (float)CDP7RotXnumericUpDown.Value, (float)CDP7RotYnumericUpDown.Value, (float)CDP7RotZnumericUpDown.Value, (float)CDP7ScalenumericUpDown.Value);
-                    }
-                    if (CDP8NametextBox.Text != "")
-                    {
-                        CarDataObject.PartsSetter(CDP8NametextBox.Text, (float)CDP8PosXnumericUpDown.Value, (float)CDP8PosYnumericUpDown.Value, (float)CDP8PosZnumericUpDown.Value, (float)CDP8RotXnumericUpDown.Value, (float)CDP8RotYnumericUpDown.Value, (float)CDP8RotZnumericUpDown.Value, (float)CDP8ScalenumericUpDown.Value);
-                    }
-                    if (CDP9NametextBox.Text != "")
-                    {
-                        CarDataObject.PartsSetter(CDP9NametextBox.Text, (float)CDP9PosXnumericUpDown.Value, (float)CDP9PosYnumericUpDown.Value, (float)CDP9PosZnumericUpDown.Value, (float)CDP9RotXnumericUpDown.Value, (float)CDP9RotYnumericUpDown.Value, (float)CDP9RotZnumericUpDown.Value, (float)CDP9ScalenumericUpDown.Value);
-                    }
+                    //[Parts]
+                    //This ends up being handled by the logic that handles the CDPcomboBox logic
 
                     //Finally commit to file, using the name from the combo box
                     CarDataObject.WriteCarDataToFile(ModMan.GetCarsDataDir() + "\\" + AvailableCarsDataComboBox.Text);
@@ -3271,6 +3188,8 @@ namespace CMS2015ModManager
             SGETGCParkingDcheckBox.Checked = false;
             SGETGCParkingEcheckBox.Checked = false;
             SGETGCParkingFcheckBox.Checked = false;
+            SGETGCParkingGcheckBox.Checked = false;
+            SGETGCParkingHcheckBox.Checked = false;
         }
 
         //Load the global save file
@@ -3316,12 +3235,14 @@ namespace CMS2015ModManager
                     SGETGCParkingDcheckBox.Checked = LocalGrab._ParkingE;
                     SGETGCParkingEcheckBox.Checked = LocalGrab._ParkingD;
                     SGETGCParkingFcheckBox.Checked = LocalGrab._ParkingF;
+                    SGETGCParkingGcheckBox.Checked = LocalGrab._ParkingG;
+                    SGETGCParkingHcheckBox.Checked = LocalGrab._ParkingH;
                 }
             }
         }
 
         #region Garage Skill unlock checkboxes
-        //Commets apply to all functions
+        //Comments apply to all functions
         //Set all levels below on set
         //Unset all levels above on unset
         private void SGETGCRepairLv1checkBox_CheckedChanged(object sender, EventArgs e)
@@ -3406,7 +3327,7 @@ namespace CMS2015ModManager
         #endregion
 
         #region Garage Visual Customisation unlock checkboxes        
-        //Commets apply to all functions
+        //Comments apply to all functions
         //Set all levels below on set
         //Unset all levels above on unset
         private void SGETGCParkingABcheckBox_CheckedChanged(object sender, EventArgs e)
@@ -3422,6 +3343,8 @@ namespace CMS2015ModManager
                 SGETGCParkingDcheckBox.Checked = false;
                 SGETGCParkingEcheckBox.Checked = false;
                 SGETGCParkingFcheckBox.Checked = false;
+                SGETGCParkingGcheckBox.Checked = false;
+                SGETGCParkingHcheckBox.Checked = false;
             }
         }
 
@@ -3438,6 +3361,8 @@ namespace CMS2015ModManager
                 SGETGCParkingDcheckBox.Checked = false;
                 SGETGCParkingEcheckBox.Checked = false;
                 SGETGCParkingFcheckBox.Checked = false;
+                SGETGCParkingGcheckBox.Checked = false;
+                SGETGCParkingHcheckBox.Checked = false;
             }
         }
 
@@ -3454,6 +3379,8 @@ namespace CMS2015ModManager
                 //Unset all above
                 SGETGCParkingEcheckBox.Checked = false;
                 SGETGCParkingFcheckBox.Checked = false;
+                SGETGCParkingGcheckBox.Checked = false;
+                SGETGCParkingHcheckBox.Checked = false;
             }
         }
 
@@ -3470,6 +3397,8 @@ namespace CMS2015ModManager
             {
                 //Unset all above
                 SGETGCParkingFcheckBox.Checked = false;
+                SGETGCParkingGcheckBox.Checked = false;
+                SGETGCParkingHcheckBox.Checked = false;
             }
         }
 
@@ -3485,9 +3414,46 @@ namespace CMS2015ModManager
             }
             else
             {
-                //None above to set
+                SGETGCParkingGcheckBox.Checked = false;
+                SGETGCParkingHcheckBox.Checked = false;
             }
         }
+
+        private void SGETGCParkingGcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SGETGCParkingGcheckBox.Checked == true)
+            {
+                //Set all lower
+                SGETGCParkingABcheckBox.Checked = true;
+                SGETGCParkingCcheckBox.Checked = true;
+                SGETGCParkingDcheckBox.Checked = true;
+                SGETGCParkingEcheckBox.Checked = true;
+                SGETGCParkingFcheckBox.Checked = true;
+            }
+            else
+            {
+                SGETGCParkingHcheckBox.Checked = false;
+            }
+        }
+
+        private void SGETGCParkingHcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SGETGCParkingHcheckBox.Checked == true)
+            {
+                //Set all lower
+                SGETGCParkingABcheckBox.Checked = true;
+                SGETGCParkingCcheckBox.Checked = true;
+                SGETGCParkingDcheckBox.Checked = true;
+                SGETGCParkingEcheckBox.Checked = true;
+                SGETGCParkingFcheckBox.Checked = true;
+                SGETGCParkingGcheckBox.Checked = true;
+            }
+            else
+            {
+                //None
+            }
+        }
+
         #endregion
 
         //Save the garage customisation save file
@@ -3528,12 +3494,14 @@ namespace CMS2015ModManager
             LocalSave._ParkingE = SGETGCParkingDcheckBox.Checked;
             LocalSave._ParkingD = SGETGCParkingEcheckBox.Checked;
             LocalSave._ParkingF = SGETGCParkingFcheckBox.Checked;
-
+            LocalSave._ParkingG = SGETGCParkingGcheckBox.Checked;
+            LocalSave._ParkingH = SGETGCParkingHcheckBox.Checked;
 
             //Save the file
             LocalSave.WriteGarageSaveFile(ModMan.GetSavedGamesDir() + "\\" + SGETProfilecomboBox.Text);
         }
 
         #endregion
+
     }
 }

@@ -30,15 +30,29 @@ namespace CMS2015ModManager
             public float z;
         }
 
-        //[PartsType] //0 to 6 (index)
-        //As a car may have 0 to 7 of these, I'm going to use a struct in a <List> internaly
+        //[PartsType] //0 to 10 (index)
+        //As a car may have 0 to 10 of these, I'm going to use a struct in a <List> internaly
         //and have the class deal with all the processing. I'll have to use an 'all at one' setter
-        private struct PartsType //0 to 6
+        //Have made this public so that I can use it in the GUI (without a seperate re-def I'd need to maintain)
+        private struct PartsType //0 to 10
         {
             public string PartsName;
             public TripleFloatPoint PartsPosition;
             public TripleFloatPoint PartsRotation;
             public float PartsScale;
+            public TripleFloatPoint PartsProScale;
+        }
+
+        //[AddOnLoadType] //0 to 4 (index)
+        //As a car may have 0 to 4 of these, I'm going to use a struct in a <List> internaly
+        //and have the class deal with all the processing. I'll have to use an 'all at one' setter
+        //Have made this public so that I can use it in the GUI (without a seperate re-def I'd need to maintain)
+        private struct AddOnLoadType //0 to 4
+        {
+            public string AddOnLoadName;
+            public TripleFloatPoint AddOnLoadPosition;
+            public TripleFloatPoint AddOnLoadRotation;
+            public TripleFloatPoint AddOnLoadProScale;
         }
 
         private string ModManVersion;       //Hold the version string of this tool, shows which version a file was made with
@@ -68,6 +82,11 @@ namespace CMS2015ModManager
         private float OtherDoorAngle;           //Gull wing door
         private float OtherCX;
         private bool OtherRightHandDrive;       //Bentley T series
+        private float OtherTransVol;
+        private string OtherDeleteOnLoad;
+        private string OtherTuneOnLoad;
+        private bool OtherColorMatte;
+
 
         //[Suspension]
         private float SuspensionFrontAxleStart;
@@ -112,6 +131,7 @@ namespace CMS2015ModManager
         private string WheelsRimcap;		//Mercedes 300SL specfic at the moment
         private int WheelsRimSize;
         private int WheelsTireSize;
+        private int WheelsCamber;
         //Maserati specfic at the moment
         private int WheelsWheelWidthRear;
         private int WheelsRimSizeRear;
@@ -124,6 +144,7 @@ namespace CMS2015ModManager
         private string WheelsRearRimcap;		//Mercedes 300SL specfic at the moment
         private int WheelsRearRimSize;
         private int WheelsRearTireSize;
+        private int WheelsRearCamber;
 
         //[PartsType] //0 to 6 (index)
         //As a car may have 0 to 7 of these, I'm going to use a struct in a <List> internaly
@@ -131,6 +152,9 @@ namespace CMS2015ModManager
 
         //Declare the list of the Parts struct
         private List<PartsType> Parts;
+
+        //Declare the list of the AddOnLoad struct
+        private List<AddOnLoadType> AddOnLoad;
 
         //[Interior]
         private TripleFloatPoint InteriorSeatLeftPos;
@@ -156,7 +180,9 @@ namespace CMS2015ModManager
         {
             //Need to initialize(/create) the parts list here
             Parts = new List<PartsType>();
-            //Need to initialize(/create) the parts list here
+            //Need to initialize(/create) the addOnLoad list here
+            AddOnLoad = new List<AddOnLoadType>();
+            //Need to initialize(/create) the Engines list here
             EngineSwapOptions = new List<string>();
             //Call the clear all method to reset the lot;
             CarDataClearAll();
@@ -228,6 +254,15 @@ namespace CMS2015ModManager
                                 {
                                     CarDataPartsSectionProc(CDFlines, ref i);
                                 }
+
+                                //addOnLoad<num> here
+                                //As above
+                                //If the line starts with "addOnLoad" call the parts section processor
+                                //We will lose the number part of the label, but it doesn't matter, we will just use the list index
+                                if (line.StartsWith("addOnLoad"))
+                                {
+                                    CarDataAddOnLoadSectionProc(CDFlines, ref i);
+                                }
                                 break;
                         }
                     }
@@ -277,6 +312,12 @@ namespace CMS2015ModManager
             if (OtherDoorAngle != 0)        { writer.WriteLine("doorAngle= {0}", OtherDoorAngle); }          //Gull wing door
             if (OtherCX != 0)               { writer.WriteLine("cx= {0}", OtherCX); }
             if (OtherRightHandDrive == true) { writer.WriteLine("righthanddrive= {0}", OtherRightHandDrive); }
+            //if (OtherTransVol != 0)         { writer.WriteLine("transVol= {0}", OtherTransVol); }
+                                            writer.WriteLine("transVol= {0}", OtherTransVol);       //Files contain 0 values
+            if (OtherDeleteOnLoad != "")    { writer.WriteLine("deleteOnLoad= " + OtherDeleteOnLoad); }
+            if (OtherTuneOnLoad != "")      { writer.WriteLine("tuneOnLoad= " + OtherTuneOnLoad); }
+            if (OtherColorMatte != false)   { writer.WriteLine("colorMatte= " + OtherColorMatte); }
+
             writer.WriteLine();     //Blank line seperator
 
             //[Suspension]
@@ -355,6 +396,7 @@ namespace CMS2015ModManager
             if (WheelsRimcap != "")    { writer.WriteLine("rimCap= " + WheelsRimcap); }        //Mercedes 300SL specfic at the moment
             if (WheelsRimSize != 0)    { writer.WriteLine("rimSize= " + WheelsRimSize); }
             if (WheelsTireSize != 0)   { writer.WriteLine("tireSize= " + WheelsTireSize); }
+            if (WheelsCamber != 0) { writer.WriteLine("camber= " + WheelsCamber); }
             //Maserati specfic at the moment
             if (WheelsWheelWidthRear != 0) { writer.WriteLine("wheelWidthRear= " + WheelsWheelWidthRear); }
             if (WheelsRimSizeRear != 0)    { writer.WriteLine("rimSizeRear= " + WheelsRimSizeRear); }
@@ -371,11 +413,12 @@ namespace CMS2015ModManager
                 if (WheelsRearRimcap != "") { writer.WriteLine("rimCap= " + WheelsRearRimcap); }        //Mercedes 300SL specfic at the moment
                 if (WheelsRearRimSize != 0) { writer.WriteLine("rimSize= " + WheelsRearRimSize); }
                 if (WheelsRearTireSize != 0) { writer.WriteLine("tireSize= " + WheelsRearTireSize); }
+                if (WheelsRearCamber != 0) { writer.WriteLine("camber= " + WheelsRearCamber); }
                 writer.WriteLine();     //Blank line seperator
             }
 
-            //[PartsType] //0 to 6 (index)
-            //As a car may have 0 to 7 of these, I'm going to use a struct in a <List> internaly
+            //[PartsType] //0 to 10 (index)
+            //As a car may have 0 to 10 of these, I'm going to use a struct in a <List> internaly
             int LocalCounter = 0;       //Index to use in output labels
             int ControlCounter = 0;     //Index to use in working through stored data
             //in 1.0.7.7 RedDot Fixed a bug with the Maluch (car_Kaszlak) by starting it's [parts<number>] at 1 instead of 0
@@ -384,14 +427,30 @@ namespace CMS2015ModManager
             {
                 LocalCounter = 1;   //If the Maluch/Kaszlak special case set the different start position
             }
-
             while (ControlCounter < Parts.Count())
             {
                 writer.WriteLine("[parts" + LocalCounter + "]");
                 writer.WriteLine("name= " + Parts[ControlCounter].PartsName);
                 writer.WriteLine("position= " + Parts[ControlCounter].PartsPosition.x + "," + Parts[ControlCounter].PartsPosition.y + "," + Parts[ControlCounter].PartsPosition.z);
                 writer.WriteLine("rotation= " + Parts[ControlCounter].PartsRotation.x + "," + Parts[ControlCounter].PartsRotation.y + "," + Parts[ControlCounter].PartsRotation.z);
-                writer.WriteLine("scale= " + Parts[ControlCounter].PartsScale);
+                writer.WriteLine("scale= " + Parts[ControlCounter].PartsScale);     //duplcation with the below, need to check what overwrites what.
+                writer.WriteLine("proscale= " + Parts[ControlCounter].PartsProScale.x + "," + Parts[ControlCounter].PartsProScale.y + "," + Parts[ControlCounter].PartsProScale.z);
+                writer.WriteLine();     //Blank line seperator
+                LocalCounter++;
+                ControlCounter++;
+            }
+
+            //[AddOnLoadType] //0 to 4 (index)
+            //As a car may have 0 to 10 of these, I'm going to use a struct in a <List> internaly
+            LocalCounter = 0;       //Index to use in output labels
+            ControlCounter = 0;     //Index to use in working through stored data
+            while (ControlCounter < AddOnLoad.Count())
+            {
+                writer.WriteLine("[addOnLoad" + LocalCounter + "]");
+                writer.WriteLine("name= " + AddOnLoad[ControlCounter].AddOnLoadName);
+                writer.WriteLine("position= " + AddOnLoad[ControlCounter].AddOnLoadPosition.x + "," + AddOnLoad[ControlCounter].AddOnLoadPosition.y + "," + AddOnLoad[ControlCounter].AddOnLoadPosition.z);
+                writer.WriteLine("rotation= " + AddOnLoad[ControlCounter].AddOnLoadPosition.x + "," + AddOnLoad[ControlCounter].AddOnLoadPosition.y + "," + AddOnLoad[ControlCounter].AddOnLoadPosition.z);
+                writer.WriteLine("proscale= " + AddOnLoad[ControlCounter].AddOnLoadProScale.x + "," + AddOnLoad[ControlCounter].AddOnLoadProScale.y + "," + AddOnLoad[ControlCounter].AddOnLoadProScale.z);
                 writer.WriteLine();     //Blank line seperator
                 LocalCounter++;
                 ControlCounter++;
@@ -557,6 +616,18 @@ namespace CMS2015ModManager
                             break;
                         case "righthanddrive":
                             bool.TryParse(line, out OtherRightHandDrive);//convert the strings to a bool
+                            break;
+                        case "transVol":
+                            float.TryParse(line, out OtherTransVol);//convert the strings to numbers
+                            break;
+                        case "deleteOnLoad":
+                            OtherDeleteOnLoad = line;
+                            break;
+                        case "tuneOnLoad":
+                            OtherTuneOnLoad = line;
+                            break;
+                        case "colorMatte":
+                            bool.TryParse(line, out OtherColorMatte);//convert the strings to a bool
                             break;
                         default:
                             //Nothing here
@@ -837,6 +908,9 @@ namespace CMS2015ModManager
                         case "tireSizeRear":
                             int.TryParse(line, out WheelsTireSizeRear);   //convert the strings to numbers
                             break;
+                        case "camber":
+                            int.TryParse(line, out WheelsCamber);   //convert the strings to numbers
+                            break;
                         default:
                             //Nothing here
                             //Blank lines and comments should be eaten outside of this if
@@ -891,6 +965,9 @@ namespace CMS2015ModManager
                         case "tireSize":
                             int.TryParse(line, out WheelsRearTireSize);   //convert the strings to numbers
                             break;
+                        case "camber":
+                            int.TryParse(line, out WheelsRearCamber);   //convert the strings to numbers
+                            break;
                         default:
                             //Nothing here
                             //Blank lines and comments should be eaten outside of this if
@@ -925,6 +1002,9 @@ namespace CMS2015ModManager
             LocalPD.PartsRotation.y = 0;
             LocalPD.PartsRotation.z = 0;
             LocalPD.PartsScale = 0;
+            LocalPD.PartsProScale.x = 0;
+            LocalPD.PartsProScale.y = 0;
+            LocalPD.PartsProScale.z = 0;
 
             //the i passed in is the line counter, is currently sat on the "[Main]" line
             i++;    //Move it along to the next line, so the while loop condition check doesn't end immediately
@@ -961,6 +1041,13 @@ namespace CMS2015ModManager
                         case "scale":
                             float.TryParse(line, out LocalPD.PartsScale);   //convert the strings to numbers
                             break;
+                        case "proscale":
+                            words = line.Split(',');                                //Split the data out
+                                                                                    //convert the strings to numbers
+                            float.TryParse(words[0], out LocalPD.PartsProScale.x);
+                            float.TryParse(words[1], out LocalPD.PartsProScale.y);
+                            float.TryParse(words[2], out LocalPD.PartsProScale.z);
+                            break;
                         default:
                             //Nothing here
                             //Blank lines and comments should be eaten outside of this if
@@ -978,6 +1065,84 @@ namespace CMS2015ModManager
             }
             //We have all the data, so add the local to the collection list
             Parts.Add(LocalPD);
+            i--;    //Knock the counter back a line as the while loop that called us, will inc it and step over the section header we just found.
+        }
+
+        //Parse the [AddOnLoad<num>] part of the car data file
+        public void CarDataAddOnLoadSectionProc(string[] CDFlines, ref int i)
+        {
+            AddOnLoadType LocalAOL;          //Local to fill out before adding to the Parts List
+            string[] words;             //Local array used to split out values
+
+            //I have to init the parts, as the complier things it be will uninit later
+            //This clears out the old data, but only for the in-use part of the list
+            LocalAOL.AddOnLoadName = "N";
+            LocalAOL.AddOnLoadPosition.x = 0;
+            LocalAOL.AddOnLoadPosition.y = 0;
+            LocalAOL.AddOnLoadPosition.z = 0;
+            LocalAOL.AddOnLoadRotation.x = 0;
+            LocalAOL.AddOnLoadRotation.y = 0;
+            LocalAOL.AddOnLoadRotation.z = 0;
+            LocalAOL.AddOnLoadProScale.x = 0;
+            LocalAOL.AddOnLoadProScale.y = 0;
+            LocalAOL.AddOnLoadProScale.z = 0;
+
+            //the i passed in is the line counter, is currently sat on the "[Main]" line
+            i++;    //Move it along to the next line, so the while loop condition check doesn't end immediately
+
+            while ((i < CDFlines.Length) && (!(CDFlines[i].StartsWith("["))))   //Keep reading lines until another section header line is found or out of lines
+            {
+                //Check for blank lines and null lines (end of file(might be able to remove the null check, legacy from a stream reader style))
+                if ((CDFlines[i] != "") && (CDFlines[i] != null) && (!(CDFlines[i].StartsWith(";"))))    //if the line is empty or a comment skip over all this
+                {
+                    int j = CDFlines[i].IndexOf('=');              //Find the end of label string
+                    string label = CDFlines[i].Substring(0, j);    //Grabs the bit upto the '='
+                                                                   //Grab the bit after the '=' and remove the leading and trailing spaces
+                    string line = CDFlines[i].Substring(j + 1, CDFlines[i].Length - (j + 1)).Trim(' ');
+
+                    switch (label)  //Fill out the Main data
+                    {
+                        case "name":
+                            LocalAOL.AddOnLoadName = line;
+                            break;
+                        case "position":
+                            words = line.Split(',');                                //Split the data out
+                                                                                    //convert the strings to numbers
+                            float.TryParse(words[0], out LocalAOL.AddOnLoadPosition.x);
+                            float.TryParse(words[1], out LocalAOL.AddOnLoadPosition.y);
+                            float.TryParse(words[2], out LocalAOL.AddOnLoadPosition.z);
+                            break;
+                        case "rotation":
+                            words = line.Split(',');                                //Split the data out
+                                                                                    //convert the strings to numbers
+                            float.TryParse(words[0], out LocalAOL.AddOnLoadRotation.x);
+                            float.TryParse(words[1], out LocalAOL.AddOnLoadRotation.y);
+                            float.TryParse(words[2], out LocalAOL.AddOnLoadRotation.z);
+                            break;
+                        case "proscale":
+                            words = line.Split(',');                                //Split the data out
+                                                                                    //convert the strings to numbers
+                            float.TryParse(words[0], out LocalAOL.AddOnLoadProScale.x);
+                            float.TryParse(words[1], out LocalAOL.AddOnLoadProScale.y);
+                            float.TryParse(words[2], out LocalAOL.AddOnLoadProScale.z);
+                            break;
+                        default:
+                            //Nothing here
+                            //Blank lines and comments should be eaten outside of this if
+                            //malformed lines will end up here
+                            break;
+                    }
+                    i++;    //Move to next line
+                }
+                else
+                {
+                    //Blank line or comment(or null line, shouldn't be I'll see later if it needs a break)
+                    //Normal comment or Special case ;name either way we need to,...
+                    i++;    //Move to next line
+                }
+            }
+            //We have all the data, so add the local to the collection list
+            AddOnLoad.Add(LocalAOL);
             i--;    //Knock the counter back a line as the while loop that called us, will inc it and step over the section header we just found.
         }
 
@@ -1146,6 +1311,10 @@ namespace CMS2015ModManager
             OtherDoorAngle = 0.0f;           //Gull wing door
             OtherCX = 0.0f;
             OtherRightHandDrive = false;    //Bentley T Series
+            OtherTransVol = 0.0f;
+            OtherDeleteOnLoad = "";
+            OtherTuneOnLoad = "";
+            OtherColorMatte = false;
 
             //[Suspension]
             SuspensionFrontAxleStart = 0.0f;
@@ -1198,6 +1367,7 @@ namespace CMS2015ModManager
             WheelsRimcap = "";		//Mercedes 300SL specfic at the moment
             WheelsRimSize = 0;
             WheelsTireSize = 0;
+            WheelsCamber = 0;
             //Maserati specfic at the moment
             WheelsWheelWidthRear = 0;
             WheelsRimSizeRear = 0;
@@ -1210,9 +1380,13 @@ namespace CMS2015ModManager
             WheelsRearRimcap = "";		//Mercedes 300SL specfic at the moment
             WheelsRearRimSize = 0;
             WheelsRearTireSize = 0;
+            WheelsRearCamber = 0;
 
-            //[PartsType] //0 to 6 (index)
+            //[PartsType] //0 to 10 (index)
             RemoveAllParts();
+
+            //[AddOnLoadType] //0 to 4 (index)
+            RemoveAllAddOnLoad();
 
             //[Interior]
             InteriorSeatLeftPos.x = 0.0f;
@@ -1247,8 +1421,8 @@ namespace CMS2015ModManager
         #region Getters and Setters
         #region [Parts]
         //This is a bit different, as it takes a whole part item and adds it at once
-        //as we use an internal <List> of structs, due to the having a possible 0 to 7 of them
-        public void PartsSetter(string name, float posX, float posY, float posZ, float rotX, float rotY, float rotZ, float scale)
+        //as we use an internal <List> of structs, due to the having a possible 0 to 10 of them
+        public void PartsAdder(string name, float posX, float posY, float posZ, float rotX, float rotY, float rotZ, float scale, float proscaleX, float proscaleY, float proscaleZ)
         {
             //Local data struct to fill out and add to overall data collection
             PartsType LocalParts;
@@ -1262,12 +1436,38 @@ namespace CMS2015ModManager
             LocalParts.PartsRotation.y = rotY;
             LocalParts.PartsRotation.z = rotZ;
             LocalParts.PartsScale = scale;
+            LocalParts.PartsProScale.x = proscaleX;
+            LocalParts.PartsProScale.y = proscaleY;
+            LocalParts.PartsProScale.z = proscaleZ;
 
             //We have all the data, so add the local to the collection list
             Parts.Add(LocalParts);
         }
 
-        //Remove a part from the Parts List
+        //Overwrite a certain part of the list
+        public void PartsSetter(int index, string name, float posX, float posY, float posZ, float rotX, float rotY, float rotZ, float scale, float proscaleX, float proscaleY, float proscaleZ)
+        {
+            //Local data struct to fill out and add to overall data collection
+            PartsType LocalParts;
+
+            //Fill out the local
+            LocalParts.PartsName = name;
+            LocalParts.PartsPosition.x = posX;
+            LocalParts.PartsPosition.y = posY;
+            LocalParts.PartsPosition.z = posZ;
+            LocalParts.PartsRotation.x = rotX;
+            LocalParts.PartsRotation.y = rotY;
+            LocalParts.PartsRotation.z = rotZ;
+            LocalParts.PartsScale = scale;
+            LocalParts.PartsProScale.x = proscaleX;
+            LocalParts.PartsProScale.y = proscaleY;
+            LocalParts.PartsProScale.z = proscaleZ;
+
+            //We have all the data, so add the local to the collection list
+            Parts[index] = LocalParts;
+        }
+
+        //Remove a selected part from the Parts List
         public void RemovePartsItem(int index)
         {
             Parts.RemoveAt(index);
@@ -1323,6 +1523,137 @@ namespace CMS2015ModManager
         public float GetPartScale(int index)
         {
             return Parts[index].PartsScale;
+        }
+
+        public float GetPartProScaleX(int index)
+        {
+            return Parts[index].PartsProScale.x;
+        }
+
+        public float GetPartProScaleY(int index)
+        {
+            return Parts[index].PartsProScale.y;
+        }
+
+        public float GetPartProScaleZ(int index)
+        {
+            return Parts[index].PartsProScale.z;
+        }
+        #endregion
+
+        #region [AddOnLoad]
+        //This is a bit different, as it takes a whole part item and adds it at once
+        //as we use an internal <List> of structs, due to the having a possible 0 to 4 of them
+        public void AddOnLoadAdder(string name, float posX, float posY, float posZ, float rotX, float rotY, float rotZ, float scaleX, float scaleY, float scaleZ)
+        {
+            //Local data struct to fill out and add to overall data collection
+            AddOnLoadType LocalAddOnLoad;
+
+            //Fill out the local
+            LocalAddOnLoad.AddOnLoadName = name;
+            LocalAddOnLoad.AddOnLoadPosition.x = posX;
+            LocalAddOnLoad.AddOnLoadPosition.y = posY;
+            LocalAddOnLoad.AddOnLoadPosition.z = posZ;
+            LocalAddOnLoad.AddOnLoadRotation.x = rotX;
+            LocalAddOnLoad.AddOnLoadRotation.y = rotY;
+            LocalAddOnLoad.AddOnLoadRotation.z = rotZ;
+            LocalAddOnLoad.AddOnLoadProScale.x = scaleX;
+            LocalAddOnLoad.AddOnLoadProScale.y = scaleY;
+            LocalAddOnLoad.AddOnLoadProScale.z = scaleZ;
+
+            //We have all the data, so add the local to the collection list
+            AddOnLoad.Add(LocalAddOnLoad);
+        }
+
+        //This is a bit different, as it takes a whole part item and adds it at once
+        //as we use an internal <List> of structs, due to the having a possible 0 to 4 of them
+        public void AddOnLoadSetter(int index, string name, float posX, float posY, float posZ, float rotX, float rotY, float rotZ, float scaleX, float scaleY, float scaleZ)
+        {
+            //Local data struct to fill out and add to overall data collection
+            AddOnLoadType LocalAddOnLoad;
+
+            //Fill out the local
+            LocalAddOnLoad.AddOnLoadName = name;
+            LocalAddOnLoad.AddOnLoadPosition.x = posX;
+            LocalAddOnLoad.AddOnLoadPosition.y = posY;
+            LocalAddOnLoad.AddOnLoadPosition.z = posZ;
+            LocalAddOnLoad.AddOnLoadRotation.x = rotX;
+            LocalAddOnLoad.AddOnLoadRotation.y = rotY;
+            LocalAddOnLoad.AddOnLoadRotation.z = rotZ;
+            LocalAddOnLoad.AddOnLoadProScale.x = scaleX;
+            LocalAddOnLoad.AddOnLoadProScale.y = scaleY;
+            LocalAddOnLoad.AddOnLoadProScale.z = scaleZ;
+
+            //We have all the data, so add the local to the collection list
+            AddOnLoad[index] = LocalAddOnLoad;
+        }
+
+        //Remove a part from the Parts List
+        public void RemoveAddOnLoadItem(int index)
+        {
+            AddOnLoad.RemoveAt(index);
+        }
+
+        //Emptys out the whole list
+        public void RemoveAllAddOnLoad()
+        {
+            AddOnLoad.Clear();
+        }
+
+        //Get the size of the parts array
+        public int ReturnAddOnLoadSize()
+        {
+            return AddOnLoad.Count;
+        }
+
+        public string GetAddOnLoadName(int index)
+        {
+            return AddOnLoad[index].AddOnLoadName;
+        }
+
+        public float GetAddOnLoadPosX(int index)
+        {
+            return AddOnLoad[index].AddOnLoadPosition.x;
+        }
+
+        public float GetAddOnLoadPosY(int index)
+        {
+            return AddOnLoad[index].AddOnLoadPosition.y;
+        }
+
+        public float GetAddOnLoadPosZ(int index)
+        {
+            return AddOnLoad[index].AddOnLoadPosition.z;
+        }
+
+        public float GetAddOnLoadRotX(int index)
+        {
+            return AddOnLoad[index].AddOnLoadRotation.x;
+        }
+
+        public float GetAddOnLoadRotY(int index)
+        {
+            return AddOnLoad[index].AddOnLoadRotation.y;
+        }
+
+        public float GetAddOnLoadRotZ(int index)
+        {
+            return AddOnLoad[index].AddOnLoadRotation.z;
+        }
+
+        public float GetAddOnLoadProScaleX(int index)
+        {
+            return AddOnLoad[index].AddOnLoadProScale.x;
+        }
+
+        public float GetAddOnLoadProScaleY(int index)
+        {
+            return AddOnLoad[index].AddOnLoadProScale.y;
+        }
+
+        public float GetAddOnLoadProScaleZ(int index)
+        {
+            return AddOnLoad[index].AddOnLoadProScale.z;
         }
         #endregion
 
@@ -1454,7 +1785,31 @@ namespace CMS2015ModManager
             get { return OtherRightHandDrive; }
             set { OtherRightHandDrive = value; }
         }
-        
+
+        public float _OtherTransVol
+        {
+            get { return OtherTransVol; }
+            set { OtherTransVol = value; }
+        }
+
+        public string _OtherDeleteOnLoad
+        {
+            get { return OtherDeleteOnLoad; }
+            set { OtherDeleteOnLoad = value; }
+        }
+
+        public string _OtherTuneOnLoad
+        {
+            get { return OtherTuneOnLoad; }
+            set { OtherTuneOnLoad = value; }
+        }
+
+        public bool _OtherColorMatte
+        {
+            get { return OtherColorMatte; }
+            set { OtherColorMatte = value; }
+        }
+
         #endregion
 
         #region [Suspension]
@@ -1766,6 +2121,12 @@ namespace CMS2015ModManager
             set { WheelsTireSize = value; }
         }
 
+        public int _WheelsCamber
+        {
+            get { return WheelsCamber; }
+            set { WheelsCamber = value; }
+        }
+
         public int _WheelsWheelWidthRear
         {
             get { return WheelsWheelWidthRear; }
@@ -1820,6 +2181,12 @@ namespace CMS2015ModManager
         {
             get { return WheelsRearTireSize; }
             set { WheelsRearTireSize = value; }
+        }
+
+        public int _WheelsRearCamber
+        {
+            get { return WheelsRearCamber; }
+            set { WheelsRearCamber = value; }
         }
         #endregion
 

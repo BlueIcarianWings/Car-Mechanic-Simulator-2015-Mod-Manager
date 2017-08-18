@@ -39,6 +39,8 @@ namespace CMS2015ModManager
         private bool ParkingD;
         private bool ParkingE;
         private bool ParkingF;
+        private bool ParkingG;
+        private bool ParkingH;
         /*  TBD, need to go through each to find the location, and valid range
         //GarageCustom
         private int CustomFloorA;
@@ -77,6 +79,8 @@ namespace CMS2015ModManager
         private int ParkingD_MemLoc;
         private int ParkingE_MemLoc;
         private int ParkingF_MemLoc;
+        private int ParkingG_MemLoc;
+        private int ParkingH_MemLoc;
 
         /*
 //GarageCustom
@@ -119,6 +123,8 @@ private int CustomCarLifters_MemLoc;
             ParkingD = false;
             ParkingE = false;
             ParkingF = false;
+            ParkingG = false;
+            ParkingH = false;
 
             //Set the memory locations of the values
             //Garage file
@@ -149,6 +155,8 @@ private int CustomCarLifters_MemLoc;
             ParkingD_MemLoc = 134;//86
             ParkingE_MemLoc = 135;//87
             ParkingF_MemLoc = 136;//88
+            ParkingG_MemLoc = 137;//89
+            ParkingH_MemLoc = 138;//8a
         }
 
         //Loads a Save game Global data file into the object from the fullpath and filename given
@@ -242,6 +250,12 @@ private int CustomCarLifters_MemLoc;
 
                     b.BaseStream.Seek(ParkingF_MemLoc, 0);    //Move to location
                     ParkingF = b.ReadBoolean();                 //Read the value
+
+                    b.BaseStream.Seek(ParkingG_MemLoc, 0);    //Move to location
+                    ParkingG = b.ReadBoolean();                 //Read the value
+
+                    b.BaseStream.Seek(ParkingH_MemLoc, 0);    //Move to location
+                    ParkingH = b.ReadBoolean();                 //Read the value
                 }
             }
 
@@ -336,6 +350,12 @@ private int CustomCarLifters_MemLoc;
 
                     b.BaseStream.Seek(ParkingF_MemLoc, 0);   //Move to location
                     b.Write(ParkingF);                       //Write the value
+
+                    b.BaseStream.Seek(ParkingG_MemLoc, 0);   //Move to location
+                    b.Write(ParkingG);                       //Write the value
+
+                    b.BaseStream.Seek(ParkingH_MemLoc, 0);   //Move to location
+                    b.Write(ParkingH);                       //Write the value
                 }
             }
         }
@@ -501,6 +521,18 @@ private int CustomCarLifters_MemLoc;
         {
             get { return ParkingF; }
             set { ParkingF = value; }
+        }
+
+        public bool _ParkingG
+        {
+            get { return ParkingG; }
+            set { ParkingG = value; }
+        }
+
+        public bool _ParkingH
+        {
+            get { return ParkingH; }
+            set { ParkingH = value; }
         }
         #endregion
     }

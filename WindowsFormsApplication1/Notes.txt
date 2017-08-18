@@ -8,6 +8,17 @@ http://steamcommunity.com/app/320300/discussions/1/368542844485671388/
 
 Release notes
 
+0.9.4
+04/March/2017
+Total Modifications DLC 1.1.1.2
+Added new 'ProScale' seperate X/Y/Z axis scaling field to [Parts] section
+Added new section [AddOnLoad]
+Reworked GUI for [Parts] and [AddOnLoad] to use a drop down box and allow for unlimited amount of them
+Added the deleteOnLoad, tuneOnLoad and colorMatte fields to the [Other] section
+Added the camber field to [Wheels] and [Wheels_Rear]
+Added the new pictures for tires and engines
+Updated the save game editor for the two new parking areas (G and H)
+
 0.9.3.1
 15/Dec/2016
 Bentley DLC 1.1.0.3 release

@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarData.cs" />
+    <Compile Include="BinarySerialFileReader.cs" />
     <Compile Include="EngineData.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
