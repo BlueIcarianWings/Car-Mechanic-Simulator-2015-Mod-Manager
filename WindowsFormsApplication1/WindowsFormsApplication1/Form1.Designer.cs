@@ -331,6 +331,7 @@
             this.EDTRunningGeartabPage = new System.Windows.Forms.TabPage();
             this.CDWheels_Rearpanel = new System.Windows.Forms.Panel();
             this.CDWRTirecomboBox = new System.Windows.Forms.ComboBox();
+            this.CDWRRimCaptextBox = new System.Windows.Forms.TextBox();
             this.CDWRRimCaplabel = new System.Windows.Forms.Label();
             this.CDWRTireSizenumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CDWRTireSizelabel = new System.Windows.Forms.Label();
@@ -548,8 +549,8 @@
             this.SaveGameEditortabPage = new System.Windows.Forms.TabPage();
             this.SaveGameEditorTabtabControl = new System.Windows.Forms.TabControl();
             this.SGETGlobaltabPage = new System.Windows.Forms.TabPage();
-            this.SGETGProfilecomboBox = new System.Windows.Forms.ComboBox();
-            this.SGETGProfilelabel = new System.Windows.Forms.Label();
+            this.SGETProfilecomboBox = new System.Windows.Forms.ComboBox();
+            this.SGETProfilelabel = new System.Windows.Forms.Label();
             this.SGETGMoneynumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.SGETGMoneylabel = new System.Windows.Forms.Label();
             this.SGETGXPnumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -576,10 +577,9 @@
             this.SGETGPartsRepairedlabel = new System.Windows.Forms.Label();
             this.SGETGSavebutton = new System.Windows.Forms.Button();
             this.SGETGTitlelabel = new System.Windows.Forms.Label();
-            this.SGETGLoadbutton = new System.Windows.Forms.Button();
             this.SGETHelpWantedtabPage = new System.Windows.Forms.TabPage();
             this.SGETHelpWantedtextBox = new System.Windows.Forms.TextBox();
-            this.CDWRRimCaptextBox = new System.Windows.Forms.TextBox();
+            this.SGTProfilesFoundlabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.CarsListTabPage.SuspendLayout();
@@ -4463,6 +4463,13 @@
             this.CDWRTirecomboBox.Size = new System.Drawing.Size(117, 21);
             this.CDWRTirecomboBox.TabIndex = 21;
             // 
+            // CDWRRimCaptextBox
+            // 
+            this.CDWRRimCaptextBox.Location = new System.Drawing.Point(75, 146);
+            this.CDWRRimCaptextBox.Name = "CDWRRimCaptextBox";
+            this.CDWRRimCaptextBox.Size = new System.Drawing.Size(118, 20);
+            this.CDWRRimCaptextBox.TabIndex = 20;
+            // 
             // CDWRRimCaplabel
             // 
             this.CDWRRimCaplabel.AutoSize = true;
@@ -6758,7 +6765,10 @@
             // 
             // SaveGameEditortabPage
             // 
+            this.SaveGameEditortabPage.Controls.Add(this.SGTProfilesFoundlabel);
+            this.SaveGameEditortabPage.Controls.Add(this.SGETProfilecomboBox);
             this.SaveGameEditortabPage.Controls.Add(this.SaveGameEditorTabtabControl);
+            this.SaveGameEditortabPage.Controls.Add(this.SGETProfilelabel);
             this.SaveGameEditortabPage.Location = new System.Drawing.Point(4, 22);
             this.SaveGameEditortabPage.Name = "SaveGameEditortabPage";
             this.SaveGameEditortabPage.Size = new System.Drawing.Size(1042, 650);
@@ -6770,19 +6780,18 @@
             // 
             this.SaveGameEditorTabtabControl.Controls.Add(this.SGETGlobaltabPage);
             this.SaveGameEditorTabtabControl.Controls.Add(this.SGETHelpWantedtabPage);
-            this.SaveGameEditorTabtabControl.Location = new System.Drawing.Point(7, 7);
+            this.SaveGameEditorTabtabControl.Location = new System.Drawing.Point(137, 7);
             this.SaveGameEditorTabtabControl.Name = "SaveGameEditorTabtabControl";
             this.SaveGameEditorTabtabControl.SelectedIndex = 0;
-            this.SaveGameEditorTabtabControl.Size = new System.Drawing.Size(1031, 639);
+            this.SaveGameEditorTabtabControl.Size = new System.Drawing.Size(901, 639);
             this.SaveGameEditorTabtabControl.TabIndex = 2;
             // 
             // SGETGlobaltabPage
             // 
-            this.SGETGlobaltabPage.Controls.Add(this.SGETGProfilecomboBox);
-            this.SGETGlobaltabPage.Controls.Add(this.SGETGProfilelabel);
             this.SGETGlobaltabPage.Controls.Add(this.SGETGMoneynumericUpDown);
             this.SGETGlobaltabPage.Controls.Add(this.SGETGMoneylabel);
             this.SGETGlobaltabPage.Controls.Add(this.SGETGXPnumericUpDown);
+            this.SGETGlobaltabPage.Controls.Add(this.SGETGSavebutton);
             this.SGETGlobaltabPage.Controls.Add(this.SGETGXPlabel);
             this.SGETGlobaltabPage.Controls.Add(this.SGETBankLoannumericUpDown);
             this.SGETGlobaltabPage.Controls.Add(this.SGETBankLoanlabel);
@@ -6804,34 +6813,32 @@
             this.SGETGlobaltabPage.Controls.Add(this.SGETGMoneyIncomePartslabel);
             this.SGETGlobaltabPage.Controls.Add(this.SGETGPartsRepairednumericUpDown);
             this.SGETGlobaltabPage.Controls.Add(this.SGETGPartsRepairedlabel);
-            this.SGETGlobaltabPage.Controls.Add(this.SGETGSavebutton);
             this.SGETGlobaltabPage.Controls.Add(this.SGETGTitlelabel);
-            this.SGETGlobaltabPage.Controls.Add(this.SGETGLoadbutton);
             this.SGETGlobaltabPage.Location = new System.Drawing.Point(4, 22);
             this.SGETGlobaltabPage.Name = "SGETGlobaltabPage";
             this.SGETGlobaltabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.SGETGlobaltabPage.Size = new System.Drawing.Size(1023, 613);
+            this.SGETGlobaltabPage.Size = new System.Drawing.Size(893, 613);
             this.SGETGlobaltabPage.TabIndex = 0;
             this.SGETGlobaltabPage.Text = "Global";
             this.SGETGlobaltabPage.UseVisualStyleBackColor = true;
             // 
-            // SGETGProfilecomboBox
+            // SGETProfilecomboBox
             // 
-            this.SGETGProfilecomboBox.FormattingEnabled = true;
-            this.SGETGProfilecomboBox.Location = new System.Drawing.Point(263, 44);
-            this.SGETGProfilecomboBox.Name = "SGETGProfilecomboBox";
-            this.SGETGProfilecomboBox.Size = new System.Drawing.Size(121, 21);
-            this.SGETGProfilecomboBox.TabIndex = 29;
-            this.SGETGProfilecomboBox.SelectedIndexChanged += new System.EventHandler(this.SGETGProfilecomboBox_SelectedIndexChanged);
+            this.SGETProfilecomboBox.FormattingEnabled = true;
+            this.SGETProfilecomboBox.Location = new System.Drawing.Point(9, 24);
+            this.SGETProfilecomboBox.Name = "SGETProfilecomboBox";
+            this.SGETProfilecomboBox.Size = new System.Drawing.Size(121, 21);
+            this.SGETProfilecomboBox.TabIndex = 29;
+            this.SGETProfilecomboBox.SelectedIndexChanged += new System.EventHandler(this.SGETGProfilecomboBox_SelectedIndexChanged);
             // 
-            // SGETGProfilelabel
+            // SGETProfilelabel
             // 
-            this.SGETGProfilelabel.AutoSize = true;
-            this.SGETGProfilelabel.Location = new System.Drawing.Point(260, 27);
-            this.SGETGProfilelabel.Name = "SGETGProfilelabel";
-            this.SGETGProfilelabel.Size = new System.Drawing.Size(125, 13);
-            this.SGETGProfilelabel.TabIndex = 28;
-            this.SGETGProfilelabel.Text = "Currently Selected Profile";
+            this.SGETProfilelabel.AutoSize = true;
+            this.SGETProfilelabel.Location = new System.Drawing.Point(6, 7);
+            this.SGETProfilelabel.Name = "SGETProfilelabel";
+            this.SGETProfilelabel.Size = new System.Drawing.Size(125, 13);
+            this.SGETProfilelabel.TabIndex = 28;
+            this.SGETProfilelabel.Text = "Currently Selected Profile";
             // 
             // SGETGMoneynumericUpDown
             // 
@@ -7087,11 +7094,11 @@
             // 
             // SGETGSavebutton
             // 
-            this.SGETGSavebutton.Location = new System.Drawing.Point(263, 100);
+            this.SGETGSavebutton.Location = new System.Drawing.Point(10, 355);
             this.SGETGSavebutton.Name = "SGETGSavebutton";
-            this.SGETGSavebutton.Size = new System.Drawing.Size(96, 23);
+            this.SGETGSavebutton.Size = new System.Drawing.Size(106, 23);
             this.SGETGSavebutton.TabIndex = 3;
-            this.SGETGSavebutton.Text = "Save Save File";
+            this.SGETGSavebutton.Text = "Save Global File";
             this.SGETGSavebutton.UseVisualStyleBackColor = true;
             this.SGETGSavebutton.Click += new System.EventHandler(this.SGETGSavebutton_Click);
             // 
@@ -7104,23 +7111,13 @@
             this.SGETGTitlelabel.TabIndex = 2;
             this.SGETGTitlelabel.Text = "This tab loads the Global file which contains the following save data";
             // 
-            // SGETGLoadbutton
-            // 
-            this.SGETGLoadbutton.Location = new System.Drawing.Point(263, 71);
-            this.SGETGLoadbutton.Name = "SGETGLoadbutton";
-            this.SGETGLoadbutton.Size = new System.Drawing.Size(96, 23);
-            this.SGETGLoadbutton.TabIndex = 1;
-            this.SGETGLoadbutton.Text = "Load Save File";
-            this.SGETGLoadbutton.UseVisualStyleBackColor = true;
-            this.SGETGLoadbutton.Click += new System.EventHandler(this.SGETGLoadbutton_Click);
-            // 
             // SGETHelpWantedtabPage
             // 
             this.SGETHelpWantedtabPage.Controls.Add(this.SGETHelpWantedtextBox);
             this.SGETHelpWantedtabPage.Location = new System.Drawing.Point(4, 22);
             this.SGETHelpWantedtabPage.Name = "SGETHelpWantedtabPage";
             this.SGETHelpWantedtabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.SGETHelpWantedtabPage.Size = new System.Drawing.Size(1023, 613);
+            this.SGETHelpWantedtabPage.Size = new System.Drawing.Size(893, 613);
             this.SGETHelpWantedtabPage.TabIndex = 1;
             this.SGETHelpWantedtabPage.Text = "Help Wanted";
             this.SGETHelpWantedtabPage.UseVisualStyleBackColor = true;
@@ -7134,12 +7131,14 @@
             this.SGETHelpWantedtextBox.TabIndex = 0;
             this.SGETHelpWantedtextBox.Text = resources.GetString("SGETHelpWantedtextBox.Text");
             // 
-            // CDWRRimCaptextBox
+            // SGTProfilesFoundlabel
             // 
-            this.CDWRRimCaptextBox.Location = new System.Drawing.Point(75, 146);
-            this.CDWRRimCaptextBox.Name = "CDWRRimCaptextBox";
-            this.CDWRRimCaptextBox.Size = new System.Drawing.Size(118, 20);
-            this.CDWRRimCaptextBox.TabIndex = 20;
+            this.SGTProfilesFoundlabel.AutoSize = true;
+            this.SGTProfilesFoundlabel.Location = new System.Drawing.Point(9, 52);
+            this.SGTProfilesFoundlabel.Name = "SGTProfilesFoundlabel";
+            this.SGTProfilesFoundlabel.Size = new System.Drawing.Size(85, 13);
+            this.SGTProfilesFoundlabel.TabIndex = 30;
+            this.SGTProfilesFoundlabel.Text = "O Profiles Found";
             // 
             // Form1
             // 
@@ -7370,6 +7369,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.SaveGameEditortabPage.ResumeLayout(false);
+            this.SaveGameEditortabPage.PerformLayout();
             this.SaveGameEditorTabtabControl.ResumeLayout(false);
             this.SGETGlobaltabPage.ResumeLayout(false);
             this.SGETGlobaltabPage.PerformLayout();
@@ -7884,7 +7884,6 @@
         private System.Windows.Forms.PictureBox MDTMDFPreviewpictureBox;
         private System.Windows.Forms.PictureBox EDTImagepictureBox;
         private System.Windows.Forms.PictureBox TDTImagepictureBox;
-        private System.Windows.Forms.Button SGETGLoadbutton;
         private System.Windows.Forms.TabControl SaveGameEditorTabtabControl;
         private System.Windows.Forms.TabPage SGETGlobaltabPage;
         private System.Windows.Forms.TabPage SGETHelpWantedtabPage;
@@ -7914,8 +7913,8 @@
         private System.Windows.Forms.Label SGETGMoneyIncomeCarslabel;
         private System.Windows.Forms.NumericUpDown SGETGMoneyIncomePartsnumericUpDown;
         private System.Windows.Forms.Label SGETGMoneyIncomePartslabel;
-        private System.Windows.Forms.Label SGETGProfilelabel;
-        private System.Windows.Forms.ComboBox SGETGProfilecomboBox;
+        private System.Windows.Forms.Label SGETProfilelabel;
+        private System.Windows.Forms.ComboBox SGETProfilecomboBox;
         private System.Windows.Forms.CheckBox EDTBlockOBDcheckBox;
         private System.Windows.Forms.Label EDTEngineSoundlabel;
         private System.Windows.Forms.TextBox EDTEngineSoundtextBox;
@@ -7945,6 +7944,7 @@
         private System.Windows.Forms.NumericUpDown CDWWheelWidthRearnumericUpDown;
         private System.Windows.Forms.Label CDWWheelWidthRearlabel;
         private System.Windows.Forms.TextBox CDWRRimCaptextBox;
+        private System.Windows.Forms.Label SGTProfilesFoundlabel;
     }
 }
 

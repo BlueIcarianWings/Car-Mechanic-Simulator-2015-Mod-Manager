@@ -13,7 +13,7 @@ namespace CMS2015ModManager
 {
     public partial class Form1 : Form
     {
-        private string ModManVersion = "0.9.1.5";       //Version constant for ModManager
+        private string ModManVersion = "0.9.1.6";       //Version constant for ModManager
         private string GameVersion = "1.0.8.3";     //Version constant for the game
 
         //Class object for class that does the acutal mod managing stuff    //here so it's scope is within the form object  //should move the config stuff out at somepoint
@@ -1327,9 +1327,17 @@ namespace CMS2015ModManager
             CDWTirecomboBox.SelectedText = CarDataObject._WheelsTire;
             CDWRimtextBox.Text = CarDataObject._WheelsRim;
             CDWRimCaptextBox.Text = CarDataObject._WheelsRimcap;
-            CDWWheelWidthRearnumericUpDown.Value = (Decimal)CarDataObject._WheelsWheelWidthRear;
-            CDWTireSizeRearnumericUpDown.Value = (Decimal)CarDataObject._WheelsTireSizeRear;
-            CDWRimSizeRearnumericUpDown.Value = (Decimal)CarDataObject._WheelsRimSizeRear;
+            //Re-enable the Maserati stuff
+            //AvailableCarsDataComboBox.Text
+            if ((AvailableCarsDataComboBox.Text).Contains("Maserati"))
+            {
+                CDWWheelWidthRearnumericUpDown.Enabled = true;
+                CDWTireSizeRearnumericUpDown.Enabled = true;
+                CDWRimSizeRearnumericUpDown.Enabled = true;
+                CDWWheelWidthRearnumericUpDown.Value = (Decimal)CarDataObject._WheelsWheelWidthRear;
+                CDWTireSizeRearnumericUpDown.Value = (Decimal)CarDataObject._WheelsTireSizeRear;
+                CDWRimSizeRearnumericUpDown.Value = (Decimal)CarDataObject._WheelsRimSizeRear;
+            }
 
             //[Wheels_Rear] section
             CDWRWheelWidthnumericUpDown.Value = (Decimal)CarDataObject._WheelsRearWheelWidth;
@@ -1563,9 +1571,15 @@ namespace CMS2015ModManager
             CDWTirecomboBox.SelectedText = "";
             CDWTirecomboBox.Text = "";
             CDWRimtextBox.Text = "";
+            //Rear stuff in front wheel area
+            //Maserati only, seems to crash game otherwise
             CDWWheelWidthRearnumericUpDown.Value = 0;
             CDWTireSizeRearnumericUpDown.Value = 0;
             CDWRimSizeRearnumericUpDown.Value = 0;
+            //Disable the Maserati stuff, it'll be re-enabled if the selected vehicle is a Maserati
+            CDWWheelWidthRearnumericUpDown.Enabled = false;
+            CDWTireSizeRearnumericUpDown.Enabled = false;
+            CDWRimSizeRearnumericUpDown.Enabled = false;
 
             //[Wheel_Rear] section
             CDWRWheelWidthnumericUpDown.Value = 0;
@@ -2065,35 +2079,65 @@ namespace CMS2015ModManager
         {
             //Get directories
             DirectoryInfo di = new DirectoryInfo(ModMan.GetSavedGamesDir());
+            //Counter for profiles
+            int ProCount = 0;
 
             foreach (System.IO.DirectoryInfo Folder in di.GetDirectories())
             {
                 //Add folder to the combo box lists
-                SGETGProfilecomboBox.Items.Add(Folder);
+                SGETProfilecomboBox.Items.Add(Folder);
+                //Increment the profiles counter
+                ProCount++;
             }
+
+            //Set the found profiles counter
+            SGTProfilesFoundlabel.Text = ProCount + " Profiles Found";
+        }
+
+        //Resets the Save Data tab GUI elements
+        private void ClearOutSaveDataTabs()
+        {
+            //Fill out the GUI
+
+            //Global
+            SGETGPartsRepairednumericUpDown.Value = 0;
+            SGETGMoneyIncomePartsnumericUpDown.Value = 0;
+            SGETGMoneyIncomeCarsnumericUpDown.Value = 0;
+            SGETGCarsSoldnumericUpDown.Value = 0;
+            SGETGJobsCompletednumericUpDown.Value = 0;
+            SGETGCarsOwnednumericUpDown.Value = 0;
+            SGETGMoneyIncomenumericUpDown.Value = 0;
+            SGETGPartsUnmountednumericUpDown.Value = 0;
+            SGETGBoltsUndonenumericUpDown.Value = 0;
+            SGETBankLoannumericUpDown.Value = 0;
+            SGETGXPnumericUpDown.Value = 0;
+            SGETGMoneynumericUpDown.Value = 0;
         }
 
         //Load the global save file
-        private void SGETGLoadbutton_Click(object sender, EventArgs e)
+        private void SGEGobalFileLoad()
         {
-            if (SGETGProfilecomboBox.Text != "")
+            //Check the combo box text isn't blank
+            if (SGETProfilecomboBox.Text != "")
             {
                 SaveGameDataGlobal LocalGrab = new SaveGameDataGlobal();        //Create a local to get save data
-                LocalGrab.LoadGlobalSaveFile(ModMan.GetSavedGamesDir() + "\\" + SGETGProfilecomboBox.Text);     //Load the save file
-
-                //Fill out the GUI
-                SGETGPartsRepairednumericUpDown.Value = LocalGrab._Stats_PartsRepaired;
-                SGETGMoneyIncomePartsnumericUpDown.Value = LocalGrab._Stats_MoneyIncomeParts;
-                SGETGMoneyIncomeCarsnumericUpDown.Value = LocalGrab._Stats_MoneyIncomeCars;
-                SGETGCarsSoldnumericUpDown.Value = LocalGrab._Stats_CarsSold;
-                SGETGJobsCompletednumericUpDown.Value = LocalGrab._Stats_JobsCompletted;
-                SGETGCarsOwnednumericUpDown.Value = LocalGrab._Stats_CarsOwned;
-                SGETGMoneyIncomenumericUpDown.Value = LocalGrab._Stats_MoneyIncome;
-                SGETGPartsUnmountednumericUpDown.Value = LocalGrab._Stats_PartsUnmounted;
-                SGETGBoltsUndonenumericUpDown.Value = LocalGrab._Stats_Bolts;
-                SGETBankLoannumericUpDown.Value = LocalGrab._bankLoan;
-                SGETGXPnumericUpDown.Value = LocalGrab._xp;
-                SGETGMoneynumericUpDown.Value = LocalGrab._money;
+                //Check if the file exists
+                if (LocalGrab.LoadGlobalSaveFile(ModMan.GetSavedGamesDir() + "\\" + SGETProfilecomboBox.Text))     //Load the save file
+                {
+                    //Fill out the GUI
+                    SGETGPartsRepairednumericUpDown.Value = LocalGrab._Stats_PartsRepaired;
+                    SGETGMoneyIncomePartsnumericUpDown.Value = LocalGrab._Stats_MoneyIncomeParts;
+                    SGETGMoneyIncomeCarsnumericUpDown.Value = LocalGrab._Stats_MoneyIncomeCars;
+                    SGETGCarsSoldnumericUpDown.Value = LocalGrab._Stats_CarsSold;
+                    SGETGJobsCompletednumericUpDown.Value = LocalGrab._Stats_JobsCompletted;
+                    SGETGCarsOwnednumericUpDown.Value = LocalGrab._Stats_CarsOwned;
+                    SGETGMoneyIncomenumericUpDown.Value = LocalGrab._Stats_MoneyIncome;
+                    SGETGPartsUnmountednumericUpDown.Value = LocalGrab._Stats_PartsUnmounted;
+                    SGETGBoltsUndonenumericUpDown.Value = LocalGrab._Stats_Bolts;
+                    SGETBankLoannumericUpDown.Value = LocalGrab._bankLoan;
+                    SGETGXPnumericUpDown.Value = LocalGrab._xp;
+                    SGETGMoneynumericUpDown.Value = LocalGrab._money;
+                }
             }
         }
 
@@ -2116,13 +2160,14 @@ namespace CMS2015ModManager
             LocalSave._xp = (int)SGETGXPnumericUpDown.Value;
             LocalSave._money = (int)SGETGMoneynumericUpDown.Value;
 
-            LocalSave.WriteGlobalSaveFile(ModMan.GetSavedGamesDir() + "\\" + SGETGProfilecomboBox.Text);     //Load the save file
+            LocalSave.WriteGlobalSaveFile(ModMan.GetSavedGamesDir() + "\\" + SGETProfilecomboBox.Text);     //Load the save file
         }
 
         //Handles a change in the selected save profile combo box
         private void SGETGProfilecomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SGETGLoadbutton_Click(sender, e);   //Calls the existing load button method
+            ClearOutSaveDataTabs(); //Clear out the GUI
+            SGEGobalFileLoad();     //Load the Global tab data
         }
 
         #endregion

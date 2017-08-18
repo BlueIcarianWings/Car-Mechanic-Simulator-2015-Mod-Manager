@@ -60,90 +60,101 @@ namespace CMS2015ModManager
         }
 
         //Loads a car data file into the object from the fullpath and filename given
-        public void LoadGlobalSaveFile(string path)
+        public bool LoadGlobalSaveFile(string path)
         {
-            string fullpath = path + "\\global";
-            using (BinaryReader b = new BinaryReader(File.Open(fullpath, FileMode.Open)))
+            bool RetVal = false;    //Setup the return value, default false
+            string fullpath = path + "\\global";    //Setup the full path/file name
+
+            if (File.Exists(fullpath))  //Check if the file exists
             {
-                b.BaseStream.Seek(Stats_PartsRepaired_MemLoc, 0);    //Move to location
-                Stats_PartsRepaired = b.ReadInt32();                 //Read the value
+                RetVal = true;
+                using (BinaryReader b = new BinaryReader(File.Open(fullpath, FileMode.Open)))
+                {
+                    b.BaseStream.Seek(Stats_PartsRepaired_MemLoc, 0);    //Move to location
+                    Stats_PartsRepaired = b.ReadInt32();                 //Read the value
 
-                b.BaseStream.Seek(Stats_MoneyIncomeParts_MemLoc, 0);    //Move to location
-                Stats_MoneyIncomeParts = b.ReadInt32();                 //Read the value
+                    b.BaseStream.Seek(Stats_MoneyIncomeParts_MemLoc, 0);    //Move to location
+                    Stats_MoneyIncomeParts = b.ReadInt32();                 //Read the value
 
-                b.BaseStream.Seek(Stats_MoneyIncomeCars_MemLoc, 0);    //Move to location
-                Stats_MoneyIncomeCars = b.ReadInt32();                 //Read the value
+                    b.BaseStream.Seek(Stats_MoneyIncomeCars_MemLoc, 0);    //Move to location
+                    Stats_MoneyIncomeCars = b.ReadInt32();                 //Read the value
 
-                b.BaseStream.Seek(Stats_CarsSold_MemLoc, 0);    //Move to location
-                Stats_CarsSold = b.ReadInt32();                 //Read the value
+                    b.BaseStream.Seek(Stats_CarsSold_MemLoc, 0);    //Move to location
+                    Stats_CarsSold = b.ReadInt32();                 //Read the value
 
-                b.BaseStream.Seek(Stats_JobsCompleted_MemLoc, 0);    //Move to location
-                Stats_JobsCompleted = b.ReadInt32();                 //Read the value
+                    b.BaseStream.Seek(Stats_JobsCompleted_MemLoc, 0);    //Move to location
+                    Stats_JobsCompleted = b.ReadInt32();                 //Read the value
 
-                b.BaseStream.Seek(Stats_CarsOwned_MemLoc, 0);    //Move to location
-                Stats_CarsOwned = b.ReadInt32();                 //Read the value
+                    b.BaseStream.Seek(Stats_CarsOwned_MemLoc, 0);    //Move to location
+                    Stats_CarsOwned = b.ReadInt32();                 //Read the value
 
-                b.BaseStream.Seek(Stats_MoneyIncome_MemLoc, 0);    //Move to location
-                Stats_MoneyIncome = b.ReadInt32();                 //Read the value
+                    b.BaseStream.Seek(Stats_MoneyIncome_MemLoc, 0);    //Move to location
+                    Stats_MoneyIncome = b.ReadInt32();                 //Read the value
 
-                b.BaseStream.Seek(Stats_PartsUnmounted_MemLoc, 0);    //Move to location
-                Stats_PartsUnmounted = b.ReadInt32();                 //Read the value
+                    b.BaseStream.Seek(Stats_PartsUnmounted_MemLoc, 0);    //Move to location
+                    Stats_PartsUnmounted = b.ReadInt32();                 //Read the value
 
-                b.BaseStream.Seek(Stats_Bolts_MemLoc, 0);    //Move to location
-                Stats_Bolts = b.ReadInt32();                 //Read the value
+                    b.BaseStream.Seek(Stats_Bolts_MemLoc, 0);    //Move to location
+                    Stats_Bolts = b.ReadInt32();                 //Read the value
 
-                b.BaseStream.Seek(bankLoan_MemLoc, 0);    //Move to location
-                bankLoan_MemLoc = b.ReadInt32();                 //Read the value
+                    b.BaseStream.Seek(bankLoan_MemLoc, 0);    //Move to location
+                    bankLoan_MemLoc = b.ReadInt32();                 //Read the value
 
-                b.BaseStream.Seek(xp_MemLoc, 0);    //Move to location
-                xp = b.ReadInt32();                 //Read the value
+                    b.BaseStream.Seek(xp_MemLoc, 0);    //Move to location
+                    xp = b.ReadInt32();                 //Read the value
 
-                b.BaseStream.Seek(money_MemLoc, 0);    //Move to location
-                money = b.ReadInt32();                 //Read the value
+                    b.BaseStream.Seek(money_MemLoc, 0);    //Move to location
+                    money = b.ReadInt32();                 //Read the value
+                }
             }
+
+            return RetVal;      //Return success or failure
         }
 
         //Writes the car data file from the object
         public void WriteGlobalSaveFile(string path)
         {
             string fullpath = path + "\\global";
-            using (BinaryWriter b = new BinaryWriter(File.Open(fullpath, FileMode.Open)))
+            if (File.Exists(fullpath))  //Check if the file exists
             {
-                b.BaseStream.Seek(Stats_PartsRepaired_MemLoc, 0);   //Move to location
-                b.Write(Stats_PartsRepaired);                       //Write the value
+                using (BinaryWriter b = new BinaryWriter(File.Open(fullpath, FileMode.Open)))
+                {
+                    b.BaseStream.Seek(Stats_PartsRepaired_MemLoc, 0);   //Move to location
+                    b.Write(Stats_PartsRepaired);                       //Write the value
 
-                b.BaseStream.Seek(Stats_MoneyIncomeParts_MemLoc, 0);    //Move to location
-                b.Write(Stats_MoneyIncomeParts);                        //Write the value
+                    b.BaseStream.Seek(Stats_MoneyIncomeParts_MemLoc, 0);    //Move to location
+                    b.Write(Stats_MoneyIncomeParts);                        //Write the value
 
-                b.BaseStream.Seek(Stats_MoneyIncomeCars_MemLoc, 0);     //Move to location
-                b.Write(Stats_MoneyIncomeCars);                         //Write the value
+                    b.BaseStream.Seek(Stats_MoneyIncomeCars_MemLoc, 0);     //Move to location
+                    b.Write(Stats_MoneyIncomeCars);                         //Write the value
 
-                b.BaseStream.Seek(Stats_CarsSold_MemLoc, 0);    //Move to location
-                b.Write(Stats_CarsSold);                        //Write the value
+                    b.BaseStream.Seek(Stats_CarsSold_MemLoc, 0);    //Move to location
+                    b.Write(Stats_CarsSold);                        //Write the value
 
-                b.BaseStream.Seek(Stats_JobsCompleted_MemLoc, 0);   //Move to location
-                b.Write(Stats_JobsCompleted);                       //Write the value
+                    b.BaseStream.Seek(Stats_JobsCompleted_MemLoc, 0);   //Move to location
+                    b.Write(Stats_JobsCompleted);                       //Write the value
 
-                b.BaseStream.Seek(Stats_CarsOwned_MemLoc, 0);   //Move to location
-                b.Write(Stats_CarsOwned);                       //Write the value
+                    b.BaseStream.Seek(Stats_CarsOwned_MemLoc, 0);   //Move to location
+                    b.Write(Stats_CarsOwned);                       //Write the value
 
-                b.BaseStream.Seek(Stats_MoneyIncome_MemLoc, 0); //Move to location
-                b.Write(Stats_MoneyIncome);                     //Write the value
+                    b.BaseStream.Seek(Stats_MoneyIncome_MemLoc, 0); //Move to location
+                    b.Write(Stats_MoneyIncome);                     //Write the value
 
-                b.BaseStream.Seek(Stats_PartsUnmounted_MemLoc, 0);  //Move to location
-                b.Write(Stats_PartsUnmounted);                      //Write the value
+                    b.BaseStream.Seek(Stats_PartsUnmounted_MemLoc, 0);  //Move to location
+                    b.Write(Stats_PartsUnmounted);                      //Write the value
 
-                b.BaseStream.Seek(Stats_Bolts_MemLoc, 0);   //Move to location
-                b.Write(Stats_Bolts);                       //Write the value
+                    b.BaseStream.Seek(Stats_Bolts_MemLoc, 0);   //Move to location
+                    b.Write(Stats_Bolts);                       //Write the value
 
-                b.BaseStream.Seek(bankLoan_MemLoc, 0);  //Move to location
-                b.Write(bankLoan_MemLoc);               //Write the value
+                    b.BaseStream.Seek(bankLoan_MemLoc, 0);  //Move to location
+                    b.Write(bankLoan_MemLoc);               //Write the value
 
-                b.BaseStream.Seek(xp_MemLoc, 0);    //Move to location
-                b.Write(xp);                        //Write the value
+                    b.BaseStream.Seek(xp_MemLoc, 0);    //Move to location
+                    b.Write(xp);                        //Write the value
 
-                b.BaseStream.Seek(money_MemLoc, 0); //Move to location
-                b.Write(money);                     //Write the value
+                    b.BaseStream.Seek(money_MemLoc, 0); //Move to location
+                    b.Write(money);                     //Write the value
+                }
             }
         }
 

@@ -7,6 +7,14 @@ http://steamcommunity.com/app/320300/discussions/1/368542844485671388/
 
 Release notes
 
+0.9.1.6
+14/Oct/2016
+Made the 'rear wheel parts' of [wheels] enabled only when a Maserati is selected
+Fixed crash bug on trying to load a non-existant global file
+Removed redundant load save game file button
+Fixed crash bug on trying to save a non-existant global file
+Changed Save Game section to match style of Car Data, added a counter for number of profiles found
+
 0.9.1.5
 09/Oct/2016
 Fixed float to int output error with RPM related values in [other] section
