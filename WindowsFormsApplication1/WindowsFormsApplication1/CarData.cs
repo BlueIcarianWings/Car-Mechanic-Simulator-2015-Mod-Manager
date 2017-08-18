@@ -259,17 +259,17 @@ namespace CMS2015ModManager
             if (OtherPower != 0)            { writer.WriteLine("otherPower= " + OtherPower); }
             if (OtherTransmissionType != ""){ writer.WriteLine("transmissionType= " + OtherTransmissionType); }
             if (OtherGears != 0)            { writer.WriteLine("gears= " + OtherGears); }
-            if (OtherFinalDriveRatio != 0)  { writer.WriteLine("finalDriveRatio= " + OtherFinalDriveRatio); }
+            if (OtherFinalDriveRatio != 0)  { writer.WriteLine("finalDriveRatio= {0:f3}", OtherFinalDriveRatio); }
             if (OtherWeight != 0)           { writer.WriteLine("weight= " + OtherWeight); }
-            if (OtherRpmFactor != 0)        { writer.WriteLine("rpmFactor= " + OtherRpmFactor); }
-            if (OtherRpmAngle != 0)         { writer.WriteLine("rpmAngle= " + OtherRpmAngle); }
-            if (OtherSpeedoFactor != 0)     { writer.WriteLine("speedoFactor= " + OtherSpeedoFactor); }
-            if (OtherSpeedoAngle != 0)      { writer.WriteLine("speedoAngle= " + OtherSpeedoAngle); }
-            if (OtherSuspTravel != 0)       { writer.WriteLine("suspTravel= " + OtherSuspTravel); }
-            if (OtherLifterArmsRise != 0)   { writer.WriteLine("lifterArmsRise= " + OtherLifterArmsRise); }
-            if (OtherLifterArmsAngle != 0)  { writer.WriteLine("lifterArmsAngle= " + OtherLifterArmsAngle); }
+            if (OtherRpmFactor != 0)        { writer.WriteLine("rpmFactor= {0:f2}", OtherRpmFactor); }
+            if (OtherRpmAngle != 0)         { writer.WriteLine("rpmAngle= {0:f2}", OtherRpmAngle); }
+            if (OtherSpeedoFactor != 0)     { writer.WriteLine("speedoFactor= {0:f2}", OtherSpeedoFactor); }
+            if (OtherSpeedoAngle != 0)      { writer.WriteLine("speedoAngle= {0:f2}", OtherSpeedoAngle); }
+            if (OtherSuspTravel != 0)       { writer.WriteLine("suspTravel= {0:f2}", OtherSuspTravel); }
+            if (OtherLifterArmsRise != 0)   { writer.WriteLine("lifterArmsRise= {0:f2}", OtherLifterArmsRise); }
+            if (OtherLifterArmsAngle != 0)  { writer.WriteLine("lifterArmsAngle= {0:f2}", OtherLifterArmsAngle); }
             if (OtherDoorAngle != 0)        { writer.WriteLine("doorAngle= " + OtherDoorAngle); }          //Gull wing door
-            if (OtherCX != 0)               { writer.WriteLine("cx= " + OtherCX); }
+            if (OtherCX != 0)               { writer.WriteLine("cx= {0:f3}", OtherCX); }
             writer.WriteLine();     //Blank line seperator
 
             //[Suspension]
@@ -288,7 +288,7 @@ namespace CMS2015ModManager
                 if (SuspensionFrontLeftSet != "") { writer.WriteLine("frontLeftSet= " + SuspensionFrontLeftSet); }      //Kaszlak specfic at the moment
                 if (SuspensionRearLeftSet != "") { writer.WriteLine("rearLeftSet= " + SuspensionRearLeftSet); }         //Kaszlak specfic at the moment
             }
-            else    //This will be obsolete later (post 1.0.8.0)
+            else    //This will be obsolete later (post 1.0.8.0)    (not yet done 1.1.0.2)
             {
                 if (SuspensionScale != 0) { writer.WriteLine("scale= " + SuspensionScale); }
             }
@@ -300,13 +300,11 @@ namespace CMS2015ModManager
 
             //[Engine]
             writer.WriteLine("[engine]");
-            if ((EnginePosition.x != 0) || (EnginePosition.y != 0) || (EnginePosition.z != 0))
-            { writer.WriteLine("position= " + EnginePosition.x + ", " + EnginePosition.y + ", " + EnginePosition.z); }
-            if ((EngineRotation.x != 0) || (EngineRotation.y != 0) || (EngineRotation.z != 0))
-            { writer.WriteLine("rotation= " + EngineRotation.x + ", " + EngineRotation.y + ", " + EngineRotation.z); }
-            if (EngineScale != 0)  { writer.WriteLine("scale= " + EngineScale); }
-            if (EngineType != "")  { writer.WriteLine("type= " + EngineType); }
-            if (EnginePM != 0)     { writer.WriteLine("pm= " + EnginePM); }
+            writer.WriteLine("position= {0:f1},{1:f1},{2:f1}", EnginePosition.x, EnginePosition.y, EnginePosition.z);   //Always write the position
+            writer.WriteLine("rotation= {0:f1},{1:f1},{2:f1}", EngineRotation.x, EngineRotation.y, EngineRotation.z);   //Always write the rotation
+            if (EngineScale != 0)  { writer.WriteLine("scale= {0:f2}", EngineScale); }
+            if (EngineType != "")  { writer.WriteLine("type= {0:f2}", EngineType); }
+            if (EnginePM != 0)     { writer.WriteLine("pm= {0:f2}", EnginePM); }
             //Declare the list of the engine swap options
             if (EngineSwapOptions.Count > 1)
             {

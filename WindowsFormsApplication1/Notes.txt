@@ -2,14 +2,27 @@ Car Mechanic simulator 2015 Mod Manager
 
 A modding and save file tool for editing and handling mods for Car Mechanic simulator 2015
 
+Discussion and release thread
 http://steamcommunity.com/app/320300/discussions/1/368542844485671388/
 //-------------------
 
 Release notes
 
+0.9.2.1
+30/Oct/2016
+Added New engine and tire pictures for newly released Maserati Quattroporte
+Reworking of some functions used by Car Data Tab
+Modifed Car Data File All Restore/Default-Backup/Mod-Backup functions on the Car Data Tab to only affect car data files
+Added propmts to buttons in Car Data Tab
+Updating of menu bar to use functions modified above
+Added propmts to backup/restore in menu options
+Added propmts to buttons in Car Data Tab
+Added Single/All Restore/Default-Backup/Mod-Backup options to Engines Data Tab (Tires Data Tab to come later)
+Added propmts to buttons in Engine Data Tab
+
 0.9.2
 21/Oct/2016
-Fixed a bug in overwritng files
+Fixed a bug in overwriting files
 Fixed a bug in displaying engine type in Car Data Tab
 Overhaul of how backups are handled, now has seperate backups for default (game standard) and Mod'ed Car Data Files
 Big changes to  useability for Car Data File Mods

@@ -24,14 +24,14 @@ namespace CMS2015ModManager
 
     public class CMS2015MM
     {
-        string ConfigFN = "CMS2015MMConfig.txt";    //Holds the name of the config file
-        private string ConfigDir = null;            //Holds dir the config file is in (same as the exe)
-        private string SavedGamesDir = null;        //Holds the dir of the saved games
-        private string SavedGamesDirBkUp = null;    //Holds the backup dir of the saved games
-        private string CarsDataDir = null;          //Holds the dir of the car data
+        string ConfigFN = "CMS2015MMConfig.txt";        //Holds the name of the config file
+        private string ConfigDir = null;                //Holds dir the config file is in (same as the exe)
+        private string SavedGamesDir = null;            //Holds the dir of the saved games
+        private string SavedGamesDirBkUp = null;        //Holds the backup dir of the saved games
+        private string CarsDataDir = null;              //Holds the dir of the car data
         private string CarsDataDirBkUpDefault = null;   //Holds the backup dir of the car 
-        private string CarsDataDirBkUpMod = null;   //Holds the backup dir of the car 
-        private string ModMapDir = null;            //Holds the dir the custom maps live in
+        private string CarsDataDirBkUpMod = null;       //Holds the backup dir of the car 
+        private string ModMapDir = null;                //Holds the dir the custom maps live in
 
         //Strut to hold car list data
         public struct CarListType
@@ -326,14 +326,8 @@ namespace CMS2015ModManager
             //Perform the backup, if it's ok
             if (dialogResult.Equals(DialogResult.OK))
             {
-                BackupDefaultCarDataFiles();
+                DirectoryCopy(CarsDataDir, CarsDataDirBkUpDefault, false);     //Copy the files but don't copy any dirs
             }
-        }
-
-        //Perform the Car Data Files backup of default files
-        public void BackupDefaultCarDataFiles()
-        {
-            DirectoryCopy(CarsDataDir, CarsDataDirBkUpDefault, false);     //Copy the files but don't copy any dirs
         }
 
         #region Getters and Setters
@@ -597,6 +591,7 @@ namespace CMS2015ModManager
             CarsCurrentList.Clear();
             CarsAvailableFilesList.Clear();
         }
+        #endregion
 
         #region Getters and Setters
 
@@ -689,7 +684,7 @@ namespace CMS2015ModManager
         }
 
         #endregion
-        #endregion
+        
 
     }
 }

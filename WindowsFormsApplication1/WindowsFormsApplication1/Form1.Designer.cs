@@ -65,6 +65,11 @@
             this.CarsCurrentlyListBox = new System.Windows.Forms.ListBox();
             this.AvailableCarsListLabel = new System.Windows.Forms.Label();
             this.CarDataTabPage = new System.Windows.Forms.TabPage();
+            this.CDGetTextbutton = new System.Windows.Forms.Button();
+            this.CDLoadFromTextbutton = new System.Windows.Forms.Button();
+            this.CDLoadFromFilebutton = new System.Windows.Forms.Button();
+            this.CDRestoreAllModbutton = new System.Windows.Forms.Button();
+            this.CDRestoreModbutton = new System.Windows.Forms.Button();
             this.CDRestoreAllbutton = new System.Windows.Forms.Button();
             this.CDRestorebutton = new System.Windows.Forms.Button();
             this.EDTOveralltabControl = new System.Windows.Forms.TabControl();
@@ -586,11 +591,12 @@
             this.SGETHelpWantedtabPage = new System.Windows.Forms.TabPage();
             this.SGETHelpWantedtextBox = new System.Windows.Forms.TextBox();
             this.SGETProfilelabel = new System.Windows.Forms.Label();
-            this.CDRestoreAllModbutton = new System.Windows.Forms.Button();
-            this.CDRestoreModbutton = new System.Windows.Forms.Button();
-            this.CDLoadFromFilebutton = new System.Windows.Forms.Button();
-            this.CDLoadFromTextbutton = new System.Windows.Forms.Button();
-            this.CDGetTextbutton = new System.Windows.Forms.Button();
+            this.CDBackupAllModsbutton = new System.Windows.Forms.Button();
+            this.EDTRestoreAllDefaultbutton = new System.Windows.Forms.Button();
+            this.EDTRestoreDefaultbutton = new System.Windows.Forms.Button();
+            this.EDTBackupAllModbutton = new System.Windows.Forms.Button();
+            this.EDTRestoreAllModbutton = new System.Windows.Forms.Button();
+            this.EDTRestoreModbutton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.CarsListTabPage.SuspendLayout();
@@ -1118,6 +1124,7 @@
             // 
             // CarDataTabPage
             // 
+            this.CarDataTabPage.Controls.Add(this.CDBackupAllModsbutton);
             this.CarDataTabPage.Controls.Add(this.CDGetTextbutton);
             this.CarDataTabPage.Controls.Add(this.CDLoadFromTextbutton);
             this.CarDataTabPage.Controls.Add(this.CDLoadFromFilebutton);
@@ -1141,6 +1148,56 @@
             this.CarDataTabPage.TabIndex = 0;
             this.CarDataTabPage.Text = "Car Data";
             this.CarDataTabPage.UseVisualStyleBackColor = true;
+            // 
+            // CDGetTextbutton
+            // 
+            this.CDGetTextbutton.Location = new System.Drawing.Point(100, 359);
+            this.CDGetTextbutton.Name = "CDGetTextbutton";
+            this.CDGetTextbutton.Size = new System.Drawing.Size(84, 52);
+            this.CDGetTextbutton.TabIndex = 45;
+            this.CDGetTextbutton.Text = "Get Text";
+            this.CDGetTextbutton.UseVisualStyleBackColor = true;
+            this.CDGetTextbutton.Click += new System.EventHandler(this.CDGetTextbutton_Click);
+            // 
+            // CDLoadFromTextbutton
+            // 
+            this.CDLoadFromTextbutton.Location = new System.Drawing.Point(100, 301);
+            this.CDLoadFromTextbutton.Name = "CDLoadFromTextbutton";
+            this.CDLoadFromTextbutton.Size = new System.Drawing.Size(84, 52);
+            this.CDLoadFromTextbutton.TabIndex = 43;
+            this.CDLoadFromTextbutton.Text = "Load From Text";
+            this.CDLoadFromTextbutton.UseVisualStyleBackColor = true;
+            this.CDLoadFromTextbutton.Click += new System.EventHandler(this.CDLoadFromTextbutton_Click);
+            // 
+            // CDLoadFromFilebutton
+            // 
+            this.CDLoadFromFilebutton.Location = new System.Drawing.Point(100, 272);
+            this.CDLoadFromFilebutton.Name = "CDLoadFromFilebutton";
+            this.CDLoadFromFilebutton.Size = new System.Drawing.Size(84, 23);
+            this.CDLoadFromFilebutton.TabIndex = 42;
+            this.CDLoadFromFilebutton.Text = "Load From File";
+            this.CDLoadFromFilebutton.UseVisualStyleBackColor = true;
+            this.CDLoadFromFilebutton.Click += new System.EventHandler(this.CDLoadFromFilebutton_Click);
+            // 
+            // CDRestoreAllModbutton
+            // 
+            this.CDRestoreAllModbutton.Location = new System.Drawing.Point(10, 359);
+            this.CDRestoreAllModbutton.Name = "CDRestoreAllModbutton";
+            this.CDRestoreAllModbutton.Size = new System.Drawing.Size(84, 52);
+            this.CDRestoreAllModbutton.TabIndex = 41;
+            this.CDRestoreAllModbutton.Text = "Restore All To Mods";
+            this.CDRestoreAllModbutton.UseVisualStyleBackColor = true;
+            this.CDRestoreAllModbutton.Click += new System.EventHandler(this.CDRestoreAllModbutton_Click);
+            // 
+            // CDRestoreModbutton
+            // 
+            this.CDRestoreModbutton.Location = new System.Drawing.Point(10, 301);
+            this.CDRestoreModbutton.Name = "CDRestoreModbutton";
+            this.CDRestoreModbutton.Size = new System.Drawing.Size(84, 52);
+            this.CDRestoreModbutton.TabIndex = 40;
+            this.CDRestoreModbutton.Text = "Restore This To A Mod";
+            this.CDRestoreModbutton.UseVisualStyleBackColor = true;
+            this.CDRestoreModbutton.Click += new System.EventHandler(this.CDRestoreModbutton_Click);
             // 
             // CDRestoreAllbutton
             // 
@@ -6180,6 +6237,11 @@
             // 
             // EngineDataTabPage
             // 
+            this.EngineDataTabPage.Controls.Add(this.EDTBackupAllModbutton);
+            this.EngineDataTabPage.Controls.Add(this.EDTRestoreAllModbutton);
+            this.EngineDataTabPage.Controls.Add(this.EDTRestoreModbutton);
+            this.EngineDataTabPage.Controls.Add(this.EDTRestoreDefaultbutton);
+            this.EngineDataTabPage.Controls.Add(this.EDTRestoreAllDefaultbutton);
             this.EngineDataTabPage.Controls.Add(this.EDTEngineSoundtextBox);
             this.EngineDataTabPage.Controls.Add(this.EDTEngineSoundlabel);
             this.EngineDataTabPage.Controls.Add(this.EDTBlockOBDcheckBox);
@@ -6210,7 +6272,7 @@
             // 
             this.EDTEngineSoundtextBox.Location = new System.Drawing.Point(7, 104);
             this.EDTEngineSoundtextBox.Name = "EDTEngineSoundtextBox";
-            this.EDTEngineSoundtextBox.Size = new System.Drawing.Size(100, 20);
+            this.EDTEngineSoundtextBox.Size = new System.Drawing.Size(120, 20);
             this.EDTEngineSoundtextBox.TabIndex = 19;
             // 
             // EDTEngineSoundlabel
@@ -6245,9 +6307,9 @@
             // 
             this.EDTResetButton.Location = new System.Drawing.Point(7, 355);
             this.EDTResetButton.Name = "EDTResetButton";
-            this.EDTResetButton.Size = new System.Drawing.Size(75, 23);
+            this.EDTResetButton.Size = new System.Drawing.Size(163, 23);
             this.EDTResetButton.TabIndex = 13;
-            this.EDTResetButton.Text = "Reset";
+            this.EDTResetButton.Text = "Reset Values";
             this.EDTResetButton.UseVisualStyleBackColor = true;
             this.EDTResetButton.Click += new System.EventHandler(this.EDTResetButton_Click);
             // 
@@ -6360,9 +6422,9 @@
             // 
             this.EDTCommitButton.Location = new System.Drawing.Point(7, 325);
             this.EDTCommitButton.Name = "EDTCommitButton";
-            this.EDTCommitButton.Size = new System.Drawing.Size(75, 23);
+            this.EDTCommitButton.Size = new System.Drawing.Size(163, 23);
             this.EDTCommitButton.TabIndex = 2;
-            this.EDTCommitButton.Text = "Commit Changes";
+            this.EDTCommitButton.Text = "Save Changes";
             this.EDTCommitButton.UseVisualStyleBackColor = true;
             this.EDTCommitButton.Click += new System.EventHandler(this.EDTCommitButton_Click);
             // 
@@ -6414,11 +6476,11 @@
             // 
             // TDTResetbutton
             // 
-            this.TDTResetbutton.Location = new System.Drawing.Point(13, 174);
+            this.TDTResetbutton.Location = new System.Drawing.Point(10, 173);
             this.TDTResetbutton.Name = "TDTResetbutton";
-            this.TDTResetbutton.Size = new System.Drawing.Size(75, 23);
+            this.TDTResetbutton.Size = new System.Drawing.Size(160, 23);
             this.TDTResetbutton.TabIndex = 27;
-            this.TDTResetbutton.Text = "Reset";
+            this.TDTResetbutton.Text = "Reset Values";
             this.TDTResetbutton.UseVisualStyleBackColor = true;
             this.TDTResetbutton.Click += new System.EventHandler(this.TDTResetbutton_Click);
             // 
@@ -6467,11 +6529,11 @@
             // 
             // TDTCommitbutton
             // 
-            this.TDTCommitbutton.Location = new System.Drawing.Point(13, 144);
+            this.TDTCommitbutton.Location = new System.Drawing.Point(10, 144);
             this.TDTCommitbutton.Name = "TDTCommitbutton";
-            this.TDTCommitbutton.Size = new System.Drawing.Size(75, 23);
+            this.TDTCommitbutton.Size = new System.Drawing.Size(160, 23);
             this.TDTCommitbutton.TabIndex = 16;
-            this.TDTCommitbutton.Text = "Commit Changes";
+            this.TDTCommitbutton.Text = "Save Changes";
             this.TDTCommitbutton.UseVisualStyleBackColor = true;
             this.TDTCommitbutton.Click += new System.EventHandler(this.TDTCommitbutton_Click);
             // 
@@ -7206,55 +7268,65 @@
             this.SGETProfilelabel.TabIndex = 28;
             this.SGETProfilelabel.Text = "Currently Selected Profile";
             // 
-            // CDRestoreAllModbutton
+            // CDBackupAllModsbutton
             // 
-            this.CDRestoreAllModbutton.Location = new System.Drawing.Point(10, 359);
-            this.CDRestoreAllModbutton.Name = "CDRestoreAllModbutton";
-            this.CDRestoreAllModbutton.Size = new System.Drawing.Size(84, 52);
-            this.CDRestoreAllModbutton.TabIndex = 41;
-            this.CDRestoreAllModbutton.Text = "Restore All To Mods";
-            this.CDRestoreAllModbutton.UseVisualStyleBackColor = true;
-            this.CDRestoreAllModbutton.Click += new System.EventHandler(this.CDRestoreAllModbutton_Click);
+            this.CDBackupAllModsbutton.Location = new System.Drawing.Point(10, 417);
+            this.CDBackupAllModsbutton.Name = "CDBackupAllModsbutton";
+            this.CDBackupAllModsbutton.Size = new System.Drawing.Size(84, 52);
+            this.CDBackupAllModsbutton.TabIndex = 46;
+            this.CDBackupAllModsbutton.Text = "Backup All Mods";
+            this.CDBackupAllModsbutton.UseVisualStyleBackColor = true;
+            this.CDBackupAllModsbutton.Click += new System.EventHandler(this.CDBackupAllModsbutton_Click);
             // 
-            // CDRestoreModbutton
+            // EDTRestoreAllDefaultbutton
             // 
-            this.CDRestoreModbutton.Location = new System.Drawing.Point(10, 301);
-            this.CDRestoreModbutton.Name = "CDRestoreModbutton";
-            this.CDRestoreModbutton.Size = new System.Drawing.Size(84, 52);
-            this.CDRestoreModbutton.TabIndex = 40;
-            this.CDRestoreModbutton.Text = "Restore This To A Mod";
-            this.CDRestoreModbutton.UseVisualStyleBackColor = true;
-            this.CDRestoreModbutton.Click += new System.EventHandler(this.CDRestoreModbutton_Click);
+            this.EDTRestoreAllDefaultbutton.Location = new System.Drawing.Point(7, 413);
+            this.EDTRestoreAllDefaultbutton.Name = "EDTRestoreAllDefaultbutton";
+            this.EDTRestoreAllDefaultbutton.Size = new System.Drawing.Size(163, 23);
+            this.EDTRestoreAllDefaultbutton.TabIndex = 40;
+            this.EDTRestoreAllDefaultbutton.Text = "Restore All To Defaults";
+            this.EDTRestoreAllDefaultbutton.UseVisualStyleBackColor = true;
+            this.EDTRestoreAllDefaultbutton.Click += new System.EventHandler(this.EDTRestoreAllDefaultbutton_Click);
             // 
-            // CDLoadFromFilebutton
+            // EDTRestoreDefaultbutton
             // 
-            this.CDLoadFromFilebutton.Location = new System.Drawing.Point(100, 272);
-            this.CDLoadFromFilebutton.Name = "CDLoadFromFilebutton";
-            this.CDLoadFromFilebutton.Size = new System.Drawing.Size(84, 23);
-            this.CDLoadFromFilebutton.TabIndex = 42;
-            this.CDLoadFromFilebutton.Text = "Load From File";
-            this.CDLoadFromFilebutton.UseVisualStyleBackColor = true;
-            this.CDLoadFromFilebutton.Click += new System.EventHandler(this.CDLoadFromFilebutton_Click);
+            this.EDTRestoreDefaultbutton.Location = new System.Drawing.Point(7, 384);
+            this.EDTRestoreDefaultbutton.Name = "EDTRestoreDefaultbutton";
+            this.EDTRestoreDefaultbutton.Size = new System.Drawing.Size(163, 23);
+            this.EDTRestoreDefaultbutton.TabIndex = 41;
+            this.EDTRestoreDefaultbutton.Text = "Restore This To Default";
+            this.EDTRestoreDefaultbutton.UseVisualStyleBackColor = true;
+            this.EDTRestoreDefaultbutton.Click += new System.EventHandler(this.EDTRestoreDefaultbutton_Click);
             // 
-            // CDLoadFromTextbutton
+            // EDTBackupAllModbutton
             // 
-            this.CDLoadFromTextbutton.Location = new System.Drawing.Point(100, 301);
-            this.CDLoadFromTextbutton.Name = "CDLoadFromTextbutton";
-            this.CDLoadFromTextbutton.Size = new System.Drawing.Size(84, 52);
-            this.CDLoadFromTextbutton.TabIndex = 43;
-            this.CDLoadFromTextbutton.Text = "Load From Text";
-            this.CDLoadFromTextbutton.UseVisualStyleBackColor = true;
-            this.CDLoadFromTextbutton.Click += new System.EventHandler(this.CDLoadFromTextbutton_Click);
+            this.EDTBackupAllModbutton.Location = new System.Drawing.Point(7, 500);
+            this.EDTBackupAllModbutton.Name = "EDTBackupAllModbutton";
+            this.EDTBackupAllModbutton.Size = new System.Drawing.Size(163, 23);
+            this.EDTBackupAllModbutton.TabIndex = 49;
+            this.EDTBackupAllModbutton.Text = "Backup All Mods";
+            this.EDTBackupAllModbutton.UseVisualStyleBackColor = true;
+            this.EDTBackupAllModbutton.Click += new System.EventHandler(this.EDTBackupAllModbutton_Click);
             // 
-            // CDGetTextbutton
+            // EDTRestoreAllModbutton
             // 
-            this.CDGetTextbutton.Location = new System.Drawing.Point(100, 359);
-            this.CDGetTextbutton.Name = "CDGetTextbutton";
-            this.CDGetTextbutton.Size = new System.Drawing.Size(84, 52);
-            this.CDGetTextbutton.TabIndex = 45;
-            this.CDGetTextbutton.Text = "Get Text";
-            this.CDGetTextbutton.UseVisualStyleBackColor = true;
-            this.CDGetTextbutton.Click += new System.EventHandler(this.CDGetTextbutton_Click);
+            this.EDTRestoreAllModbutton.Location = new System.Drawing.Point(7, 471);
+            this.EDTRestoreAllModbutton.Name = "EDTRestoreAllModbutton";
+            this.EDTRestoreAllModbutton.Size = new System.Drawing.Size(163, 23);
+            this.EDTRestoreAllModbutton.TabIndex = 48;
+            this.EDTRestoreAllModbutton.Text = "Restore All To Mods";
+            this.EDTRestoreAllModbutton.UseVisualStyleBackColor = true;
+            this.EDTRestoreAllModbutton.Click += new System.EventHandler(this.EDTRestoreAllModbutton_Click);
+            // 
+            // EDTRestoreModbutton
+            // 
+            this.EDTRestoreModbutton.Location = new System.Drawing.Point(7, 442);
+            this.EDTRestoreModbutton.Name = "EDTRestoreModbutton";
+            this.EDTRestoreModbutton.Size = new System.Drawing.Size(163, 23);
+            this.EDTRestoreModbutton.TabIndex = 47;
+            this.EDTRestoreModbutton.Text = "Restore This To A Mod";
+            this.EDTRestoreModbutton.UseVisualStyleBackColor = true;
+            this.EDTRestoreModbutton.Click += new System.EventHandler(this.EDTRestoreModbutton_Click);
             // 
             // Form1
             // 
@@ -8072,6 +8144,12 @@
         private System.Windows.Forms.Button CDLoadFromFilebutton;
         private System.Windows.Forms.Button CDLoadFromTextbutton;
         private System.Windows.Forms.Button CDGetTextbutton;
+        private System.Windows.Forms.Button CDBackupAllModsbutton;
+        private System.Windows.Forms.Button EDTRestoreAllDefaultbutton;
+        private System.Windows.Forms.Button EDTBackupAllModbutton;
+        private System.Windows.Forms.Button EDTRestoreAllModbutton;
+        private System.Windows.Forms.Button EDTRestoreModbutton;
+        private System.Windows.Forms.Button EDTRestoreDefaultbutton;
     }
 }
 

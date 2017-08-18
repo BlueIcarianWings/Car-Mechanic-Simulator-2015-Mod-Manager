@@ -13,8 +13,8 @@ namespace CMS2015ModManager
 {
     public partial class Form1 : Form
     {
-        private string ModManVersion = "0.9.1.6";       //Version constant for ModManager
-        private string GameVersion = "1.0.8.3";     //Version constant for the game
+        private string ModManVersion = "0.9.2.1";       //Version constant for ModManager
+        private string GameVersion = "1.1.0.2";         //Version constant for the game
 
         //Class object for class that does the acutal mod managing stuff    //here so it's scope is within the form object  //should move the config stuff out at somepoint
         CMS2015MM ModMan;
@@ -195,20 +195,15 @@ namespace CMS2015ModManager
         //Handle the menu request to backup the mod car data dir
         private void backupModCarDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Prompt the user to see if they are sure
-            DialogResult PromptResult = MessageBox.Show("This will overwrite all the car data files with the ones in the Mod backup folder\nAre you sure?", "Save Car Data File", MessageBoxButtons.YesNo);
-
-            if (PromptResult == DialogResult.Yes)
-            {
-                ModMan.DirectoryCopy(ModMan.GetCarsDataDir(), ModMan.GetCarsDataDirBkUpMod(), false);
-            }
+            //Call the restore all function for the mod car data files
+            CDCopyAllModifiedCarDataFiles(true);
         }
 
         //Handle the menu request to restore the mod car data dir
         private void restoreModCarDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Call the restore all function for the mod car data files
-            CDRestoreAllMod();
+            CDCopyAllModifiedCarDataFiles(false);
         }
 
         //Handle the menu request to backup the default car data dir
@@ -231,19 +226,14 @@ namespace CMS2015ModManager
         private void backupDefaultCarDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Call the restore all function for the default car data files
-            CDRestoreAllDefault();
+            CDCopyAllDefaultCarDataFiles(true);
         }
 
         //Handle the menu request to restore the default car data dir
         private void restoreDefaultCarDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Prompt the user to see if they are sure
-            DialogResult PromptResult = MessageBox.Show("This will overwrite all the car data files with the ones in the default backup folder\nAre you sure?", "Save Car Data File", MessageBoxButtons.YesNo);
-
-            if (PromptResult == DialogResult.Yes)
-            {
-                ModMan.DirectoryCopy(ModMan.GetCarsDataDirBkUpDefault(), ModMan.GetCarsDataDir(), false);
-            }
+            //Call the restore all function for the default car data files
+            CDCopyAllDefaultCarDataFiles(false);
         }
 
         //Misc Menu Items
@@ -737,9 +727,9 @@ namespace CMS2015ModManager
             //Show the picture file
             //Assemble the path and filename
             string PicturePath = null;
-            string SelectedCar = AvailableEnginesComboBox.Text;
-            SelectedCar = SelectedCar.Substring(1, SelectedCar.Length-2);
-            PicturePath = ModMan.GetConfigDir() + "\\Images\\" + SelectedCar + ".png";
+            string SelectedEngine = AvailableEnginesComboBox.Text;
+            SelectedEngine = SelectedEngine.Substring(1, SelectedEngine.Length-2);
+            PicturePath = ModMan.GetConfigDir() + "\\Images\\" + SelectedEngine + ".png";
             //PicturePath = PicturePath + ".png";                                  //Add jpg
 
             //Check if there is a thumbnail picture present to use
@@ -769,7 +759,7 @@ namespace CMS2015ModManager
         private void EDTCommitButton_Click(object sender, EventArgs e)
         {
             //Check if ok to save file
-            if (MessageBox.Show("Update Engine Data file?\nReset will use these values from now on", "Confirm commit", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Update Engine Data file?\nReset will use these values from now on\n\nAre you sure?", "Confirm commit", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 //Get the index of the selected engine
                 int Index = AvailableEnginesComboBox.SelectedIndex;
@@ -816,12 +806,334 @@ namespace CMS2015ModManager
             }
         }
 
-        //Reset all the engine data fields, from stored values
+        //Handles a call to reset the current engine data fields, from stored values (file in the active folder)
         private void EDTResetButton_Click(object sender, EventArgs e)
         {
-            //Reset the engine data values, just call the other function that sets them initialy
-            AvailableEnginesComboBox_SelectedIndexChanged(sender, e);
+            //Prompt the user to see if they are sure
+            DialogResult PromptResult = MessageBox.Show("This will reset all values to those from the existing engine data file\n\nAre you sure?", "Reset Engine Data", MessageBoxButtons.YesNo);
+
+            if (PromptResult == DialogResult.Yes)
+            {
+                //Reset the engine data values, just call the other function that sets them initialy
+                AvailableEnginesComboBox_SelectedIndexChanged(sender, e);
+            }
         }
+
+        //Handles a call to restore a single engine definition from the default folder
+        private void EDTRestoreDefaultbutton_Click(object sender, EventArgs e)
+        {
+            //Messing and dulicating doing this here, but I don't feel like redesigning the EngineData class to have a read function right now
+
+            //Prompt the user to see if they are sure
+            DialogResult PromptResult = MessageBox.Show("This will restore this engines values to those from the default engine data file\n\nAre you sure?", "Restore Engine Data", MessageBoxButtons.YesNo);
+
+            if (PromptResult == DialogResult.Yes)
+            {
+                //Create a local Engine Data object
+                List<EngineData> DefaultEngineDataList = new List<EngineData>();
+
+                //Loads the file that contains the default engine definitions
+
+                //Setup the filename
+                string FileName = ModMan.GetCarsDataDirBkUpDefault() + "\\engines.txt";
+                //Check if the config file exists
+                if (File.Exists(FileName))
+                {
+                    //Load the whole file
+                    string[] EDFlines = System.IO.File.ReadAllLines(FileName);
+                    //Local to fill out before adding to the EngineDataList
+                    EngineData LocalED;
+                    //Locals to fill out before putting into LocalED (A property or indexer may not be passed as an out or ref parameter)
+                    bool LocalBool = false;
+                    int LocalInt = 0;
+
+                    //Loop through the lines to process them
+                    for (int i = 0; i < EDFlines.Length; i++)
+                    {
+
+                        //Fill out the local until we get a new new heading (starts with[)
+                        // then save the local to the list and start again
+
+                        //If this is a new definition
+                        if (EDFlines[i].StartsWith("["))
+                        {
+                            //New definition so start to fill out the local
+                            LocalED = new EngineData(); //Call it's constructor to init it
+
+                            //We are currently sat on the [<name>] line so lets get the name
+                            int j = EDFlines[i].IndexOf('=');               //Find the end of label string
+                            string line = EDFlines[i].Substring(j + 1, EDFlines[i].Length - (j + 1));    //Grab the bit after the '='
+                            LocalED._Name = line.Trim(' ');                 //Remove the leading on trailing spaces and store the name of the new definition
+                            i++;    //Move it along to the next line, so the if condition check doesn't end it immediately
+
+                            //TO-DO wrap the if here in a loop
+                            while ((i < EDFlines.Length) && (!(EDFlines[i].StartsWith("["))))   //Keep reading lines until another section header line is found or out of lines
+                            {
+
+                                //Check for blank lines and null lines (end of file(might be able to remove the null check, legacy from a stream reader style))
+                                if ((EDFlines[i] != "") && (EDFlines[i] != null) && (!(EDFlines[i].StartsWith(";"))))    //if the line is empty or a comment skip over all this
+                                {
+                                    j = EDFlines[i].IndexOf('=');              //Find the end of label string
+                                    string label = EDFlines[i].Substring(0, j);    //Grabs the bit upto the '='
+                                                                                   //Grab the bit after the '=' and remove the leading and trailing spaces
+                                    line = EDFlines[i].Substring(j + 1, EDFlines[i].Length - (j + 1)).Trim(' ');
+
+                                    switch (label)  //Fill out the Main data
+                                    {
+                                        case "blockOBD":
+                                            bool.TryParse(line, out LocalBool);     //convert the strings to a bool
+                                            LocalED._BlockOBD = LocalBool;          //copy into the local object (we cannot use it directly with 'out')
+                                            break;
+                                        case "engineSound":
+                                            LocalED._EngineSound = line;
+                                            break;
+                                        case "maxPower":
+                                            int.TryParse(line, out LocalInt);       //convert the strings to a number
+                                            LocalED._maxPower = LocalInt;           //copy into the local object (we cannot use it directly with 'out')
+                                            break;
+                                        case "maxPowerRPM":
+                                            int.TryParse(line, out LocalInt);       //convert the strings to a number
+                                            LocalED._maxPowerRPM = LocalInt;        //copy into the local object (we cannot use it directly with 'out')
+                                            break;
+                                        case "maxTorqueRPM":
+                                            int.TryParse(line, out LocalInt);       //convert the strings to a number
+                                            LocalED._maxTorqueRPM = LocalInt;       //copy into the local object (we cannot use it directly with 'out')
+                                            break;
+                                        case "minRPM":
+                                            int.TryParse(line, out LocalInt);       //convert the strings to a number
+                                            LocalED._minRPM = LocalInt;             //copy into the local object (we cannot use it directly with 'out')
+                                            break;
+                                        case "maxRPM":
+                                            int.TryParse(line, out LocalInt);       //convert the strings to a number
+                                            LocalED._maxRPM = LocalInt;             //copy into the local object (we cannot use it directly with 'out')
+                                            break;
+                                        default:
+                                            //Nothing here
+                                            //Blank lines and comments should be eaten outside of this if
+                                            //malformed lines will end up here
+                                            break;
+                                    }
+                                    i++;    //Move to next line
+                                }
+                                else
+                                {
+                                    //Blank line or comment(or null line, shouldn't be I'll see later if it needs a break)
+                                    i++;    //Move to next line
+                                }
+                            }
+                            i--;    //Knock the counter back a line as the while loop that called us, will inc it and step over the section header we just found.
+                            DefaultEngineDataList.Add(LocalED);    //Add full definition to the list
+                        }
+                    }
+                    //Now we have a full list, copy over the wanted one
+
+                    //Check the file isn't empty
+                    if (DefaultEngineDataList.Count > 0)
+                    {
+                        string SelectedEngine = AvailableEnginesComboBox.Text;  //Get the currently selected engine
+
+                        //Loop through each entry
+                        foreach (EngineData Eng in DefaultEngineDataList)
+                        {
+                            if (Eng._Name == SelectedEngine) //If the name matches
+                            {
+                                //Set the data fields with the values from the selected engine
+                                EDTBlockOBDcheckBox.Checked = Eng._BlockOBD;
+                                EDTEngineSoundtextBox.Text = Eng._EngineSound;
+                                EDTmaxPowerNumericUpDown.Value = Eng._maxPower;
+                                EDTmaxPowerRPMNumericUpDown.Value = Eng._maxPowerRPM;
+                                EDTmaxTorqueRPMNumericUpDown.Value = Eng._maxTorqueRPM;
+                                EDTminRPMLabelNumericUpDown.Value = Eng._minRPM;
+                                EDTmaxRPMLabelNumericUpDown.Value = Eng._maxRPM;
+
+                                //Write the file by calling the save button
+                                EDTCommitButton_Click(sender, e);
+
+                                break;  //Exit the foreach loop
+                            }
+                        }
+                    }
+                }   //File.Exists check
+            }
+        }
+
+        //Handles a call to restore all engines to default
+        private void EDTRestoreAllDefaultbutton_Click(object sender, EventArgs e)
+        {
+            //Prompt the user to see if they are sure
+            DialogResult PromptResult = MessageBox.Show("This will restore all engines to those from the default engine data file\n\nAre you sure?", "Restore All Engine Data", MessageBoxButtons.YesNo);
+
+            if (PromptResult == DialogResult.Yes)
+            {
+                // overwrite the destination file if it already exists.
+                System.IO.File.Copy(ModMan.GetCarsDataDirBkUpDefault() + "\\engines.txt", ModMan.GetCarsDataDir() + "\\engines.txt", true);
+            }
+        }
+
+        //Handles a call to restore a single engine to a mod
+        private void EDTRestoreModbutton_Click(object sender, EventArgs e)
+        {
+            //Prompt the user to see if they are sure
+            DialogResult PromptResult = MessageBox.Show("This will restore this engines values to those from the mod engine data file\n\nAre you sure?", "Restore Mod Data", MessageBoxButtons.YesNo);
+
+            if (PromptResult == DialogResult.Yes)
+            {
+                //Messing and dulicating doing this here, but I don't feel like redesigning the EngineData class to have a read function right now
+
+                //Create a local Engine Data object
+                List<EngineData> ModEngineDataList = new List<EngineData>();
+
+                //Loads the file that contains the mod engine definitions
+
+                //Setup the filename
+                string FileName = ModMan.GetCarsDataDirBkUpMod() + "\\engines.txt";
+                //Check if the config file exists
+                if (File.Exists(FileName))
+                {
+                    //Load the whole file
+                    string[] EDFlines = System.IO.File.ReadAllLines(FileName);
+                    //Local to fill out before adding to the EngineDataList
+                    EngineData LocalED;
+                    //Locals to fill out before putting into LocalED (A property or indexer may not be passed as an out or ref parameter)
+                    bool LocalBool = false;
+                    int LocalInt = 0;
+
+                    //Loop through the lines to process them
+                    for (int i = 0; i < EDFlines.Length; i++)
+                    {
+
+                        //Fill out the local until we get a new new heading (starts with[)
+                        // then save the local to the list and start again
+
+                        //If this is a new definition
+                        if (EDFlines[i].StartsWith("["))
+                        {
+                            //New definition so start to fill out the local
+                            LocalED = new EngineData(); //Call it's constructor to init it
+
+                            //We are currently sat on the [<name>] line so lets get the name
+                            int j = EDFlines[i].IndexOf('=');               //Find the end of label string
+                            string line = EDFlines[i].Substring(j + 1, EDFlines[i].Length - (j + 1));    //Grab the bit after the '='
+                            LocalED._Name = line.Trim(' ');                 //Remove the leading on trailing spaces and store the name of the new definition
+                            i++;    //Move it along to the next line, so the if condition check doesn't end it immediately
+
+                            //TO-DO wrap the if here in a loop
+                            while ((i < EDFlines.Length) && (!(EDFlines[i].StartsWith("["))))   //Keep reading lines until another section header line is found or out of lines
+                            {
+
+                                //Check for blank lines and null lines (end of file(might be able to remove the null check, legacy from a stream reader style))
+                                if ((EDFlines[i] != "") && (EDFlines[i] != null) && (!(EDFlines[i].StartsWith(";"))))    //if the line is empty or a comment skip over all this
+                                {
+                                    j = EDFlines[i].IndexOf('=');              //Find the end of label string
+                                    string label = EDFlines[i].Substring(0, j);    //Grabs the bit upto the '='
+                                                                                   //Grab the bit after the '=' and remove the leading and trailing spaces
+                                    line = EDFlines[i].Substring(j + 1, EDFlines[i].Length - (j + 1)).Trim(' ');
+
+                                    switch (label)  //Fill out the Main data
+                                    {
+                                        case "blockOBD":
+                                            bool.TryParse(line, out LocalBool);     //convert the strings to a bool
+                                            LocalED._BlockOBD = LocalBool;          //copy into the local object (we cannot use it directly with 'out')
+                                            break;
+                                        case "engineSound":
+                                            LocalED._EngineSound = line;
+                                            break;
+                                        case "maxPower":
+                                            int.TryParse(line, out LocalInt);       //convert the strings to a number
+                                            LocalED._maxPower = LocalInt;           //copy into the local object (we cannot use it directly with 'out')
+                                            break;
+                                        case "maxPowerRPM":
+                                            int.TryParse(line, out LocalInt);       //convert the strings to a number
+                                            LocalED._maxPowerRPM = LocalInt;        //copy into the local object (we cannot use it directly with 'out')
+                                            break;
+                                        case "maxTorqueRPM":
+                                            int.TryParse(line, out LocalInt);       //convert the strings to a number
+                                            LocalED._maxTorqueRPM = LocalInt;       //copy into the local object (we cannot use it directly with 'out')
+                                            break;
+                                        case "minRPM":
+                                            int.TryParse(line, out LocalInt);       //convert the strings to a number
+                                            LocalED._minRPM = LocalInt;             //copy into the local object (we cannot use it directly with 'out')
+                                            break;
+                                        case "maxRPM":
+                                            int.TryParse(line, out LocalInt);       //convert the strings to a number
+                                            LocalED._maxRPM = LocalInt;             //copy into the local object (we cannot use it directly with 'out')
+                                            break;
+                                        default:
+                                            //Nothing here
+                                            //Blank lines and comments should be eaten outside of this if
+                                            //malformed lines will end up here
+                                            break;
+                                    }
+                                    i++;    //Move to next line
+                                }
+                                else
+                                {
+                                    //Blank line or comment(or null line, shouldn't be I'll see later if it needs a break)
+                                    i++;    //Move to next line
+                                }
+                            }
+                            i--;    //Knock the counter back a line as the while loop that called us, will inc it and step over the section header we just found.
+                            ModEngineDataList.Add(LocalED);    //Add full definition to the list
+                        }
+                    }
+                    //Now we have a full list, copy over the wanted one
+
+                    //Check the file isn't empty
+                    if (ModEngineDataList.Count > 0)
+                    {
+                        string SelectedEngine = AvailableEnginesComboBox.Text;  //Get the currently selected engine
+
+                        //Loop through each entry
+                        foreach (EngineData Eng in ModEngineDataList)
+                        {
+                            if (Eng._Name == SelectedEngine) //If the name matches
+                            {
+                                //Set the data fields with the values from the selected engine
+                                EDTBlockOBDcheckBox.Checked = Eng._BlockOBD;
+                                EDTEngineSoundtextBox.Text = Eng._EngineSound;
+                                EDTmaxPowerNumericUpDown.Value = Eng._maxPower;
+                                EDTmaxPowerRPMNumericUpDown.Value = Eng._maxPowerRPM;
+                                EDTmaxTorqueRPMNumericUpDown.Value = Eng._maxTorqueRPM;
+                                EDTminRPMLabelNumericUpDown.Value = Eng._minRPM;
+                                EDTmaxRPMLabelNumericUpDown.Value = Eng._maxRPM;
+
+                                //Write the file by calling the save button
+                                EDTCommitButton_Click(sender, e);
+
+                                break;  //Exit the foreach loop
+                            }
+                        }
+                    }
+                }   //File.Exists check
+            }
+        }
+
+        //Handles a call to restore all engines to mods
+        private void EDTRestoreAllModbutton_Click(object sender, EventArgs e)
+        {
+            //Prompt the user to see if they are sure
+            DialogResult PromptResult = MessageBox.Show("This will restore all engines to those from the mod engine data file\n\nAre you sure?", "Restore All Mods To Engine Data", MessageBoxButtons.YesNo);
+
+            if (PromptResult == DialogResult.Yes)
+            {
+                // overwrite the destination file if it already exists.
+                System.IO.File.Copy(ModMan.GetCarsDataDirBkUpDefault() + "\\engines.txt", ModMan.GetCarsDataDir() + "\\engines.txt", true);
+            }
+        }
+
+        //Backup the all engine mods
+        private void EDTBackupAllModbutton_Click(object sender, EventArgs e)
+        {
+            //Prompt the user to see if they are sure
+            DialogResult PromptResult = MessageBox.Show("This will overwrite all the exisiting backed up modified engines\nwith the ones currently in the active folder\n\nAre you sure?", "Backup Mod Engine Data", MessageBoxButtons.YesNo);
+
+            if (PromptResult == DialogResult.Yes)
+            {
+                // overwrite the destination file if it already exists.
+                System.IO.File.Copy(ModMan.GetCarsDataDir() + "\\engines.txt", ModMan.GetCarsDataDirBkUpDefault() + "\\engines.txt", true);
+            }
+        }
+
         #endregion
 
         #region Tire stuff
@@ -968,8 +1280,14 @@ namespace CMS2015ModManager
         //Reset all the tire data fields, from stored values
         private void TDTResetbutton_Click(object sender, EventArgs e)
         {
-            //Reset the engine data values, just call the other function that sets them initialy
-            AvailableTirescomboBox_SelectedIndexChanged(sender, e);
+            //Prompt the user to see if they are sure
+            DialogResult PromptResult = MessageBox.Show("This will reset all values to those from the existing tire data file", "Reset Tire Data", MessageBoxButtons.YesNo);
+
+            if (PromptResult == DialogResult.Yes)
+            {
+                //Reset the engine data values, just call the other function that sets them initialy
+                AvailableTirescomboBox_SelectedIndexChanged(sender, e);
+            }
         }
         #endregion
 
@@ -1777,28 +2095,118 @@ namespace CMS2015ModManager
         }
 
         //Restore all the default car data files to the active area
-        public void CDRestoreAllDefault()
+        public void CDCopyAllDefaultCarDataFiles(bool Backup)
         {
-            //Prompt the user to see if they are sure
-            DialogResult PromptResult = MessageBox.Show("This will overwrite all the car data files with the ones in the default backup folder\nAre you sure?", "Save Car Data File", MessageBoxButtons.YesNo);
+            //True = backup
+            //False = restore
+
+            //Create locals to make life easier
+            string sourceDirName;
+            string destDirName;
+            DialogResult PromptResult;
+
+            if (Backup)
+            {
+                //Prompt the user to see if they are sure
+                PromptResult = MessageBox.Show("This will overwrite all the exisiting backed up default car data files\nwith the ones currently in the active folder\n\nAre you sure?", "Backup Car Data Files", MessageBoxButtons.YesNo);
+                sourceDirName = ModMan.GetCarsDataDir();
+                destDirName = ModMan.GetCarsDataDirBkUpDefault();
+            }
+            else
+            {
+                //Prompt the user to see if they are sure
+                PromptResult = MessageBox.Show("This will overwrite all the car data files in the active folder\nwith the ones in the default backup folder\n\nAre you sure?", "Restore Car Data Files", MessageBoxButtons.YesNo);
+                sourceDirName = ModMan.GetCarsDataDirBkUpDefault();
+                destDirName = ModMan.GetCarsDataDir();
+            }
 
             if (PromptResult == DialogResult.Yes)
             {
-                //Copy the defaults back into the active area, no to copying sub folders
-                ModMan.DirectoryCopy(ModMan.GetCarsDataDir(), ModMan.GetCarsDataDirBkUpDefault(), false);
+                // Get the subdirectories for the specified directory.
+                DirectoryInfo sourceDir = new DirectoryInfo(sourceDirName);
+
+                //Check if source dir exists
+                if (!sourceDir.Exists)
+                {
+                    throw new DirectoryNotFoundException("Source directory does not exist or could not be found: " + sourceDirName);
+                }
+
+                // If the destination directory doesn't exist, create it.
+                if (!Directory.Exists(destDirName))
+                {
+                    Directory.CreateDirectory(destDirName);
+                }
+
+                // Get the files in the directory and copy them to the new location.
+                FileInfo[] files = sourceDir.GetFiles();
+                foreach (FileInfo file in files)
+                {
+                    //Check if the file is NOT on the ignore list
+                    if ((file.Name != "cars.txt") && (file.Name != "engines.txt") && (file.Name != "tires.txt"))
+                    {
+                        file.CopyTo((Path.Combine(destDirName, file.Name)), true);
+                    }
+                }
+                //Repopulate the combo box
+                PopulateAvailableCarsComboBox();
             }
         }
 
         //Restore all the Mod car data files to the active area
-        public void CDRestoreAllMod()
+        public void CDCopyAllModifiedCarDataFiles(bool Backup)
         {
-            //Prompt the user to see if they are sure
-            DialogResult PromptResult = MessageBox.Show("This will overwrite all the car data files with the ones in the Mod backup folder\nAre you sure?", "Save Car Data File", MessageBoxButtons.YesNo);
+            //True = backup
+            //False = restore
+
+            //Create locals to make life easier
+            string sourceDirName;
+            string destDirName;
+            DialogResult PromptResult;
+
+            if (Backup)
+            {
+                //Prompt the user to see if they are sure
+                PromptResult = MessageBox.Show("This will overwrite all the exisiting backed up modified car data files\nwith the ones currently in the active folder\n\nAre you sure?", "Backup Mod Car Data Files", MessageBoxButtons.YesNo);
+                sourceDirName = ModMan.GetCarsDataDir();
+                destDirName = ModMan.GetCarsDataDirBkUpMod();
+            }
+            else
+            {
+                //Prompt the user to see if they are sure
+                PromptResult = MessageBox.Show("This will overwrite all the car data files in the active folder\nwith the ones in the modified backup folder\n\nAre you sure?", "Restore Car Data Files", MessageBoxButtons.YesNo);
+                sourceDirName = ModMan.GetCarsDataDirBkUpMod();
+                destDirName = ModMan.GetCarsDataDir();
+            }
 
             if (PromptResult == DialogResult.Yes)
             {
-                //Copy the mods back into the active area, no to copying sub folders
-                ModMan.DirectoryCopy(ModMan.GetCarsDataDirBkUpMod(), ModMan.GetCarsDataDir(), false);
+                // Get the subdirectories for the specified directory.
+                DirectoryInfo sourceDir = new DirectoryInfo(sourceDirName);
+
+                //Check if source dir exists
+                if (!sourceDir.Exists)
+                {
+                    throw new DirectoryNotFoundException("Source directory does not exist or could not be found: " + sourceDirName);
+                }
+
+                // If the destination directory doesn't exist, create it.
+                if (!Directory.Exists(destDirName))
+                {
+                    Directory.CreateDirectory(destDirName);
+                }
+
+                // Get the files in the directory and copy them to the new location.
+                FileInfo[] files = sourceDir.GetFiles();
+                foreach (FileInfo file in files)
+                {
+                    //Check if the file is NOT on the ignore list
+                    if ((file.Name != "cars.txt") && (file.Name != "engines.txt") && (file.Name != "tires.txt"))
+                    {
+                        file.CopyTo((Path.Combine(destDirName, file.Name)), true);
+                    }
+                }
+                //Repopulate the combo box
+                PopulateAvailableCarsComboBox();
             }
         }
 
@@ -1900,7 +2308,7 @@ namespace CMS2015ModManager
         private void CDResetbutton_Click(object sender, EventArgs e)
         {
             //Prompt the user to see if they are sure
-            DialogResult PromptResult = MessageBox.Show("This will reset all values to those from the existing car data file", "Reset Car Data File", MessageBoxButtons.YesNo);
+            DialogResult PromptResult = MessageBox.Show("This will reset all values to those from the existing car data file\n\nAre you sure?", "Reset Car Data File", MessageBoxButtons.YesNo);
 
             if (PromptResult == DialogResult.Yes)
             {
@@ -1946,13 +2354,14 @@ namespace CMS2015ModManager
         private void CDRestoreAllbutton_Click(object sender, EventArgs e)
         {
             //Call the restore all function for the default car data files
-            CDRestoreAllDefault();
+            CDCopyAllDefaultCarDataFiles(false);
         }
 
         //Handles a call to restore all the Car Data Files to a Mod(restores by copying over the 'default' file from the default backup then doing a reset to sort the GUI)
         private void CDRestoreAllModbutton_Click(object sender, EventArgs e)
         {
-            CDRestoreAllMod();
+            //Call the restore all function for the modified car data files
+            CDCopyAllModifiedCarDataFiles(false);
         }
 
         //Handles a call to restore a single Car Data File to a Mod(restores by copying over the 'default' file from the default backup then doing a reset to sort the GUI)
@@ -1980,6 +2389,13 @@ namespace CMS2015ModManager
                 //Reload the data
                 AvailableCarsDataComboBox_SelectedIndexChanged(sender, e);
             }
+        }
+
+        //Handles a call to backup all mods
+        private void CDBackupAllModsbutton_Click(object sender, EventArgs e)
+        {
+            //Call the restore all function for the modified car data files
+            CDCopyAllModifiedCarDataFiles(true);
         }
 
         //Handles a call to clear out all data and start again
@@ -2513,5 +2929,6 @@ namespace CMS2015ModManager
 
         #endregion
 
+        
     }
 }
