@@ -25,12 +25,13 @@ namespace CMS2015ModManager
     public class CMS2015MM
     {
         string ConfigFN = "CMS2015MMConfig.txt";    //Holds the name of the config file
-        private string ConfigDir = null;        //Holds dir the config file is in (same as the exe)
-        private string SavedGamesDir = null;    //Holds the dir of the saved games
-        private string SavedGamesDirBkUp = null;//Holds the backup dir of the saved games
-        private string CarsDataDir = null;      //Holds the dir of the car data
-        private string CarsDataDirBkUp = null;  //Holds the backup dir of the car 
-        private string ModMapDir = null;        //Holds the dir the custom maps live in
+        private string ConfigDir = null;            //Holds dir the config file is in (same as the exe)
+        private string SavedGamesDir = null;        //Holds the dir of the saved games
+        private string SavedGamesDirBkUp = null;    //Holds the backup dir of the saved games
+        private string CarsDataDir = null;          //Holds the dir of the car data
+        private string CarsDataDirBkUpDefault = null;   //Holds the backup dir of the car 
+        private string CarsDataDirBkUpMod = null;   //Holds the backup dir of the car 
+        private string ModMapDir = null;            //Holds the dir the custom maps live in
 
         //Strut to hold car list data
         public struct CarListType
@@ -85,8 +86,9 @@ namespace CMS2015ModManager
             //Get dir we are currently in
             ConfigDir = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
 
-            //Check if the config file exists
-            if (File.Exists(ConfigFN))
+            //Check for config file and create if needed, this runs at start up so also functions as a 'first run' action
+
+            if (File.Exists(ConfigFN))  //Check if the config file exists
             {
                 //create a streamReader to accses the config file
                 StreamReader reader = new StreamReader(ConfigFN);
@@ -116,44 +118,50 @@ namespace CMS2015ModManager
                 reader.Dispose();
 
                 //Now to process the config 
-                SavedGamesDir = list[0];    //Grab the first line
-                SavedGamesDirBkUp = list[1];//Grab the second line
-                CarsDataDir = list[2];      //grab the third line
-                CarsDataDirBkUp = list[3];  //grab the forth line
-                ModMapDir = list[4];        //grab the fifth line
+                SavedGamesDir = list[0];            //Grab the first line
+                SavedGamesDirBkUp = list[1];        //Grab the second line
+                CarsDataDir = list[2];              //grab the third line
+                CarsDataDirBkUpDefault = list[3];   //grab the forth line
+                CarsDataDirBkUpMod = list[4];       //grab the fifth line
+                ModMapDir = list[5];                //grab the sixth line
             }
             else
             {
+                //If we get here then there was no config file and this may be a first run
+
                 //If the file doesn't exist create one
                 CreateConfigFile();
+                //Backup the default cars
+                BackupDefaultCarDataFilesDialog();
             }
         }
 
         //Create config file
         public void CreateConfigFile()
         {
-            //After creating this, I've realised theirs no easy way to update the text boxes
+            //After creating this, I've realised theres no easy way to update the text boxes
             //So I've disabled them for now, when I redo this in it's own class, I'll figure out a better way todo it
 
             //If the file doesn't exist load defaults
             String User = Environment.UserName;    //Determine the name of the user
+            //Save game / profiles
             SavedGamesDir = "C:\\Users\\" + User + "\\appdata\\locallow\\Red Dot Games\\Car Mechanic Simulator 2015";   //Assemble the save dir path
             SavedGamesDirBkUp = SavedGamesDir  + "\\MMBackUp";      //Assemble the save backup dir
+            //Car data files
             CarsDataDir = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Car Mechanic Simulator 2015\\cms2015_Data\\Datacars";
-            CarsDataDirBkUp = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Car Mechanic Simulator 2015\\cms2015_Data\\Datacars\\MMBackUp";
+            CarsDataDirBkUpDefault = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Car Mechanic Simulator 2015\\cms2015_Data\\Datacars\\MMBackUpDefault";
+            CarsDataDirBkUpMod = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Car Mechanic Simulator 2015\\cms2015_Data\\Datacars\\MMBackUpMod";
+            //Mod maps
             ModMapDir = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Car Mechanic Simulator 2015\\Mods\\Tracks";
 
             //These may not match if the user has installed the game to a custom location, so we need to ask
             Form form = new Form();
             Label Titlelabel = new Label();
             Label DataCarslabel = new Label();
-            //TextBox DataCarstextBox = new TextBox();
             Button DataCarsbutton = new Button();
             Label ModMaplabel = new Label();
-            //TextBox ModMaptextBox = new TextBox();
             Button ModMapbutton = new Button();
             Label SaveGameslabel = new Label();
-            //TextBox SaveGametextBox = new TextBox();
             Button SaveGamebutton = new Button();
             Button buttonOk = new Button();
 
@@ -161,35 +169,33 @@ namespace CMS2015ModManager
             Titlelabel.Text = "Please set game directories\nDefault values currently set, Click ok to use these values";
             Titlelabel.SetBounds(3, 3, 280, 30);
 
+            //Data Cars
             DataCarslabel.Text = "Data Cars Directory";
             DataCarslabel.SetBounds(3, 42, 100, 13);
-            //DataCarstextBox.Text = CarsDataDir;
-            //DataCarstextBox.SetBounds(36, 60, 760, 15);
             DataCarsbutton.Text = "...";
             DataCarsbutton.SetBounds(3, 60, 30, 20);
             DataCarsbutton.Click += new EventHandler(DataCarsbutton_Click);
 
+            //Mod Maps
             ModMaplabel.Text = "Mod Maps Directory";
             ModMaplabel.SetBounds(3, 82, 100, 13);
-            //ModMaptextBox.Text = ModMapDir;
-            //ModMaptextBox.SetBounds(36, 100, 760, 15);
             ModMapbutton.Text = "...";
             ModMapbutton.SetBounds(3, 100, 30, 20);
             ModMapbutton.Click += new EventHandler(ModMapbutton_Click);
 
+            //Save Game / Profiles
             SaveGameslabel.Text = "Save Game Directory";
             SaveGameslabel.SetBounds(3, 122, 100, 13);
-            //SaveGametextBox.Text = SavedGamesDir;
-            //SaveGametextBox.SetBounds(36, 140, 760, 15);
             SaveGamebutton.Text = "...";
             SaveGamebutton.SetBounds(3, 140, 30, 20);
             SaveGamebutton.Click += new EventHandler(SaveGamebutton_Click);
 
+            //Exit button
             buttonOk.Text = "OK";
             buttonOk.DialogResult = DialogResult.OK;            
             buttonOk.SetBounds(3, 173, 75, 23);
 
-            //800
+            //Show the dialog prompt
             form.ClientSize = new Size(300, 200);
             form.Controls.AddRange(new Control[] { Titlelabel, DataCarslabel, DataCarsbutton,
                                                                ModMaplabel, ModMapbutton,
@@ -249,6 +255,9 @@ namespace CMS2015ModManager
             {
                 //Retrieve and set the selected dir
                 CarsDataDir = fbd.SelectedPath;
+                //Need to update the backup dir values
+                CarsDataDirBkUpDefault = CarsDataDir + "\\MMBackUpDefault";
+                CarsDataDirBkUpMod = CarsDataDir + "\\MMBackUpMod";
             }
         }
 
@@ -265,7 +274,8 @@ namespace CMS2015ModManager
                     writer.WriteLine(SavedGamesDir);
                     writer.WriteLine(SavedGamesDirBkUp);
                     writer.WriteLine(CarsDataDir);
-                    writer.WriteLine(CarsDataDirBkUp);
+                    writer.WriteLine(CarsDataDirBkUpDefault);
+                    writer.WriteLine(CarsDataDirBkUpMod);
                     writer.WriteLine(ModMapDir);
                 }
             }
@@ -275,6 +285,55 @@ namespace CMS2015ModManager
                 MessageBox.Show("There was a problem writing the config file.\nThis is probably accses permissons related?\nThis may affect other file writes.\n\nChanged config paths will be used for not but will not remain when this application exits", "Config file creation problem");
             }
             
+        }
+
+        //Show the Car Data Files backup of default files initial dialog
+        public void BackupDefaultCarDataFilesDialog()
+        {
+            //Auto backup notice
+            Form form = new Form();
+            Label Titlelabel = new Label();
+            Label Bodylabel = new Label();
+            Button buttonOk = new Button();
+            Button buttonCancel = new Button();
+
+            form.Text = "Backup Default Car Data Files";
+            Titlelabel.Text = "Mod Manager will now backup the Default Car Data Files";
+            Titlelabel.SetBounds(3, 3, 480, 30);
+            Bodylabel.Text = "If the current Car Data Files are not the Default versions you can skip this step.\nYou'll need to perform a 'verify gamecache' through the list of installed games in Steam to get the default files, then perfom a backup from the menu bar within Mod Manager\n\nRemember to update the default files after each patch updates them (and your modded car files before the patch wipes them!)";
+            Bodylabel.SetBounds(3, 42, 480, 90);
+
+            //Exit buttons
+            buttonOk.Text = "OK";
+            buttonOk.DialogResult = DialogResult.OK;
+            buttonOk.SetBounds(3, 153, 75, 23);
+            buttonCancel.Text = "Cancel";
+            buttonCancel.DialogResult = DialogResult.Cancel;
+            buttonCancel.SetBounds(80, 153, 75, 23);
+
+            //Assemble and show
+            form.ClientSize = new Size(500, 180);
+            form.Controls.AddRange(new Control[] { Titlelabel, Bodylabel, buttonOk, buttonCancel});
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MinimizeBox = false;
+            form.MaximizeBox = false;
+            form.AcceptButton = buttonOk;
+
+
+            DialogResult dialogResult = form.ShowDialog();
+
+            //Perform the backup, if it's ok
+            if (dialogResult.Equals(DialogResult.OK))
+            {
+                BackupDefaultCarDataFiles();
+            }
+        }
+
+        //Perform the Car Data Files backup of default files
+        public void BackupDefaultCarDataFiles()
+        {
+            DirectoryCopy(CarsDataDir, CarsDataDirBkUpDefault, false);     //Copy the files but don't copy any dirs
         }
 
         #region Getters and Setters
@@ -303,9 +362,14 @@ namespace CMS2015ModManager
             return CarsDataDir;
         }
 
-        public string GetCarsDataDirBkUp()
+        public string GetCarsDataDirBkUpDefault()
         {
-            return CarsDataDirBkUp;
+            return CarsDataDirBkUpDefault;
+        }
+
+        public string GetCarsDataDirBkUpMod()
+        {
+            return CarsDataDirBkUpMod;
         }
 
         public void SetCarsDataDir(string Input)
@@ -313,9 +377,14 @@ namespace CMS2015ModManager
             CarsDataDir = Input;
         }
 
-        public void SetCarsDataDirBkUp(string Input)
+        public void SetCarsDataDirBkUpDefault(string Input)
         {
-            CarsDataDirBkUp = Input;
+            CarsDataDirBkUpDefault = Input;
+        }
+
+        public void SetCarsDataDirBkUpMod(string Input)
+        {
+            CarsDataDirBkUpMod = Input;
         }
 
         public string GetModMapDir()
@@ -368,7 +437,7 @@ namespace CMS2015ModManager
             foreach (FileInfo file in files)
             {
                 string temppath = Path.Combine(destDirName, file.Name);
-                file.CopyTo(temppath, false);
+                file.CopyTo(temppath, true);
             }
 
             // If copying subdirectories, copy them and their contents to new location.
@@ -378,6 +447,7 @@ namespace CMS2015ModManager
                 {
                     string temppath = Path.Combine(destDirName, subdir.Name);
                     DirectoryCopy(subdir.FullName, temppath, copySubDirs);
+                    //Does this copy the contnets of the subdir too? need to check
                 }
             }
         }

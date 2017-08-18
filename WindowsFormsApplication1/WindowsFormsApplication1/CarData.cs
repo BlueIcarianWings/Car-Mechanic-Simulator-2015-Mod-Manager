@@ -165,12 +165,11 @@ namespace CMS2015ModManager
         //Loads a car data file into the object from the fullpath and filename given
         public void LoadCarDataFile(string Filename)
         {
-            //Check if the config file exists
+            //Check if the Car Data File exists
             if (File.Exists(Filename))
             {
                 //Load the whole file
                 string[] CDFlines = System.IO.File.ReadAllLines(Filename);
-
                 //Remove old data
                 CarDataClearAll();
 

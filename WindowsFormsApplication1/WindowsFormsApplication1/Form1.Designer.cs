@@ -32,17 +32,21 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.savesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.savesBackupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backupSavesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restoreSavesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setSourceDirToolStripMenuItemSaves = new System.Windows.Forms.ToolStripMenuItem();
-            this.setBackupDirToolStripMenuItemSaves = new System.Windows.Forms.ToolStripMenuItem();
-            this.carDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backupCarDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.restoreCarDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setSourceDirToolStripMenuItemCar = new System.Windows.Forms.ToolStripMenuItem();
-            this.setBackupDirToolStripMenuItemCar = new System.Windows.Forms.ToolStripMenuItem();
+            this.setSourceDirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setBackupDirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.carDataFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backupModCarDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restoreModCarDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setModBackupDirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.backupDefaultCarDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restoreDefaultCarDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setDefaultBackupDirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.setCarDataSourceDirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -61,6 +65,8 @@
             this.CarsCurrentlyListBox = new System.Windows.Forms.ListBox();
             this.AvailableCarsListLabel = new System.Windows.Forms.Label();
             this.CarDataTabPage = new System.Windows.Forms.TabPage();
+            this.CDRestoreAllbutton = new System.Windows.Forms.Button();
+            this.CDRestorebutton = new System.Windows.Forms.Button();
             this.EDTOveralltabControl = new System.Windows.Forms.TabControl();
             this.EDTGeneraltabPage = new System.Windows.Forms.TabPage();
             this.CDPartstabControl = new System.Windows.Forms.TabControl();
@@ -547,13 +553,14 @@
             this.MDTLoadModMapButton = new System.Windows.Forms.Button();
             this.MDTSetGameMapButton = new System.Windows.Forms.Button();
             this.SaveGameEditortabPage = new System.Windows.Forms.TabPage();
+            this.SGTProfilesFoundlabel = new System.Windows.Forms.Label();
+            this.SGETProfilecomboBox = new System.Windows.Forms.ComboBox();
             this.SaveGameEditorTabtabControl = new System.Windows.Forms.TabControl();
             this.SGETGlobaltabPage = new System.Windows.Forms.TabPage();
-            this.SGETProfilecomboBox = new System.Windows.Forms.ComboBox();
-            this.SGETProfilelabel = new System.Windows.Forms.Label();
             this.SGETGMoneynumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.SGETGMoneylabel = new System.Windows.Forms.Label();
             this.SGETGXPnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SGETGSavebutton = new System.Windows.Forms.Button();
             this.SGETGXPlabel = new System.Windows.Forms.Label();
             this.SGETBankLoannumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.SGETBankLoanlabel = new System.Windows.Forms.Label();
@@ -575,11 +582,15 @@
             this.SGETGMoneyIncomePartslabel = new System.Windows.Forms.Label();
             this.SGETGPartsRepairednumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.SGETGPartsRepairedlabel = new System.Windows.Forms.Label();
-            this.SGETGSavebutton = new System.Windows.Forms.Button();
             this.SGETGTitlelabel = new System.Windows.Forms.Label();
             this.SGETHelpWantedtabPage = new System.Windows.Forms.TabPage();
             this.SGETHelpWantedtextBox = new System.Windows.Forms.TextBox();
-            this.SGTProfilesFoundlabel = new System.Windows.Forms.Label();
+            this.SGETProfilelabel = new System.Windows.Forms.Label();
+            this.CDRestoreAllModbutton = new System.Windows.Forms.Button();
+            this.CDRestoreModbutton = new System.Windows.Forms.Button();
+            this.CDLoadFromFilebutton = new System.Windows.Forms.Button();
+            this.CDLoadFromTextbutton = new System.Windows.Forms.Button();
+            this.CDGetTextbutton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.CarsListTabPage.SuspendLayout();
@@ -791,7 +802,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.backupToolStripMenuItem,
+            this.savesBackupToolStripMenuItem,
+            this.carDataFilesToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -814,25 +826,16 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // backupToolStripMenuItem
+            // savesBackupToolStripMenuItem
             // 
-            this.backupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.savesToolStripMenuItem,
-            this.carDataToolStripMenuItem});
-            this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
-            this.backupToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-            this.backupToolStripMenuItem.Text = "Backup";
-            // 
-            // savesToolStripMenuItem
-            // 
-            this.savesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.savesBackupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.backupSavesToolStripMenuItem,
             this.restoreSavesToolStripMenuItem,
-            this.setSourceDirToolStripMenuItemSaves,
-            this.setBackupDirToolStripMenuItemSaves});
-            this.savesToolStripMenuItem.Name = "savesToolStripMenuItem";
-            this.savesToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
-            this.savesToolStripMenuItem.Text = "Saves";
+            this.setSourceDirToolStripMenuItem,
+            this.setBackupDirToolStripMenuItem});
+            this.savesBackupToolStripMenuItem.Name = "savesBackupToolStripMenuItem";
+            this.savesBackupToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.savesBackupToolStripMenuItem.Text = "Saves";
             // 
             // backupSavesToolStripMenuItem
             // 
@@ -845,61 +848,97 @@
             // 
             this.restoreSavesToolStripMenuItem.Name = "restoreSavesToolStripMenuItem";
             this.restoreSavesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.restoreSavesToolStripMenuItem.Text = "Restore saves";
+            this.restoreSavesToolStripMenuItem.Text = "Restore Saves";
             this.restoreSavesToolStripMenuItem.Click += new System.EventHandler(this.restoreSavesToolStripMenuItem_Click);
             // 
-            // setSourceDirToolStripMenuItemSaves
+            // setSourceDirToolStripMenuItem
             // 
-            this.setSourceDirToolStripMenuItemSaves.Name = "setSourceDirToolStripMenuItemSaves";
-            this.setSourceDirToolStripMenuItemSaves.Size = new System.Drawing.Size(150, 22);
-            this.setSourceDirToolStripMenuItemSaves.Text = "Set Source Dir";
-            this.setSourceDirToolStripMenuItemSaves.Click += new System.EventHandler(this.setSourceDirToolStripMenuItemSaves_Click);
+            this.setSourceDirToolStripMenuItem.Name = "setSourceDirToolStripMenuItem";
+            this.setSourceDirToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.setSourceDirToolStripMenuItem.Text = "Set Source Dir";
+            this.setSourceDirToolStripMenuItem.Click += new System.EventHandler(this.setSourceDirToolStripMenuItemSaves_Click);
             // 
-            // setBackupDirToolStripMenuItemSaves
+            // setBackupDirToolStripMenuItem
             // 
-            this.setBackupDirToolStripMenuItemSaves.Name = "setBackupDirToolStripMenuItemSaves";
-            this.setBackupDirToolStripMenuItemSaves.Size = new System.Drawing.Size(150, 22);
-            this.setBackupDirToolStripMenuItemSaves.Text = "Set Backup Dir";
-            this.setBackupDirToolStripMenuItemSaves.Click += new System.EventHandler(this.setBackupDirToolStripMenuItemSaves_Click);
+            this.setBackupDirToolStripMenuItem.Name = "setBackupDirToolStripMenuItem";
+            this.setBackupDirToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.setBackupDirToolStripMenuItem.Text = "Set Backup Dir";
+            this.setBackupDirToolStripMenuItem.Click += new System.EventHandler(this.setBackupDirToolStripMenuItemSaves_Click);
             // 
-            // carDataToolStripMenuItem
+            // carDataFilesToolStripMenuItem
             // 
-            this.carDataToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.backupCarDataToolStripMenuItem,
-            this.restoreCarDataToolStripMenuItem,
-            this.setSourceDirToolStripMenuItemCar,
-            this.setBackupDirToolStripMenuItemCar});
-            this.carDataToolStripMenuItem.Name = "carDataToolStripMenuItem";
-            this.carDataToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
-            this.carDataToolStripMenuItem.Text = "Car Data";
+            this.carDataFilesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.backupModCarDataToolStripMenuItem,
+            this.restoreModCarDataToolStripMenuItem,
+            this.setModBackupDirToolStripMenuItem1,
+            this.toolStripMenuItem1,
+            this.backupDefaultCarDataToolStripMenuItem,
+            this.restoreDefaultCarDataToolStripMenuItem,
+            this.setDefaultBackupDirToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.setCarDataSourceDirToolStripMenuItem});
+            this.carDataFilesToolStripMenuItem.Name = "carDataFilesToolStripMenuItem";
+            this.carDataFilesToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
+            this.carDataFilesToolStripMenuItem.Text = "Car Data Files";
             // 
-            // backupCarDataToolStripMenuItem
+            // backupModCarDataToolStripMenuItem
             // 
-            this.backupCarDataToolStripMenuItem.Name = "backupCarDataToolStripMenuItem";
-            this.backupCarDataToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.backupCarDataToolStripMenuItem.Text = "Backup Car Data";
-            this.backupCarDataToolStripMenuItem.Click += new System.EventHandler(this.backupCarDataToolStripMenuItem_Click);
+            this.backupModCarDataToolStripMenuItem.Name = "backupModCarDataToolStripMenuItem";
+            this.backupModCarDataToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.backupModCarDataToolStripMenuItem.Text = "Backup Mod Car Data";
+            this.backupModCarDataToolStripMenuItem.Click += new System.EventHandler(this.backupModCarDataToolStripMenuItem_Click);
             // 
-            // restoreCarDataToolStripMenuItem
+            // restoreModCarDataToolStripMenuItem
             // 
-            this.restoreCarDataToolStripMenuItem.Name = "restoreCarDataToolStripMenuItem";
-            this.restoreCarDataToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.restoreCarDataToolStripMenuItem.Text = "Restore Car Data";
-            this.restoreCarDataToolStripMenuItem.Click += new System.EventHandler(this.restoreCarDataToolStripMenuItem_Click);
+            this.restoreModCarDataToolStripMenuItem.Name = "restoreModCarDataToolStripMenuItem";
+            this.restoreModCarDataToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.restoreModCarDataToolStripMenuItem.Text = "Restore Mod Car Data";
+            this.restoreModCarDataToolStripMenuItem.Click += new System.EventHandler(this.restoreModCarDataToolStripMenuItem_Click);
             // 
-            // setSourceDirToolStripMenuItemCar
+            // setModBackupDirToolStripMenuItem1
             // 
-            this.setSourceDirToolStripMenuItemCar.Name = "setSourceDirToolStripMenuItemCar";
-            this.setSourceDirToolStripMenuItemCar.Size = new System.Drawing.Size(161, 22);
-            this.setSourceDirToolStripMenuItemCar.Text = "Set Source Dir";
-            this.setSourceDirToolStripMenuItemCar.Click += new System.EventHandler(this.setSourceDirToolStripMenuItemCar_Click);
+            this.setModBackupDirToolStripMenuItem1.Name = "setModBackupDirToolStripMenuItem1";
+            this.setModBackupDirToolStripMenuItem1.Size = new System.Drawing.Size(202, 22);
+            this.setModBackupDirToolStripMenuItem1.Text = "Set Mod Backup Dir";
+            this.setModBackupDirToolStripMenuItem1.Click += new System.EventHandler(this.setModBackupDirToolStripMenuItemCar_Click);
             // 
-            // setBackupDirToolStripMenuItemCar
+            // toolStripMenuItem1
             // 
-            this.setBackupDirToolStripMenuItemCar.Name = "setBackupDirToolStripMenuItemCar";
-            this.setBackupDirToolStripMenuItemCar.Size = new System.Drawing.Size(161, 22);
-            this.setBackupDirToolStripMenuItemCar.Text = "Set Backup Dir";
-            this.setBackupDirToolStripMenuItemCar.Click += new System.EventHandler(this.setBackupDirToolStripMenuItemCar_Click);
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(199, 6);
+            // 
+            // backupDefaultCarDataToolStripMenuItem
+            // 
+            this.backupDefaultCarDataToolStripMenuItem.Name = "backupDefaultCarDataToolStripMenuItem";
+            this.backupDefaultCarDataToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.backupDefaultCarDataToolStripMenuItem.Text = "Backup Default Car Data";
+            this.backupDefaultCarDataToolStripMenuItem.Click += new System.EventHandler(this.backupDefaultCarDataToolStripMenuItem_Click);
+            // 
+            // restoreDefaultCarDataToolStripMenuItem
+            // 
+            this.restoreDefaultCarDataToolStripMenuItem.Name = "restoreDefaultCarDataToolStripMenuItem";
+            this.restoreDefaultCarDataToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.restoreDefaultCarDataToolStripMenuItem.Text = "Restore Default Car Data";
+            this.restoreDefaultCarDataToolStripMenuItem.Click += new System.EventHandler(this.restoreDefaultCarDataToolStripMenuItem_Click);
+            // 
+            // setDefaultBackupDirToolStripMenuItem
+            // 
+            this.setDefaultBackupDirToolStripMenuItem.Name = "setDefaultBackupDirToolStripMenuItem";
+            this.setDefaultBackupDirToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.setDefaultBackupDirToolStripMenuItem.Text = "Set Default Backup Dir";
+            this.setDefaultBackupDirToolStripMenuItem.Click += new System.EventHandler(this.setDefaultBackupDirToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(199, 6);
+            // 
+            // setCarDataSourceDirToolStripMenuItem
+            // 
+            this.setCarDataSourceDirToolStripMenuItem.Name = "setCarDataSourceDirToolStripMenuItem";
+            this.setCarDataSourceDirToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.setCarDataSourceDirToolStripMenuItem.Text = "Set Car Data Source Dir";
+            this.setCarDataSourceDirToolStripMenuItem.Click += new System.EventHandler(this.setCarDataSourceDirToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -1079,6 +1118,13 @@
             // 
             // CarDataTabPage
             // 
+            this.CarDataTabPage.Controls.Add(this.CDGetTextbutton);
+            this.CarDataTabPage.Controls.Add(this.CDLoadFromTextbutton);
+            this.CarDataTabPage.Controls.Add(this.CDLoadFromFilebutton);
+            this.CarDataTabPage.Controls.Add(this.CDRestoreAllModbutton);
+            this.CarDataTabPage.Controls.Add(this.CDRestoreModbutton);
+            this.CarDataTabPage.Controls.Add(this.CDRestoreAllbutton);
+            this.CarDataTabPage.Controls.Add(this.CDRestorebutton);
             this.CarDataTabPage.Controls.Add(this.EDTOveralltabControl);
             this.CarDataTabPage.Controls.Add(this.CDSetPicturebutton);
             this.CarDataTabPage.Controls.Add(this.CDSaveAsNewbutton);
@@ -1095,6 +1141,26 @@
             this.CarDataTabPage.TabIndex = 0;
             this.CarDataTabPage.Text = "Car Data";
             this.CarDataTabPage.UseVisualStyleBackColor = true;
+            // 
+            // CDRestoreAllbutton
+            // 
+            this.CDRestoreAllbutton.Location = new System.Drawing.Point(10, 243);
+            this.CDRestoreAllbutton.Name = "CDRestoreAllbutton";
+            this.CDRestoreAllbutton.Size = new System.Drawing.Size(84, 52);
+            this.CDRestoreAllbutton.TabIndex = 39;
+            this.CDRestoreAllbutton.Text = "Restore All To Defaults";
+            this.CDRestoreAllbutton.UseVisualStyleBackColor = true;
+            this.CDRestoreAllbutton.Click += new System.EventHandler(this.CDRestoreAllbutton_Click);
+            // 
+            // CDRestorebutton
+            // 
+            this.CDRestorebutton.Location = new System.Drawing.Point(10, 185);
+            this.CDRestorebutton.Name = "CDRestorebutton";
+            this.CDRestorebutton.Size = new System.Drawing.Size(84, 52);
+            this.CDRestorebutton.TabIndex = 38;
+            this.CDRestorebutton.Text = "Restore This To Default";
+            this.CDRestorebutton.UseVisualStyleBackColor = true;
+            this.CDRestorebutton.Click += new System.EventHandler(this.CDRestorebutton_Click);
             // 
             // EDTOveralltabControl
             // 
@@ -6037,7 +6103,7 @@
             // 
             // CDSetPicturebutton
             // 
-            this.CDSetPicturebutton.Location = new System.Drawing.Point(100, 214);
+            this.CDSetPicturebutton.Location = new System.Drawing.Point(100, 243);
             this.CDSetPicturebutton.Name = "CDSetPicturebutton";
             this.CDSetPicturebutton.Size = new System.Drawing.Size(84, 23);
             this.CDSetPicturebutton.TabIndex = 9;
@@ -6047,7 +6113,7 @@
             // 
             // CDSaveAsNewbutton
             // 
-            this.CDSaveAsNewbutton.Location = new System.Drawing.Point(100, 156);
+            this.CDSaveAsNewbutton.Location = new System.Drawing.Point(100, 185);
             this.CDSaveAsNewbutton.Name = "CDSaveAsNewbutton";
             this.CDSaveAsNewbutton.Size = new System.Drawing.Size(84, 23);
             this.CDSaveAsNewbutton.TabIndex = 8;
@@ -6057,7 +6123,7 @@
             // 
             // CDSavebutton
             // 
-            this.CDSavebutton.Location = new System.Drawing.Point(100, 185);
+            this.CDSavebutton.Location = new System.Drawing.Point(100, 214);
             this.CDSavebutton.Name = "CDSavebutton";
             this.CDSavebutton.Size = new System.Drawing.Size(84, 23);
             this.CDSavebutton.TabIndex = 7;
@@ -6067,7 +6133,7 @@
             // 
             // CDNewbutton
             // 
-            this.CDNewbutton.Location = new System.Drawing.Point(10, 156);
+            this.CDNewbutton.Location = new System.Drawing.Point(100, 156);
             this.CDNewbutton.Name = "CDNewbutton";
             this.CDNewbutton.Size = new System.Drawing.Size(84, 23);
             this.CDNewbutton.TabIndex = 6;
@@ -6077,11 +6143,11 @@
             // 
             // CDResetbutton
             // 
-            this.CDResetbutton.Location = new System.Drawing.Point(10, 185);
+            this.CDResetbutton.Location = new System.Drawing.Point(10, 157);
             this.CDResetbutton.Name = "CDResetbutton";
             this.CDResetbutton.Size = new System.Drawing.Size(84, 23);
             this.CDResetbutton.TabIndex = 5;
-            this.CDResetbutton.Text = "Reset";
+            this.CDResetbutton.Text = "Reset Values";
             this.CDResetbutton.UseVisualStyleBackColor = true;
             this.CDResetbutton.Click += new System.EventHandler(this.CDResetbutton_Click);
             // 
@@ -6776,6 +6842,24 @@
             this.SaveGameEditortabPage.Text = "Save Game Editor";
             this.SaveGameEditortabPage.UseVisualStyleBackColor = true;
             // 
+            // SGTProfilesFoundlabel
+            // 
+            this.SGTProfilesFoundlabel.AutoSize = true;
+            this.SGTProfilesFoundlabel.Location = new System.Drawing.Point(9, 52);
+            this.SGTProfilesFoundlabel.Name = "SGTProfilesFoundlabel";
+            this.SGTProfilesFoundlabel.Size = new System.Drawing.Size(85, 13);
+            this.SGTProfilesFoundlabel.TabIndex = 30;
+            this.SGTProfilesFoundlabel.Text = "O Profiles Found";
+            // 
+            // SGETProfilecomboBox
+            // 
+            this.SGETProfilecomboBox.FormattingEnabled = true;
+            this.SGETProfilecomboBox.Location = new System.Drawing.Point(9, 24);
+            this.SGETProfilecomboBox.Name = "SGETProfilecomboBox";
+            this.SGETProfilecomboBox.Size = new System.Drawing.Size(121, 21);
+            this.SGETProfilecomboBox.TabIndex = 29;
+            this.SGETProfilecomboBox.SelectedIndexChanged += new System.EventHandler(this.SGETGProfilecomboBox_SelectedIndexChanged);
+            // 
             // SaveGameEditorTabtabControl
             // 
             this.SaveGameEditorTabtabControl.Controls.Add(this.SGETGlobaltabPage);
@@ -6822,24 +6906,6 @@
             this.SGETGlobaltabPage.Text = "Global";
             this.SGETGlobaltabPage.UseVisualStyleBackColor = true;
             // 
-            // SGETProfilecomboBox
-            // 
-            this.SGETProfilecomboBox.FormattingEnabled = true;
-            this.SGETProfilecomboBox.Location = new System.Drawing.Point(9, 24);
-            this.SGETProfilecomboBox.Name = "SGETProfilecomboBox";
-            this.SGETProfilecomboBox.Size = new System.Drawing.Size(121, 21);
-            this.SGETProfilecomboBox.TabIndex = 29;
-            this.SGETProfilecomboBox.SelectedIndexChanged += new System.EventHandler(this.SGETGProfilecomboBox_SelectedIndexChanged);
-            // 
-            // SGETProfilelabel
-            // 
-            this.SGETProfilelabel.AutoSize = true;
-            this.SGETProfilelabel.Location = new System.Drawing.Point(6, 7);
-            this.SGETProfilelabel.Name = "SGETProfilelabel";
-            this.SGETProfilelabel.Size = new System.Drawing.Size(125, 13);
-            this.SGETProfilelabel.TabIndex = 28;
-            this.SGETProfilelabel.Text = "Currently Selected Profile";
-            // 
             // SGETGMoneynumericUpDown
             // 
             this.SGETGMoneynumericUpDown.Location = new System.Drawing.Point(117, 312);
@@ -6872,6 +6938,16 @@
             this.SGETGXPnumericUpDown.Name = "SGETGXPnumericUpDown";
             this.SGETGXPnumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.SGETGXPnumericUpDown.TabIndex = 25;
+            // 
+            // SGETGSavebutton
+            // 
+            this.SGETGSavebutton.Location = new System.Drawing.Point(10, 355);
+            this.SGETGSavebutton.Name = "SGETGSavebutton";
+            this.SGETGSavebutton.Size = new System.Drawing.Size(106, 23);
+            this.SGETGSavebutton.TabIndex = 3;
+            this.SGETGSavebutton.Text = "Save Global File";
+            this.SGETGSavebutton.UseVisualStyleBackColor = true;
+            this.SGETGSavebutton.Click += new System.EventHandler(this.SGETGSavebutton_Click);
             // 
             // SGETGXPlabel
             // 
@@ -7092,16 +7168,6 @@
             this.SGETGPartsRepairedlabel.TabIndex = 4;
             this.SGETGPartsRepairedlabel.Text = "Parts Repaired";
             // 
-            // SGETGSavebutton
-            // 
-            this.SGETGSavebutton.Location = new System.Drawing.Point(10, 355);
-            this.SGETGSavebutton.Name = "SGETGSavebutton";
-            this.SGETGSavebutton.Size = new System.Drawing.Size(106, 23);
-            this.SGETGSavebutton.TabIndex = 3;
-            this.SGETGSavebutton.Text = "Save Global File";
-            this.SGETGSavebutton.UseVisualStyleBackColor = true;
-            this.SGETGSavebutton.Click += new System.EventHandler(this.SGETGSavebutton_Click);
-            // 
             // SGETGTitlelabel
             // 
             this.SGETGTitlelabel.AutoSize = true;
@@ -7131,14 +7197,64 @@
             this.SGETHelpWantedtextBox.TabIndex = 0;
             this.SGETHelpWantedtextBox.Text = resources.GetString("SGETHelpWantedtextBox.Text");
             // 
-            // SGTProfilesFoundlabel
+            // SGETProfilelabel
             // 
-            this.SGTProfilesFoundlabel.AutoSize = true;
-            this.SGTProfilesFoundlabel.Location = new System.Drawing.Point(9, 52);
-            this.SGTProfilesFoundlabel.Name = "SGTProfilesFoundlabel";
-            this.SGTProfilesFoundlabel.Size = new System.Drawing.Size(85, 13);
-            this.SGTProfilesFoundlabel.TabIndex = 30;
-            this.SGTProfilesFoundlabel.Text = "O Profiles Found";
+            this.SGETProfilelabel.AutoSize = true;
+            this.SGETProfilelabel.Location = new System.Drawing.Point(6, 7);
+            this.SGETProfilelabel.Name = "SGETProfilelabel";
+            this.SGETProfilelabel.Size = new System.Drawing.Size(125, 13);
+            this.SGETProfilelabel.TabIndex = 28;
+            this.SGETProfilelabel.Text = "Currently Selected Profile";
+            // 
+            // CDRestoreAllModbutton
+            // 
+            this.CDRestoreAllModbutton.Location = new System.Drawing.Point(10, 359);
+            this.CDRestoreAllModbutton.Name = "CDRestoreAllModbutton";
+            this.CDRestoreAllModbutton.Size = new System.Drawing.Size(84, 52);
+            this.CDRestoreAllModbutton.TabIndex = 41;
+            this.CDRestoreAllModbutton.Text = "Restore All To Mods";
+            this.CDRestoreAllModbutton.UseVisualStyleBackColor = true;
+            this.CDRestoreAllModbutton.Click += new System.EventHandler(this.CDRestoreAllModbutton_Click);
+            // 
+            // CDRestoreModbutton
+            // 
+            this.CDRestoreModbutton.Location = new System.Drawing.Point(10, 301);
+            this.CDRestoreModbutton.Name = "CDRestoreModbutton";
+            this.CDRestoreModbutton.Size = new System.Drawing.Size(84, 52);
+            this.CDRestoreModbutton.TabIndex = 40;
+            this.CDRestoreModbutton.Text = "Restore This To A Mod";
+            this.CDRestoreModbutton.UseVisualStyleBackColor = true;
+            this.CDRestoreModbutton.Click += new System.EventHandler(this.CDRestoreModbutton_Click);
+            // 
+            // CDLoadFromFilebutton
+            // 
+            this.CDLoadFromFilebutton.Location = new System.Drawing.Point(100, 272);
+            this.CDLoadFromFilebutton.Name = "CDLoadFromFilebutton";
+            this.CDLoadFromFilebutton.Size = new System.Drawing.Size(84, 23);
+            this.CDLoadFromFilebutton.TabIndex = 42;
+            this.CDLoadFromFilebutton.Text = "Load From File";
+            this.CDLoadFromFilebutton.UseVisualStyleBackColor = true;
+            this.CDLoadFromFilebutton.Click += new System.EventHandler(this.CDLoadFromFilebutton_Click);
+            // 
+            // CDLoadFromTextbutton
+            // 
+            this.CDLoadFromTextbutton.Location = new System.Drawing.Point(100, 301);
+            this.CDLoadFromTextbutton.Name = "CDLoadFromTextbutton";
+            this.CDLoadFromTextbutton.Size = new System.Drawing.Size(84, 52);
+            this.CDLoadFromTextbutton.TabIndex = 43;
+            this.CDLoadFromTextbutton.Text = "Load From Text";
+            this.CDLoadFromTextbutton.UseVisualStyleBackColor = true;
+            this.CDLoadFromTextbutton.Click += new System.EventHandler(this.CDLoadFromTextbutton_Click);
+            // 
+            // CDGetTextbutton
+            // 
+            this.CDGetTextbutton.Location = new System.Drawing.Point(100, 359);
+            this.CDGetTextbutton.Name = "CDGetTextbutton";
+            this.CDGetTextbutton.Size = new System.Drawing.Size(84, 52);
+            this.CDGetTextbutton.TabIndex = 45;
+            this.CDGetTextbutton.Text = "Get Text";
+            this.CDGetTextbutton.UseVisualStyleBackColor = true;
+            this.CDGetTextbutton.Click += new System.EventHandler(this.CDGetTextbutton_Click);
             // 
             // Form1
             // 
@@ -7398,17 +7514,7 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem savesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem backupSavesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem restoreSavesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem carDataToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem backupCarDataToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem restoreCarDataToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem setSourceDirToolStripMenuItemSaves;
-        private System.Windows.Forms.ToolStripMenuItem setBackupDirToolStripMenuItemSaves;
-        private System.Windows.Forms.ToolStripMenuItem setSourceDirToolStripMenuItemCar;
-        private System.Windows.Forms.ToolStripMenuItem setBackupDirToolStripMenuItemCar;
+        private System.Windows.Forms.ToolStripMenuItem savesBackupToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage CarDataTabPage;
         private System.Windows.Forms.TabPage EngineDataTabPage;
@@ -7945,6 +8051,27 @@
         private System.Windows.Forms.Label CDWWheelWidthRearlabel;
         private System.Windows.Forms.TextBox CDWRRimCaptextBox;
         private System.Windows.Forms.Label SGTProfilesFoundlabel;
+        private System.Windows.Forms.ToolStripMenuItem backupSavesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem restoreSavesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setSourceDirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setBackupDirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem carDataFilesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backupModCarDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem restoreModCarDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setCarDataSourceDirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setModBackupDirToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem backupDefaultCarDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem restoreDefaultCarDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setDefaultBackupDirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.Button CDRestorebutton;
+        private System.Windows.Forms.Button CDRestoreAllbutton;
+        private System.Windows.Forms.Button CDRestoreAllModbutton;
+        private System.Windows.Forms.Button CDRestoreModbutton;
+        private System.Windows.Forms.Button CDLoadFromFilebutton;
+        private System.Windows.Forms.Button CDLoadFromTextbutton;
+        private System.Windows.Forms.Button CDGetTextbutton;
     }
 }
 

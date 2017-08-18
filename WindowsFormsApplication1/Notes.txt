@@ -7,6 +7,17 @@ http://steamcommunity.com/app/320300/discussions/1/368542844485671388/
 
 Release notes
 
+0.9.2
+21/Oct/2016
+Fixed a bug in overwritng files
+Fixed a bug in displaying engine type in Car Data Tab
+Overhaul of how backups are handled, now has seperate backups for default (game standard) and Mod'ed Car Data Files
+Big changes to  useability for Car Data File Mods
+ - Car Data Files can now be restored singly or fully from the game defaults or mod'ed backups
+ - Car Data File Mod's can now be opened from a file (for example a downloaded or shared text file)
+ - Car Data File Mod's can be pasted in from text (for example the posted cars in the Steam forum)
+ - Car Data File Mod's can now be pasted out to text (for example you can now now easily post them in the Steam Forum)
+
 0.9.1.6
 14/Oct/2016
 Made the 'rear wheel parts' of [wheels] enabled only when a Maserati is selected
